@@ -66,18 +66,21 @@ An Opus orchestrator runs up to 4 requirement pipelines at once, and each pipeli
 | 1 | Planner | Opus | Writes `docs/plans/req-N.md` and the spec, and confirms the spec fails |
 | 2 | Builder | Sonnet | Implements until the spec and `npm run verify` pass, 8 tries at most. Can't edit the spec |
 | 3 | Designer (UI only) | Sonnet | Applies the design rules below |
-| 4 | Reviewer | Opus | Checks the diff against the plan, files, guardrails and scope. Sends it back up to 2 times |
-| 5 | Merger | Orchestrator | Merges one at a time, verifies, tags and pushes |
+| 4 | Visual auditor (UI only) | Opus | Scores screenshots using `docs/design-brief.md`, and sends fixes back, up to 3 rounds |
+| 5 | Reviewer | Opus | Checks the diff against the plan, files, guardrails and scope. Sends it back up to 2 times |
+| 6 | Merger | Orchestrator | Merges one at a time, verifies, tags and pushes. Runs `npm run test:gpu` one at a time, with no heavy work running |
 
 - After 8 failed tries, the Planner rewrites the prompt and a new Builder starts from the latest main, with up to 2 rewrites. After that, mark the requirement `BLOCKED` and continue with anything that doesn't depend on it.
 - Log progress in `docs/status.md`, and save screenshots for human review in `docs/ui-review/`.
 - Stop after REQ-12 for a human check.
 
-**Design rules:** minimalist health look, using shadcn/ui and the tokens from REQ-1. Build with `ui-ux-pro-max`. Use `design-taste-frontend` for audits only: follow its anti-slop, consistency, accessibility and "Never" guidance. Ignore its marketing-page rules, including heroes, sections per screen, dealt styles, stock photos, big scenes and no captions. Don't run its `gate.mjs`. Required labels such as "schematic valve" always stay.
+**Design rules:** every UI agent reads `docs/design-brief.md` first. Minimalist health look, using shadcn/ui and the tokens from REQ-1. Build with `ui-ux-pro-max`. Use `design-taste-frontend` for audits only: follow its anti-slop, consistency, accessibility and "Never" guidance. Ignore its marketing-page rules, including heroes, sections per screen, dealt styles, stock photos, big scenes and no captions. Don't run its `gate.mjs`. Required labels such as "schematic valve" always stay.
 
 **3D rules:** compressed GLB, reduced-detail meshes, one root loaded at a time, capped pixel ratio, render only on change, no heavy post-processing.
 
 ### How agents use git
+
+**Current batch override:** commit locally only, with no pushes. Agents follow `docs/agent-rules.md`. The push steps below apply once a human turns pushing on. The lag test stays `pending` until a human runs it.
 
 - `.env.local` holds the Gemini key. It's ignored by git, and each new worktree gets a copy.
 - Worktrees live outside the repo: `git worktree add ../valvular-worktrees/req-9 -b req-9 origin/main`.
@@ -114,7 +117,7 @@ Revert and improve the prompt instead of debugging for a long time.
 |---|---|---|---|
 | RES-1 | Which published fit rules can replace the placeholders? What do the dataset's measurements mean exactly? | Keep placeholders, labelled | REQ-6 |
 | RES-2 | How reliable and fast are `gemini-4-argon` tool calls, and what are our tier 3 limits? No key is set on this machine yet. | Lower thinking level, a faster Gemini model, then replay | REQ-10 |
-| RES-3 | Which good-looking heart model has a clear licence and loads in the browser? Start with [NIH 3D 3DPX-000906](https://3d.nih.gov/entries/3DPX-000906). | Start directly on the aortic root | REQ-3 |
+| RES-3 | Which accurate heart model has a clear licence, loads in the browser and can match the brief's muted satin look? Where exactly is its aortic valve, for the zoom target? Start with [NIH 3D 3DPX-000906](https://3d.nih.gov/entries/3DPX-000906). | Start directly on the aortic root | REQ-3 |
 | RES-4 | What's the best way to make the thumbnails and keep the 3D view smooth on the demo laptop? | Simple shaded thumbnails, heavier mesh reduction | REQ-2, REQ-7 |
 | RES-5 | Are the pitch's evidence figures right at source? Only JenaValve and Perceval have been read so far. | Use only those two | REQ-20 |
 
@@ -131,7 +134,7 @@ Revert and improve the prompt instead of debugging for a long time.
 | Depth | Not in P0 or P1. See REQ-21. |
 | Model | `gemini-4-argon`, behind one adapter. |
 | Stack | One Next.js app in TypeScript, shadcn/ui, React Three Fiber with drei, Playwright. No database: runs are JSON files. Hosted URL plus laptop backup. |
-| Visuals | Heart zooms into an interactive aortic root with a schematic valve. Wall of pre-rendered thumbnails. Heart model is labelled illustrative. |
+| Visuals | Clinical light theme. A full-screen beating heart zooms on scroll into a translucent aortic root, then floating panels fade in. Full details are in `docs/design-brief.md`. Heart model is labelled illustrative. |
 
 **Placeholder rules until RES-1 replaces them** (all `demo-assumption`):
 - A heart with an annulus outside every size range is `no-fit`.
@@ -226,12 +229,12 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
 - **Story:** As a builder, I can start from shared contracts and a styled shell, so parallel work fits together.
 - **Needs:** Nothing.
 - **Screens:** Workbench `/` (the style reference), Results `/results`, Review `/review`, About `/about`, all as shells.
-- **Files:** `package.json`, config, `src/contracts/*`, `src/styles/tokens.css`, `src/app/**/page.tsx`, `src/components/data-label/*`, stub components, `fixtures/*`, `tests/e2e/req-1.spec.ts`, `docs/reference/workbench.png`, `.gitignore`.
-- **Notes:** The GitHub repo already exists. Keep the existing `.gitignore` rules. Install all expected dependencies. Style the shell with the `ui-ux-pro-max` skill. Confirm Playwright MCP is set up.
+- **Files:** `package.json`, config, `src/contracts/*`, `src/state/stage.ts`, `src/styles/tokens.css`, `src/app/**/page.tsx`, `src/components/data-label/*`, stub components, `fixtures/*`, `tests/e2e/req-1.spec.ts`, `docs/reference/workbench.png`, `.gitignore`.
+- **Notes:** The GitHub repo already exists. Keep the existing `.gitignore` rules. Install all expected dependencies. `src/state/stage.ts` holds zoom progress from 0 to 1, and `/?stage=workspace` opens at 100%, so 3D and panel work can be built and tested separately. Add `npm run test:gpu`. Style the shell with the `ui-ux-pro-max` skill. Confirm Playwright MCP is set up.
 - **Done when:**
   1. User opens each screen → sees it load with no console errors.
-  2. User opens `/` → sees named areas for the 3D view, wall, feed and controls.
-  3. User opens `/`, `/results` and `/review` → sees a "Synthetic test hearts" label on each.
+  2. User opens `/?stage=workspace` → sees a full-screen 3D area with floating wall, feed and controls panels, as in `docs/design-brief.md`.
+  3. User opens `/?stage=workspace`, `/results` and `/review` → sees a "Synthetic test hearts" label on each.
   4. Test scans the repo → finds no API keys and no `real_cohort` files.
 
 ### REQ-2: Test heart data
@@ -249,16 +252,21 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
 
 ### REQ-3: Heart and zoom
 - **Step:** 2, parallel. **Type:** Frontend, 3D.
-- **Story:** As a judge, I can see where the valve sits by zooming from a heart into the aortic root.
+- **Story:** As a judge, I can scroll from a beating heart into the aortic root, so I see where the valve sits.
 - **Needs:** REQ-1. Uses fake data until REQ-2 merges.
 - **Screens:** Workbench.
 - **Files:** `src/components/heart-scene/*`, `public/models/*`, `tests/e2e/req-3.spec.ts`.
 - **Done when:**
-  1. User opens `/` → sees a 3D heart labelled illustrative within 3 seconds on the demo laptop.
-  2. User drags the heart → sees it rotate.
-  3. User clicks "Zoom to valve" → sees the camera move smoothly into a synthetic aortic root.
-  4. User clicks "Back to heart" → sees the view return.
-  5. Test captures the canvas in each view → sees it isn't blank.
+  1. User opens `/` → sees a beating, slowly turning 3D heart labelled illustrative, with no panels, within 3 seconds.
+  2. User scrolls down halfway and stops → sees the zoom hold at that point, with the heart fading into the root.
+  3. User scrolls down fully → sees the translucent root with solid leaflets, the beat stopped and the workspace panels faded in.
+  4. User scrolls up → sees the zoom reverse to the heart, and the panels fade out.
+  5. User clicks "Zoom to valve", then uses the arrow keys → sees the same zoom in and out.
+  6. User opens with reduced motion on → sees a short crossfade.
+  7. User drags on the root → sees it rotate.
+  8. Test captures the canvas in each view → sees it isn't blank.
+  9. `@gpu` User watches the heart, scroll-zooms and rotates in a real browser using the laptop's GPU → sees every performance target in `docs/design-brief.md` met.
+  10. Auditor reviews screenshots of the heart, mid-zoom and the root → every score in `docs/design-brief.md` is at least 4.
 
 ### REQ-4: Wall and heart panel
 - **Step:** 2, parallel. **Type:** Frontend, panels.
@@ -267,10 +275,13 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
 - **Screens:** Workbench, heart panel.
 - **Files:** `src/components/wall/*`, `src/components/heart-panel/*`, `tests/e2e/req-4.spec.ts`.
 - **Done when:**
-  1. User opens `/` → sees 400 thumbnails coloured green, amber or red, with matching totals.
-  2. New results arrive → user sees only the changed hearts update, and the totals change.
-  3. User clicks a red heart → sees its measurements, failed rule, limit, margin and rule type.
-  4. User clicks a heart → sees the selected heart's ID sent to the 3D view.
+  1. User opens `/?stage=workspace` → sees 400 dots coloured green, amber or red, with matching totals, and "Sample data" while results are fake.
+  2. User hovers over a dot → sees that heart's thumbnail and ID.
+  3. User clicks the expand button → sees all 400 thumbnails in a large overlay, with the same colours.
+  4. New results arrive → user sees only the changed hearts update, and the totals change.
+  5. User clicks a red heart → sees a popup with a small rotatable 3D view, measurements, failed rule, limit, margin and rule type.
+  6. User clicks "Open in main view" → sees the popup close and that heart's ID sent to the main view.
+  7. User presses Esc → sees the popup close.
 
 ### REQ-5: Agent loop
 - **Step:** 2, parallel. **Type:** Backend, agents.
@@ -309,8 +320,8 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
   1. User zooms to the valve → sees the root and a valve labelled "schematic valve".
   2. User selects another heart → sees the mesh change with no page reload.
   3. User changes the design → sees the valve change size.
-  4. User selects a red or amber heart → sees the problem area and status marked, with the label "synthetic heart".
-  5. User rotates the root → sees it stay smooth, with the frame rate from RES-4 met.
+  4. User opens a red or amber heart in the main view → sees the problem area tinted and the status shown, with the label "synthetic heart".
+  5. `@gpu` User rotates the root with the valve in a real browser using the laptop's GPU → sees every performance target in `docs/design-brief.md` met.
 
 ### REQ-8: Agent feed and buttons
 - **Step:** 3, parallel. **Type:** Frontend, panels.
@@ -372,10 +383,10 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
 - **Screens:** Workbench.
 - **Files:** `tests/e2e/req-12.spec.ts`, small fixes in the owning files.
 - **Done when:**
-  1. User opens `/` → sees the 3D heart and the wall of real test hearts.
-  2. User zooms to the valve → sees a real root and schematic valve.
+  1. User opens `/` → sees the beating 3D heart.
+  2. User scrolls to the valve → sees a real root, schematic valve and the wall of real test hearts.
   3. User clicks "Break it" → sees the feed run and failure mechanisms appear.
-  4. User clicks a red heart → sees its measurements and the 3D view change to that heart.
+  4. User clicks a red heart → sees its popup and measurements, then clicks "Open in main view" and sees the main view change to that heart.
   5. User clicks "Fix it" → sees the change retested, attacks appear, new risks turn amber and the totals update.
   6. User reads the result → sees "This valve fits [X]% of test hearts. With this change, it fits [Y]%, and here's the new risk", on dev hearts.
   7. `@live` The same path passes with Gemini.
