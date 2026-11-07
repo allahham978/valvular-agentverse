@@ -12,12 +12,15 @@
   --status-risk: #d9941e;
   --status-no-fit: #d04a43;
   --radius: 0.5rem;
-  --panel-col: 380px;
+  --dot: 10px;
+  --dot-gap: 4px;
+  --panel-col: calc(25 * var(--dot) + 24 * var(--dot-gap) + 34px);
 }
 
 @media (min-width: 1800px) {
   :root {
-    --panel-col: 460px;
+    --dot: 13px;
+    --dot-gap: 5px;
   }
 }
 

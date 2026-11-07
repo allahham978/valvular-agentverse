@@ -1,8 +1,9 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { ContactShadows, Environment, Lightformer } from "@react-three/drei";
+import { ContactShadows } from "@react-three/drei";
 import { useMainViewPaused } from "@/state/stage";
+import { StudioLighting } from "./studio-lighting";
 import { ROOT_LIFT, ROOT_SIZE, RootView } from "@/components/root-view";
 
 export function HeartScene() {
@@ -14,13 +15,7 @@ export function HeartScene() {
         dpr={[1, 2]}
         camera={{ position: [0, 0, 6], fov: 35 }}
       >
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[3, 4, 5]} intensity={1.2} />
-        <Environment resolution={64}>
-          <Lightformer intensity={2} position={[0, 5, -5]} scale={[10, 4, 1]} />
-          <Lightformer intensity={1} position={[-5, 1, 3]} scale={[4, 6, 1]} />
-          <Lightformer intensity={6} position={[4, 2, 4]} rotation={[0, -0.6, 0]} scale={[0.6, 7, 1]} />
-        </Environment>
+        <StudioLighting />
         <RootView />
         <ContactShadows
           frames={1}
