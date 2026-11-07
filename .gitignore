@@ -1,0 +1,29 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Build and tools
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+.taste-skill/
+.DS_Store
+
+# Raw dataset (real_cohort must never be committed)
+data/raw/
+**/real_cohort/
+
+# Private planning material
+inputs.md
+candidates.md
+report.md
+architecture.md
+spec-interview.md
+reports/
+research/
+research_notes/*
+!research_notes/Valvular build/
