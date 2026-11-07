@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { CameraControls, CameraControlsImpl } from "@react-three/drei";
-import { MathUtils, type PerspectiveCamera } from "three";
+import { MathUtils, Vector3, type PerspectiveCamera } from "three";
 import { getStageProgress, setStageProgress } from "@/state/stage";
 import {
   getStageTarget,
@@ -11,7 +11,16 @@ import {
   prefersReducedMotion,
   syncStageTarget,
 } from "./stage-input";
-import { FADE_END, HEART_POSE, ROOT_POSE, visualAt, type Visual } from "./stage-math";
+import {
+  FADE_END,
+  HEART_POSE,
+  ROOT_POSE,
+  cameraPathAt,
+  panelShiftAt,
+  returnBlendAt,
+  visualAt,
+  type Visual,
+} from "./stage-math";
 
 const DAMPING = 5;
 const MAX_STEP_SECONDS = 0.1;
@@ -20,6 +29,8 @@ const CROSSFADE_SECONDS = 0.4;
 const PANEL_MARGIN = 24;
 
 const { ACTION } = CameraControlsImpl;
+const blendedPosition = new Vector3();
+const blendedTarget = new Vector3();
 
 declare global {
   interface Window {
@@ -97,19 +108,22 @@ export function StageDriver({ visual }: { visual: Visual }) {
     setStageProgress(progress);
     Object.assign(visual, visualAt(progress, reduced));
 
-    const pose = reduced ? (progress < 0.5 ? 0 : 1) : progress;
+    const pose = reduced ? (progress < 0.5 ? 0 : 1) : progress === 1 ? 1 : cameraPathAt(progress);
     if (pose < 1) {
       if (atRoot.current) {
         impl.getPosition(rootPose.current.position);
         impl.getTarget(rootPose.current.target);
         atRoot.current = false;
       }
+      const blend = returnBlendAt(progress);
+      blendedPosition.copy(rootPose.current.position).lerp(ROOT_POSE.position, blend);
+      blendedTarget.copy(rootPose.current.target).lerp(ROOT_POSE.target, blend);
       if (pose === 0) {
         rootPose.current.position.copy(ROOT_POSE.position);
         rootPose.current.target.copy(ROOT_POSE.target);
       }
       const { position: a, target: at } = HEART_POSE;
-      const { position: b, target: bt } = rootPose.current;
+      const { position: b, target: bt } = { position: blendedPosition, target: blendedTarget };
       impl.lerpLookAt(a.x, a.y, a.z, at.x, at.y, at.z, b.x, b.y, b.z, bt.x, bt.y, bt.z, pose, false);
     } else if (!atRoot.current) {
       const { position: p, target: t } = rootPose.current;
@@ -119,7 +133,7 @@ export function StageDriver({ visual }: { visual: Visual }) {
     impl.mouseButtons.left = pose === 1 ? ACTION.ROTATE : ACTION.NONE;
     impl.touches.one = pose === 1 ? ACTION.TOUCH_ROTATE : ACTION.NONE;
 
-    const shift = viewShift.current.free * pose;
+    const shift = viewShift.current.free * (reduced ? pose : panelShiftAt(progress));
     if (shift !== viewShift.current.applied) {
       viewShift.current.applied = shift;
       if (shift === 0) camera.clearViewOffset();

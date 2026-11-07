@@ -20,6 +20,19 @@ export function visualAt(progress: number, reduced: boolean): Visual {
   return { heart: 1 - fade, root: fade, motion: 1 - smoothstep(0, 0.6, progress) };
 }
 
+const CAMERA_EASE = 3;
+const RETURN_FROM = 0.75;
+const PANEL_SHIFT_FROM = 0.8;
+
+// Eases out, so the camera has closed in on the aortic base by the time the heart is gone.
+export const cameraPathAt = (progress: number) => 1 - Math.pow(1 - progress, CAMERA_EASE);
+
+// Blend a rotated end pose back to the default one while scrolling out.
+export const returnBlendAt = (progress: number) => 1 - smoothstep(RETURN_FROM, 1, progress);
+
+// Hold the view centred until the panels arrive.
+export const panelShiftAt = (progress: number) => smoothstep(PANEL_SHIFT_FROM, 1, progress);
+
 const UP = new Vector3(0, 1, 0);
 
 export const HEART_SCALE = 9.2;
@@ -45,6 +58,6 @@ export const ROOT_POSE = {
   target: new Vector3(0, 0, 0),
 };
 export const HEART_POSE = {
-  position: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.4, 20.5)),
-  target: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.4, 0)),
+  position: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.75, 21.5)),
+  target: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.75, 0)),
 };

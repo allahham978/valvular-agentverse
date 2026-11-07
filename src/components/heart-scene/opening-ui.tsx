@@ -4,10 +4,23 @@ import { useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getStageProgress, subscribeStage } from "@/state/stage";
-import { smoothstep } from "./stage-math";
-import { zoomToValve } from "./stage-input";
+import { smoothstep, visualAt } from "./stage-math";
+import { prefersReducedMotion, zoomToValve } from "./stage-input";
 
 const GONE_BY = 0.15;
+
+function fadeLabel(label: Element, opacity: number) {
+  const style = (label as HTMLElement).style;
+  style.opacity = String(opacity);
+  style.visibility = opacity > 0 ? "visible" : "hidden";
+}
+
+// "Illustrative" belongs to the heart only, so the header label swaps as the heart gives way.
+function syncHeaderLabels(progress: number) {
+  const { heart, root } = visualAt(progress, prefersReducedMotion());
+  document.querySelectorAll("header .stage-opening").forEach((label) => fadeLabel(label, heart));
+  document.querySelectorAll("header .stage-panel").forEach((label) => fadeLabel(label, root));
+}
 
 export function OpeningUi() {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,6 +32,7 @@ export function OpeningUi() {
       const opacity = 1 - smoothstep(0, GONE_BY, getStageProgress());
       element.style.opacity = String(opacity);
       element.style.pointerEvents = opacity < 0.5 ? "none" : "";
+      syncHeaderLabels(getStageProgress());
     };
     update();
     return subscribeStage(update);

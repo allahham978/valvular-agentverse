@@ -25,6 +25,8 @@ const BEATS_PER_SECOND = 1;
 const BEAT_SIZE = 0.035;
 const TURN_RADIANS = 0.45;
 const TURN_SPEED = 0.4;
+const SHADOW_LIFT = 0.45;
+const SHADOW_SIZE = 3.8;
 
 function createHeartMaterial() {
   return new MeshPhysicalMaterial({
@@ -93,7 +95,12 @@ function createHeartRig(scene: Object3D) {
     },
     placeShadow(outer: Group, shadow: Mesh) {
       outer.updateMatrixWorld(true);
-      shadow.position.y = new Box3().setFromObject(outer).min.y - 0.08;
+      const bounds = new Box3().setFromObject(outer);
+      shadow.position.set(
+        (bounds.min.x + bounds.max.x) / 2,
+        bounds.min.y + SHADOW_LIFT,
+        (bounds.min.z + bounds.max.z) / 2,
+      );
     },
   };
 }
@@ -143,7 +150,7 @@ export function HeartModel({ visual }: { visual: Visual }) {
         </group>
       </group>
       <mesh ref={shadow} rotation={[-Math.PI / 2, 0, 0]} renderOrder={-2}>
-        <planeGeometry args={[5.6, 5.6]} />
+        <planeGeometry args={[SHADOW_SIZE, SHADOW_SIZE]} />
         <meshBasicMaterial
           map={shadowTexture}
           transparent
