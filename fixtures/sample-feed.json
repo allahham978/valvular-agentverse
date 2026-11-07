@@ -1,0 +1,50 @@
+{
+  "label": "Sample data",
+  "events": [
+    {
+      "seq": 1,
+      "at": "2026-01-01T00:00:00.000Z",
+      "actor": "code",
+      "type": "run-start",
+      "text": "Run started on the starting valve.",
+      "data": null,
+      "mode": "replay"
+    },
+    {
+      "seq": 2,
+      "at": "2026-01-01T00:00:00.000Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Breaker grouped failing hearts by rule.",
+      "data": null,
+      "mode": "replay"
+    },
+    {
+      "seq": 3,
+      "at": "2026-01-01T00:00:00.000Z",
+      "actor": "breaker",
+      "type": "finding",
+      "text": "Hearts with a narrow sinotubular junction are the largest at-risk group.",
+      "data": null,
+      "mode": "replay"
+    },
+    {
+      "seq": 4,
+      "at": "2026-01-01T00:00:00.000Z",
+      "actor": "fixer",
+      "type": "proposal",
+      "text": "Fixer proposed adding a 29 mm size.",
+      "data": null,
+      "mode": "replay"
+    },
+    {
+      "seq": 5,
+      "at": "2026-01-01T00:00:00.000Z",
+      "actor": "breaker",
+      "type": "attack",
+      "text": "Breaker shifted every measurement by 1 mm and retested.",
+      "data": null,
+      "mode": "replay"
+    }
+  ]
+}
