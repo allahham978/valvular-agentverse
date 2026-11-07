@@ -10,6 +10,7 @@ import {
   PerformanceMonitor,
 } from "@react-three/drei";
 import type { Group, Mesh, MeshBasicMaterial } from "three";
+import { useMainViewPaused } from "@/state/stage";
 import { ROOT_LIFT, ROOT_SIZE, RootView } from "@/components/root-view";
 import { HeartModel } from "./heart-model";
 import { OpeningUi } from "./opening-ui";
@@ -65,13 +66,14 @@ export function HeartScene() {
   const area = useRef<HTMLDivElement>(null);
   const [visual] = useState<Visual>({ heart: 1, root: 0, motion: 1 });
   const [maxDpr, setMaxDpr] = useState(2);
+  const paused = useMainViewPaused();
 
   useEffect(() => (area.current ? attachStageInput(area.current) : undefined), []);
 
   return (
     <div ref={area} data-testid="scene-area" className="absolute inset-0">
       <Canvas
-        frameloop="always"
+        frameloop={paused ? "never" : "always"}
         dpr={[1, maxDpr]}
         camera={{ position: [0, 0, 6], fov: 35, near: 0.5, far: 80 }}
       >
