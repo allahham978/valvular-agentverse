@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { Maximize2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { DataLabel } from "@/components/data-label";
 import { HeartPanel } from "@/components/heart-panel";
 import { setMainHeartId, useMainHeartId } from "@/state/stage";
@@ -42,14 +43,15 @@ export function Wall() {
         <h2 className="text-sm font-semibold">Test hearts</h2>
         <div className="flex items-center gap-2">
           {label && <DataLabel>{label}</DataLabel>}
-          <button
-            type="button"
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-7 gap-1.5 px-2 text-[13px]"
             onClick={() => setExpanded(true)}
-            className="flex items-center gap-1.5 rounded-md border border-panel-border px-2 py-0.5 text-[13px] font-medium hover:bg-background"
           >
             <Maximize2 className="size-3" aria-hidden />
             Expand
-          </button>
+          </Button>
         </div>
       </div>
       <DotGrid results={results} hearts={hearts} onSelect={setPopupId} />
