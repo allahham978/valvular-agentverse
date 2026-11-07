@@ -48,7 +48,7 @@ function panelShift() {
 
 export function StageDriver({ visual }: { visual: Visual }) {
   const controls = useRef<CameraControlsImpl>(null);
-  const { camera: baseCamera, scene, size, setFrameloop, invalidate } = useThree();
+  const { camera: baseCamera, scene, size, setFrameloop, invalidate, get } = useThree();
   const camera = baseCamera as PerspectiveCamera;
   const rootPose = useRef({ position: ROOT_POSE.position.clone(), target: ROOT_POSE.target.clone() });
   const atRoot = useRef(false);
@@ -127,7 +127,9 @@ export function StageDriver({ visual }: { visual: Visual }) {
     }
 
     const settled = progress === target;
-    if (settled && (reduced || progress >= FADE_END)) setFrameloop("demand");
+    if (settled && (reduced || progress >= FADE_END) && get().frameloop !== "demand") {
+      setFrameloop("demand");
+    }
   }, -2);
 
   return <CameraControls ref={controls} makeDefault />;
