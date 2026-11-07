@@ -2,13 +2,15 @@
 
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Environment, Lightformer } from "@react-three/drei";
+import { useMainViewPaused } from "@/state/stage";
 import { ROOT_LIFT, ROOT_SIZE, RootView } from "@/components/root-view";
 
 export function HeartScene() {
+  const paused = useMainViewPaused();
   return (
     <div data-testid="scene-area" className="absolute inset-0">
       <Canvas
-        frameloop="demand"
+        frameloop={paused ? "never" : "demand"}
         dpr={[1, 2]}
         camera={{ position: [0, 0, 6], fov: 35 }}
       >
