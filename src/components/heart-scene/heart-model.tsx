@@ -143,7 +143,7 @@ export function HeartModel({ visual }: { visual: Visual }) {
         </group>
       </group>
       <mesh ref={shadow} rotation={[-Math.PI / 2, 0, 0]} renderOrder={-2}>
-        <planeGeometry args={[9, 9]} />
+        <planeGeometry args={[7.5, 7.5]} />
         <meshBasicMaterial
           map={shadowTexture}
           transparent
