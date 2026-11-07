@@ -27,6 +27,8 @@ Every agent reads this and `PRD.md` first. UI agents also read `docs/design-brie
 - The spec `tests/e2e/req-N.spec.ts` is written first and must fail first.
 - Builders must not edit or weaken the spec, skip tests or fake results. If a spec is truly wrong, stop and report it.
 - `npm run verify` must stay green. Passing means actually run and seen passing.
+- While building, run your own spec plus `tests/e2e/req-1.spec.ts` as a smoke test, after `npm run build`. Run full `npm run verify` once before handing over. The merger runs it again on main.
+- Live (`@live`) checks for REQ-10, 11 and 12 run once after review. Record the results; a failure is flagged for a human, not a reason to stop.
 - Run Playwright and dev servers on port `3000 + N` for REQ-N (`PORT` env var), so parallel sessions don't collide.
 - `@gpu` and `@live` specs don't run in `verify`. The lag test is marked `pending` in this batch, because a human runs it later with nothing else running.
 - Use the Playwright MCP tools for screenshots if available. Otherwise use Playwright's screenshot API, with WebGL enabled.

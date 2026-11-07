@@ -63,14 +63,17 @@ An Opus orchestrator runs up to 4 requirement pipelines at once, and each pipeli
 
 | # | Agent | Model | Job |
 |---|---|---|---|
-| 1 | Planner | Opus | Writes `docs/plans/req-N.md` and the spec, and confirms the spec fails |
-| 2 | Builder | Sonnet | Implements until the spec and `npm run verify` pass, 8 tries at most. Can't edit the spec |
-| 3 | Designer (UI only) | Sonnet | Applies the design rules below |
-| 4 | Visual auditor (UI only) | Opus | Scores screenshots using `docs/design-brief.md`, and sends fixes back, up to 3 rounds |
-| 5 | Reviewer | Opus | Checks the diff against the plan, files, guardrails and scope. Sends it back up to 2 times |
-| 6 | Merger | Orchestrator | Merges one at a time, verifies, tags and pushes. Runs `npm run test:gpu` one at a time, with no heavy work running |
+| 1 | Planner | Opus | Writes a one-page `docs/plans/req-N.md` and the spec, and confirms the spec fails |
+| 2 | Spec checker | Opus | Confirms the spec tests every "Done when" item at least as strictly as written. Sends it back once |
+| 3 | Builder | Sonnet | Implements until the spec passes, 8 tries at most, running its own spec plus `req-1` as a smoke test. Runs `npm run verify` once at the end. Can't edit the spec |
+| 4 | Designer (UI only) | Sonnet | Applies the design rules below |
+| 5 | Visual auditor (UI only) | Opus | Scores screenshots using `docs/design-brief.md`, one round. Anything under 4 is flagged, not looped. A polish pass comes at REQ-12 |
+| 6 | Reviewer | Opus | Checks the diff against the plan, files, guardrails and scope. Sends back real blockers only, at most once |
+| 7 | Live checker (agent requirements) | Sonnet | Runs `npm run test:live` once after review and records the results. Failures are flagged for a human, not blocking |
+| 8 | Merger | Orchestrator | Merges each approved branch as soon as it's ready, runs full `npm run verify` on main, and tags |
 
-- After 8 failed tries, the Planner rewrites the prompt and a new Builder starts from the latest main, with up to 2 rewrites. After that, mark the requirement `BLOCKED` and continue with anything that doesn't depend on it.
+- A requirement starts as soon as everything on its **Needs** line is merged, not when the whole step ends.
+- After 8 failed tries, the Planner rewrites the prompt and a new Builder starts from the latest main, with 1 rewrite. After that, mark the requirement `BLOCKED` and continue with anything that doesn't depend on it.
 - Log progress in `docs/status.md`, and save screenshots for human review in `docs/ui-review/`.
 - Stop after REQ-12 for a human check.
 
@@ -95,7 +98,7 @@ Revert and improve the prompt instead of debugging for a long time.
 
 | Tag | Added when | Marks |
 |---|---|---|
-| `req-9-pass` | The requirement's spec and `npm run verify` pass. REQ-10, 11, 12 and 19 must also pass `npm run test:live`. | A working requirement on its branch |
+| `req-9-pass` | The requirement's spec and `npm run verify` pass. REQ-19 must also pass `npm run test:live`. For REQ-10, 11 and 12, live results are recorded in `docs/status.md` and failures are flagged, so a network blip can't block the chain. | A working requirement on its branch |
 | `step-3-pass` | Every requirement in that step is merged and `npm run verify` passes on main | A working main to return to |
 
 **If a session hits 8 tries or goes wrong before merging:**
@@ -188,16 +191,43 @@ Every tool is a plain function with fixed results for fixed inputs, and works on
 | `profile_group(heartIds)` | Breaker | How a group's measurements differ from the rest |
 | `inspect_heart(heartId, design)` | Breaker | One heart's measurements, assigned size and reasons |
 | `what_if(design, heartIds, change)` | Breaker | Whether a change would fix those hearts |
-| `stress_test(design, kind, amount)` | Breaker | Results after a `measurement_shift`, `assumption_shift` or `subgroup` attack |
+| `stress_test(design, kind, amount, hypothesis, disprovedIf)` | Breaker | Results after a `measurement_shift`, `assumption_shift` or `subgroup` attack. The Breaker must state what it expects and what result would disprove it |
 | `report_findings(mechanisms)` | Breaker | Validated findings, ending its turn |
-| `edit_design(design, change)` | Fixer | A new valid design, or the reason it's invalid |
-| `compare_designs(a, b)` | Fixer | Differences in coverage, new risks and hearts changed |
-| `check_limits(design)` | Fixer | Which active limits pass or fail |
-| `submit_proposal(design, rationale, evidenceIds)` | Fixer | Validated proposal, ending its turn |
+| `edit_design(design, change)` | Fixer | A new valid design, or the reason it's invalid. A valid result also includes the comparison with the parent design (coverage, new risks, hearts changed) and which active limits pass or fail |
+| `submit_proposal(design, rationale, claim, evidenceIds)` | Fixer | Validated proposal, ending its turn. `claim` is structured, never free text: one metric (`fitPct` or `newRiskCount`), a comparator and a threshold |
+
+There are 9 tools. Comparison and limit checks are part of `edit_design`'s result, which saves the Fixer 2 model steps per proposal.
+
+### Claims and verdicts
+
+After the Breaker's attacks on a proposal, code gives the proposal one verdict. Agents never grade themselves. Until a teammate's rules replace them, these are `demo-assumption`:
+
+| Verdict | When |
+|---|---|
+| `supported_under_conditions` | The claim holds on the dev hearts and under every attack that ran |
+| `context_dependent` | The claim holds on the dev hearts but fails under at least one attack |
+| `contradicted` | The claim fails on the dev hearts |
+| `inconclusive` | No attack finished, for example because the budget ran out |
+| `invalid_experiment` | Cited evidence is missing or doesn't match, or the design is invalid |
+
+An attack that fails to break a proposal is a valid result. The Breaker's prompt must allow "it survived" and must not push it to always find a break. Each verdict lists what the result doesn't show, such as "dev hearts only" and "fit rules are demo-assumption".
+
+### Live run settings and demo mode
+
+From RES-2:
+- **Model:** `gemini-4-argon` with `generateContent`, non-streaming, thinking `low`, tool mode `ANY`, `maxOutputTokens` 32768.
+- **Timeouts:** 60 s per model step, then one retry, then stop and say so.
+- **Budget per agent turn:** 8 model steps, 16 tool calls, 180 s.
+- **Adapter rules:** resend the model's returned `content` unchanged, including thought signatures, because dropping them returns HTTP 400. Handle several function calls in one step, which happened in 53 of 89 steps.
+
+**Demo mode** is the default from the buttons: one Breaker turn, then at most 2 Fixer rounds with one attack each. A run should finish in about 1-2 minutes. The full loop is still available in code and tests.
+
+**Recordings:** every live run is saved under `fixtures/recordings/` with its events, tool calls and evidence, so it can be replayed later (REQ-17) and used as a test fixture.
 
 ### Guardrails
 
-- **No invented numbers:** each tool result gets an evidence ID, and findings must cite those IDs. Code shows the numbers from the evidence, and a run fails validation if model text contains a number that isn't in its cited evidence.
+- **No invented numbers:** each tool result gets an evidence ID, and findings must cite those IDs. Code shows the numbers from the evidence, and a run fails validation if model text contains a number that isn't in its cited evidence. These are allowed and don't count as invented: numbers in the cited evidence, heart IDs, design sizes and labels, active limits, and ranges written like `16-18` when both ends appear in the evidence. On a rejection, the agent gets one retry with the reason.
+- **Evidence labels:** each evidence item records its `source` (`computed`, `cached`, `failed` or `unsupported`) and its provenance: rules version, data hash and seed.
 - **Budget:** each agent turn has a limit on tool calls and time. Code sets the limits and logs why a run stopped.
 - **Hidden hearts:** no tool can read them. Code scores them after the loop, and the screen shows how many times they've been scored.
 - **Typed limits:** the model can only turn text into a supported limit type. Everything else is refused.
@@ -212,9 +242,10 @@ Heart      { id, split, provenance: "synthetic", measures, thumbUrl, meshUrl }
 Design     { id, label, hypothetical: true, sizes: { nominalMm, minAnnulusMm, maxAnnulusMm }[], parentId? }
 FitResult  { heartId, designId, status: "fit" | "risk" | "no-fit", sizeMm?, reasons: { ruleId, measured, limit, margin }[] }
 Summary    { designId, split, total, fit, risk, noFit, fitPct, newRiskHeartIds }
-Evidence   { id, tool, input, result }
+Evidence   { id, tool, input, result, source: "computed" | "cached" | "failed" | "unsupported", provenance: { rulesVersion, dataHash, seed } }
 Finding    { id, kind: "mechanism" | "attack", title, explanation, heartIds, severity, evidenceIds }
-Proposal   { id, fromDesignId, toDesignId, rationale, tradeOffs, evidenceIds }
+Claim      { metric: "fitPct" | "newRiskCount", comparator: ">=" | "<=", threshold }
+Proposal   { id, fromDesignId, toDesignId, rationale, tradeOffs, claim, evidenceIds, verdict?, notShown? }
 Limit      { id, kind, value, sourceText }
 RunEvent   { seq, at, actor, type, text, data, mode: "live" | "replay" }
 Baseline   { method: "no-change" | "add-larger-size" | "brute-force", designId, summary, designsTried }
@@ -340,27 +371,32 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
 - **Story:** As an agent, I can call tools for every investigation and change, so all numbers come from code.
 - **Needs:** REQ-6.
 - **Screens:** None.
-- **Files:** `src/tools/*`, `src/app/api/tools/*`, `tests/e2e/req-9.spec.ts`.
+- **Files:** `src/tools/*`, `src/app/api/tools/*`, `src/contracts/index.ts` (additive changes only: `Evidence.source`, `Evidence.provenance`, `Claim`, `Proposal.claim`, `Proposal.verdict`, `Proposal.notShown`), `tests/e2e/req-9.spec.ts`.
 - **Done when:**
-  1. Request each tool in section 3 with valid input → sees a result and an evidence ID.
+  1. Request each of the 9 tools in section 3 with valid input → sees a result and an evidence ID, with `source` and provenance.
   2. Request any tool with invalid input → sees a clear error it can act on.
   3. Request `stress_test` with a 1 mm measurement shift → sees how many hearts changed status.
   4. Request `profile_group` on at-risk hearts → sees which measurements differ most.
   5. Try a hidden heart's ID in any tool → sees it refused.
+  6. Request `edit_design` with a valid change → sees the new design, its comparison with the parent and which limits pass or fail, in one result.
+  7. Request `stress_test` without a hypothesis or `disprovedIf` → sees it refused with the reason.
 
 ### REQ-10: Breaker agent
 - **Step:** 5. **Type:** Backend, agents.
 - **Story:** As an engineer, I can see why hearts fail, not only which ones, so I know what to change.
 - **Needs:** REQ-5, REQ-9, and a Gemini key for the `@live` steps. Run RES-2 first.
 - **Screens:** None.
-- **Files:** `src/agents/gemini/*`, `src/agents/breaker/*`, `fixtures/transcripts/breaker/*`, `tests/e2e/req-10.spec.ts`.
+- **Files:** `src/agents/gemini/*`, `src/agents/breaker/*`, `fixtures/transcripts/breaker/*`, `fixtures/recordings/*`, `tests/e2e/req-10.spec.ts`.
 - **Done when:**
   1. Run the Breaker with a scripted transcript → sees findings that cite valid evidence.
-  2. Script findings with a number not in the evidence → sees validation reject them.
-  3. Script a request for a hidden heart → sees it refused and logged.
-  4. `@live` Run the Breaker on the starting valve → sees it call several different tools and report at least one mechanism involving a measurement other than the annulus.
-  5. `@live` Run it on two different valves → sees different tool sequences, not one fixed script.
-  6. `@live` Run it 10 times → sees at least 9 finish, with the slowest time recorded.
+  2. Script findings with a number not in the evidence → sees validation reject them, and the Breaker get one retry with the reason.
+  3. Script findings using allowed numbers (heart IDs, design sizes, a range like `16-18` whose ends are in the evidence) → sees them accepted.
+  4. Script a request for a hidden heart → sees it refused and logged.
+  5. Script a model step with two function calls and a thought signature → sees both calls run and the content sent back unchanged.
+  6. Script a step that times out → sees one retry, then the run stop with the reason logged.
+  7. `@live` Run the Breaker on the starting valve → sees it call several different tools and report at least one mechanism involving a measurement other than the annulus.
+  8. `@live` Run it on two different valves → sees the tool calls or their inputs differ between them, not one fixed script.
+  9. `@live` Run it 10 times → sees at least 9 finish, with the slowest time recorded, and each run saved under `fixtures/recordings/`.
 
 ### REQ-11: Fixer and attack loop
 - **Step:** 6. **Type:** Backend, agents.
@@ -372,9 +408,12 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
   1. Run the loop with scripted transcripts → sees a proposal, then Breaker attacks, then a Fixer response.
   2. Script an invalid design → sees code reject it and the Fixer try again.
   3. Script a case with no valid fix → sees the run say no design fits.
-  4. Read a proposal → sees the before and after numbers, new risks and trade-offs, all linked to evidence.
-  5. `@live` Run it from the starting valve → sees the attack findings change the Fixer's next step, or a stated reason why they didn't.
-  6. `@live` Run it → sees no agent call that scores hidden hearts.
+  4. Read a proposal → sees the before and after numbers, new risks and trade-offs, all linked to evidence, and a structured claim.
+  5. Script proposals that hold under every attack, fail under one attack, fail on the dev hearts and run out of budget → sees code give `supported_under_conditions`, `context_dependent`, `contradicted` and `inconclusive`, each with what it doesn't show.
+  6. Script a Breaker attack that finds nothing → sees "survived" recorded as a valid result, not an error.
+  7. Start a run in demo mode → sees one Breaker turn and at most 2 Fixer rounds.
+  8. `@live` Run it from the starting valve → sees the attack findings change the Fixer's next step, or a stated reason why they didn't.
+  9. `@live` Run it → sees no agent call that scores hidden hearts, the demo-mode run time recorded, and the run saved under `fixtures/recordings/`.
 
 ### REQ-12: Core demo end to end
 - **Step:** 7, run alone. **Type:** Connects frontend and backend.
@@ -404,6 +443,7 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
   2. Read the scores → sees each one's coverage, new risks and designs tried, with ties and losses marked.
   3. Add a limit and score again → sees brute force rerun under that limit, and the hidden score count go up.
   4. Score a run with the same inputs → sees identical numbers.
+  5. Run the scripted Breaker baseline → sees a fixed attack checklist run against the Breaker with the same tools and budget, on designs with planted flaws, reporting flaws found, misses, tool calls, time and cost for both. If the Breaker doesn't beat the checklist, the results say so.
 
 ### REQ-14: Results
 - **Step:** 8, parallel. **Type:** Frontend.
@@ -443,6 +483,8 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
   3. User enters a name and note and clicks "Approve" → sees the decision saved and in the export.
   4. User clicks "Reject" with a note → sees the note sent back and the Fixer replan.
   5. Test scans the app's wording → finds no "safe", "ready", "clinically validated" or "approved for use".
+  6. Request the final design or export through the API with no decision saved → sees the server refuse it. Approval is enforced by the backend, not only the screen.
+  7. User opens `/review` → sees the proposal's verdict and what it doesn't show.
 
 ### REQ-17: Replay
 - **Step:** 8, parallel. **Type:** Backend, with one frontend label.
