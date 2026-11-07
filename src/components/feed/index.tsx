@@ -19,7 +19,7 @@ export function Feed() {
             data-testid="feed-event"
             className="border-l-2 border-accent/40 pl-3 text-sm"
           >
-            <span className="mono block text-xs capitalize text-muted">
+            <span className="block text-[13px] font-medium capitalize text-muted">
               {event.actor}
             </span>
             {event.text}

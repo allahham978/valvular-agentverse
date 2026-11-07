@@ -15,7 +15,7 @@
       "at": "2026-01-01T00:00:00.000Z",
       "actor": "breaker",
       "type": "tool-call",
-      "text": "Breaker grouped failing hearts by rule.",
+      "text": "Grouped failing hearts by rule.",
       "data": null,
       "mode": "replay"
     },
@@ -33,7 +33,7 @@
       "at": "2026-01-01T00:00:00.000Z",
       "actor": "fixer",
       "type": "proposal",
-      "text": "Fixer proposed adding a 29 mm size.",
+      "text": "Proposed adding a 29 mm size.",
       "data": null,
       "mode": "replay"
     },
@@ -42,7 +42,7 @@
       "at": "2026-01-01T00:00:00.000Z",
       "actor": "breaker",
       "type": "attack",
-      "text": "Breaker shifted every measurement by 1 mm and retested.",
+      "text": "Shifted every measurement by 1 mm and retested.",
       "data": null,
       "mode": "replay"
     }

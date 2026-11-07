@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Environment, Lightformer } from "@react-three/drei";
-import { RootView } from "@/components/root-view";
+import { ROOT_LIFT, ROOT_SIZE, RootView } from "@/components/root-view";
 
 export function HeartScene() {
   return (
@@ -21,9 +21,9 @@ export function HeartScene() {
         <RootView />
         <ContactShadows
           frames={1}
-          position={[0, -1.9, 0]}
-          opacity={0.25}
-          blur={2.5}
+          position={[0, ROOT_LIFT - ROOT_SIZE / 2 - 0.25, 0]}
+          opacity={0.14}
+          blur={3.5}
           scale={10}
         />
       </Canvas>

@@ -22,7 +22,7 @@ export function Wall() {
         <h2 className="text-sm font-semibold">Test hearts</h2>
         <DataLabel>{sample.label}</DataLabel>
       </div>
-      <div className="grid grid-cols-[repeat(26,10px)] gap-[3px]">
+      <div className="grid grid-cols-[repeat(25,10px)] gap-[4px]">
         {results.map(({ heartId, status }) => (
           <span
             key={heartId}
@@ -32,7 +32,7 @@ export function Wall() {
           />
         ))}
       </div>
-      <dl className="mt-4 flex gap-5 text-xs text-muted">
+      <dl className="mt-4 flex gap-5 text-[13px] text-muted">
         {STATUSES.map(({ status, label, className }) => (
           <div key={status} className="flex items-center gap-1.5">
             <span className={`size-2 rounded-full ${className}`} />

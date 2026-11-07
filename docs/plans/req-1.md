@@ -74,3 +74,7 @@ Scaffold one Next.js (App Router) TypeScript app, and freeze everything that par
 - **`next dev` first compile is slow:** the spec allows 90 seconds per test.
 - **Mac load:** one worker, one server, Chromium only. Playwright stops the server it starts. Check nothing is left on port 3001 before finishing.
 - **Playwright browser build:** the cached build may not match the installed version. If so, run `npx playwright install chromium` once.
+
+## Known limitation: leaflet material (handed to REQ-7)
+
+`Case_1.stl` welds into a single connected component (16,981 triangles), so `root-sample.glb` can't be split into wall and leaflets by connected component. The sample root therefore uses one translucent wall material, and the brief's "solid, light leaflets" are not met in REQ-1. REQ-7 owns the valve and leaflet geometry and must give the leaflets their own solid, light material.
