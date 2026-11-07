@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   AdaptiveDpr,
   ContactShadows,
@@ -11,34 +11,40 @@ import {
 } from "@react-three/drei";
 import type { Group, Mesh, MeshBasicMaterial } from "three";
 import { ROOT_LIFT, ROOT_SIZE, RootView } from "@/components/root-view";
-import { subscribeStage } from "@/state/stage";
 import { HeartModel } from "./heart-model";
 import { OpeningUi } from "./opening-ui";
 import { attachStageInput } from "./stage-input";
 import { StageDriver } from "./stage-driver";
 import type { Visual } from "./stage-math";
 
-const ROOT_SHADOW_OPACITY = 0.2;
+const ROOT_SHADOW_OPACITY = 0.14;
+const SHADOW_FADE_SECONDS = 0.6;
 
 function RootShadow({ visual }: { visual: Visual }) {
   const group = useRef<Group>(null);
+  const fade = useRef(0);
   const [mounted, setMounted] = useState(false);
+  const { invalidate } = useThree();
 
-  // Baked once, after the heart is hidden, so the heart never casts into it.
-  useEffect(
-    () =>
-      subscribeStage(() => {
-        if (visual.heart === 0) setMounted(true);
-      }),
-    [visual],
-  );
-
-  useFrame(() => {
+  // Baked once, after the heart is hidden, so the heart never casts into it. This holds on any path,
+  // including a direct load of the workspace.
+  useFrame((_, delta) => {
+    if (!mounted) {
+      if (visual.heart === 0) setMounted(true);
+      return;
+    }
+    fade.current = Math.min(1, fade.current + delta / SHADOW_FADE_SECONDS);
+    const opacity = ROOT_SHADOW_OPACITY * visual.root * fade.current;
     group.current?.traverse((object) => {
       const material = (object as Mesh).material as MeshBasicMaterial | undefined;
-      if (material?.isMeshBasicMaterial) material.opacity = ROOT_SHADOW_OPACITY * visual.root;
+      if (material?.isMeshBasicMaterial) material.opacity = opacity;
     });
+    if (fade.current < 1) invalidate();
   });
+
+  useEffect(() => {
+    if (mounted) invalidate();
+  }, [mounted, invalidate]);
 
   if (!mounted) return null;
   return (
@@ -47,7 +53,7 @@ function RootShadow({ visual }: { visual: Visual }) {
         frames={1}
         position={[0, ROOT_LIFT - ROOT_SIZE / 2, 0]}
         opacity={ROOT_SHADOW_OPACITY}
-        blur={1.8}
+        blur={2.4}
         far={1.5}
         scale={7}
       />

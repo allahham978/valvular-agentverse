@@ -20,6 +20,9 @@ export const ROOT_URL = "/fixtures/root-sample.glb";
 export const ROOT_SIZE = 2.7;
 export const ROOT_LIFT = 0.15;
 const WALL_OPACITY = 0.16;
+const LEAFLET_FLOOR = 0.03;
+// The sample mesh has a flat step in its rim, so land on the side where it faces away.
+const LANDING_YAW = -1.4;
 
 function createWallMaterial(side: typeof BackSide | typeof FrontSide) {
   return new MeshPhysicalMaterial({
@@ -37,10 +40,10 @@ function createWallMaterial(side: typeof BackSide | typeof FrontSide) {
 
 function createLeafletMaterial() {
   return new MeshPhysicalMaterial({
-    color: "#fbfaf7",
-    emissive: "#fbfaf7",
-    emissiveIntensity: 0.5,
-    roughness: 0.6,
+    color: "#ffffff",
+    emissive: "#ffffff",
+    emissiveIntensity: 0.8,
+    roughness: 0.55,
     side: DoubleSide,
   });
 }
@@ -88,7 +91,7 @@ function buildRoot(source: Object3D) {
       clone.visible = opacity > 0;
       for (const material of wallMaterials) material.opacity = WALL_OPACITY * opacity;
       const solid = opacity >= 1;
-      leafletMaterial.opacity = opacity;
+      leafletMaterial.opacity = opacity > 0 ? LEAFLET_FLOOR + (1 - LEAFLET_FLOOR) * opacity ** 2 : 0;
       if (leafletMaterial.transparent === solid) {
         leafletMaterial.transparent = !solid;
         leafletMaterial.depthWrite = solid;
@@ -110,9 +113,11 @@ export function RootView({ visual }: { visual: { root: number; heart: number } }
   useFrame(() => rig.setOpacity(visual.root, visual.heart));
 
   return (
-    <group position={[0, ROOT_LIFT, 0]} rotation={[0, 0, Math.PI / 2]}>
-      <primitive object={rig.root} />
-      <ValveModel />
+    <group position={[0, ROOT_LIFT, 0]} rotation={[0, LANDING_YAW, 0]}>
+      <group rotation={[0, 0, Math.PI / 2]}>
+        <primitive object={rig.root} />
+        <ValveModel />
+      </group>
     </group>
   );
 }

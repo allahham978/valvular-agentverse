@@ -6,6 +6,9 @@ export const smoothstep = (from: number, to: number, value: number) =>
 export const FADE_START = 0.35;
 export const FADE_END = 0.65;
 
+// The root arrives on a slower curve, so it stays faint until the heart is mostly gone.
+const ROOT_EASE = 2.5;
+
 export type Visual = { heart: number; root: number; motion: number };
 
 export function visualAt(progress: number, reduced: boolean): Visual {
@@ -17,7 +20,7 @@ export function visualAt(progress: number, reduced: boolean): Visual {
     };
   }
   const fade = smoothstep(FADE_START, FADE_END, progress);
-  return { heart: 1 - fade, root: fade, motion: 1 - smoothstep(0, 0.6, progress) };
+  return { heart: 1 - fade, root: Math.pow(fade, ROOT_EASE), motion: 1 - smoothstep(0, 0.6, progress) };
 }
 
 const CAMERA_EASE = 3;
@@ -37,7 +40,7 @@ const UP = new Vector3(0, 1, 0);
 
 export const HEART_SCALE = 9.2;
 export const VALVE_MARKER = new Vector3(0.08, 0, 0.03);
-const VALVE_AXIS = new Vector3(0.024, 0.932, 0.361).normalize();
+const VALVE_AXIS = new Vector3(0.024, 0.932, 0.18).normalize();
 const VALVE_WORLD = new Vector3(0, -0.53, 0);
 
 // Model +X is the front. Yaw it to the camera, then tilt the valve axis to world up.
@@ -58,6 +61,6 @@ export const ROOT_POSE = {
   target: new Vector3(0, 0, 0),
 };
 export const HEART_POSE = {
-  position: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.75, 21.5)),
+  position: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.75, 19)),
   target: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.75, 0)),
 };

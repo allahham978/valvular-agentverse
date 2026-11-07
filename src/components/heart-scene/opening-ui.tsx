@@ -4,22 +4,23 @@ import { useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getStageProgress, subscribeStage } from "@/state/stage";
-import { smoothstep, visualAt } from "./stage-math";
-import { prefersReducedMotion, zoomToValve } from "./stage-input";
+import { smoothstep } from "./stage-math";
+import { zoomToValve } from "./stage-input";
 
 const GONE_BY = 0.15;
+const LABEL_SWAP_AT = 0.5;
 
-function fadeLabel(label: Element, opacity: number) {
+function showLabel(label: Element, shown: boolean) {
   const style = (label as HTMLElement).style;
-  style.opacity = String(opacity);
-  style.visibility = opacity > 0 ? "visible" : "hidden";
+  style.opacity = shown ? "1" : "0";
+  style.visibility = shown ? "visible" : "hidden";
 }
 
-// "Illustrative" belongs to the heart only, so the header label swaps as the heart gives way.
+// "Illustrative" belongs to the heart only. The labels swap with no overlap, so one is always readable.
 function syncHeaderLabels(progress: number) {
-  const { heart, root } = visualAt(progress, prefersReducedMotion());
-  document.querySelectorAll("header .stage-opening").forEach((label) => fadeLabel(label, heart));
-  document.querySelectorAll("header .stage-panel").forEach((label) => fadeLabel(label, root));
+  const onHeart = progress < LABEL_SWAP_AT;
+  document.querySelectorAll("header .stage-opening").forEach((label) => showLabel(label, onHeart));
+  document.querySelectorAll("header .stage-panel").forEach((label) => showLabel(label, !onHeart));
 }
 
 export function OpeningUi() {
