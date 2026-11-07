@@ -162,7 +162,7 @@ async function main() {
     simplify({ simplifier: MeshoptSimplifier, ratio: 0.5, error: 0.01 }),
   );
 
-  const positions = out.getAttribute("POSITION")!.getArray() as Float32Array;
+  const positions = out.getAttribute("POSITION")!.getArray() as Float32Array<ArrayBuffer>;
   const indices = out.getIndices()!.getArray()!;
   taubin(positions, neighbours(indices, positions.length / 3));
   out.getAttribute("POSITION")!.setArray(positions);
