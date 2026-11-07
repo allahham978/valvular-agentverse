@@ -6,13 +6,10 @@ import { Button } from "@/components/ui/button";
 import { DataLabel } from "@/components/data-label";
 import { HeartPanel } from "@/components/heart-panel";
 import { setMainHeartId, useMainHeartId } from "@/state/stage";
-import type { FitStatus } from "@/contracts";
 import { DotGrid } from "./dot-grid";
 import { ExpandedWall } from "./expanded-wall";
-import { STATUS_META } from "./status";
+import { Legend } from "./legend";
 import { useWallData } from "./use-wall-data";
-
-const STATUSES = Object.keys(STATUS_META) as FitStatus[];
 
 export function Wall() {
   const { ready, label, hearts, results } = useWallData();
@@ -28,9 +25,6 @@ export function Wall() {
     setExpanded(false);
   }, []);
 
-  const count = (status: FitStatus) =>
-    results.filter((result) => result.status === status).length;
-
   return (
     <section
       data-testid="wall-panel"
@@ -40,13 +34,13 @@ export function Wall() {
       aria-label="Wall of test hearts"
     >
       <div className="mb-3 flex items-center justify-between gap-2">
-        <h2 className="text-sm font-semibold">Test hearts</h2>
+        <h2 className="text-sm font-semibold min-[1800px]:text-base">Test hearts</h2>
         <div className="flex items-center gap-2">
           {label && <DataLabel>{label}</DataLabel>}
           <Button
             variant="outline"
             size="sm"
-            className="h-7 gap-1.5 px-2 text-[13px]"
+            className="h-7 gap-1.5 px-2 text-[13px] min-[1800px]:h-8 min-[1800px]:text-sm"
             onClick={() => setExpanded(true)}
           >
             <Maximize2 className="size-3" aria-hidden />
@@ -54,21 +48,18 @@ export function Wall() {
           </Button>
         </div>
       </div>
-      <DotGrid results={results} hearts={hearts} onSelect={setPopupId} />
-      <dl className="mt-4 flex gap-5 text-sm text-muted">
-        {STATUSES.map((status) => (
-          <div key={status} className="flex items-center gap-1.5">
-            <span className={`size-2 rounded-full ${STATUS_META[status].className}`} />
-            <dt>{STATUS_META[status].label}</dt>
-            <dd
-              data-testid={`wall-total-${status}`}
-              className="mono font-medium text-foreground"
-            >
-              {count(status)}
-            </dd>
-          </div>
-        ))}
-      </dl>
+      <DotGrid
+        results={results}
+        hearts={hearts}
+        mainHeartId={mainHeartId}
+        onSelect={setPopupId}
+      />
+      <Legend results={results} testIds className="mt-4" />
+      {mainHeartId && (
+        <p className="mono mt-3 text-xs text-muted min-[1800px]:text-sm">
+          In main view: <span className="text-foreground">{mainHeartId}</span>
+        </p>
+      )}
       {expanded && (
         <ExpandedWall
           label={label}

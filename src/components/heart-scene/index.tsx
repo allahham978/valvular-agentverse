@@ -5,12 +5,11 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   AdaptiveDpr,
   ContactShadows,
-  Environment,
-  Lightformer,
   PerformanceMonitor,
 } from "@react-three/drei";
 import type { Group, Mesh, MeshBasicMaterial } from "three";
 import { useMainViewPaused } from "@/state/stage";
+import { StudioLighting } from "./studio-lighting";
 import { ROOT_LIFT, ROOT_SIZE, RootView } from "@/components/root-view";
 import { HeartModel } from "./heart-model";
 import { OpeningUi } from "./opening-ui";
@@ -83,13 +82,7 @@ export function HeartScene() {
         />
         <AdaptiveDpr />
         <StageDriver visual={visual} />
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[3, 4, 5]} intensity={1.2} />
-        <Environment resolution={64}>
-          <Lightformer intensity={2} position={[0, 5, -5]} scale={[10, 4, 1]} />
-          <Lightformer intensity={1} position={[-5, 1, 3]} scale={[4, 6, 1]} />
-          <Lightformer intensity={6} position={[4, 2, 4]} rotation={[0, -0.6, 0]} scale={[0.6, 7, 1]} />
-        </Environment>
+        <StudioLighting />
         <Suspense fallback={null}>
           <HeartModel visual={visual} />
         </Suspense>

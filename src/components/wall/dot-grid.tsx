@@ -9,21 +9,25 @@ import { STATUS_META } from "./status";
 type Props = {
   results: FitResult[];
   hearts: Map<string, Heart>;
+  mainHeartId: string | null;
   onSelect: (heartId: string) => void;
 };
 
-type Hover = { heartId: string; centreY: number; left: number };
+type Hover = { heartId: string; centreY: number; right: number };
 
-const CARD_WIDTH = 144;
 const CARD_HEIGHT = 176;
+const CARD_HEIGHT_LARGE = 216;
 const CARD_GAP = 12;
+const LARGE_SCREEN = 1800;
 
 const Dot = memo(function Dot({
   result,
+  inMain,
   onHover,
   onSelect,
 }: {
   result: FitResult;
+  inMain: boolean;
   onHover: (heartId: string | null, element?: HTMLElement) => void;
   onSelect: (heartId: string) => void;
 }) {
@@ -36,8 +40,9 @@ const Dot = memo(function Dot({
       data-status={status}
       aria-label={`${heartId}, ${STATUS_META[status].label}`}
       className={cn(
-        "size-2.5 rounded-full outline-offset-2 transition-transform hover:scale-125 focus-visible:outline-2 focus-visible:outline-accent motion-reduce:transition-none",
+        "size-(--dot) rounded-full outline-offset-2 transition-transform hover:scale-125 focus-visible:outline-2 focus-visible:outline-accent motion-reduce:transition-none",
         STATUS_META[status].className,
+        inMain && "ring-2 ring-foreground ring-offset-2 ring-offset-panel",
       )}
       onPointerEnter={(event) => onHover(heartId, event.currentTarget)}
       onPointerLeave={() => onHover(null)}
@@ -48,32 +53,34 @@ const Dot = memo(function Dot({
   );
 });
 
-export function DotGrid({ results, hearts, onSelect }: Props) {
+export function DotGrid({ results, hearts, mainHeartId, onSelect }: Props) {
   const [hover, setHover] = useState<Hover | null>(null);
 
   const onHover = useCallback((heartId: string | null, element?: HTMLElement) => {
     if (!heartId || !element) return setHover(null);
     const panel = element.closest("[data-testid=wall-panel]");
     const dot = element.getBoundingClientRect();
-    const left = (panel?.getBoundingClientRect().left ?? dot.left) - CARD_GAP - CARD_WIDTH;
-    setHover({ heartId, centreY: dot.top + dot.height / 2, left });
+    const edge = panel?.getBoundingClientRect().left ?? dot.left;
+    setHover({ heartId, centreY: dot.top + dot.height / 2, right: window.innerWidth - edge + CARD_GAP });
   }, []);
 
   const heart = hover && hearts.get(hover.heartId);
+  const cardHeight = hover && window.innerWidth >= LARGE_SCREEN ? CARD_HEIGHT_LARGE : CARD_HEIGHT;
   const top = hover
     ? Math.min(
-        Math.max(8, hover.centreY - CARD_HEIGHT / 2),
-        window.innerHeight - CARD_HEIGHT - 8,
+        Math.max(8, hover.centreY - cardHeight / 2),
+        window.innerHeight - cardHeight - 8,
       )
     : 0;
 
   return (
     <>
-      <div className="grid grid-cols-[repeat(25,1fr)] justify-items-center gap-y-[4px]">
+      <div className="grid grid-cols-[repeat(25,var(--dot))] gap-(--dot-gap)">
         {results.map((result) => (
           <Dot
             key={result.heartId}
             result={result}
+            inMain={result.heartId === mainHeartId}
             onHover={onHover}
             onSelect={onSelect}
           />
@@ -82,8 +89,8 @@ export function DotGrid({ results, hearts, onSelect }: Props) {
       {hover && heart && (
         <div
           data-testid="wall-hover-card"
-          style={{ left: hover.left, top, width: CARD_WIDTH }}
-          className="panel pointer-events-none fixed z-10 p-2"
+          style={{ right: hover.right, top }}
+          className="panel pointer-events-none fixed z-10 w-36 p-2 min-[1800px]:w-44"
         >
           <Image
             src={heart.thumbUrl}
@@ -91,9 +98,9 @@ export function DotGrid({ results, hearts, onSelect }: Props) {
             width={128}
             height={128}
             unoptimized
-            className="size-32 rounded-sm bg-background object-cover"
+            className="aspect-square w-full rounded-sm bg-background object-cover"
           />
-          <p className="mono mt-1.5 text-center text-xs">{hover.heartId}</p>
+          <p className="mono mt-1.5 text-center text-xs min-[1800px]:text-sm">{hover.heartId}</p>
         </div>
       )}
     </>

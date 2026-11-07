@@ -52,6 +52,21 @@ function createLeafletMaterial() {
   });
 }
 
+export function createWallMeshes(root: Object3D) {
+  const meshes: Mesh[] = [];
+  root.traverse((object) => {
+    if (object instanceof Mesh) meshes.push(object);
+  });
+  for (const mesh of meshes) {
+    mesh.geometry.computeVertexNormals();
+    mesh.material = createWallMaterial(BackSide);
+    mesh.renderOrder = 1;
+    const front = new Mesh(mesh.geometry, createWallMaterial(FrontSide));
+    front.renderOrder = 2;
+    mesh.add(front);
+  }
+}
+
 function buildRoot(source: Object3D) {
   const clone = source.clone(true);
   const meshes: Mesh[] = [];
