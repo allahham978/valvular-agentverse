@@ -46,8 +46,8 @@ function createShadowTexture() {
   const context = canvas.getContext("2d");
   if (!context) throw new Error("no 2d context");
   const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
-  gradient.addColorStop(0, "rgba(30, 42, 50, 0.34)");
-  gradient.addColorStop(0.55, "rgba(30, 42, 50, 0.12)");
+  gradient.addColorStop(0, "rgba(30, 42, 50, 0.26)");
+  gradient.addColorStop(0.55, "rgba(30, 42, 50, 0.09)");
   gradient.addColorStop(1, "rgba(30, 42, 50, 0)");
   context.fillStyle = gradient;
   context.fillRect(0, 0, 128, 128);
@@ -93,7 +93,7 @@ function createHeartRig(scene: Object3D) {
     },
     placeShadow(outer: Group, shadow: Mesh) {
       outer.updateMatrixWorld(true);
-      shadow.position.y = new Box3().setFromObject(outer).min.y - 0.2;
+      shadow.position.y = new Box3().setFromObject(outer).min.y - 0.08;
     },
   };
 }
@@ -143,7 +143,7 @@ export function HeartModel({ visual }: { visual: Visual }) {
         </group>
       </group>
       <mesh ref={shadow} rotation={[-Math.PI / 2, 0, 0]} renderOrder={-2}>
-        <planeGeometry args={[7.5, 7.5]} />
+        <planeGeometry args={[5.6, 5.6]} />
         <meshBasicMaterial
           map={shadowTexture}
           transparent
