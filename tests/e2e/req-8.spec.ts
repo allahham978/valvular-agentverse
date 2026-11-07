@@ -193,6 +193,11 @@ test.describe("REQ-8 agent feed and buttons", () => {
     // Done when 3: Break finishes, named mechanisms and Fix it enabled.
     await expect(feedEvents(page, "finding").first()).toBeVisible({ timeout: RUN_TIMEOUT_MS });
     await expect(fixButton(page)).toBeEnabled({ timeout: RUN_TIMEOUT_MS });
+    const preClickFindingTexts = (await feedEvents(page, "finding").allTextContents()).map((text) => text.trim());
+    expect(preClickFindingTexts.length, "findings show when Fix it is enabled").toBeGreaterThan(0);
+    for (const text of preClickFindingTexts) {
+      expect(text, "each finding shows its title").not.toBe("");
+    }
     await expect(breakButton(page), "Break it stays disabled while the run is going").toBeDisabled();
     const gapDuringRun = await bottomGap(page);
     expect(gapDuringRun, "feed panel has no blank space below its last event").toBeLessThanOrEqual(
@@ -236,6 +241,20 @@ test.describe("REQ-8 agent feed and buttons", () => {
     await expect(firstToolEvent.getByTestId("tool-call-result")).toBeVisible();
     const inputText = await firstToolEvent.getByTestId("tool-call-input").textContent();
     const resultText = await firstToolEvent.getByTestId("tool-call-result").textContent();
+
+    // Done when 3: Fix it is enabled only once the Break has finished, so no Breaker output follows it.
+    const preClickLog = await readLog(page);
+    const breakerCount = (snapshot: Snapshot) => snapshot.events.filter((event) => event.actor === "breaker").length;
+    const findingCount = (snapshot: Snapshot) => snapshot.events.filter((event) => event.type === "finding").length;
+    const finalPreClick = preClickLog[preClickLog.length - 1];
+    const fixEnabledSnapshots = preClickLog.filter((snapshot) => snapshot.fixDisabled === false);
+    expect(fixEnabledSnapshots.length, "Fix it was seen enabled before the click").toBeGreaterThan(0);
+    for (const snapshot of fixEnabledSnapshots) {
+      expect(breakerCount(snapshot), "no Breaker step arrives after Fix it is enabled").toBe(
+        breakerCount(finalPreClick),
+      );
+      expect(findingCount(snapshot), "no finding arrives after Fix it is enabled").toBe(findingCount(finalPreClick));
+    }
 
     // Done when 4: Fix it shows the proposal, attacks and new amber hearts.
     await startLog(page);
@@ -281,6 +300,10 @@ test.describe("REQ-8 agent feed and buttons", () => {
     expect(mechanisms.length).toBeGreaterThan(0);
     expect(attacks.length).toBeGreaterThan(0);
     for (const finding of mechanisms) {
+      expect(
+        preClickFindingTexts.some((text) => text.includes(finding.title)),
+        `${finding.title} was named when the Break finished, before Fix it`,
+      ).toBe(true);
       await expect(feedEvents(page, "finding").filter({ hasText: finding.title }), finding.title).not.toHaveCount(0);
     }
     for (const finding of attacks) {
