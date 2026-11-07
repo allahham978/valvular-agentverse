@@ -27,7 +27,7 @@ const Thumb = memo(function Thumb({
       data-status={result.status}
       aria-label={`${heart.id}, ${label}`}
       onClick={() => onSelect(heart.id)}
-      className="relative overflow-hidden rounded-md border border-panel-border bg-background text-left transition-shadow hover:shadow-md"
+      className="relative overflow-hidden rounded-md border border-panel-border bg-background text-left transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       <Image
         src={heart.thumbUrl}
@@ -38,7 +38,7 @@ const Thumb = memo(function Thumb({
         loading="lazy"
         className="aspect-square w-full object-cover"
       />
-      <span className="mono block px-2 py-1 text-[11px] text-muted">{heart.id}</span>
+      <span className="mono block px-2 py-1 text-xs text-muted">{heart.id}</span>
       <span
         data-testid="wall-thumb-status"
         className={cn("absolute inset-x-0 top-0 h-1", className)}
@@ -76,7 +76,7 @@ export function ExpandedWall({
               type="button"
               aria-label="Close"
               onClick={onClose}
-              className="rounded-md p-1.5 text-muted hover:bg-background hover:text-foreground"
+              className="rounded-md p-2 text-muted hover:bg-background hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent"
             >
               <X className="size-4" />
             </button>

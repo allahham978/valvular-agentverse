@@ -36,7 +36,7 @@ const Dot = memo(function Dot({
       data-status={status}
       aria-label={`${heartId}, ${STATUS_META[status].label}`}
       className={cn(
-        "size-2.5 rounded-full outline-offset-2",
+        "size-2.5 rounded-full outline-offset-2 transition-transform hover:scale-125 focus-visible:outline-2 focus-visible:outline-accent motion-reduce:transition-none",
         STATUS_META[status].className,
       )}
       onPointerEnter={(event) => onHover(heartId, event.currentTarget)}

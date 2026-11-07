@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import { DataLabel } from "@/components/data-label";
 import { Modal } from "@/components/wall/modal";
 import { STATUS_META } from "@/components/wall/status";
@@ -79,7 +80,7 @@ export function HeartPanel({
                 key={reason.ruleId}
                 data-testid="heart-popup-reason"
                 data-rule-id={reason.ruleId}
-                className="rounded-md border border-panel-border p-3 text-sm"
+                className={cn("rounded-md border border-panel-border border-l-2 p-3 text-sm", status.border)}
               >
                 <p>
                   <span className="text-muted">Failed rule </span>
@@ -99,20 +100,10 @@ export function HeartPanel({
             );
           })}
           <div className="mt-auto flex justify-end gap-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-md border border-panel-border px-3 py-1.5 text-sm hover:bg-background"
-            >
+            <Button variant="outline" onClick={onClose}>
               Close
-            </button>
-            <button
-              type="button"
-              onClick={() => onOpenInMain(heart.id)}
-              className="rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-accent-foreground"
-            >
-              Open in main view
-            </button>
+            </Button>
+            <Button onClick={() => onOpenInMain(heart.id)}>Open in main view</Button>
           </div>
         </div>
       </div>
