@@ -5,14 +5,14 @@ export function Feed() {
   return (
     <section
       data-testid="feed-panel"
-      className="panel flex min-h-0 flex-1 flex-col p-4"
+      className="panel flex min-h-0 flex-col p-4"
       aria-label="Agent feed"
     >
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-sm font-semibold">Agent feed</h2>
         <DataLabel>{sample.label}</DataLabel>
       </div>
-      <ol className="min-h-0 flex-1 space-y-3 overflow-y-auto">
+      <ol className="min-h-0 space-y-3 overflow-y-auto">
         {sample.events.map((event) => (
           <li
             key={event.seq}

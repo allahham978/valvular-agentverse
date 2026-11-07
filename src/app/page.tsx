@@ -20,7 +20,7 @@ export default async function Home({
         <HeartScene />
         <header className="pointer-events-none absolute left-6 top-5 flex items-center gap-3">
           <span className="text-lg font-semibold tracking-tight">Valvular</span>
-          <span className="grid *:col-start-1 *:row-start-1">
+          <span className="grid *:col-start-1 *:row-start-1 *:justify-self-start">
             <DataLabel className="stage-opening">Illustrative</DataLabel>
             <DataLabel className="stage-panel">Synthetic test hearts</DataLabel>
           </span>
