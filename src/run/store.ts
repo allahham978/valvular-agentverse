@@ -59,7 +59,11 @@ export function startRun(options: Omit<ExecuteRunOptions, "id" | "onEvent">): st
     id,
     onEvent(run, event) {
       entry.run = run;
-      persist(run);
+      try {
+        persist(run);
+      } catch {
+        // Notify listeners even when the disk write fails.
+      }
       for (const listener of entry.listeners) listener(event);
     },
   })

@@ -26,7 +26,9 @@ function parseWith<T>(schema: z.ZodType<T>, evidence: Evidence, known: Set<strin
 
 export const parseReport = (evidence: Evidence, known: Set<string>) =>
   parseWith(ReportSchema, evidence, known, (report) =>
-    report.findings.flatMap((finding) => finding.evidenceIds),
+    report.findings.some((finding) => finding.evidenceIds.length === 0)
+      ? []
+      : report.findings.flatMap((finding) => finding.evidenceIds),
   );
 
 export const parseSubmission = (evidence: Evidence, known: Set<string>) =>
