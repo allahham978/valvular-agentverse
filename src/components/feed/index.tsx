@@ -38,7 +38,7 @@ function ToolCall({ event }: { event: RunEvent }) {
         data-testid="tool-call-toggle"
         aria-expanded={open}
         onClick={() => setOpen(!open)}
-        className="rounded text-left text-sm underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-accent"
+        className="rounded border border-panel-border px-2 py-1 text-left text-sm hover:bg-background focus-visible:outline-2 focus-visible:outline-accent"
       >
         <span className="mono">{data.tool}</span>
         <span className="text-muted">{open ? " (hide)" : " (show)"}</span>
@@ -90,10 +90,10 @@ export function Feed() {
       {events.length === 0 ? (
         <p className="text-sm text-muted">Press Break it to start a run.</p>
       ) : (
-        <ol className="min-h-0 space-y-5 overflow-y-auto">
+        <ol className="min-h-0 divide-y divide-panel-border overflow-y-auto">
           {events.map((event) => (
-            <li key={event.seq} data-testid="feed-event" data-type={event.type} data-actor={event.actor} className="text-sm">
-              <span className="mb-0.5 block text-sm font-medium capitalize text-muted">{event.actor}</span>
+            <li key={event.seq} data-testid="feed-event" data-type={event.type} data-actor={event.actor} className="py-2.5 text-sm first:pt-0 last:pb-0">
+              <span className="mb-1 block text-xs font-medium capitalize tracking-wide text-muted">{event.actor}</span>
               <EventBody event={event} />
             </li>
           ))}
