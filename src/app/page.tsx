@@ -25,7 +25,7 @@ export default async function Home({
             <DataLabel className="stage-panel">Synthetic test hearts</DataLabel>
           </span>
         </header>
-        <div className="stage-panel pointer-events-none absolute bottom-6 right-6 top-16 flex w-[380px] flex-col gap-4 [&>*]:pointer-events-auto">
+        <div className="stage-panel pointer-events-none absolute bottom-6 right-6 top-16 flex w-(--panel-col) flex-col gap-4 [&>*]:pointer-events-auto">
           <Wall />
           <Feed />
         </div>

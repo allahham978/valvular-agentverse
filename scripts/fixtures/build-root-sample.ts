@@ -53,7 +53,7 @@ async function main() {
   await MeshoptSimplifier.ready;
   await doc.transform(
     weld(),
-    simplify({ simplifier: MeshoptSimplifier, ratio: 0.7, error: 0.01 }),
+    simplify({ simplifier: MeshoptSimplifier, ratio: 0.7, error: 0.01, lockBorder: true }),
     quantize(),
     meshopt({ encoder: MeshoptEncoder, level: "high" }),
   );

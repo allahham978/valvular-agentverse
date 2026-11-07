@@ -17,14 +17,16 @@ export function HeartScene() {
         <Environment resolution={64}>
           <Lightformer intensity={2} position={[0, 5, -5]} scale={[10, 4, 1]} />
           <Lightformer intensity={1} position={[-5, 1, 3]} scale={[4, 6, 1]} />
+          <Lightformer intensity={6} position={[4, 2, 4]} rotation={[0, -0.6, 0]} scale={[0.6, 7, 1]} />
         </Environment>
         <RootView />
         <ContactShadows
           frames={1}
-          position={[0, ROOT_LIFT - ROOT_SIZE / 2 - 0.25, 0]}
-          opacity={0.14}
-          blur={3.5}
-          scale={10}
+          position={[0, ROOT_LIFT - ROOT_SIZE / 2, 0]}
+          opacity={0.2}
+          blur={1.8}
+          far={1.5}
+          scale={7}
         />
       </Canvas>
     </div>

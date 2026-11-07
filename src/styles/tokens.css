@@ -12,6 +12,13 @@
   --status-risk: #d9941e;
   --status-no-fit: #d04a43;
   --radius: 0.5rem;
+  --panel-col: 380px;
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --panel-col: 460px;
+  }
 }
 
 @theme inline {
