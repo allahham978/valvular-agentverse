@@ -10,10 +10,12 @@ const buttonVariants = cva(
         default: "bg-accent text-accent-foreground hover:bg-accent/90",
         outline:
           "border border-panel-border bg-panel text-foreground hover:bg-background",
+        ghost: "text-muted hover:bg-background hover:text-foreground",
       },
       size: {
         default: "h-9 px-4",
         sm: "h-8 px-3 text-xs",
+        icon: "size-9",
       },
     },
     defaultVariants: { variant: "default", size: "default" },

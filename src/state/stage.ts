@@ -23,6 +23,7 @@ function createStore<T>(initial: T) {
 
 const progress = createStore(0);
 const mainHeart = createStore<string | null>(null);
+const mainViewPaused = createStore(false);
 
 export const getStageProgress = progress.get;
 export const setStageProgress = (value: number) =>
@@ -35,3 +36,7 @@ export const getMainHeartId = mainHeart.get;
 export const setMainHeartId = mainHeart.set;
 export const useMainHeartId = () =>
   useSyncExternalStore(mainHeart.subscribe, mainHeart.get, () => null);
+
+export const setMainViewPaused = mainViewPaused.set;
+export const useMainViewPaused = () =>
+  useSyncExternalStore(mainViewPaused.subscribe, mainViewPaused.get, () => false);
