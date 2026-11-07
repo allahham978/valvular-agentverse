@@ -19,17 +19,17 @@ import { splitLeaflets } from "./leaflets";
 export const ROOT_URL = "/fixtures/root-sample.glb";
 export const ROOT_SIZE = 2.7;
 export const ROOT_LIFT = 0.15;
-const WALL_OPACITY = 0.2;
+const WALL_OPACITY = 0.16;
 
 function createWallMaterial(side: typeof BackSide | typeof FrontSide) {
   return new MeshPhysicalMaterial({
-    color: "#5fb8ad",
+    color: "#8ccbc2",
     transparent: true,
     opacity: WALL_OPACITY,
-    roughness: 0.12,
-    clearcoat: 1,
-    clearcoatRoughness: 0.1,
-    envMapIntensity: 1.6,
+    roughness: 0.5,
+    clearcoat: 0.15,
+    clearcoatRoughness: 0.5,
+    envMapIntensity: 0.5,
     side,
     depthWrite: false,
   });
@@ -37,12 +37,10 @@ function createWallMaterial(side: typeof BackSide | typeof FrontSide) {
 
 function createLeafletMaterial() {
   return new MeshPhysicalMaterial({
-    color: "#f6f1ea",
-    emissive: "#f6f1ea",
-    emissiveIntensity: 0.22,
-    roughness: 0.55,
-    clearcoat: 0.3,
-    clearcoatRoughness: 0.4,
+    color: "#fbfaf7",
+    emissive: "#fbfaf7",
+    emissiveIntensity: 0.5,
+    roughness: 0.6,
     side: DoubleSide,
   });
 }
@@ -84,7 +82,9 @@ function buildRoot(source: Object3D) {
   clone.position.copy(box.getCenter(new Vector3()).multiplyScalar(-scale));
   return {
     root: clone,
-    setOpacity(opacity: number) {
+    setOpacity(opacity: number, heart: number) {
+      const overHeart = heart > 0;
+      for (const material of [...wallMaterials, leafletMaterial]) material.depthTest = !overHeart;
       clone.visible = opacity > 0;
       for (const material of wallMaterials) material.opacity = WALL_OPACITY * opacity;
       const solid = opacity >= 1;
@@ -98,7 +98,7 @@ function buildRoot(source: Object3D) {
   };
 }
 
-export function RootView({ visual }: { visual: { root: number } }) {
+export function RootView({ visual }: { visual: { root: number; heart: number } }) {
   const { scene } = useGLTF(ROOT_URL);
   const { gl, camera, scene: world } = useThree();
   const rig = useMemo(() => buildRoot(scene), [scene]);
@@ -107,7 +107,7 @@ export function RootView({ visual }: { visual: { root: number } }) {
     gl.compile(world, camera);
   }, [gl, world, camera]);
 
-  useFrame(() => rig.setOpacity(visual.root));
+  useFrame(() => rig.setOpacity(visual.root, visual.heart));
 
   return (
     <group position={[0, ROOT_LIFT, 0]} rotation={[0, 0, Math.PI / 2]}>
