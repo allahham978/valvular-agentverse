@@ -3,11 +3,11 @@ import { MathUtils, Quaternion, Vector3 } from "three";
 export const smoothstep = (from: number, to: number, value: number) =>
   MathUtils.smoothstep(value, from, to);
 
-export const FADE_START = 0.35;
+export const FADE_START = 0.3;
 export const FADE_END = 0.65;
 
-// The root arrives on a slower curve, so it stays faint until the heart is mostly gone.
-const ROOT_EASE = 2.5;
+// The root arrives on a slower curve, so it stays behind the heart, but legible by the midpoint.
+const ROOT_EASE = 1.5;
 
 export type Visual = { heart: number; root: number; motion: number };
 

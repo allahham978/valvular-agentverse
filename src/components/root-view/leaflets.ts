@@ -44,28 +44,28 @@ function bandStats(position: BufferAttribute | InterleavedBufferAttribute, min: 
   return { radial, radii };
 }
 
-function subset(source: BufferGeometry, triangles: number[]): BufferGeometry {
-  const position = source.getAttribute("position");
-  const normal = source.getAttribute("normal");
-  const remap = new Map<number, number>();
-  const positions: number[] = [];
-  const normals: number[] = [];
-  const index: number[] = [];
-  for (const vertex of triangles) {
-    let mapped = remap.get(vertex);
-    if (mapped === undefined) {
-      mapped = remap.size;
-      remap.set(vertex, mapped);
-      positions.push(position.getX(vertex), position.getY(vertex), position.getZ(vertex));
-      normals.push(normal.getX(vertex), normal.getY(vertex), normal.getZ(vertex));
+type Corner = { p: number[]; n: number[]; score: number };
+
+// Keeps the part of a triangle where the score is at least the cut, splitting edges on the isoline.
+function clipTriangle(corners: Corner[], cut: number, out: { positions: number[]; normals: number[] }) {
+  const polygon: Corner[] = [];
+  for (let i = 0; i < 3; i++) {
+    const a = corners[i];
+    const b = corners[(i + 1) % 3];
+    const aIn = a.score >= cut;
+    if (aIn) polygon.push(a);
+    if (aIn !== b.score >= cut) {
+      const t = (cut - a.score) / (b.score - a.score);
+      const mix = (u: number[], v: number[]) => u.map((value, k) => value + (v[k] - value) * t);
+      polygon.push({ p: mix(a.p, b.p), n: mix(a.n, b.n), score: cut });
     }
-    index.push(mapped);
   }
-  const geometry = new BufferGeometry();
-  geometry.setAttribute("position", new BufferAttribute(new Float32Array(positions), 3));
-  geometry.setAttribute("normal", new BufferAttribute(new Float32Array(normals), 3));
-  geometry.setIndex(index);
-  return geometry;
+  for (let i = 1; i < polygon.length - 1; i++) {
+    for (const corner of [polygon[0], polygon[i], polygon[i + 1]]) {
+      out.positions.push(...corner.p);
+      out.normals.push(...corner.n);
+    }
+  }
 }
 
 const SMOOTH_PASSES = 8;
@@ -130,7 +130,8 @@ function dropIslands(triangles: number[][], keep: boolean[], count: number) {
 
 // Heuristic: the root meshes have no separate leaflet part, so take vertices that sit well
 // inside the wall in the lowest part of the long (X) axis, smooth that region over the
-// surface and drop small islands, so the cut between wall and leaflets is clean.
+// surface, drop small islands and cut along the 0.5 isoline so the edge is a smooth curve.
+// The wall stays the full mesh, so it is continuous behind the leaflets.
 export function splitLeaflets(source: BufferGeometry) {
   const position = source.getAttribute("position");
   const index = source.index;
@@ -162,11 +163,25 @@ export function splitLeaflets(source: BufferGeometry) {
     weldedTriangles.push(c.map((v) => welded[v]));
   }
   const scores = smoothScores(raw, neighbourLists(weldedTriangles, count));
-  const keep = weldedTriangles.map((tri) => tri.every((v) => scores[v] >= 0.5));
+  const keep = weldedTriangles.map((tri) => tri.some((v) => scores[v] >= 0.5));
   dropIslands(weldedTriangles, keep, count);
 
-  const wall: number[] = [];
-  const leaflets: number[] = [];
-  corners.forEach((c, t) => (keep[t] ? leaflets : wall).push(...c));
-  return { wall: subset(source, wall), leaflets: subset(source, leaflets) };
+  const normal = source.getAttribute("normal");
+  const out = { positions: [] as number[], normals: [] as number[] };
+  corners.forEach((c, t) => {
+    if (!keep[t]) return;
+    clipTriangle(
+      c.map((v, k) => ({
+        p: [position.getX(v), position.getY(v), position.getZ(v)],
+        n: [normal.getX(v), normal.getY(v), normal.getZ(v)],
+        score: scores[weldedTriangles[t][k]],
+      })),
+      0.5,
+      out,
+    );
+  });
+  const leaflets = new BufferGeometry();
+  leaflets.setAttribute("position", new BufferAttribute(new Float32Array(out.positions), 3));
+  leaflets.setAttribute("normal", new BufferAttribute(new Float32Array(out.normals), 3));
+  return { wall: source, leaflets };
 }
