@@ -82,7 +82,7 @@ export function ExpandedWall({
             </button>
           </div>
         </header>
-        <div className="grid flex-1 grid-cols-[repeat(auto-fill,minmax(96px,1fr))] content-start gap-3 overflow-y-auto p-5">
+        <div className="grid flex-1 grid-cols-[repeat(auto-fill,minmax(96px,1fr))] auto-rows-min content-start gap-3 overflow-y-auto p-5">
           {results.map((result) => {
             const heart = hearts.get(result.heartId);
             return heart && (
