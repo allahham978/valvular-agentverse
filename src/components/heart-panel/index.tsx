@@ -80,7 +80,7 @@ export function HeartPanel({
                 key={reason.ruleId}
                 data-testid="heart-popup-reason"
                 data-rule-id={reason.ruleId}
-                className={cn("rounded-md border border-panel-border border-l-2 p-3 text-sm", status.border)}
+                className={cn("rounded-md border border-panel-border p-3 text-sm")}
               >
                 <p>
                   <span className="text-muted">Failed rule </span>
