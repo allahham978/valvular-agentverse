@@ -79,13 +79,14 @@ export function ExpandedWall({
           <h2 className="text-sm font-semibold min-[1800px]:text-base">All test hearts</h2>
           <div className="flex items-center gap-5">
             <Legend results={results} />
+            <DataLabel>Synthetic test hearts</DataLabel>
             {label && <DataLabel>{label}</DataLabel>}
             <Button variant="ghost" size="icon" aria-label="Close" onClick={onClose}>
               <X className="size-4" aria-hidden />
             </Button>
           </div>
         </header>
-        <div className="grid flex-1 grid-cols-[repeat(auto-fill,4rem)] auto-rows-min content-start justify-center gap-1.5 overflow-y-auto p-5 min-[1800px]:grid-cols-[repeat(auto-fill,72px)]">
+        <div className="grid min-h-0 flex-1 grid-cols-[repeat(auto-fill,4rem)] auto-rows-min content-start justify-center gap-1.5 overflow-y-auto p-5 min-[1800px]:grid-cols-[repeat(auto-fill,72px)]">
           {results.map((result) => {
             const heart = hearts.get(result.heartId);
             return heart && (
@@ -98,6 +99,9 @@ export function ExpandedWall({
             );
           })}
         </div>
+        <footer className="border-t border-panel-border px-5 py-2 text-xs text-muted min-[1800px]:text-sm">
+          {results.length} hearts. Scroll for more rows.
+        </footer>
       </div>
     </Modal>
   );

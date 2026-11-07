@@ -63,11 +63,18 @@ Listed:
 
 Outside the list, kept minimal for the reasons above:
 - `src/state/stage.ts`
-- `src/components/heart-scene/index.tsx`
+- `src/components/heart-scene/index.tsx`: `frameloop` reads the paused flag so the main canvas stops drawing under the popup.
+- `src/components/heart-scene/studio-lighting.tsx` (new): the lighting block moved out of `heart-scene/index.tsx` so that file stays small and the popup's `HeartView` can reuse the same lighting and the popup root matches the main view.
+- `src/components/root-view/index.tsx`: the wall-material loop is extracted as exported `createWallMeshes`, so the popup root uses the identical double-sided material as the main root.
+- `src/styles/tokens.css`: `--dot`, `--dot-gap` and `--panel-col` size the 400-dot grid to fit the 25-column wall panel at 1440 and 1920 widths.
+- `src/components/ui/button.tsx`: adds the `ghost` variant and `icon` size for the overlay's close button.
+- `public/fixtures/sample-thumb.png`: larger thumbnail so 64 to 72 px cells and the hover card are not blurry.
 
 Run on port 3004, with one worker and one server: `npm run build && PORT=3004 npx playwright test tests/e2e/req-4.spec.ts --workers=1`.
 
 ## Risks
+
+- **Conflict with REQ-3 in `root-view/index.tsx`.** REQ-3 also edits the material and traverse code that `createWallMeshes` was extracted from (`git merge-tree` shows a real conflict). Whoever merges second keeps REQ-3's material changes inside `createWallMeshes` and keeps the export, since the popup imports it. For `frameloop` in `heart-scene/index.tsx`, paused always wins.
 
 - **Conflict with REQ-3.** REQ-3 owns `heart-scene` and will rewrite the `frameloop` line, because the heart renders continuously until the zoom settles. Whoever merges second must keep both: paused always wins. The spec's pause test catches a bad merge, since it fails if the main canvas draws while paused.
 - **Scroll zoom.** Once REQ-3 merges, a window-level wheel handler could move the stage while the overlay is open. The spec wheels over the overlay and checks progress stays at 1. If this breaks after rebasing, stop the event in the dialog and don't change REQ-3's handler.
