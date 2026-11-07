@@ -31,7 +31,7 @@ for (let i = 1; i <= 400; i++) {
       sinusMm: sinus,
       sinotubularJunctionMm: junction,
     },
-    thumbUrl: `/fixtures/thumbs/${id}.png`,
+    thumbUrl: "/fixtures/sample-thumb.png",
     meshUrl: "/fixtures/root-sample.glb",
   });
 
@@ -90,14 +90,14 @@ for (let i = 1; i <= 400; i++) {
 const at = "2026-01-01T00:00:00.000Z";
 const lines: [RunEvent["actor"], string, string][] = [
   ["code", "run-start", "Run started on the starting valve."],
-  ["breaker", "tool-call", "Breaker grouped failing hearts by rule."],
+  ["breaker", "tool-call", "Grouped failing hearts by rule."],
   [
     "breaker",
     "finding",
     "Hearts with a narrow sinotubular junction are the largest at-risk group.",
   ],
-  ["fixer", "proposal", "Fixer proposed adding a 29 mm size."],
-  ["breaker", "attack", "Breaker shifted every measurement by 1 mm and retested."],
+  ["fixer", "proposal", "Proposed adding a 29 mm size."],
+  ["breaker", "attack", "Shifted every measurement by 1 mm and retested."],
 ];
 const events: RunEvent[] = lines.map(([actor, type, text], index) => ({
   seq: index + 1,

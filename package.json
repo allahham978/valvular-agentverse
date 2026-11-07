@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "data:check": "tsx scripts/data/check.ts",
     "test:e2e": "playwright test --grep-invert \"@gpu|@live\"",
-    "test:gpu": "playwright test --grep @gpu --pass-with-no-tests",
+    "test:gpu": "VALVULAR_GPU=1 playwright test --grep @gpu --pass-with-no-tests",
     "test:live": "playwright test --grep @live --pass-with-no-tests",
     "verify": "npm run typecheck && npm run lint && npm run data:check && npm run build && npm run test:e2e"
   },

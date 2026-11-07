@@ -10,7 +10,7 @@
         "sinusMm": 29.5,
         "sinotubularJunctionMm": 28.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-001.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -22,7 +22,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 27.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-002.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -34,7 +34,7 @@
         "sinusMm": 34.3,
         "sinotubularJunctionMm": 28.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-003.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -46,7 +46,7 @@
         "sinusMm": 24.7,
         "sinotubularJunctionMm": 25
       },
-      "thumbUrl": "/fixtures/thumbs/sample-004.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -58,7 +58,7 @@
         "sinusMm": 27.8,
         "sinotubularJunctionMm": 25.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-005.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -70,7 +70,7 @@
         "sinusMm": 29,
         "sinotubularJunctionMm": 29.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-006.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -82,7 +82,7 @@
         "sinusMm": 28.5,
         "sinotubularJunctionMm": 26.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-007.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -94,7 +94,7 @@
         "sinusMm": 30.9,
         "sinotubularJunctionMm": 28.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-008.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -106,7 +106,7 @@
         "sinusMm": 36.1,
         "sinotubularJunctionMm": 30.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-009.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -118,7 +118,7 @@
         "sinusMm": 28.7,
         "sinotubularJunctionMm": 24.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-010.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -130,7 +130,7 @@
         "sinusMm": 34.4,
         "sinotubularJunctionMm": 28.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-011.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -142,7 +142,7 @@
         "sinusMm": 31.8,
         "sinotubularJunctionMm": 28.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-012.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -154,7 +154,7 @@
         "sinusMm": 31.3,
         "sinotubularJunctionMm": 28.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-013.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -166,7 +166,7 @@
         "sinusMm": 33,
         "sinotubularJunctionMm": 28.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-014.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -178,7 +178,7 @@
         "sinusMm": 31.2,
         "sinotubularJunctionMm": 26.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-015.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -190,7 +190,7 @@
         "sinusMm": 33,
         "sinotubularJunctionMm": 34.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-016.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -202,7 +202,7 @@
         "sinusMm": 32.2,
         "sinotubularJunctionMm": 30.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-017.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -214,7 +214,7 @@
         "sinusMm": 31.3,
         "sinotubularJunctionMm": 26
       },
-      "thumbUrl": "/fixtures/thumbs/sample-018.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -226,7 +226,7 @@
         "sinusMm": 35.6,
         "sinotubularJunctionMm": 31.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-019.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -238,7 +238,7 @@
         "sinusMm": 30.7,
         "sinotubularJunctionMm": 29.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-020.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -250,7 +250,7 @@
         "sinusMm": 33.6,
         "sinotubularJunctionMm": 31.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-021.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -262,7 +262,7 @@
         "sinusMm": 33.9,
         "sinotubularJunctionMm": 28.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-022.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -274,7 +274,7 @@
         "sinusMm": 25.9,
         "sinotubularJunctionMm": 28.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-023.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -286,7 +286,7 @@
         "sinusMm": 32.4,
         "sinotubularJunctionMm": 29.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-024.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -298,7 +298,7 @@
         "sinusMm": 31.4,
         "sinotubularJunctionMm": 26.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-025.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -310,7 +310,7 @@
         "sinusMm": 37,
         "sinotubularJunctionMm": 28.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-026.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -322,7 +322,7 @@
         "sinusMm": 35.4,
         "sinotubularJunctionMm": 34
       },
-      "thumbUrl": "/fixtures/thumbs/sample-027.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -334,7 +334,7 @@
         "sinusMm": 29.5,
         "sinotubularJunctionMm": 26.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-028.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -346,7 +346,7 @@
         "sinusMm": 29.7,
         "sinotubularJunctionMm": 26.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-029.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -358,7 +358,7 @@
         "sinusMm": 36.5,
         "sinotubularJunctionMm": 28.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-030.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -370,7 +370,7 @@
         "sinusMm": 37.2,
         "sinotubularJunctionMm": 31.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-031.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -382,7 +382,7 @@
         "sinusMm": 27.7,
         "sinotubularJunctionMm": 26.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-032.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -394,7 +394,7 @@
         "sinusMm": 36.1,
         "sinotubularJunctionMm": 30.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-033.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -406,7 +406,7 @@
         "sinusMm": 26.1,
         "sinotubularJunctionMm": 25.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-034.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -418,7 +418,7 @@
         "sinusMm": 37,
         "sinotubularJunctionMm": 30.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-035.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -430,7 +430,7 @@
         "sinusMm": 30.9,
         "sinotubularJunctionMm": 28.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-036.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -442,7 +442,7 @@
         "sinusMm": 29.2,
         "sinotubularJunctionMm": 28.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-037.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -454,7 +454,7 @@
         "sinusMm": 27.7,
         "sinotubularJunctionMm": 22.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-038.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -466,7 +466,7 @@
         "sinusMm": 32.6,
         "sinotubularJunctionMm": 27.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-039.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -478,7 +478,7 @@
         "sinusMm": 27.7,
         "sinotubularJunctionMm": 23.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-040.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -490,7 +490,7 @@
         "sinusMm": 33.4,
         "sinotubularJunctionMm": 28.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-041.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -502,7 +502,7 @@
         "sinusMm": 29.4,
         "sinotubularJunctionMm": 29.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-042.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -514,7 +514,7 @@
         "sinusMm": 34.5,
         "sinotubularJunctionMm": 32.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-043.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -526,7 +526,7 @@
         "sinusMm": 28.4,
         "sinotubularJunctionMm": 26.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-044.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -538,7 +538,7 @@
         "sinusMm": 26.1,
         "sinotubularJunctionMm": 23.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-045.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -550,7 +550,7 @@
         "sinusMm": 32.5,
         "sinotubularJunctionMm": 33.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-046.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -562,7 +562,7 @@
         "sinusMm": 32.6,
         "sinotubularJunctionMm": 29.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-047.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -574,7 +574,7 @@
         "sinusMm": 27.4,
         "sinotubularJunctionMm": 27.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-048.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -586,7 +586,7 @@
         "sinusMm": 26.4,
         "sinotubularJunctionMm": 21.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-049.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -598,7 +598,7 @@
         "sinusMm": 32.2,
         "sinotubularJunctionMm": 31.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-050.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -610,7 +610,7 @@
         "sinusMm": 30,
         "sinotubularJunctionMm": 27.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-051.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -622,7 +622,7 @@
         "sinusMm": 34.6,
         "sinotubularJunctionMm": 29.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-052.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -634,7 +634,7 @@
         "sinusMm": 31.1,
         "sinotubularJunctionMm": 28.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-053.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -646,7 +646,7 @@
         "sinusMm": 27.1,
         "sinotubularJunctionMm": 24.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-054.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -658,7 +658,7 @@
         "sinusMm": 28.1,
         "sinotubularJunctionMm": 25.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-055.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -670,7 +670,7 @@
         "sinusMm": 27.2,
         "sinotubularJunctionMm": 26.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-056.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -682,7 +682,7 @@
         "sinusMm": 28.7,
         "sinotubularJunctionMm": 26
       },
-      "thumbUrl": "/fixtures/thumbs/sample-057.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -694,7 +694,7 @@
         "sinusMm": 30.2,
         "sinotubularJunctionMm": 27.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-058.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -706,7 +706,7 @@
         "sinusMm": 27.1,
         "sinotubularJunctionMm": 24.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-059.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -718,7 +718,7 @@
         "sinusMm": 36.6,
         "sinotubularJunctionMm": 33.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-060.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -730,7 +730,7 @@
         "sinusMm": 30.7,
         "sinotubularJunctionMm": 28.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-061.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -742,7 +742,7 @@
         "sinusMm": 33.1,
         "sinotubularJunctionMm": 27.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-062.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -754,7 +754,7 @@
         "sinusMm": 32.3,
         "sinotubularJunctionMm": 26.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-063.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -766,7 +766,7 @@
         "sinusMm": 30.5,
         "sinotubularJunctionMm": 29.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-064.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -778,7 +778,7 @@
         "sinusMm": 31.3,
         "sinotubularJunctionMm": 32.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-065.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -790,7 +790,7 @@
         "sinusMm": 25.8,
         "sinotubularJunctionMm": 24.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-066.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -802,7 +802,7 @@
         "sinusMm": 25.7,
         "sinotubularJunctionMm": 22
       },
-      "thumbUrl": "/fixtures/thumbs/sample-067.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -814,7 +814,7 @@
         "sinusMm": 26.6,
         "sinotubularJunctionMm": 27.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-068.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -826,7 +826,7 @@
         "sinusMm": 27.8,
         "sinotubularJunctionMm": 27.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-069.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -838,7 +838,7 @@
         "sinusMm": 26.8,
         "sinotubularJunctionMm": 22
       },
-      "thumbUrl": "/fixtures/thumbs/sample-070.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -850,7 +850,7 @@
         "sinusMm": 29.3,
         "sinotubularJunctionMm": 27.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-071.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -862,7 +862,7 @@
         "sinusMm": 31.7,
         "sinotubularJunctionMm": 30.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-072.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -874,7 +874,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 25
       },
-      "thumbUrl": "/fixtures/thumbs/sample-073.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -886,7 +886,7 @@
         "sinusMm": 34.8,
         "sinotubularJunctionMm": 31.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-074.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -898,7 +898,7 @@
         "sinusMm": 31,
         "sinotubularJunctionMm": 30.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-075.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -910,7 +910,7 @@
         "sinusMm": 30.7,
         "sinotubularJunctionMm": 31.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-076.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -922,7 +922,7 @@
         "sinusMm": 32.6,
         "sinotubularJunctionMm": 27.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-077.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -934,7 +934,7 @@
         "sinusMm": 34.9,
         "sinotubularJunctionMm": 31.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-078.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -946,7 +946,7 @@
         "sinusMm": 31.7,
         "sinotubularJunctionMm": 29.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-079.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -958,7 +958,7 @@
         "sinusMm": 34,
         "sinotubularJunctionMm": 30.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-080.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -970,7 +970,7 @@
         "sinusMm": 35.2,
         "sinotubularJunctionMm": 27
       },
-      "thumbUrl": "/fixtures/thumbs/sample-081.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -982,7 +982,7 @@
         "sinusMm": 35.3,
         "sinotubularJunctionMm": 30
       },
-      "thumbUrl": "/fixtures/thumbs/sample-082.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -994,7 +994,7 @@
         "sinusMm": 32.1,
         "sinotubularJunctionMm": 27
       },
-      "thumbUrl": "/fixtures/thumbs/sample-083.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1006,7 +1006,7 @@
         "sinusMm": 36,
         "sinotubularJunctionMm": 33.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-084.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1018,7 +1018,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 30.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-085.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1030,7 +1030,7 @@
         "sinusMm": 30.3,
         "sinotubularJunctionMm": 28.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-086.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1042,7 +1042,7 @@
         "sinusMm": 31.9,
         "sinotubularJunctionMm": 31.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-087.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1054,7 +1054,7 @@
         "sinusMm": 27.8,
         "sinotubularJunctionMm": 27.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-088.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1066,7 +1066,7 @@
         "sinusMm": 35.5,
         "sinotubularJunctionMm": 29.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-089.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1078,7 +1078,7 @@
         "sinusMm": 28.3,
         "sinotubularJunctionMm": 28.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-090.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1090,7 +1090,7 @@
         "sinusMm": 30,
         "sinotubularJunctionMm": 25.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-091.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1102,7 +1102,7 @@
         "sinusMm": 32.1,
         "sinotubularJunctionMm": 31.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-092.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1114,7 +1114,7 @@
         "sinusMm": 29.3,
         "sinotubularJunctionMm": 29.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-093.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1126,7 +1126,7 @@
         "sinusMm": 36.9,
         "sinotubularJunctionMm": 31.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-094.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1138,7 +1138,7 @@
         "sinusMm": 36.8,
         "sinotubularJunctionMm": 33.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-095.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1150,7 +1150,7 @@
         "sinusMm": 25.2,
         "sinotubularJunctionMm": 24.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-096.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1162,7 +1162,7 @@
         "sinusMm": 26.5,
         "sinotubularJunctionMm": 25.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-097.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1174,7 +1174,7 @@
         "sinusMm": 28.3,
         "sinotubularJunctionMm": 22.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-098.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1186,7 +1186,7 @@
         "sinusMm": 34.1,
         "sinotubularJunctionMm": 30
       },
-      "thumbUrl": "/fixtures/thumbs/sample-099.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1198,7 +1198,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 26.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-100.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1210,7 +1210,7 @@
         "sinusMm": 31.7,
         "sinotubularJunctionMm": 31
       },
-      "thumbUrl": "/fixtures/thumbs/sample-101.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1222,7 +1222,7 @@
         "sinusMm": 32.8,
         "sinotubularJunctionMm": 29.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-102.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1234,7 +1234,7 @@
         "sinusMm": 33.1,
         "sinotubularJunctionMm": 30.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-103.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1246,7 +1246,7 @@
         "sinusMm": 30,
         "sinotubularJunctionMm": 25.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-104.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1258,7 +1258,7 @@
         "sinusMm": 31.1,
         "sinotubularJunctionMm": 26.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-105.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1270,7 +1270,7 @@
         "sinusMm": 27.9,
         "sinotubularJunctionMm": 24.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-106.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1282,7 +1282,7 @@
         "sinusMm": 27.9,
         "sinotubularJunctionMm": 29.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-107.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1294,7 +1294,7 @@
         "sinusMm": 33.9,
         "sinotubularJunctionMm": 26.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-108.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1306,7 +1306,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 27.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-109.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1318,7 +1318,7 @@
         "sinusMm": 27.6,
         "sinotubularJunctionMm": 27.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-110.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1330,7 +1330,7 @@
         "sinusMm": 32.5,
         "sinotubularJunctionMm": 27.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-111.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1342,7 +1342,7 @@
         "sinusMm": 34.9,
         "sinotubularJunctionMm": 32.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-112.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1354,7 +1354,7 @@
         "sinusMm": 34.9,
         "sinotubularJunctionMm": 31.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-113.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1366,7 +1366,7 @@
         "sinusMm": 26.5,
         "sinotubularJunctionMm": 23.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-114.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1378,7 +1378,7 @@
         "sinusMm": 29.3,
         "sinotubularJunctionMm": 27.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-115.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1390,7 +1390,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 26.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-116.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1402,7 +1402,7 @@
         "sinusMm": 27.8,
         "sinotubularJunctionMm": 29.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-117.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1414,7 +1414,7 @@
         "sinusMm": 29.5,
         "sinotubularJunctionMm": 26.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-118.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1426,7 +1426,7 @@
         "sinusMm": 28.5,
         "sinotubularJunctionMm": 27.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-119.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1438,7 +1438,7 @@
         "sinusMm": 31.1,
         "sinotubularJunctionMm": 25.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-120.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1450,7 +1450,7 @@
         "sinusMm": 32.4,
         "sinotubularJunctionMm": 30.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-121.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1462,7 +1462,7 @@
         "sinusMm": 28.5,
         "sinotubularJunctionMm": 30.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-122.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1474,7 +1474,7 @@
         "sinusMm": 33,
         "sinotubularJunctionMm": 31.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-123.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1486,7 +1486,7 @@
         "sinusMm": 28,
         "sinotubularJunctionMm": 27.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-124.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1498,7 +1498,7 @@
         "sinusMm": 34.2,
         "sinotubularJunctionMm": 31.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-125.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1510,7 +1510,7 @@
         "sinusMm": 32.6,
         "sinotubularJunctionMm": 25.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-126.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1522,7 +1522,7 @@
         "sinusMm": 28.7,
         "sinotubularJunctionMm": 24.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-127.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1534,7 +1534,7 @@
         "sinusMm": 31.5,
         "sinotubularJunctionMm": 30.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-128.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1546,7 +1546,7 @@
         "sinusMm": 34.2,
         "sinotubularJunctionMm": 28.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-129.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1558,7 +1558,7 @@
         "sinusMm": 26.8,
         "sinotubularJunctionMm": 23.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-130.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1570,7 +1570,7 @@
         "sinusMm": 29.7,
         "sinotubularJunctionMm": 28.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-131.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1582,7 +1582,7 @@
         "sinusMm": 27.8,
         "sinotubularJunctionMm": 23.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-132.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1594,7 +1594,7 @@
         "sinusMm": 32.5,
         "sinotubularJunctionMm": 30
       },
-      "thumbUrl": "/fixtures/thumbs/sample-133.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1606,7 +1606,7 @@
         "sinusMm": 24.8,
         "sinotubularJunctionMm": 22.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-134.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1618,7 +1618,7 @@
         "sinusMm": 29.1,
         "sinotubularJunctionMm": 26.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-135.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1630,7 +1630,7 @@
         "sinusMm": 30.6,
         "sinotubularJunctionMm": 27.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-136.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1642,7 +1642,7 @@
         "sinusMm": 26.8,
         "sinotubularJunctionMm": 21.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-137.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1654,7 +1654,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 26.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-138.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1666,7 +1666,7 @@
         "sinusMm": 30.4,
         "sinotubularJunctionMm": 32.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-139.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1678,7 +1678,7 @@
         "sinusMm": 26.4,
         "sinotubularJunctionMm": 26.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-140.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1690,7 +1690,7 @@
         "sinusMm": 35.8,
         "sinotubularJunctionMm": 30.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-141.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1702,7 +1702,7 @@
         "sinusMm": 32.8,
         "sinotubularJunctionMm": 27.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-142.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1714,7 +1714,7 @@
         "sinusMm": 32.5,
         "sinotubularJunctionMm": 32.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-143.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1726,7 +1726,7 @@
         "sinusMm": 30.9,
         "sinotubularJunctionMm": 26.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-144.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1738,7 +1738,7 @@
         "sinusMm": 34.4,
         "sinotubularJunctionMm": 28.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-145.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1750,7 +1750,7 @@
         "sinusMm": 33.6,
         "sinotubularJunctionMm": 27.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-146.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1762,7 +1762,7 @@
         "sinusMm": 29.6,
         "sinotubularJunctionMm": 23.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-147.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1774,7 +1774,7 @@
         "sinusMm": 25.1,
         "sinotubularJunctionMm": 24.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-148.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1786,7 +1786,7 @@
         "sinusMm": 28.4,
         "sinotubularJunctionMm": 22.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-149.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1798,7 +1798,7 @@
         "sinusMm": 36.1,
         "sinotubularJunctionMm": 33.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-150.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1810,7 +1810,7 @@
         "sinusMm": 31.7,
         "sinotubularJunctionMm": 29.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-151.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1822,7 +1822,7 @@
         "sinusMm": 33.4,
         "sinotubularJunctionMm": 31.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-152.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1834,7 +1834,7 @@
         "sinusMm": 32.2,
         "sinotubularJunctionMm": 29.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-153.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1846,7 +1846,7 @@
         "sinusMm": 28.1,
         "sinotubularJunctionMm": 24.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-154.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1858,7 +1858,7 @@
         "sinusMm": 37,
         "sinotubularJunctionMm": 30.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-155.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1870,7 +1870,7 @@
         "sinusMm": 27.1,
         "sinotubularJunctionMm": 29.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-156.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1882,7 +1882,7 @@
         "sinusMm": 32.5,
         "sinotubularJunctionMm": 29.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-157.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1894,7 +1894,7 @@
         "sinusMm": 28.5,
         "sinotubularJunctionMm": 25.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-158.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1906,7 +1906,7 @@
         "sinusMm": 29.2,
         "sinotubularJunctionMm": 26.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-159.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1918,7 +1918,7 @@
         "sinusMm": 30.8,
         "sinotubularJunctionMm": 26
       },
-      "thumbUrl": "/fixtures/thumbs/sample-160.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1930,7 +1930,7 @@
         "sinusMm": 29.4,
         "sinotubularJunctionMm": 25.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-161.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1942,7 +1942,7 @@
         "sinusMm": 33.4,
         "sinotubularJunctionMm": 29.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-162.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1954,7 +1954,7 @@
         "sinusMm": 36.7,
         "sinotubularJunctionMm": 31.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-163.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1966,7 +1966,7 @@
         "sinusMm": 28.6,
         "sinotubularJunctionMm": 23.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-164.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1978,7 +1978,7 @@
         "sinusMm": 30.3,
         "sinotubularJunctionMm": 22
       },
-      "thumbUrl": "/fixtures/thumbs/sample-165.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -1990,7 +1990,7 @@
         "sinusMm": 28.6,
         "sinotubularJunctionMm": 29.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-166.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2002,7 +2002,7 @@
         "sinusMm": 25.5,
         "sinotubularJunctionMm": 27.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-167.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2014,7 +2014,7 @@
         "sinusMm": 32.3,
         "sinotubularJunctionMm": 29.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-168.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2026,7 +2026,7 @@
         "sinusMm": 34.4,
         "sinotubularJunctionMm": 30.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-169.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2038,7 +2038,7 @@
         "sinusMm": 34.4,
         "sinotubularJunctionMm": 29.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-170.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2050,7 +2050,7 @@
         "sinusMm": 32.1,
         "sinotubularJunctionMm": 30.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-171.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2062,7 +2062,7 @@
         "sinusMm": 31.4,
         "sinotubularJunctionMm": 27
       },
-      "thumbUrl": "/fixtures/thumbs/sample-172.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2074,7 +2074,7 @@
         "sinusMm": 35.7,
         "sinotubularJunctionMm": 31.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-173.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2086,7 +2086,7 @@
         "sinusMm": 31.9,
         "sinotubularJunctionMm": 28.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-174.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2098,7 +2098,7 @@
         "sinusMm": 29.6,
         "sinotubularJunctionMm": 30
       },
-      "thumbUrl": "/fixtures/thumbs/sample-175.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2110,7 +2110,7 @@
         "sinusMm": 29.6,
         "sinotubularJunctionMm": 28.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-176.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2122,7 +2122,7 @@
         "sinusMm": 31,
         "sinotubularJunctionMm": 24.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-177.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2134,7 +2134,7 @@
         "sinusMm": 29.1,
         "sinotubularJunctionMm": 24.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-178.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2146,7 +2146,7 @@
         "sinusMm": 31.2,
         "sinotubularJunctionMm": 26.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-179.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2158,7 +2158,7 @@
         "sinusMm": 32,
         "sinotubularJunctionMm": 31.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-180.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2170,7 +2170,7 @@
         "sinusMm": 33.4,
         "sinotubularJunctionMm": 30.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-181.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2182,7 +2182,7 @@
         "sinusMm": 33.8,
         "sinotubularJunctionMm": 29.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-182.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2194,7 +2194,7 @@
         "sinusMm": 27.6,
         "sinotubularJunctionMm": 25.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-183.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2206,7 +2206,7 @@
         "sinusMm": 32.2,
         "sinotubularJunctionMm": 30
       },
-      "thumbUrl": "/fixtures/thumbs/sample-184.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2218,7 +2218,7 @@
         "sinusMm": 36.9,
         "sinotubularJunctionMm": 32.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-185.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2230,7 +2230,7 @@
         "sinusMm": 31,
         "sinotubularJunctionMm": 25
       },
-      "thumbUrl": "/fixtures/thumbs/sample-186.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2242,7 +2242,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 30.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-187.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2254,7 +2254,7 @@
         "sinusMm": 31.7,
         "sinotubularJunctionMm": 26.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-188.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2266,7 +2266,7 @@
         "sinusMm": 34.4,
         "sinotubularJunctionMm": 30.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-189.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2278,7 +2278,7 @@
         "sinusMm": 25.8,
         "sinotubularJunctionMm": 25.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-190.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2290,7 +2290,7 @@
         "sinusMm": 32.3,
         "sinotubularJunctionMm": 29
       },
-      "thumbUrl": "/fixtures/thumbs/sample-191.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2302,7 +2302,7 @@
         "sinusMm": 30.9,
         "sinotubularJunctionMm": 26.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-192.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2314,7 +2314,7 @@
         "sinusMm": 27.7,
         "sinotubularJunctionMm": 28.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-193.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2326,7 +2326,7 @@
         "sinusMm": 33,
         "sinotubularJunctionMm": 28.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-194.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2338,7 +2338,7 @@
         "sinusMm": 29.3,
         "sinotubularJunctionMm": 26.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-195.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2350,7 +2350,7 @@
         "sinusMm": 26.3,
         "sinotubularJunctionMm": 23.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-196.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2362,7 +2362,7 @@
         "sinusMm": 30.3,
         "sinotubularJunctionMm": 32.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-197.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2374,7 +2374,7 @@
         "sinusMm": 35.6,
         "sinotubularJunctionMm": 30.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-198.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2386,7 +2386,7 @@
         "sinusMm": 34.3,
         "sinotubularJunctionMm": 32.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-199.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2398,7 +2398,7 @@
         "sinusMm": 27,
         "sinotubularJunctionMm": 28.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-200.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2410,7 +2410,7 @@
         "sinusMm": 30.1,
         "sinotubularJunctionMm": 28.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-201.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2422,7 +2422,7 @@
         "sinusMm": 28.8,
         "sinotubularJunctionMm": 27.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-202.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2434,7 +2434,7 @@
         "sinusMm": 31.5,
         "sinotubularJunctionMm": 28.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-203.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2446,7 +2446,7 @@
         "sinusMm": 29.5,
         "sinotubularJunctionMm": 31.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-204.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2458,7 +2458,7 @@
         "sinusMm": 31.4,
         "sinotubularJunctionMm": 28.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-205.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2470,7 +2470,7 @@
         "sinusMm": 28,
         "sinotubularJunctionMm": 26.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-206.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2482,7 +2482,7 @@
         "sinusMm": 26.1,
         "sinotubularJunctionMm": 23.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-207.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2494,7 +2494,7 @@
         "sinusMm": 32.1,
         "sinotubularJunctionMm": 28.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-208.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2506,7 +2506,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 32.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-209.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2518,7 +2518,7 @@
         "sinusMm": 32.3,
         "sinotubularJunctionMm": 27.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-210.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2530,7 +2530,7 @@
         "sinusMm": 36.3,
         "sinotubularJunctionMm": 31.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-211.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2542,7 +2542,7 @@
         "sinusMm": 30.4,
         "sinotubularJunctionMm": 25.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-212.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2554,7 +2554,7 @@
         "sinusMm": 26.6,
         "sinotubularJunctionMm": 25.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-213.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2566,7 +2566,7 @@
         "sinusMm": 35.1,
         "sinotubularJunctionMm": 29.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-214.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2578,7 +2578,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 29
       },
-      "thumbUrl": "/fixtures/thumbs/sample-215.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2590,7 +2590,7 @@
         "sinusMm": 31.8,
         "sinotubularJunctionMm": 27
       },
-      "thumbUrl": "/fixtures/thumbs/sample-216.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2602,7 +2602,7 @@
         "sinusMm": 34.9,
         "sinotubularJunctionMm": 30.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-217.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2614,7 +2614,7 @@
         "sinusMm": 34.7,
         "sinotubularJunctionMm": 25.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-218.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2626,7 +2626,7 @@
         "sinusMm": 27.7,
         "sinotubularJunctionMm": 27.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-219.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2638,7 +2638,7 @@
         "sinusMm": 29.7,
         "sinotubularJunctionMm": 27.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-220.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2650,7 +2650,7 @@
         "sinusMm": 33.2,
         "sinotubularJunctionMm": 31.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-221.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2662,7 +2662,7 @@
         "sinusMm": 28.6,
         "sinotubularJunctionMm": 29.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-222.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2674,7 +2674,7 @@
         "sinusMm": 31.6,
         "sinotubularJunctionMm": 32.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-223.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2686,7 +2686,7 @@
         "sinusMm": 32.3,
         "sinotubularJunctionMm": 32.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-224.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2698,7 +2698,7 @@
         "sinusMm": 27.3,
         "sinotubularJunctionMm": 26.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-225.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2710,7 +2710,7 @@
         "sinusMm": 31.9,
         "sinotubularJunctionMm": 23.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-226.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2722,7 +2722,7 @@
         "sinusMm": 31.9,
         "sinotubularJunctionMm": 24.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-227.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2734,7 +2734,7 @@
         "sinusMm": 31.4,
         "sinotubularJunctionMm": 27.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-228.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2746,7 +2746,7 @@
         "sinusMm": 25.5,
         "sinotubularJunctionMm": 24.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-229.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2758,7 +2758,7 @@
         "sinusMm": 28.4,
         "sinotubularJunctionMm": 27.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-230.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2770,7 +2770,7 @@
         "sinusMm": 28.7,
         "sinotubularJunctionMm": 24.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-231.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2782,7 +2782,7 @@
         "sinusMm": 30.8,
         "sinotubularJunctionMm": 25.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-232.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2794,7 +2794,7 @@
         "sinusMm": 33.9,
         "sinotubularJunctionMm": 27.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-233.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2806,7 +2806,7 @@
         "sinusMm": 29.7,
         "sinotubularJunctionMm": 27.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-234.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2818,7 +2818,7 @@
         "sinusMm": 32,
         "sinotubularJunctionMm": 30.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-235.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2830,7 +2830,7 @@
         "sinusMm": 32,
         "sinotubularJunctionMm": 30.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-236.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2842,7 +2842,7 @@
         "sinusMm": 36.5,
         "sinotubularJunctionMm": 33.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-237.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2854,7 +2854,7 @@
         "sinusMm": 28.1,
         "sinotubularJunctionMm": 27.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-238.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2866,7 +2866,7 @@
         "sinusMm": 32.2,
         "sinotubularJunctionMm": 28.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-239.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2878,7 +2878,7 @@
         "sinusMm": 30,
         "sinotubularJunctionMm": 26
       },
-      "thumbUrl": "/fixtures/thumbs/sample-240.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2890,7 +2890,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 31.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-241.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2902,7 +2902,7 @@
         "sinusMm": 33.1,
         "sinotubularJunctionMm": 30.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-242.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2914,7 +2914,7 @@
         "sinusMm": 36.2,
         "sinotubularJunctionMm": 28.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-243.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2926,7 +2926,7 @@
         "sinusMm": 31.4,
         "sinotubularJunctionMm": 25.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-244.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2938,7 +2938,7 @@
         "sinusMm": 30.7,
         "sinotubularJunctionMm": 22.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-245.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2950,7 +2950,7 @@
         "sinusMm": 29.4,
         "sinotubularJunctionMm": 29.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-246.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2962,7 +2962,7 @@
         "sinusMm": 30.3,
         "sinotubularJunctionMm": 26.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-247.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2974,7 +2974,7 @@
         "sinusMm": 33.7,
         "sinotubularJunctionMm": 28.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-248.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2986,7 +2986,7 @@
         "sinusMm": 31.1,
         "sinotubularJunctionMm": 29
       },
-      "thumbUrl": "/fixtures/thumbs/sample-249.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -2998,7 +2998,7 @@
         "sinusMm": 25.3,
         "sinotubularJunctionMm": 22.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-250.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3010,7 +3010,7 @@
         "sinusMm": 27.8,
         "sinotubularJunctionMm": 26.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-251.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3022,7 +3022,7 @@
         "sinusMm": 34.5,
         "sinotubularJunctionMm": 32.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-252.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3034,7 +3034,7 @@
         "sinusMm": 28.9,
         "sinotubularJunctionMm": 26.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-253.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3046,7 +3046,7 @@
         "sinusMm": 28.3,
         "sinotubularJunctionMm": 26.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-254.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3058,7 +3058,7 @@
         "sinusMm": 28,
         "sinotubularJunctionMm": 28.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-255.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3070,7 +3070,7 @@
         "sinusMm": 35.5,
         "sinotubularJunctionMm": 32.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-256.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3082,7 +3082,7 @@
         "sinusMm": 32.8,
         "sinotubularJunctionMm": 31.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-257.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3094,7 +3094,7 @@
         "sinusMm": 33.1,
         "sinotubularJunctionMm": 31
       },
-      "thumbUrl": "/fixtures/thumbs/sample-258.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3106,7 +3106,7 @@
         "sinusMm": 26.3,
         "sinotubularJunctionMm": 26.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-259.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3118,7 +3118,7 @@
         "sinusMm": 35.3,
         "sinotubularJunctionMm": 30.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-260.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3130,7 +3130,7 @@
         "sinusMm": 36.2,
         "sinotubularJunctionMm": 29
       },
-      "thumbUrl": "/fixtures/thumbs/sample-261.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3142,7 +3142,7 @@
         "sinusMm": 29,
         "sinotubularJunctionMm": 25.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-262.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3154,7 +3154,7 @@
         "sinusMm": 32.7,
         "sinotubularJunctionMm": 27.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-263.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3166,7 +3166,7 @@
         "sinusMm": 28.9,
         "sinotubularJunctionMm": 24.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-264.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3178,7 +3178,7 @@
         "sinusMm": 34,
         "sinotubularJunctionMm": 32.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-265.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3190,7 +3190,7 @@
         "sinusMm": 30.1,
         "sinotubularJunctionMm": 24.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-266.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3202,7 +3202,7 @@
         "sinusMm": 27.5,
         "sinotubularJunctionMm": 28.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-267.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3214,7 +3214,7 @@
         "sinusMm": 25.7,
         "sinotubularJunctionMm": 24.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-268.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3226,7 +3226,7 @@
         "sinusMm": 34.2,
         "sinotubularJunctionMm": 30.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-269.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3238,7 +3238,7 @@
         "sinusMm": 28.7,
         "sinotubularJunctionMm": 24.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-270.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3250,7 +3250,7 @@
         "sinusMm": 31.2,
         "sinotubularJunctionMm": 29.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-271.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3262,7 +3262,7 @@
         "sinusMm": 33.1,
         "sinotubularJunctionMm": 27.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-272.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3274,7 +3274,7 @@
         "sinusMm": 31.2,
         "sinotubularJunctionMm": 29.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-273.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3286,7 +3286,7 @@
         "sinusMm": 27.4,
         "sinotubularJunctionMm": 22.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-274.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3298,7 +3298,7 @@
         "sinusMm": 28.2,
         "sinotubularJunctionMm": 27.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-275.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3310,7 +3310,7 @@
         "sinusMm": 32.2,
         "sinotubularJunctionMm": 28.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-276.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3322,7 +3322,7 @@
         "sinusMm": 30.8,
         "sinotubularJunctionMm": 27.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-277.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3334,7 +3334,7 @@
         "sinusMm": 35.8,
         "sinotubularJunctionMm": 33.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-278.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3346,7 +3346,7 @@
         "sinusMm": 33.2,
         "sinotubularJunctionMm": 26.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-279.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3358,7 +3358,7 @@
         "sinusMm": 29.1,
         "sinotubularJunctionMm": 26.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-280.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3370,7 +3370,7 @@
         "sinusMm": 30.9,
         "sinotubularJunctionMm": 28
       },
-      "thumbUrl": "/fixtures/thumbs/sample-281.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3382,7 +3382,7 @@
         "sinusMm": 32,
         "sinotubularJunctionMm": 27.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-282.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3394,7 +3394,7 @@
         "sinusMm": 32.4,
         "sinotubularJunctionMm": 30.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-283.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3406,7 +3406,7 @@
         "sinusMm": 36,
         "sinotubularJunctionMm": 34.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-284.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3418,7 +3418,7 @@
         "sinusMm": 32.5,
         "sinotubularJunctionMm": 28.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-285.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3430,7 +3430,7 @@
         "sinusMm": 30.1,
         "sinotubularJunctionMm": 25.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-286.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3442,7 +3442,7 @@
         "sinusMm": 29.7,
         "sinotubularJunctionMm": 26.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-287.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3454,7 +3454,7 @@
         "sinusMm": 32.8,
         "sinotubularJunctionMm": 29.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-288.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3466,7 +3466,7 @@
         "sinusMm": 33,
         "sinotubularJunctionMm": 30.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-289.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3478,7 +3478,7 @@
         "sinusMm": 32.4,
         "sinotubularJunctionMm": 25
       },
-      "thumbUrl": "/fixtures/thumbs/sample-290.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3490,7 +3490,7 @@
         "sinusMm": 29.7,
         "sinotubularJunctionMm": 25.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-291.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3502,7 +3502,7 @@
         "sinusMm": 28.5,
         "sinotubularJunctionMm": 25
       },
-      "thumbUrl": "/fixtures/thumbs/sample-292.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3514,7 +3514,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 24.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-293.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3526,7 +3526,7 @@
         "sinusMm": 31.9,
         "sinotubularJunctionMm": 31.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-294.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3538,7 +3538,7 @@
         "sinusMm": 33.5,
         "sinotubularJunctionMm": 28.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-295.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3550,7 +3550,7 @@
         "sinusMm": 28.8,
         "sinotubularJunctionMm": 28.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-296.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3562,7 +3562,7 @@
         "sinusMm": 32.2,
         "sinotubularJunctionMm": 33.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-297.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3574,7 +3574,7 @@
         "sinusMm": 32.6,
         "sinotubularJunctionMm": 31
       },
-      "thumbUrl": "/fixtures/thumbs/sample-298.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3586,7 +3586,7 @@
         "sinusMm": 34.9,
         "sinotubularJunctionMm": 34.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-299.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3598,7 +3598,7 @@
         "sinusMm": 26.7,
         "sinotubularJunctionMm": 24.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-300.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3610,7 +3610,7 @@
         "sinusMm": 25.7,
         "sinotubularJunctionMm": 27.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-301.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3622,7 +3622,7 @@
         "sinusMm": 28.3,
         "sinotubularJunctionMm": 23.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-302.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3634,7 +3634,7 @@
         "sinusMm": 35.7,
         "sinotubularJunctionMm": 29.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-303.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3646,7 +3646,7 @@
         "sinusMm": 27.5,
         "sinotubularJunctionMm": 26.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-304.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3658,7 +3658,7 @@
         "sinusMm": 31,
         "sinotubularJunctionMm": 27.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-305.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3670,7 +3670,7 @@
         "sinusMm": 35.9,
         "sinotubularJunctionMm": 32.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-306.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3682,7 +3682,7 @@
         "sinusMm": 28.9,
         "sinotubularJunctionMm": 26.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-307.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3694,7 +3694,7 @@
         "sinusMm": 27.4,
         "sinotubularJunctionMm": 23.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-308.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3706,7 +3706,7 @@
         "sinusMm": 27.6,
         "sinotubularJunctionMm": 23.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-309.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3718,7 +3718,7 @@
         "sinusMm": 33.5,
         "sinotubularJunctionMm": 27.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-310.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3730,7 +3730,7 @@
         "sinusMm": 33.9,
         "sinotubularJunctionMm": 31.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-311.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3742,7 +3742,7 @@
         "sinusMm": 34.6,
         "sinotubularJunctionMm": 28
       },
-      "thumbUrl": "/fixtures/thumbs/sample-312.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3754,7 +3754,7 @@
         "sinusMm": 31.2,
         "sinotubularJunctionMm": 31.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-313.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3766,7 +3766,7 @@
         "sinusMm": 33.7,
         "sinotubularJunctionMm": 26.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-314.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3778,7 +3778,7 @@
         "sinusMm": 24.8,
         "sinotubularJunctionMm": 24.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-315.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3790,7 +3790,7 @@
         "sinusMm": 28.7,
         "sinotubularJunctionMm": 25.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-316.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3802,7 +3802,7 @@
         "sinusMm": 30.4,
         "sinotubularJunctionMm": 24.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-317.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3814,7 +3814,7 @@
         "sinusMm": 31.1,
         "sinotubularJunctionMm": 26.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-318.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3826,7 +3826,7 @@
         "sinusMm": 31.7,
         "sinotubularJunctionMm": 27.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-319.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3838,7 +3838,7 @@
         "sinusMm": 28.4,
         "sinotubularJunctionMm": 23.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-320.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3850,7 +3850,7 @@
         "sinusMm": 31.3,
         "sinotubularJunctionMm": 29.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-321.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3862,7 +3862,7 @@
         "sinusMm": 32,
         "sinotubularJunctionMm": 29.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-322.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3874,7 +3874,7 @@
         "sinusMm": 30.7,
         "sinotubularJunctionMm": 27.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-323.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3886,7 +3886,7 @@
         "sinusMm": 31.6,
         "sinotubularJunctionMm": 26.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-324.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3898,7 +3898,7 @@
         "sinusMm": 36.6,
         "sinotubularJunctionMm": 31.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-325.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3910,7 +3910,7 @@
         "sinusMm": 28.4,
         "sinotubularJunctionMm": 25.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-326.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3922,7 +3922,7 @@
         "sinusMm": 36.1,
         "sinotubularJunctionMm": 28.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-327.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3934,7 +3934,7 @@
         "sinusMm": 24.7,
         "sinotubularJunctionMm": 22.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-328.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3946,7 +3946,7 @@
         "sinusMm": 36.6,
         "sinotubularJunctionMm": 33.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-329.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3958,7 +3958,7 @@
         "sinusMm": 30,
         "sinotubularJunctionMm": 28.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-330.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3970,7 +3970,7 @@
         "sinusMm": 30.2,
         "sinotubularJunctionMm": 29.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-331.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3982,7 +3982,7 @@
         "sinusMm": 34.5,
         "sinotubularJunctionMm": 30.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-332.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -3994,7 +3994,7 @@
         "sinusMm": 28.4,
         "sinotubularJunctionMm": 24.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-333.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4006,7 +4006,7 @@
         "sinusMm": 27.2,
         "sinotubularJunctionMm": 25.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-334.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4018,7 +4018,7 @@
         "sinusMm": 31,
         "sinotubularJunctionMm": 27.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-335.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4030,7 +4030,7 @@
         "sinusMm": 26.4,
         "sinotubularJunctionMm": 25.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-336.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4042,7 +4042,7 @@
         "sinusMm": 31.5,
         "sinotubularJunctionMm": 29.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-337.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4054,7 +4054,7 @@
         "sinusMm": 28.4,
         "sinotubularJunctionMm": 26.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-338.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4066,7 +4066,7 @@
         "sinusMm": 27.9,
         "sinotubularJunctionMm": 24.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-339.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4078,7 +4078,7 @@
         "sinusMm": 32.3,
         "sinotubularJunctionMm": 28.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-340.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4090,7 +4090,7 @@
         "sinusMm": 34.4,
         "sinotubularJunctionMm": 29.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-341.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4102,7 +4102,7 @@
         "sinusMm": 31.9,
         "sinotubularJunctionMm": 26.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-342.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4114,7 +4114,7 @@
         "sinusMm": 33.7,
         "sinotubularJunctionMm": 30.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-343.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4126,7 +4126,7 @@
         "sinusMm": 30.4,
         "sinotubularJunctionMm": 26.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-344.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4138,7 +4138,7 @@
         "sinusMm": 26.1,
         "sinotubularJunctionMm": 23.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-345.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4150,7 +4150,7 @@
         "sinusMm": 34.2,
         "sinotubularJunctionMm": 28.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-346.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4162,7 +4162,7 @@
         "sinusMm": 35.8,
         "sinotubularJunctionMm": 28.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-347.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4174,7 +4174,7 @@
         "sinusMm": 28,
         "sinotubularJunctionMm": 28.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-348.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4186,7 +4186,7 @@
         "sinusMm": 31,
         "sinotubularJunctionMm": 28
       },
-      "thumbUrl": "/fixtures/thumbs/sample-349.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4198,7 +4198,7 @@
         "sinusMm": 29.4,
         "sinotubularJunctionMm": 27.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-350.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4210,7 +4210,7 @@
         "sinusMm": 26.6,
         "sinotubularJunctionMm": 24.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-351.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4222,7 +4222,7 @@
         "sinusMm": 30,
         "sinotubularJunctionMm": 27.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-352.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4234,7 +4234,7 @@
         "sinusMm": 24.8,
         "sinotubularJunctionMm": 25
       },
-      "thumbUrl": "/fixtures/thumbs/sample-353.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4246,7 +4246,7 @@
         "sinusMm": 33.5,
         "sinotubularJunctionMm": 28.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-354.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4258,7 +4258,7 @@
         "sinusMm": 35.2,
         "sinotubularJunctionMm": 32.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-355.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4270,7 +4270,7 @@
         "sinusMm": 28.9,
         "sinotubularJunctionMm": 26.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-356.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4282,7 +4282,7 @@
         "sinusMm": 27.8,
         "sinotubularJunctionMm": 23.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-357.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4294,7 +4294,7 @@
         "sinusMm": 31.7,
         "sinotubularJunctionMm": 26.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-358.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4306,7 +4306,7 @@
         "sinusMm": 30.5,
         "sinotubularJunctionMm": 29.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-359.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4318,7 +4318,7 @@
         "sinusMm": 27.8,
         "sinotubularJunctionMm": 24.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-360.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4330,7 +4330,7 @@
         "sinusMm": 35.3,
         "sinotubularJunctionMm": 33.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-361.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4342,7 +4342,7 @@
         "sinusMm": 32.6,
         "sinotubularJunctionMm": 26.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-362.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4354,7 +4354,7 @@
         "sinusMm": 29.3,
         "sinotubularJunctionMm": 26.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-363.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4366,7 +4366,7 @@
         "sinusMm": 30.6,
         "sinotubularJunctionMm": 23.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-364.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4378,7 +4378,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 22.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-365.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4390,7 +4390,7 @@
         "sinusMm": 30,
         "sinotubularJunctionMm": 30.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-366.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4402,7 +4402,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 26.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-367.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4414,7 +4414,7 @@
         "sinusMm": 32.1,
         "sinotubularJunctionMm": 30
       },
-      "thumbUrl": "/fixtures/thumbs/sample-368.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4426,7 +4426,7 @@
         "sinusMm": 25.1,
         "sinotubularJunctionMm": 27.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-369.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4438,7 +4438,7 @@
         "sinusMm": 25.9,
         "sinotubularJunctionMm": 26.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-370.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4450,7 +4450,7 @@
         "sinusMm": 33.1,
         "sinotubularJunctionMm": 33.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-371.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4462,7 +4462,7 @@
         "sinusMm": 25.6,
         "sinotubularJunctionMm": 25.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-372.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4474,7 +4474,7 @@
         "sinusMm": 30.7,
         "sinotubularJunctionMm": 27.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-373.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4486,7 +4486,7 @@
         "sinusMm": 37.1,
         "sinotubularJunctionMm": 34.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-374.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4498,7 +4498,7 @@
         "sinusMm": 27.1,
         "sinotubularJunctionMm": 27.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-375.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4510,7 +4510,7 @@
         "sinusMm": 32.3,
         "sinotubularJunctionMm": 32
       },
-      "thumbUrl": "/fixtures/thumbs/sample-376.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4522,7 +4522,7 @@
         "sinusMm": 32.4,
         "sinotubularJunctionMm": 29.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-377.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4534,7 +4534,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 33.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-378.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4546,7 +4546,7 @@
         "sinusMm": 27.5,
         "sinotubularJunctionMm": 22.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-379.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4558,7 +4558,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 28.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-380.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4570,7 +4570,7 @@
         "sinusMm": 28.3,
         "sinotubularJunctionMm": 29.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-381.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4582,7 +4582,7 @@
         "sinusMm": 26.9,
         "sinotubularJunctionMm": 28.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-382.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4594,7 +4594,7 @@
         "sinusMm": 26.8,
         "sinotubularJunctionMm": 27.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-383.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4606,7 +4606,7 @@
         "sinusMm": 32.5,
         "sinotubularJunctionMm": 25.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-384.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4618,7 +4618,7 @@
         "sinusMm": 30.5,
         "sinotubularJunctionMm": 27.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-385.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4630,7 +4630,7 @@
         "sinusMm": 29.8,
         "sinotubularJunctionMm": 28.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-386.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4642,7 +4642,7 @@
         "sinusMm": 31.6,
         "sinotubularJunctionMm": 30.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-387.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4654,7 +4654,7 @@
         "sinusMm": 32.9,
         "sinotubularJunctionMm": 32.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-388.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4666,7 +4666,7 @@
         "sinusMm": 29.2,
         "sinotubularJunctionMm": 25.7
       },
-      "thumbUrl": "/fixtures/thumbs/sample-389.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4678,7 +4678,7 @@
         "sinusMm": 30.5,
         "sinotubularJunctionMm": 30.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-390.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4690,7 +4690,7 @@
         "sinusMm": 25.8,
         "sinotubularJunctionMm": 24
       },
-      "thumbUrl": "/fixtures/thumbs/sample-391.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4702,7 +4702,7 @@
         "sinusMm": 30.2,
         "sinotubularJunctionMm": 25.5
       },
-      "thumbUrl": "/fixtures/thumbs/sample-392.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4714,7 +4714,7 @@
         "sinusMm": 30.4,
         "sinotubularJunctionMm": 28.8
       },
-      "thumbUrl": "/fixtures/thumbs/sample-393.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4726,7 +4726,7 @@
         "sinusMm": 31,
         "sinotubularJunctionMm": 26.3
       },
-      "thumbUrl": "/fixtures/thumbs/sample-394.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4738,7 +4738,7 @@
         "sinusMm": 32.2,
         "sinotubularJunctionMm": 28.4
       },
-      "thumbUrl": "/fixtures/thumbs/sample-395.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4750,7 +4750,7 @@
         "sinusMm": 29.3,
         "sinotubularJunctionMm": 29.9
       },
-      "thumbUrl": "/fixtures/thumbs/sample-396.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4762,7 +4762,7 @@
         "sinusMm": 32.3,
         "sinotubularJunctionMm": 27.6
       },
-      "thumbUrl": "/fixtures/thumbs/sample-397.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4774,7 +4774,7 @@
         "sinusMm": 26,
         "sinotubularJunctionMm": 24
       },
-      "thumbUrl": "/fixtures/thumbs/sample-398.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4786,7 +4786,7 @@
         "sinusMm": 30.4,
         "sinotubularJunctionMm": 26.1
       },
-      "thumbUrl": "/fixtures/thumbs/sample-399.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     },
     {
@@ -4798,7 +4798,7 @@
         "sinusMm": 33.9,
         "sinotubularJunctionMm": 34.2
       },
-      "thumbUrl": "/fixtures/thumbs/sample-400.png",
+      "thumbUrl": "/fixtures/sample-thumb.png",
       "meshUrl": "/fixtures/root-sample.glb"
     }
   ],

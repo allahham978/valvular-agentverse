@@ -25,5 +25,4 @@ Audit of the Round 3 code. Round budget is spent, so scores under 4 are flagged 
 
 - Audit rounds: the brief allows up to 3 and history already shows Round 2 and Round 3 polish. Decide whether REQ-1 is judged only on the fixes above, since the opening's low scores cannot be fixed in this scope.
 - The earlier commit message says "round 4", but that run was the audit of the Round 3 code.
-- `workspace-after-drag` and `workspace-dot-hover` are committed but match the base workspace pixel for pixel, so they show no working interaction.
 - No app code changed. Untracked `AGENTS.md` left uncommitted.
