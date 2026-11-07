@@ -1,0 +1,1704 @@
+{
+  "hearts": [
+    {
+      "id": "heart-002",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.850460240695032,
+        "sinusMm": 32.39001646729188,
+        "sinotubularJunctionMm": 26.97717236094444,
+        "lvotMm": 25.27643986690179,
+        "sinusHeightMm": 28,
+        "aorticValveArea": 61.22796190955863,
+        "angleDeg": 21.29491045597825,
+        "lvotOverAnnulusAreaRatio": 1.1231513433898017
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-005",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.8641039039371,
+        "sinusMm": 28.165343203378228,
+        "sinotubularJunctionMm": 26.046552680147574,
+        "lvotMm": 21.320301880998176,
+        "sinusHeightMm": 24,
+        "aorticValveArea": 32.8200947237908,
+        "angleDeg": 11.591037580324818,
+        "lvotOverAnnulusAreaRatio": 0.9508747920489145
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-012",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.561109085443253,
+        "sinusMm": 30.72390627839777,
+        "sinotubularJunctionMm": 27.21085897161668,
+        "lvotMm": 27.077750735484443,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 64.36160768163673,
+        "angleDeg": 23.23271123076226,
+        "lvotOverAnnulusAreaRatio": 1.1221884243878684
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-022",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.32881503286731,
+        "sinusMm": 30.90781456464103,
+        "sinotubularJunctionMm": 29.716919142489964,
+        "lvotMm": 24.441734520966147,
+        "sinusHeightMm": 18.5,
+        "aorticValveArea": 87.45864241148503,
+        "angleDeg": 29.934406235012016,
+        "lvotOverAnnulusAreaRatio": 0.9311814164537185
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-023",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 19.12613277170632,
+        "sinusMm": 26.19590127447779,
+        "sinotubularJunctionMm": 25.077026025673458,
+        "lvotMm": 18.353058827980046,
+        "sinusHeightMm": 21,
+        "aorticValveArea": 34.04892765414317,
+        "angleDeg": 10.865269168072555,
+        "lvotOverAnnulusAreaRatio": 0.9207942121772034
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-033",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 29.350483431691956,
+        "sinusMm": 35.19734364945838,
+        "sinotubularJunctionMm": 32.84418914690972,
+        "lvotMm": 31.751132562113266,
+        "sinusHeightMm": 24.5,
+        "aorticValveArea": 102.47599861273173,
+        "angleDeg": 26.045203355619382,
+        "lvotOverAnnulusAreaRatio": 1.170274991998291
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-038",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.56825999948744,
+        "sinusMm": 26.951536432051693,
+        "sinotubularJunctionMm": 23.817469636251985,
+        "lvotMm": 21.736283518060578,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 60.857797440157874,
+        "angleDeg": 31.60107862426441,
+        "lvotOverAnnulusAreaRatio": 0.9276292350742414
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-048",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 26.800521688272525,
+        "sinusMm": 36.01915609469561,
+        "sinotubularJunctionMm": 33.6808434639511,
+        "lvotMm": 26.246702738786954,
+        "sinusHeightMm": 27.5,
+        "aorticValveArea": 110.21715818028461,
+        "angleDeg": 24.56960184317644,
+        "lvotOverAnnulusAreaRatio": 0.9590980530549016
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-049",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.177233636021086,
+        "sinusMm": 32.75922305173309,
+        "sinotubularJunctionMm": 29.913641984997128,
+        "lvotMm": 24.338274925701818,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 67.36014051001102,
+        "angleDeg": 33.679649742776256,
+        "lvotOverAnnulusAreaRatio": 0.9344661306053008
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-051",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 26.623528365761647,
+        "sinusMm": 35.17974753770328,
+        "sinotubularJunctionMm": 32.24609710676883,
+        "lvotMm": 26.16385354760123,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 80.3492700480308,
+        "angleDeg": 27.300292702228575,
+        "lvotOverAnnulusAreaRatio": 0.9657666331960351
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-079",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.750268383331797,
+        "sinusMm": 29.105876914969482,
+        "sinotubularJunctionMm": 26.350847511420728,
+        "lvotMm": 22.6139874676351,
+        "sinusHeightMm": 27.5,
+        "aorticValveArea": 48.60779590673974,
+        "angleDeg": 23.967123435424725,
+        "lvotOverAnnulusAreaRatio": 0.9880552851796233
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-082",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 26.01725105890072,
+        "sinusMm": 33.24012203689469,
+        "sinotubularJunctionMm": 31.14388470241058,
+        "lvotMm": 29.266104254620426,
+        "sinusHeightMm": 22.5,
+        "aorticValveArea": 63.661075472274135,
+        "angleDeg": 35.15173224241242,
+        "lvotOverAnnulusAreaRatio": 1.2653393529670962
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-094",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 20.103482961975654,
+        "sinusMm": 27.934963355604502,
+        "sinotubularJunctionMm": 24.641875249677614,
+        "lvotMm": 18.117355968058956,
+        "sinusHeightMm": 22.5,
+        "aorticValveArea": 43.422111503525755,
+        "angleDeg": 18.41963199359596,
+        "lvotOverAnnulusAreaRatio": 0.8121701476688046
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-100",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.08850794425523,
+        "sinusMm": 33.02622728515762,
+        "sinotubularJunctionMm": 29.994147579753097,
+        "lvotMm": 22.60966550142821,
+        "sinusHeightMm": 23,
+        "aorticValveArea": 41.17987670746893,
+        "angleDeg": 39.07632232728373,
+        "lvotOverAnnulusAreaRatio": 0.8809849181946265
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-106",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.487602508643167,
+        "sinusMm": 33.59349165915214,
+        "sinotubularJunctionMm": 30.521419510140774,
+        "lvotMm": 22.95160610991895,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 85.02998407919944,
+        "angleDeg": 33.147863785585265,
+        "lvotOverAnnulusAreaRatio": 0.8784835428875658
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-107",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.780020802011947,
+        "sinusMm": 33.30307994600314,
+        "sinotubularJunctionMm": 29.374959587052086,
+        "lvotMm": 26.15593601832087,
+        "sinusHeightMm": 28.5,
+        "aorticValveArea": 53.179348265295005,
+        "angleDeg": 29.110406949478932,
+        "lvotOverAnnulusAreaRatio": 1.029375922626191
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-117",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 26.88734915517811,
+        "sinusMm": 35.35775183963921,
+        "sinotubularJunctionMm": 32.0780031465025,
+        "lvotMm": 25.28268706480276,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 52.885461136043446,
+        "angleDeg": 18.438234455508287,
+        "lvotOverAnnulusAreaRatio": 0.8841999472813
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-121",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.16340578039361,
+        "sinusMm": 37.371028343043626,
+        "sinotubularJunctionMm": 32.16313337614088,
+        "lvotMm": 25.4505389798766,
+        "sinusHeightMm": 31.5,
+        "aorticValveArea": 93.83098831011284,
+        "angleDeg": 26.943539442345408,
+        "lvotOverAnnulusAreaRatio": 1.0229516945219737
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-122",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.100460910486042,
+        "sinusMm": 32.154610238974925,
+        "sinotubularJunctionMm": 28.144935973724593,
+        "lvotMm": 19.67161079580451,
+        "sinusHeightMm": 24,
+        "aorticValveArea": 44.318093798650324,
+        "angleDeg": 22.86743378704501,
+        "lvotOverAnnulusAreaRatio": 0.792277247943943
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-130",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.506686806440488,
+        "sinusMm": 32.686779991013665,
+        "sinotubularJunctionMm": 28.676819576436596,
+        "lvotMm": 23.73035368312774,
+        "sinusHeightMm": 23,
+        "aorticValveArea": 53.538387294813504,
+        "angleDeg": 35.37546211358708,
+        "lvotOverAnnulusAreaRatio": 0.93764668183141
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-136",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.668301763545397,
+        "sinusMm": 32.59084734599791,
+        "sinotubularJunctionMm": 27.977029997154933,
+        "lvotMm": 27.07310705387007,
+        "sinusHeightMm": 23,
+        "aorticValveArea": 73.98028703140994,
+        "angleDeg": 38.12572384568169,
+        "lvotOverAnnulusAreaRatio": 1.1124536581673337
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-137",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.073181362725627,
+        "sinusMm": 32.965632502931534,
+        "sinotubularJunctionMm": 30.239503697418343,
+        "lvotMm": 20.496373586560697,
+        "sinusHeightMm": 25,
+        "aorticValveArea": 99.95494772139237,
+        "angleDeg": 8.542913579518464,
+        "lvotOverAnnulusAreaRatio": 0.7891128165198349
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-138",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.173669071446376,
+        "sinusMm": 31.96016838310523,
+        "sinotubularJunctionMm": 28.405270079350252,
+        "lvotMm": 21.37615347483448,
+        "sinusHeightMm": 26,
+        "aorticValveArea": 38.27508526240826,
+        "angleDeg": 14.581651236212272,
+        "lvotOverAnnulusAreaRatio": 0.8508823522746956
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-139",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.811132016539965,
+        "sinusMm": 31.99677439315361,
+        "sinotubularJunctionMm": 28.81982160568571,
+        "lvotMm": 25.507248064791465,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 83.4706293466769,
+        "angleDeg": 40.019130626415766,
+        "lvotOverAnnulusAreaRatio": 1.05690037626061
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-140",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.130986813570413,
+        "sinusMm": 27.374198288509884,
+        "sinotubularJunctionMm": 23.361949198973885,
+        "lvotMm": 25.242319457840082,
+        "sinusHeightMm": 20.5,
+        "aorticValveArea": 65.96360841233015,
+        "angleDeg": 11.515779818573337,
+        "lvotOverAnnulusAreaRatio": 1.0942293331018589
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-142",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.918342155302334,
+        "sinusMm": 36.51493312127678,
+        "sinotubularJunctionMm": 35.2781409685527,
+        "lvotMm": 26.40858199249339,
+        "sinusHeightMm": 24,
+        "aorticValveArea": 80.99579553273527,
+        "angleDeg": 30.72684498871789,
+        "lvotOverAnnulusAreaRatio": 1.0381873365572827
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-147",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.640094955284265,
+        "sinusMm": 36.18483235510125,
+        "sinotubularJunctionMm": 32.614436702903156,
+        "lvotMm": 23.693047311805817,
+        "sinusHeightMm": 27,
+        "aorticValveArea": 63.02922799209035,
+        "angleDeg": 11.673949219148426,
+        "lvotOverAnnulusAreaRatio": 0.8538912925106986
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-148",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.950198184831258,
+        "sinusMm": 29.113475111828333,
+        "sinotubularJunctionMm": 25.93196939883923,
+        "lvotMm": 22.03022335180189,
+        "sinusHeightMm": 20,
+        "aorticValveArea": 51.40495793671244,
+        "angleDeg": 25.578759956898086,
+        "lvotOverAnnulusAreaRatio": 0.9214354571833843
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-153",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.26817482270152,
+        "sinusMm": 34.149264467249566,
+        "sinotubularJunctionMm": 31.683765765294144,
+        "lvotMm": 23.901940480084946,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 65.61727945627088,
+        "angleDeg": 21.95318173682544,
+        "lvotOverAnnulusAreaRatio": 0.9700454690955597
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-155",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.138445176475557,
+        "sinusMm": 31.232414295001693,
+        "sinotubularJunctionMm": 26.764376500530116,
+        "lvotMm": 19.55765435804927,
+        "sinusHeightMm": 28,
+        "aorticValveArea": 43.13277394530525,
+        "angleDeg": 31.902535885047385,
+        "lvotOverAnnulusAreaRatio": 0.8560269809340239
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-158",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 19.982971415780977,
+        "sinusMm": 24.841625776081802,
+        "sinotubularJunctionMm": 22.030554061117332,
+        "lvotMm": 19.888127878012558,
+        "sinusHeightMm": 22,
+        "aorticValveArea": 39.303942635383244,
+        "angleDeg": 33.54956897408764,
+        "lvotOverAnnulusAreaRatio": 0.9905300906708334
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-170",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 20.882192969526823,
+        "sinusMm": 29.45657898097461,
+        "sinotubularJunctionMm": 22.7623535595588,
+        "lvotMm": 19.95440621797295,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 50.14391340301031,
+        "angleDeg": 39.333552641460905,
+        "lvotOverAnnulusAreaRatio": 0.9131148560930913
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-187",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.738253344981924,
+        "sinusMm": 31.347159115454854,
+        "sinotubularJunctionMm": 28.62277372681335,
+        "lvotMm": 21.341883795849544,
+        "sinusHeightMm": 24.5,
+        "aorticValveArea": 48.86541616589286,
+        "angleDeg": 49.32306515560981,
+        "lvotOverAnnulusAreaRatio": 0.8809500809234674
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-192",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.09154649606822,
+        "sinusMm": 35.08448089948176,
+        "sinotubularJunctionMm": 30.361349336522068,
+        "lvotMm": 22.949556501476938,
+        "sinusHeightMm": 30.5,
+        "aorticValveArea": 67.77540930194924,
+        "angleDeg": 30.10451873175521,
+        "lvotOverAnnulusAreaRatio": 0.9877398037289664
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-196",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 28.583521051407896,
+        "sinusMm": 35.59672502385442,
+        "sinotubularJunctionMm": 31.229180051893422,
+        "lvotMm": 28.184084595370358,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 69.78285488439045,
+        "angleDeg": 36.376071193546764,
+        "lvotOverAnnulusAreaRatio": 0.9722465597846931
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-197",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.095832056515995,
+        "sinusMm": 31.774819752449186,
+        "sinotubularJunctionMm": 27.386317572477175,
+        "lvotMm": 22.97191118320926,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 44.36098585157501,
+        "angleDeg": 16.315263550304095,
+        "lvotOverAnnulusAreaRatio": 0.9088880676569984
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-203",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 28.24624759269317,
+        "sinusMm": 36.36396120328777,
+        "sinotubularJunctionMm": 28.31584000330244,
+        "lvotMm": 28.091033596680013,
+        "sinusHeightMm": 32.5,
+        "aorticValveArea": 92.66536529220396,
+        "angleDeg": 24.86021958931573,
+        "lvotOverAnnulusAreaRatio": 0.9890401340798839
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-220",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.437613514268392,
+        "sinusMm": 33.10692244426689,
+        "sinotubularJunctionMm": 29.83433161878922,
+        "lvotMm": 24.525102258930993,
+        "sinusHeightMm": 27,
+        "aorticValveArea": 55.070364125331274,
+        "angleDeg": 31.82029810603365,
+        "lvotOverAnnulusAreaRatio": 0.9295418010420704
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-226",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 30.331888506041004,
+        "sinusMm": 38.9054691881066,
+        "sinotubularJunctionMm": 34.61086307804404,
+        "lvotMm": 29.475700485103083,
+        "sinusHeightMm": 30,
+        "aorticValveArea": 90.17025068669193,
+        "angleDeg": 24.302137270834038,
+        "lvotOverAnnulusAreaRatio": 0.9443421353230372
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-228",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 27.879623871418346,
+        "sinusMm": 37.18265347430758,
+        "sinotubularJunctionMm": 35.131757831070956,
+        "lvotMm": 27.67909963715213,
+        "sinusHeightMm": 25,
+        "aorticValveArea": 74.84963514431514,
+        "angleDeg": 39.6879809898105,
+        "lvotOverAnnulusAreaRatio": 0.9856667292379607
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-230",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.065085508526135,
+        "sinusMm": 28.424298581570827,
+        "sinotubularJunctionMm": 25.71749210119363,
+        "lvotMm": 23.581724435138664,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 73.20104555905303,
+        "angleDeg": 23.056102653489624,
+        "lvotOverAnnulusAreaRatio": 0.9602322808504324
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-232",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.648372511923988,
+        "sinusMm": 27.361026870370015,
+        "sinotubularJunctionMm": 25.22458199062372,
+        "lvotMm": 20.746422846443373,
+        "sinusHeightMm": 20.5,
+        "aorticValveArea": 43.96911554785703,
+        "angleDeg": 8.519882741527391,
+        "lvotOverAnnulusAreaRatio": 0.9184086084198693
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-233",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.369661040133213,
+        "sinusMm": 29.99188368993903,
+        "sinotubularJunctionMm": 27.692518866374627,
+        "lvotMm": 23.704994796802033,
+        "sinusHeightMm": 27,
+        "aorticValveArea": 56.98107991567272,
+        "angleDeg": 20.426003372911914,
+        "lvotOverAnnulusAreaRatio": 1.0289041099906047
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-239",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 27.28294599902733,
+        "sinusMm": 34.218767226871734,
+        "sinotubularJunctionMm": 30.892377795607167,
+        "lvotMm": 27.490941289046095,
+        "sinusHeightMm": 26,
+        "aorticValveArea": 81.831838384074,
+        "angleDeg": 30.782337949076464,
+        "lvotOverAnnulusAreaRatio": 1.0153053948332276
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-244",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.498962172565154,
+        "sinusMm": 28.54721151756337,
+        "sinotubularJunctionMm": 27.52641099161558,
+        "lvotMm": 23.65250922998112,
+        "sinusHeightMm": 20,
+        "aorticValveArea": 42.35725441681814,
+        "angleDeg": 10.108708344898396,
+        "lvotOverAnnulusAreaRatio": 1.0131111076590895
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-248",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 28.985016156461395,
+        "sinusMm": 35.28317233820263,
+        "sinotubularJunctionMm": 33.65470193684534,
+        "lvotMm": 30.727234705024582,
+        "sinusHeightMm": 25,
+        "aorticValveArea": 74.57969276268162,
+        "angleDeg": 27.015407908115154,
+        "lvotOverAnnulusAreaRatio": 1.1238280351729981
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-255",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 20.241141893066246,
+        "sinusMm": 27.789535126908177,
+        "sinotubularJunctionMm": 25.43757590256444,
+        "lvotMm": 20.14097900687082,
+        "sinusHeightMm": 21,
+        "aorticValveArea": 44.86026638603193,
+        "angleDeg": 38.33621243011569,
+        "lvotOverAnnulusAreaRatio": 0.9901275274188733
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-258",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 27.466963237054152,
+        "sinusMm": 38.44111497215442,
+        "sinotubularJunctionMm": 36.56937738097667,
+        "lvotMm": 28.262197290069363,
+        "sinusHeightMm": 24.5,
+        "aorticValveArea": 44.33340326905229,
+        "angleDeg": 42.22533464070897,
+        "lvotOverAnnulusAreaRatio": 1.0587430074950184
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-259",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.642110540224014,
+        "sinusMm": 31.007153274141224,
+        "sinotubularJunctionMm": 27.996773681599432,
+        "lvotMm": 26.791205830830705,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 64.57546919554977,
+        "angleDeg": 17.85428397864185,
+        "lvotOverAnnulusAreaRatio": 1.0916338293699235
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-263",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.61350777481412,
+        "sinusMm": 29.51433588674266,
+        "sinotubularJunctionMm": 25.998661452242253,
+        "lvotMm": 21.87442337279024,
+        "sinusHeightMm": 23.5,
+        "aorticValveArea": 68.5563303395448,
+        "angleDeg": 29.79027237704922,
+        "lvotOverAnnulusAreaRatio": 0.935701568723092
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-265",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.44586923353913,
+        "sinusMm": 33.038681992872306,
+        "sinotubularJunctionMm": 30.258305211921616,
+        "lvotMm": 22.406007814916983,
+        "sinusHeightMm": 26,
+        "aorticValveArea": 62.73638648079608,
+        "angleDeg": 23.13205175466619,
+        "lvotOverAnnulusAreaRatio": 0.9132638966452904
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-270",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.16460138764324,
+        "sinusMm": 25.955964994153884,
+        "sinotubularJunctionMm": 24.46079164805227,
+        "lvotMm": 22.001635053690055,
+        "sinusHeightMm": 22,
+        "aorticValveArea": 28.195333298116648,
+        "angleDeg": 8.164730170952366,
+        "lvotOverAnnulusAreaRatio": 0.9853489605270921
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-277",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.09331174046017,
+        "sinusMm": 29.432045925239926,
+        "sinotubularJunctionMm": 28.030343756476157,
+        "lvotMm": 21.210984487233,
+        "sinusHeightMm": 21.5,
+        "aorticValveArea": 59.06993871132685,
+        "angleDeg": 20.598934601371937,
+        "lvotOverAnnulusAreaRatio": 1.0111884731306686
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-285",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.28515980354364,
+        "sinusMm": 31.09321048094133,
+        "sinotubularJunctionMm": 26.642391070750268,
+        "lvotMm": 24.839387264309057,
+        "sinusHeightMm": 24,
+        "aorticValveArea": 65.78509656311478,
+        "angleDeg": 37.37909884378819,
+        "lvotOverAnnulusAreaRatio": 1.046164131375852
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-287",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.86154150823883,
+        "sinusMm": 32.6066688661281,
+        "sinotubularJunctionMm": 27.831368215971885,
+        "lvotMm": 24.4459604856556,
+        "sinusHeightMm": 27.5,
+        "aorticValveArea": 51.051475237832875,
+        "angleDeg": 20.658611508906127,
+        "lvotOverAnnulusAreaRatio": 0.9668477810264069
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-289",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.001381224243328,
+        "sinusMm": 30.98360127608748,
+        "sinotubularJunctionMm": 27.940756849074102,
+        "lvotMm": 24.800818314149787,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 50.183858335302105,
+        "angleDeg": 26.275672139747666,
+        "lvotOverAnnulusAreaRatio": 1.067725344000391
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-303",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 26.174961072073494,
+        "sinusMm": 35.76188632310567,
+        "sinotubularJunctionMm": 31.488049419235093,
+        "lvotMm": 25.29431422419072,
+        "sinusHeightMm": 27,
+        "aorticValveArea": 88.71890844440361,
+        "angleDeg": 30.64003047673574,
+        "lvotOverAnnulusAreaRatio": 0.9338427035387665
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-312",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.130865162521793,
+        "sinusMm": 30.551466422423914,
+        "sinotubularJunctionMm": 28.06899009704436,
+        "lvotMm": 19.63462680301703,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 38.775461814083705,
+        "angleDeg": 15.976963775910402,
+        "lvotOverAnnulusAreaRatio": 0.7871337203849395
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-313",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 20.265497803642937,
+        "sinusMm": 25.30726396593022,
+        "sinotubularJunctionMm": 22.786663855944415,
+        "lvotMm": 19.437103101106437,
+        "sinusHeightMm": 21.5,
+        "aorticValveArea": 52.73084377874167,
+        "angleDeg": 40.383049003337355,
+        "lvotOverAnnulusAreaRatio": 0.9199167446622655
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-318",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.410382321562494,
+        "sinusMm": 30.503896517377385,
+        "sinotubularJunctionMm": 28.75787879664249,
+        "lvotMm": 20.45152662963263,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 35.642081362966906,
+        "angleDeg": 31.662703336041567,
+        "lvotOverAnnulusAreaRatio": 0.9124364350728833
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-323",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.456574996199524,
+        "sinusMm": 35.48362559626146,
+        "sinotubularJunctionMm": 31.832874017328596,
+        "lvotMm": 24.13743347980141,
+        "sinusHeightMm": 28.5,
+        "aorticValveArea": 68.37178586619355,
+        "angleDeg": 42.67134370000243,
+        "lvotOverAnnulusAreaRatio": 0.8990466681827302
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-328",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 27.7269703107888,
+        "sinusMm": 38.80654600704029,
+        "sinotubularJunctionMm": 31.61254692133064,
+        "lvotMm": 27.70708161693991,
+        "sinusHeightMm": 31.5,
+        "aorticValveArea": 63.81631344244525,
+        "angleDeg": 38.43311571311552,
+        "lvotOverAnnulusAreaRatio": 0.9985659045689824
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-330",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 20.624996270231378,
+        "sinusMm": 27.31676517461081,
+        "sinotubularJunctionMm": 25.2302284262557,
+        "lvotMm": 18.95002401727226,
+        "sinusHeightMm": 20.5,
+        "aorticValveArea": 57.1198170500352,
+        "angleDeg": 27.40792972116989,
+        "lvotOverAnnulusAreaRatio": 0.8441736113337921
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-331",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 29.373729493692657,
+        "sinusMm": 40.41602010069589,
+        "sinotubularJunctionMm": 36.039454418776764,
+        "lvotMm": 29.549722411280165,
+        "sinusHeightMm": 30,
+        "aorticValveArea": 75.95943333240763,
+        "angleDeg": 26.060961263333887,
+        "lvotOverAnnulusAreaRatio": 1.0120189129582153
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-338",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.140720048997764,
+        "sinusMm": 30.12063084953798,
+        "sinotubularJunctionMm": 28.338868358123285,
+        "lvotMm": 24.593440906676573,
+        "sinusHeightMm": 22,
+        "aorticValveArea": 42.41948039657039,
+        "angleDeg": 32.046082655551714,
+        "lvotOverAnnulusAreaRatio": 1.0378585135014333
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-347",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.753601497540256,
+        "sinusMm": 31.19600501762498,
+        "sinotubularJunctionMm": 29.771189744665026,
+        "lvotMm": 22.13795000733541,
+        "sinusHeightMm": 22.5,
+        "aorticValveArea": 65.09740528789618,
+        "angleDeg": 21.215160497948897,
+        "lvotOverAnnulusAreaRatio": 0.8685920943638735
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-353",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.529526820493974,
+        "sinusMm": 31.30476589892964,
+        "sinotubularJunctionMm": 28.45578138958187,
+        "lvotMm": 26.193167029241717,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 54.434962917882615,
+        "angleDeg": 34.58136485653416,
+        "lvotOverAnnulusAreaRatio": 1.0526657528089016
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-358",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.700079155407604,
+        "sinusMm": 28.626907456790658,
+        "sinotubularJunctionMm": 25.795823120770976,
+        "lvotMm": 22.398071497802675,
+        "sinusHeightMm": 20,
+        "aorticValveArea": 54.50119733569559,
+        "angleDeg": 25.893901669163935,
+        "lvotOverAnnulusAreaRatio": 0.9735684918100687
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-363",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.46210694615154,
+        "sinusMm": 33.36831634191581,
+        "sinotubularJunctionMm": 31.6324379938704,
+        "lvotMm": 25.702223949205884,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 67.59752277711205,
+        "angleDeg": 16.859959054683458,
+        "lvotOverAnnulusAreaRatio": 1.0189496650256065
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-364",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.293931820602687,
+        "sinusMm": 28.825417901931736,
+        "sinotubularJunctionMm": 26.976956931746315,
+        "lvotMm": 22.170063611892314,
+        "sinusHeightMm": 20,
+        "aorticValveArea": 54.9319161538129,
+        "angleDeg": 25.11032472113228,
+        "lvotOverAnnulusAreaRatio": 0.9889185904807443
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-365",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.081744492008152,
+        "sinusMm": 32.345872571966424,
+        "sinotubularJunctionMm": 29.217738915733232,
+        "lvotMm": 23.04995295267652,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 99.08772025975519,
+        "angleDeg": 17.861833131058376,
+        "lvotOverAnnulusAreaRatio": 0.916144962969766
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-369",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.571865529509864,
+        "sinusMm": 25.682813710230814,
+        "sinotubularJunctionMm": 23.89099892694201,
+        "lvotMm": 21.98871876561482,
+        "sinusHeightMm": 20.5,
+        "aorticValveArea": 43.70619382672882,
+        "angleDeg": 7.407991874670818,
+        "lvotOverAnnulusAreaRatio": 1.0390212758435182
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-382",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.386349605619458,
+        "sinusMm": 29.544942925997123,
+        "sinotubularJunctionMm": 26.755195526683703,
+        "lvotMm": 25.813366847589005,
+        "sinusHeightMm": 26.5,
+        "aorticValveArea": 73.61948327915731,
+        "angleDeg": 26.95217240354588,
+        "lvotOverAnnulusAreaRatio": 1.1204583453820434
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-383",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.879904217844167,
+        "sinusMm": 31.257825039938727,
+        "sinotubularJunctionMm": 28.539986360030184,
+        "lvotMm": 23.974665462903044,
+        "sinusHeightMm": 21,
+        "aorticValveArea": 52.07334481896435,
+        "angleDeg": 27.967096404121996,
+        "lvotOverAnnulusAreaRatio": 0.9285551509867015
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-386",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 27.514994021217873,
+        "sinusMm": 34.45209420168839,
+        "sinotubularJunctionMm": 32.09494672422373,
+        "lvotMm": 27.772922826010596,
+        "sinusHeightMm": 25.5,
+        "aorticValveArea": 56.14604118507655,
+        "angleDeg": 10.441574632308246,
+        "lvotOverAnnulusAreaRatio": 1.018836110386782
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-389",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.42085325375956,
+        "sinusMm": 32.95264173319981,
+        "sinotubularJunctionMm": 30.93641535293969,
+        "lvotMm": 21.243472258015057,
+        "sinusHeightMm": 26.5,
+        "aorticValveArea": 45.508402625014966,
+        "angleDeg": 23.143803605185905,
+        "lvotOverAnnulusAreaRatio": 0.8977320606797732
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-394",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.704251153368137,
+        "sinusMm": 28.580714538236258,
+        "sinotubularJunctionMm": 25.994693474443743,
+        "lvotMm": 21.295649146909522,
+        "sinusHeightMm": 24,
+        "aorticValveArea": 49.40120738985229,
+        "angleDeg": 7.719784482244275,
+        "lvotOverAnnulusAreaRatio": 0.9627026195133276
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-404",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.64198873753732,
+        "sinusMm": 29.650901333790305,
+        "sinotubularJunctionMm": 27.315406148950906,
+        "lvotMm": 25.93954535218911,
+        "sinusHeightMm": 22,
+        "aorticValveArea": 51.664638962336795,
+        "angleDeg": 17.81779120511631,
+        "lvotOverAnnulusAreaRatio": 1.1080853425815584
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-408",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 26.596545070544718,
+        "sinusMm": 32.91610649257579,
+        "sinotubularJunctionMm": 28.37562478619544,
+        "lvotMm": 27.214008654010502,
+        "sinusHeightMm": 26,
+        "aorticValveArea": 88.26768811825794,
+        "angleDeg": 37.11391920440435,
+        "lvotOverAnnulusAreaRatio": 1.0469708436273617
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-411",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.53939774368468,
+        "sinusMm": 29.734825956780433,
+        "sinotubularJunctionMm": 27.482036176019477,
+        "lvotMm": 22.588384774333317,
+        "sinusHeightMm": 24,
+        "aorticValveArea": 19.24241332462807,
+        "angleDeg": 15.475686700599274,
+        "lvotOverAnnulusAreaRatio": 1.004351515094392
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-415",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.145912927119472,
+        "sinusMm": 30.668340565665442,
+        "sinotubularJunctionMm": 29.20644486676117,
+        "lvotMm": 19.06117280685283,
+        "sinusHeightMm": 23,
+        "aorticValveArea": 42.71030580767294,
+        "angleDeg": 9.832099684670888,
+        "lvotOverAnnulusAreaRatio": 0.8125430091745424
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-416",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 29.154073192485953,
+        "sinusMm": 38.12567030339511,
+        "sinotubularJunctionMm": 32.46816321714412,
+        "lvotMm": 28.922029067752998,
+        "sinusHeightMm": 28,
+        "aorticValveArea": 117.53202876978919,
+        "angleDeg": 33.476129313464824,
+        "lvotOverAnnulusAreaRatio": 0.9841448790824112
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-419",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.823136317895383,
+        "sinusMm": 31.705364039406543,
+        "sinotubularJunctionMm": 26.826095298966234,
+        "lvotMm": 26.999233605414613,
+        "sinusHeightMm": 28,
+        "aorticValveArea": 49.06330157455744,
+        "angleDeg": 13.088959099330996,
+        "lvotOverAnnulusAreaRatio": 1.0931629334778366
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-425",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.16204982526194,
+        "sinusMm": 34.37289202607577,
+        "sinotubularJunctionMm": 31.40421219991488,
+        "lvotMm": 24.45170382323383,
+        "sinusHeightMm": 27.5,
+        "aorticValveArea": 58.62804177725582,
+        "angleDeg": 27.788765253928812,
+        "lvotOverAnnulusAreaRatio": 0.9443352849299818
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-429",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 26.284681963545964,
+        "sinusMm": 34.670754901405346,
+        "sinotubularJunctionMm": 31.543667065961124,
+        "lvotMm": 23.73397512488233,
+        "sinusHeightMm": 26,
+        "aorticValveArea": 72.44883021137184,
+        "angleDeg": 35.249435038683416,
+        "lvotOverAnnulusAreaRatio": 0.8153339239740892
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-434",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.285680387871984,
+        "sinusMm": 33.68148141279303,
+        "sinotubularJunctionMm": 28.61423608492211,
+        "lvotMm": 23.247691338415898,
+        "sinusHeightMm": 26.5,
+        "aorticValveArea": 55.14972946126217,
+        "angleDeg": 24.553247111660124,
+        "lvotOverAnnulusAreaRatio": 0.9163452042751927
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-435",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.49776792741355,
+        "sinusMm": 34.92479666822378,
+        "sinotubularJunctionMm": 32.790937772401925,
+        "lvotMm": 25.748887882940014,
+        "sinusHeightMm": 27,
+        "aorticValveArea": 50.281461459596784,
+        "angleDeg": 18.785826969864388,
+        "lvotOverAnnulusAreaRatio": 1.0197944039049902
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-437",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.072582881938857,
+        "sinusMm": 28.986980373805675,
+        "sinotubularJunctionMm": 26.59318205741058,
+        "lvotMm": 25.176877492495933,
+        "sinusHeightMm": 20,
+        "aorticValveArea": 49.88005355827406,
+        "angleDeg": 27.996316511325553,
+        "lvotOverAnnulusAreaRatio": 1.0083367181263314
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-439",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.319592075873558,
+        "sinusMm": 27.57036219064947,
+        "sinotubularJunctionMm": 25.569903431476927,
+        "lvotMm": 20.674544848827065,
+        "sinusHeightMm": 20.5,
+        "aorticValveArea": 36.77864522557358,
+        "angleDeg": 9.70687983837401,
+        "lvotOverAnnulusAreaRatio": 0.9404032755049269
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-441",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 24.227279269412822,
+        "sinusMm": 30.97226351927518,
+        "sinotubularJunctionMm": 29.707763285467404,
+        "lvotMm": 22.66176882517601,
+        "sinusHeightMm": 22.5,
+        "aorticValveArea": 54.3149181755237,
+        "angleDeg": 7.0200722316369575,
+        "lvotOverAnnulusAreaRatio": 0.874940094982471
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-445",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.66738509425524,
+        "sinusMm": 29.77577648274698,
+        "sinotubularJunctionMm": 27.240398060948607,
+        "lvotMm": 28.038041070619403,
+        "sinusHeightMm": 24.5,
+        "aorticValveArea": 41.952283368620535,
+        "angleDeg": 28.371671499931885,
+        "lvotOverAnnulusAreaRatio": 1.1932517560693514
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-453",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 27.555705847897237,
+        "sinusMm": 35.1777181284849,
+        "sinotubularJunctionMm": 32.531795278028504,
+        "lvotMm": 28.2611453009357,
+        "sinusHeightMm": 26,
+        "aorticValveArea": 75.6717370126846,
+        "angleDeg": 30.91576188095248,
+        "lvotOverAnnulusAreaRatio": 1.0518563562327894
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-454",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 21.60628550762903,
+        "sinusMm": 28.484419942136096,
+        "sinotubularJunctionMm": 24.876326237875155,
+        "lvotMm": 20.68961314424179,
+        "sinusHeightMm": 24.5,
+        "aorticValveArea": 44.47224569619817,
+        "angleDeg": 13.546441202036494,
+        "lvotOverAnnulusAreaRatio": 0.9169476025511053
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-458",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 26.585622089854617,
+        "sinusMm": 34.91798232772806,
+        "sinotubularJunctionMm": 33.31435197398491,
+        "lvotMm": 26.08525697027538,
+        "sinusHeightMm": 24.5,
+        "aorticValveArea": 85.95485526761792,
+        "angleDeg": 37.904399775396925,
+        "lvotOverAnnulusAreaRatio": 0.9627124421621808
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-461",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 25.08870057356464,
+        "sinusMm": 27.76116754493332,
+        "sinotubularJunctionMm": 25.69780170051215,
+        "lvotMm": 25.719142657591377,
+        "sinusHeightMm": 19.5,
+        "aorticValveArea": 58.866234029749236,
+        "angleDeg": 17.37092273778424,
+        "lvotOverAnnulusAreaRatio": 1.0508884964008505
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-462",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 23.680180920590885,
+        "sinusMm": 29.46405491506159,
+        "sinotubularJunctionMm": 29.167837811878314,
+        "lvotMm": 22.79311883682932,
+        "sinusHeightMm": 20,
+        "aorticValveArea": 107.91148231538362,
+        "angleDeg": 20.62575293806812,
+        "lvotOverAnnulusAreaRatio": 0.9264830478360585
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-465",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 29.913172499821336,
+        "sinusMm": 38.41784023594895,
+        "sinotubularJunctionMm": 31.739651466286286,
+        "lvotMm": 30.098433120113693,
+        "sinusHeightMm": 30,
+        "aorticValveArea": 115.16146520892529,
+        "angleDeg": 30.376798584300335,
+        "lvotOverAnnulusAreaRatio": 1.012424914518142
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-476",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 28.509712735038036,
+        "sinusMm": 34.26213109639886,
+        "sinotubularJunctionMm": 32.69059436199334,
+        "lvotMm": 30.832885552391076,
+        "sinusHeightMm": 21.5,
+        "aorticValveArea": 65.55167353625221,
+        "angleDeg": 22.330378094638274,
+        "lvotOverAnnulusAreaRatio": 1.1696142719581801
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-488",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 22.461495149819974,
+        "sinusMm": 27.78784854417313,
+        "sinotubularJunctionMm": 25.182021757659374,
+        "lvotMm": 22.372317408973043,
+        "sinusHeightMm": 20.5,
+        "aorticValveArea": 65.58643620895587,
+        "angleDeg": 28.768620373427435,
+        "lvotOverAnnulusAreaRatio": 0.9920752637960312
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    },
+    {
+      "id": "heart-491",
+      "provenance": "synthetic",
+      "measures": {
+        "annulusMm": 27.897265944186913,
+        "sinusMm": 36.86504070068476,
+        "sinotubularJunctionMm": 30.56096613269824,
+        "lvotMm": 28.091069902868174,
+        "sinusHeightMm": 30.5,
+        "aorticValveArea": 90.03981471453066,
+        "angleDeg": 28.975706637241615,
+        "lvotOverAnnulusAreaRatio": 1.0139423800783687
+      },
+      "split": "hidden",
+      "thumbUrl": "",
+      "meshUrl": ""
+    }
+  ]
+}
