@@ -1,0 +1,43 @@
+{
+  "name": "Verstraeten et al. 2023 data repository, virtual cohort of 500 synthetic stenotic aortic roots",
+  "url": "https://data.4tu.nl/datasets/3f6a3788-96e6-4b81-b37b-f07eeec85965",
+  "authors": "Verstraeten et al.",
+  "year": 2023,
+  "licence": "CC BY 4.0",
+  "cohort": "virtual_cohort",
+  "md5": "9f40559c1d58d42321c0d8fb680b68e5",
+  "files": [
+    "shapeFeatures.xlsx",
+    "Case_1.stl to Case_500.stl"
+  ],
+  "seed": 20230901,
+  "split": {
+    "method": "Stratified by annulus band, 20% of each band hidden by largest remainder, seeded shuffle within band",
+    "bandEdgesMm": [
+      21,
+      23,
+      25,
+      27,
+      29
+    ],
+    "dev": 400,
+    "hidden": 100
+  },
+  "columns": {
+    "D_an": "annulusMm",
+    "D_sinus": "sinusMm",
+    "D_stj": "sinotubularJunctionMm",
+    "D_lvot": "lvotMm",
+    "H_sinus": "sinusHeightMm",
+    "AVA": "aorticValveArea",
+    "angle": "angleDeg",
+    "ratio_lvot_over_an_area": "lvotOverAnnulusAreaRatio"
+  },
+  "rowToMesh": {
+    "method": "Row N of shapeFeatures.xlsx is Case_N.stl. Checked by fitting the mean of D_lvot, D_an, D_sinus and D_stj to the square root of each mesh's total triangle area.",
+    "maxResidualMm": 4,
+    "minR": 0.9,
+    "limit": "Proves the ordering as a whole and catches outliers. Cannot detect a swap of two hearts of the same size."
+  },
+  "assets": "Dev hearts only: simplified meshes (meshopt GLB) and shaded thumbnails. Hidden hearts have measurements only."
+}
