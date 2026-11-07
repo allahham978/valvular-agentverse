@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f8f8;
+  --foreground: #1e2a32;
+  --panel: #ffffff;
+  --panel-border: #dfe4e7;
+  --muted: #64737d;
+  --accent: #0f766e;
+  --accent-foreground: #ffffff;
+  --status-fit: #2f9e6e;
+  --status-risk: #d9941e;
+  --status-no-fit: #d04a43;
+  --radius: 0.5rem;
+  --panel-col: 380px;
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --panel-col: 460px;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-panel-border: var(--panel-border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-fit: var(--status-fit);
+  --color-risk: var(--status-risk);
+  --color-no-fit: var(--status-no-fit);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgb(30 42 50 / 0.06), 0 8px 24px rgb(30 42 50 / 0.06);
+}
+
+.mono {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.stage-panel {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.stage-opening {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+[data-stage-progress="1"] .stage-panel {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+[data-stage-progress="1"] .stage-opening {
+  opacity: 0;
+  visibility: hidden;
+}

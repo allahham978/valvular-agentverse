@@ -27,3 +27,6 @@ reports/
 research/
 research_notes/*
 !research_notes/Valvular build/
+
+next-env.d.ts
+*.tsbuildinfo
