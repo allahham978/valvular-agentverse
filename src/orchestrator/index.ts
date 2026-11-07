@@ -76,8 +76,8 @@ function turnGuard(ms: number) {
   let timer: ReturnType<typeof setTimeout> | undefined;
   const expired = new Promise<never>((_, reject) => {
     timer = setTimeout(() => {
-      controller.abort();
       reject(new Stop("budget", `The agent turn took longer than ${ms} ms.`, "maxTurnMs"));
+      controller.abort();
     }, ms);
   });
   expired.catch(() => undefined);
@@ -135,7 +135,9 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     const summary = SummarySchema.safeParse(outcome.evidence.result);
     if (!summary.success) throw new Stop("model-error", "evaluate_design returned no summary.");
     record(outcome.evidence);
-    return { summary: summary.data, evidenceId: outcome.evidence.id };
+    const raw = outcome.evidence.result as { label?: unknown } | null;
+    const label = typeof raw?.label === "string" ? raw.label : undefined;
+    return { summary: summary.data, evidenceId: outcome.evidence.id, label };
   }
 
   async function callTool(name: string, input: unknown): Promise<ToolOutcome> {
@@ -271,13 +273,13 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     run.proposals.push(proposal);
     emit({ actor: "fixer", type: "proposal", text: rationale, data: { proposal, design } });
 
-    const { summary, evidenceId } = await evaluateAsCode(design);
+    const { summary, evidenceId, label } = await evaluateAsCode(design);
     const improved = summary.fitPct > from.summary.fitPct;
     emit({
       actor: "code",
       type: "evaluation",
-      text: `${design.label} fits ${summary.fitPct.toFixed(1)}% (${improved ? "better than" : "no better than"} ${from.summary.fitPct.toFixed(1)}%).`,
-      data: { designId: design.id, summary, evidenceId, improved },
+      text: `${design.label} fits ${summary.fitPct.toFixed(1)}% (${improved ? "better than" : "no better than"} ${from.summary.fitPct.toFixed(1)}%)${label ? ` [${label}]` : ""}.`,
+      data: { designId: design.id, summary, evidenceId, improved, ...(label ? { label } : {}) },
     });
     if (!improved) throw new Stop("no-improvement", `${design.label} does not beat the current design.`);
     return { design, summary };
@@ -289,8 +291,8 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     emit({
       actor: "code",
       type: "evaluation",
-      text: `${startDesign.label} fits ${first.summary.fitPct.toFixed(1)}%.`,
-      data: { designId: startDesign.id, summary: first.summary, evidenceId: first.evidenceId },
+      text: `${startDesign.label} fits ${first.summary.fitPct.toFixed(1)}%${first.label ? ` [${first.label}]` : ""}.`,
+      data: { designId: startDesign.id, summary: first.summary, evidenceId: first.evidenceId, ...(first.label ? { label: first.label } : {}) },
     });
 
     if (options.startAt !== "propose") recordFindings("investigate", await runStep("investigate", 0));
