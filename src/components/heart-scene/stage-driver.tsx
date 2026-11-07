@@ -102,7 +102,7 @@ export function StageDriver({ visual }: { visual: Visual }) {
     const progress = nextProgress(
       getStageProgress(),
       target,
-      Math.min(delta, MAX_STEP_SECONDS),
+      Math.min(delta, reduced ? CROSSFADE_SECONDS : MAX_STEP_SECONDS),
       reduced,
     );
     setStageProgress(progress);
