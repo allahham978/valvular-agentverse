@@ -1,8 +1,8 @@
 # REQ-4 unresolved visual findings
 
 ## Expanded wall (src/components/wall/expanded-wall.tsx)
-1. Brief breach: the overlay covers the header's "Synthetic test hearts" label and shows no equivalent. Add it to the overlay header, independent of the Sample data label, which goes away when real data connects.
-2. Clarity: at 1440x900 row 11 ends about 5px above the panel edge, so the wall looks complete with 209 hearts showing and 191 hidden (scrollHeight 1574, clientHeight 789). Size cells so all 400 fit without scrolling (story: "see all test hearts at once"). If thumbnails become too small, keep scrolling but add a visible "400 hearts" count and a clear cue that more rows exist.
+1. (Fixed: overlay header now has its own Synthetic test hearts label.) Brief breach: the overlay covers the header's "Synthetic test hearts" label and shows no equivalent. Add it to the overlay header, independent of the Sample data label, which goes away when real data connects.
+2. (Mitigated: footer says "400 hearts. Scroll for more rows."; still scrolls.) Clarity: at 1440x900 row 11 ends about 5px above the panel edge, so the wall looks complete with 209 hearts showing and 191 hidden (scrollHeight 1574, clientHeight 789). Size cells so all 400 fit without scrolling (story: "see all test hearts at once"). If thumbnails become too small, keep scrolling but add a visible "400 hearts" count and a clear cue that more rows exist.
 3. Hover ID: "sample-031" wraps to two lines and covers the lower half of the thumbnail at both sizes (expanded-wall-thumb-hover-*.png). Stop it wrapping and fit it to the cell, or show the hovered ID in the header.
 4. Alignment: grid left edge doesn't match the title (58 vs 45 at 1440, 66 vs 45 at 1920), and the right edge doesn't match the close button. Remove justify-center; use repeat(auto-fill, minmax(size, 1fr)) with square cells. Also helps the lone sample-400 on the last row at 1440.
 5. Restraint: every thumbnail has a saturated 2px border plus a corner dot showing the same status; it reads as 400 coloured boxes, not 400 hearts. Keep the wall-thumb-status marker (spec requires it) and replace the border (status.ts cell class) with a neutral hairline or very light status tint.
@@ -27,4 +27,4 @@
 - d) Popup has a Close button but the overlay has an X; pick one pattern.
 
 ## For the Reviewer (not visual)
-Round 3 changed files outside the plan's list: root-view, heart-scene/studio-lighting.tsx, tokens.css, ui/button.tsx, data-label. Check these for merge conflicts with REQ-3 and record why each was needed.
+Round 3 changed files outside the plan's list: root-view, heart-scene/studio-lighting.tsx, tokens.css, ui/button.tsx, data-label. Reasons are now recorded in docs/plans/req-4.md. The global DataLabel restyle was reverted.

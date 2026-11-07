@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { FitResult, Heart } from "@/contracts";
@@ -24,11 +24,13 @@ const Dot = memo(function Dot({
   result,
   inMain,
   onHover,
+  onFocusDot,
   onSelect,
 }: {
   result: FitResult;
   inMain: boolean;
   onHover: (heartId: string | null, element?: HTMLElement) => void;
+  onFocusDot: (heartId: string, element: HTMLElement) => void;
   onSelect: (heartId: string) => void;
 }) {
   const { heartId, status } = result;
@@ -45,8 +47,9 @@ const Dot = memo(function Dot({
         inMain && "ring-2 ring-foreground ring-offset-2 ring-offset-panel",
       )}
       onPointerEnter={(event) => onHover(heartId, event.currentTarget)}
+      onKeyDown={(event) => event.key === "Tab" && onHover(null)}
       onPointerLeave={() => onHover(null)}
-      onFocus={(event) => onHover(heartId, event.currentTarget)}
+      onFocus={(event) => onFocusDot(heartId, event.currentTarget)}
       onBlur={() => onHover(null)}
       onClick={() => onSelect(heartId)}
     />
@@ -55,14 +58,32 @@ const Dot = memo(function Dot({
 
 export function DotGrid({ results, hearts, mainHeartId, onSelect }: Props) {
   const [hover, setHover] = useState<Hover | null>(null);
+  const afterPopup = useRef(false);
+
+  const select = useCallback(
+    (heartId: string) => {
+      afterPopup.current = true;
+      setHover(null);
+      onSelect(heartId);
+    },
+    [onSelect],
+  );
 
   const onHover = useCallback((heartId: string | null, element?: HTMLElement) => {
+    afterPopup.current = false;
     if (!heartId || !element) return setHover(null);
     const panel = element.closest("[data-testid=wall-panel]");
     const dot = element.getBoundingClientRect();
     const edge = panel?.getBoundingClientRect().left ?? dot.left;
     setHover({ heartId, centreY: dot.top + dot.height / 2, right: window.innerWidth - edge + CARD_GAP });
   }, []);
+
+  const onFocusDot = useCallback(
+    (heartId: string, element: HTMLElement) => {
+      if (!afterPopup.current) onHover(heartId, element);
+    },
+    [onHover],
+  );
 
   const heart = hover && hearts.get(hover.heartId);
   const cardHeight = hover && window.innerWidth >= LARGE_SCREEN ? CARD_HEIGHT_LARGE : CARD_HEIGHT;
@@ -82,7 +103,8 @@ export function DotGrid({ results, hearts, mainHeartId, onSelect }: Props) {
             result={result}
             inMain={result.heartId === mainHeartId}
             onHover={onHover}
-            onSelect={onSelect}
+            onFocusDot={onFocusDot}
+            onSelect={select}
           />
         ))}
       </div>
