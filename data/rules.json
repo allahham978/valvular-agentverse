@@ -1,0 +1,50 @@
+{
+  "version": "placeholder-1",
+  "rules": [
+    {
+      "id": "annulus-coverage",
+      "kind": "annulus-coverage",
+      "effect": "no-fit",
+      "status": "demo-assumption",
+      "source": null,
+      "description": "A heart fits a size when its annulus lies inside that size's annulus range.",
+      "params": { "measure": "annulusMm" }
+    },
+    {
+      "id": "frame-outflow",
+      "kind": "frame-outflow",
+      "effect": "none",
+      "status": "demo-assumption",
+      "source": null,
+      "description": "The valve frame's outflow end sits this far above its nominal size.",
+      "params": { "offsetMm": 4 }
+    },
+    {
+      "id": "sinus-clearance",
+      "kind": "outflow-clearance",
+      "effect": "risk",
+      "status": "demo-assumption",
+      "source": null,
+      "description": "The sinus must clear the frame's outflow by at least this much.",
+      "params": { "measure": "sinusMm", "minMm": 1 }
+    },
+    {
+      "id": "stj-excess",
+      "kind": "outflow-excess",
+      "effect": "risk",
+      "status": "demo-assumption",
+      "source": null,
+      "description": "The frame's outflow may exceed the sinotubular junction by at most this much.",
+      "params": { "measure": "sinotubularJunctionMm", "maxMm": 2 }
+    },
+    {
+      "id": "size-width",
+      "kind": "size-width",
+      "effect": "reject-design",
+      "status": "demo-assumption",
+      "source": null,
+      "description": "One size may cover at most this much annulus range.",
+      "params": { "maxMm": 2.5 }
+    }
+  ]
+}
