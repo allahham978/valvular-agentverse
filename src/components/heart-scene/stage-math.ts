@@ -45,6 +45,6 @@ export const ROOT_POSE = {
   target: new Vector3(0, 0, 0),
 };
 export const HEART_POSE = {
-  position: HEART_PLACEMENT.position.clone().add(new Vector3(0, 0, 18)),
-  target: HEART_PLACEMENT.position.clone(),
+  position: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.4, 20.5)),
+  target: HEART_PLACEMENT.position.clone().add(new Vector3(0, -0.4, 0)),
 };

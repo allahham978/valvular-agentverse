@@ -37,8 +37,10 @@ function createWallMaterial(side: typeof BackSide | typeof FrontSide) {
 
 function createLeafletMaterial() {
   return new MeshPhysicalMaterial({
-    color: "#efe8df",
-    roughness: 0.45,
+    color: "#f6f1ea",
+    emissive: "#f6f1ea",
+    emissiveIntensity: 0.22,
+    roughness: 0.55,
     clearcoat: 0.3,
     clearcoatRoughness: 0.4,
     side: DoubleSide,
