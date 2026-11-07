@@ -1,4 +1,4 @@
-import { BufferAttribute, BufferGeometry } from "three";
+import { BufferAttribute, BufferGeometry, InterleavedBufferAttribute } from "three";
 
 const BANDS = 24;
 const RADIUS_PERCENTILE = 0.85;
@@ -6,7 +6,7 @@ const INSIDE = 0.72;
 const FROM = 0.12;
 const TO = 0.4;
 
-function bandStats(position: BufferAttribute, min: number, span: number) {
+function bandStats(position: BufferAttribute | InterleavedBufferAttribute, min: number, span: number) {
   const bandOf = (x: number) =>
     Math.min(BANDS - 1, Math.floor(((x - min) / span) * BANDS));
   const sums = Array.from({ length: BANDS }, () => ({ y: 0, z: 0, n: 0 }));
