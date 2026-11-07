@@ -130,3 +130,10 @@ Don't touch `page.tsx`, `tokens.css`, `stage.ts` or `stage-gate.tsx`. If one see
 - **Aorta tint:** the salvaged colours haven't been reviewed on screen. RES-3's first test colour was barely visible, so check this at M1 and change only the constants in `build-heart.ts`.
 - **Re-renders per frame:** `useCentreInFreeArea` and `StageGate` re-render on every progress change. Keep the heart and its memoised geometry out of those paths, and read progress in `useFrame` with `getStageProgress`, not the hook.
 - **Polish time:** this is the centrepiece, but tests come first. Get M0 to M6 green and committed, then polish for the auditor. Don't polish between milestones.
+
+## Round 3 decisions
+
+- **Lighting:** the scene keeps drei `Environment` built from `Lightformer`s rather than a local HDRI file. No licensed HDRI is in the repo, the Lightformer set costs no download and no asset licence, and one shared setup lights the heart and root. Swap in an HDRI only if the highlights need it.
+- **Heart shadow:** the heart keeps a gradient sprite, not `ContactShadows`. The heart beats and turns, so a shadow baked once with `frames={1}` would be stale straight away. The root uses `ContactShadows` with `frames={1}` because it is static.
+- **Root axis and landing:** `VALVE_AXIS` is tilted about 10 degrees (z 0.361 to 0.18), inside the plan's 15 degree tolerance, so the root continues along the tinted aorta at 0.4 to 0.6. The root lands rotated 1.4 rad about the vertical, because the flat step in the sample mesh rim is in the source mesh and faces away from that view.
+- **Not done:** aorta tint seam softening in `build-heart.ts`, and the ragged white rim where leaflets meet the wall.

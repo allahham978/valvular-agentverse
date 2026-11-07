@@ -86,8 +86,8 @@ export function StageDriver({ visual }: { visual: Visual }) {
     impl.mouseButtons.right = ACTION.NONE;
     impl.touches.two = ACTION.NONE;
     impl.touches.three = ACTION.NONE;
-    impl.minPolarAngle = 0.6;
-    impl.maxPolarAngle = Math.PI - 0.6;
+    impl.minPolarAngle = 0.9;
+    impl.maxPolarAngle = Math.PI - 0.9;
     impl.smoothTime = 0.2;
     impl.draggingSmoothTime = 0.08;
   }, []);

@@ -80,7 +80,7 @@ function createHeartRig(scene: Object3D) {
       const seconds = performance.now() / 1000;
       const pulse = Math.pow(Math.sin(Math.PI * ((seconds * BEATS_PER_SECOND) % 1)), 6);
       heart.scale.setScalar(1 + BEAT_SIZE * pulse * visual.motion);
-      heart.rotation.y = TURN_RADIANS * Math.sin(seconds * TURN_SPEED) * visual.motion;
+      heart.rotation.y = -TURN_RADIANS * Math.sin(seconds * TURN_SPEED) * visual.motion;
 
       const nowFading = visual.heart < 1;
       if (nowFading !== fading) {
