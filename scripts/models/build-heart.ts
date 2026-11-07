@@ -117,7 +117,7 @@ function tint(positions: Float32Array) {
   const colours = new Float32Array(positions.length);
   for (let v = 0; v < positions.length; v += 3) {
     const d = distanceToLine(positions[v], positions[v + 1], positions[v + 2]);
-    const t = Math.min(1, Math.max(0, (AORTA_RADIUS * 1.15 - d) / (AORTA_RADIUS * 0.3)));
+    const t = Math.min(1, Math.max(0, (AORTA_RADIUS * 1.3 - d) / (AORTA_RADIUS * 0.7)));
     const mix = t * t * (3 - 2 * t);
     for (let k = 0; k < 3; k++) {
       colours[v + k] = BODY_COLOUR[k] + (AORTA_COLOUR[k] - BODY_COLOUR[k]) * mix;

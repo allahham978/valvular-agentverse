@@ -8,7 +8,7 @@ import { smoothstep } from "./stage-math";
 import { zoomToValve } from "./stage-input";
 
 const GONE_BY = 0.15;
-const LABEL_SWAP_AT = 0.5;
+const LABEL_SWAP_AT = 0.6;
 
 function showLabel(label: Element, shown: boolean) {
   const style = (label as HTMLElement).style;
@@ -42,7 +42,7 @@ export function OpeningUi() {
   return (
     <div
       ref={ref}
-      className="stage-opening absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4"
+      className="stage-opening absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4"
     >
       <div
         data-testid="scroll-cue"

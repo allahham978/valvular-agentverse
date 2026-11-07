@@ -6,9 +6,11 @@ import { useGLTF } from "@react-three/drei";
 import {
   BackSide,
   Box3,
+  Color,
   DoubleSide,
   FrontSide,
   Mesh,
+  MeshBasicMaterial,
   MeshPhysicalMaterial,
   Object3D,
   Vector3,
@@ -23,15 +25,17 @@ const WALL_OPACITY = 0.16;
 const LEAFLET_FLOOR = 0.03;
 // The sample mesh has a flat step in its rim, so land on the side where it faces away.
 const LANDING_YAW = -1.4;
+const LANDING_TILT = 0.3;
 
 function createWallMaterial(side: typeof BackSide | typeof FrontSide) {
   return new MeshPhysicalMaterial({
-    color: "#8ccbc2",
+    color: "#d3ece8",
     transparent: true,
     opacity: WALL_OPACITY,
     roughness: 0.5,
-    clearcoat: 0.15,
-    clearcoatRoughness: 0.5,
+    sheen: 1,
+    sheenColor: new Color("#9fdcd2"),
+    sheenRoughness: 0.35,
     envMapIntensity: 0.5,
     side,
     depthWrite: false,
@@ -40,10 +44,10 @@ function createWallMaterial(side: typeof BackSide | typeof FrontSide) {
 
 function createLeafletMaterial() {
   return new MeshPhysicalMaterial({
-    color: "#ffffff",
-    emissive: "#ffffff",
-    emissiveIntensity: 0.8,
-    roughness: 0.55,
+    color: "#f6eadc",
+    emissive: "#f6eadc",
+    emissiveIntensity: 0.15,
+    roughness: 0.6,
     side: DoubleSide,
   });
 }
@@ -56,6 +60,8 @@ function buildRoot(source: Object3D) {
   });
   const wallMaterials: MeshPhysicalMaterial[] = [];
   const leafletMaterial = createLeafletMaterial();
+  const prepassMaterial = new MeshBasicMaterial({ colorWrite: false, side: DoubleSide });
+  const prepasses: Mesh[] = [];
   for (const mesh of meshes) {
     mesh.geometry.computeVertexNormals();
     const parts = splitLeaflets(mesh.geometry);
@@ -77,6 +83,14 @@ function buildRoot(source: Object3D) {
     leaflets.quaternion.copy(mesh.quaternion);
     leaflets.scale.copy(mesh.scale);
     mesh.parent?.add(leaflets);
+
+    const prepass = new Mesh(parts.leaflets, prepassMaterial);
+    prepass.renderOrder = 1.9;
+    prepass.position.copy(leaflets.position);
+    prepass.quaternion.copy(leaflets.quaternion);
+    prepass.scale.copy(leaflets.scale);
+    prepasses.push(prepass);
+    mesh.parent?.add(prepass);
   }
   const box = new Box3().setFromObject(clone);
   const size = box.getSize(new Vector3());
@@ -87,10 +101,11 @@ function buildRoot(source: Object3D) {
     root: clone,
     setOpacity(opacity: number, heart: number) {
       const overHeart = heart > 0;
-      for (const material of [...wallMaterials, leafletMaterial]) material.depthTest = !overHeart;
+      for (const material of [...wallMaterials, leafletMaterial, prepassMaterial]) material.depthTest = !overHeart;
       clone.visible = opacity > 0;
       for (const material of wallMaterials) material.opacity = WALL_OPACITY * opacity;
       const solid = opacity >= 1;
+      for (const prepass of prepasses) prepass.visible = !solid && opacity > 0;
       leafletMaterial.opacity = opacity > 0 ? LEAFLET_FLOOR + (1 - LEAFLET_FLOOR) * opacity ** 2 : 0;
       if (leafletMaterial.transparent === solid) {
         leafletMaterial.transparent = !solid;
@@ -113,7 +128,7 @@ export function RootView({ visual }: { visual: { root: number; heart: number } }
   useFrame(() => rig.setOpacity(visual.root, visual.heart));
 
   return (
-    <group position={[0, ROOT_LIFT, 0]} rotation={[0, LANDING_YAW, 0]}>
+    <group position={[0, ROOT_LIFT, 0]} rotation={[LANDING_TILT, LANDING_YAW, 0]}>
       <group rotation={[0, 0, Math.PI / 2]}>
         <primitive object={rig.root} />
         <ValveModel />
