@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createModelClient, ModelSpecSchema } from "@/agents/model-client";
-import { startRun } from "@/run/store";
+import { offerRecording, startReplayRun } from "@/replay";
+import { isRunId, startRun } from "@/run/store";
 import { createAgentTools } from "@/tools";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+const ReplayBodySchema = z.object({ replayId: z.string() });
 
 const BodySchema = z.object({
   model: ModelSpecSchema,
@@ -22,7 +25,16 @@ const BodySchema = z.object({
 });
 
 export async function POST(request: Request) {
-  const body = BodySchema.safeParse(await request.json().catch(() => null));
+  const payload: unknown = await request.json().catch(() => null);
+  const replay = ReplayBodySchema.safeParse(payload);
+  if (replay.success) {
+    if (!isRunId(replay.data.replayId)) return NextResponse.json({ error: "Invalid replay ID." }, { status: 400 });
+    const id = startReplayRun(replay.data.replayId);
+    if (id === null) return NextResponse.json({ error: "Unknown replay." }, { status: 404 });
+    return NextResponse.json({ id }, { status: 201 });
+  }
+
+  const body = BodySchema.safeParse(payload);
   if (!body.success) return NextResponse.json({ error: z.prettifyError(body.error) }, { status: 400 });
 
   const model = createModelClient(body.data.model);
@@ -32,6 +44,7 @@ export async function POST(request: Request) {
     tools: createAgentTools(),
     budget: body.data.budget,
     seed: body.data.seed,
+    postLoopSteps: model.mode === "live" ? [offerRecording] : [],
   });
   return NextResponse.json({ id }, { status: 201 });
 }

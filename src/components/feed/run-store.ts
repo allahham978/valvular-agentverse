@@ -81,15 +81,14 @@ function receive(event: RunEvent) {
   schedule();
 }
 
-export async function startRun() {
-  if (started) return;
+async function begin(request: unknown) {
   started = true;
   publish();
   try {
     const response = await fetch("/api/runs", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(demoRequest),
+      body: JSON.stringify(request),
     });
     if (!response.ok) throw new Error(`POST /api/runs ${response.status}`);
     const { id } = (await response.json()) as { id: string };
@@ -99,6 +98,21 @@ export async function startRun() {
     stopped = true;
     publish();
   }
+}
+
+export function startRun() {
+  if (!started) return begin(demoRequest);
+}
+
+export function startReplay(replayId: string) {
+  source?.close();
+  clearTimeout(timer);
+  timer = undefined;
+  received.length = 0;
+  shown = 0;
+  released = false;
+  stopped = false;
+  return begin({ replayId });
 }
 
 export function releaseFix() {
