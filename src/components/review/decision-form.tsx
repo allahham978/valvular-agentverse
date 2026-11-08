@@ -7,11 +7,19 @@ import type { Decision } from "@/contracts";
 
 type Saved = { decision: Decision; replanRunId?: string };
 
-function Outcome({ decision, replanRunId }: Saved) {
+function Outcome({ decision, replanRunId, runId }: Saved & { runId: string }) {
   return (
     <section data-testid="review-decision" className="rounded-lg border border-accent bg-panel p-5 text-sm">
       {decision.status === "approved" ? (
-        <p className="font-medium">Approved by {decision.by}</p>
+        <>
+          <p className="font-medium">Approved by {decision.by}</p>
+          <Link
+            href={`/results?run=${runId}`}
+            className="mt-3 inline-flex rounded-md bg-accent px-3 py-2 font-medium text-white hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            See how the fix does on 100 hidden hearts →
+          </Link>
+        </>
       ) : (
         <>
           <p className="font-medium">Rejected by {decision.by}. Sent back to the Fixer.</p>
@@ -34,7 +42,7 @@ export function DecisionForm({ runId, decision }: { runId: string; decision?: De
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
-  if (saved) return <Outcome {...saved} />;
+  if (saved) return <Outcome {...saved} runId={runId} />;
 
   async function submit(status: Decision["status"]) {
     setError("");
