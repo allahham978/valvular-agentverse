@@ -1,79 +1,79 @@
 {
-  "at": "2026-11-08T00:44:58.286Z",
-  "finished": 4,
+  "at": "2026-11-08T03:19:31.429Z",
+  "finished": 5,
   "total": 10,
-  "slowestMs": 180008,
-  "slowestFinishedMs": 162005,
+  "slowestMs": 180011,
+  "slowestFinishedMs": 174092,
   "runs": [
     {
-      "id": "f58874b6-4795-4111-aeec-978902cfa9d0",
+      "id": "f558d4cc-3ff4-494c-aa5a-021fda83c0a9",
+      "ok": true,
+      "ms": 167445,
+      "reason": "investigated",
+      "detail": "The Breaker reported its findings."
+    },
+    {
+      "id": "bbdf28bd-b473-4263-8f2a-b851ce1a9a42",
+      "ok": true,
+      "ms": 146536,
+      "reason": "investigated",
+      "detail": "The Breaker reported its findings."
+    },
+    {
+      "id": "2e70fe50-4420-4b65-9b9a-71e6dde18dc9",
       "ok": false,
-      "ms": 180008,
+      "ms": 180011,
       "reason": "budget",
       "detail": "The agent turn took longer than 180000 ms."
     },
     {
-      "id": "22c91ef1-5666-4471-bc94-36b51ddf6686",
-      "ok": false,
-      "ms": 49441,
-      "reason": "budget",
-      "detail": "More than 16 tool calls in one turn."
-    },
-    {
-      "id": "773d248c-5182-4fba-ba82-eab8218df93e",
+      "id": "4522decb-e5b9-4555-9ae6-6e1565b47b7d",
       "ok": true,
-      "ms": 59462,
+      "ms": 121835,
       "reason": "investigated",
       "detail": "The Breaker reported its findings."
     },
     {
-      "id": "b11512a2-47d0-49ac-a596-3a830ccdcd0a",
+      "id": "227aa00e-dfea-493f-a9b1-3bee1d25ae73",
+      "ok": false,
+      "ms": 179969,
+      "reason": "budget",
+      "detail": "The agent turn took longer than 180000 ms."
+    },
+    {
+      "id": "fbf9586d-eca1-4e13-a138-23a4ff551321",
+      "ok": false,
+      "ms": 175199,
+      "reason": "model-error",
+      "detail": "Model step timed out after 60 s, then again on its one retry."
+    },
+    {
+      "id": "4f978cf9-2827-436c-a201-d389ac2ca4fc",
       "ok": true,
-      "ms": 140065,
+      "ms": 126368,
       "reason": "investigated",
       "detail": "The Breaker reported its findings."
     },
     {
-      "id": "79698a6e-522d-4597-adce-1e8807c84ce8",
-      "ok": false,
-      "ms": 168438,
-      "reason": "budget",
-      "detail": "More than 16 tool calls in one turn."
-    },
-    {
-      "id": "90dd086a-cf57-4617-b0c2-bf2fff7d8340",
+      "id": "249241a8-a69c-49cb-b688-3f8eee5122e6",
       "ok": true,
-      "ms": 162005,
+      "ms": 174092,
       "reason": "investigated",
       "detail": "The Breaker reported its findings."
     },
     {
-      "id": "8bbfda43-4690-4595-bcd9-82eaf0791832",
+      "id": "357bf1f3-a914-4188-908a-e42af190b1d5",
       "ok": false,
-      "ms": 179826,
+      "ms": 180004,
       "reason": "budget",
-      "detail": "More than 16 tool calls in one turn."
+      "detail": "The agent turn took longer than 180000 ms."
     },
     {
-      "id": "fcc9af9c-fb2f-4cc5-92be-e62555d25439",
+      "id": "3b29b56b-8633-4b2b-848b-9fff81c357a9",
       "ok": false,
-      "ms": 43246,
-      "reason": "budget",
-      "detail": "More than 16 tool calls in one turn."
-    },
-    {
-      "id": "df858328-231d-4e1b-98f8-2cdbf5ef03e8",
-      "ok": false,
-      "ms": 97991,
-      "reason": "budget",
-      "detail": "More than 16 tool calls in one turn."
-    },
-    {
-      "id": "c1ce3cbd-7efa-4f7e-bfb7-40c4127a52df",
-      "ok": true,
-      "ms": 104746,
-      "reason": "investigated",
-      "detail": "The Breaker reported its findings."
+      "ms": 165445,
+      "reason": "model-error",
+      "detail": "Model step timed out after 60 s, then again on its one retry."
     }
   ]
 }
