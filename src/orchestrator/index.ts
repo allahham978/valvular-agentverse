@@ -261,13 +261,14 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     const evidence = await runStep("propose", round);
     const submission = parseSubmission(evidence, new Set(run.evidence.map((item) => item.id)));
     if (!submission.ok) throw new Stop("model-error", submission.error);
-    const { design, rationale, tradeOffs, evidenceIds } = submission.value;
+    const { design, rationale, tradeOffs, claim, evidenceIds } = submission.value;
     const proposal = {
       id: `proposal-${run.proposals.length + 1}`,
       fromDesignId: from.design.id,
       toDesignId: design.id,
       rationale,
       tradeOffs,
+      ...(claim ? { claim } : {}),
       evidenceIds,
     };
     run.proposals.push(proposal);

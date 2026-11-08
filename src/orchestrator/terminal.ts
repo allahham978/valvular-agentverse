@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { DesignSchema, FindingSchema, type Evidence } from "../contracts";
+import { ClaimSchema, DesignSchema, FindingSchema, type Evidence } from "../contracts";
 
 const FindingDraftSchema = FindingSchema.omit({ id: true, kind: true });
 const ReportSchema = z.object({ findings: z.array(FindingDraftSchema).min(1) });
@@ -7,6 +7,7 @@ const SubmissionSchema = z.object({
   design: DesignSchema,
   rationale: z.string(),
   tradeOffs: z.array(z.string()),
+  claim: ClaimSchema.optional(),
   evidenceIds: z.array(z.string()),
 });
 

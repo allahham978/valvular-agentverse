@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createModelClient, ModelSpecSchema } from "@/agents/model-client";
-import { createStandInTools } from "@/orchestrator/stand-in-tools";
 import { startRun } from "@/run/store";
+import { createAgentTools } from "@/tools";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
   const id = startRun({
     model: createModelClient(body.data.model),
-    tools: createStandInTools(),
+    tools: createAgentTools(),
     budget: body.data.budget,
     seed: body.data.seed,
   });
