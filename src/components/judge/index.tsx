@@ -14,7 +14,7 @@ export function Judge() {
       data-design={JSON.stringify(judge.design)}
       data-run-id={judge.runId}
       aria-label="Judge"
-      className="panel stage-panel absolute bottom-24 left-6 flex w-80 flex-col gap-4 p-4"
+      className="panel stage-panel absolute bottom-24 left-6 flex w-64 flex-col gap-3 p-3"
     >
       <Sliders design={judge.design} summary={judge.summary} error={judge.designError} onChange={judge.setNominal} />
       {judge.canReplan && (

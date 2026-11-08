@@ -23,8 +23,8 @@ export function Sliders({
   return (
     <div className="flex flex-col gap-2">
       {design.sizes.map((size, index) => (
-        <label key={index} className="flex items-center gap-3 text-sm">
-          <span className="w-16 text-muted">Size {index + 1}</span>
+        <label key={index} className="flex items-center gap-2 text-sm">
+          <span className="w-10 text-muted">Size {index + 1}</span>
           <input
             type="range"
             min={MIN_MM}
@@ -34,7 +34,7 @@ export function Sliders({
             onChange={(event) => onChange(index, Number(event.target.value))}
             className="min-w-0 flex-1 accent-accent"
           />
-          <span className="mono w-14 text-right">{size.nominalMm} mm</span>
+          <span className="mono w-12 text-right text-xs">{size.nominalMm} mm</span>
         </label>
       ))}
       <dl className="mono flex gap-4 text-sm">
