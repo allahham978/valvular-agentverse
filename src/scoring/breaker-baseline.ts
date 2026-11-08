@@ -124,7 +124,7 @@ async function checklistTurn(tools: ToolRegistry, checklist: Checklist, design: 
     if (outcome.ok) drafts.push(...checklistFindings(step, outcome.evidence));
   }
 
-  let findings: Finding[] = [];
+  const findings: Finding[] = [];
   for (let at = 0; complete && at < drafts.length && canCall(); at += REPORT_CHUNK) {
     toolCalls += 1;
     const chunk = drafts.slice(at, at + REPORT_CHUNK);
