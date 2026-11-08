@@ -16,7 +16,7 @@ export function Judge() {
       aria-label="Judge"
       className="panel stage-panel absolute bottom-24 left-6 flex max-h-[60vh] w-64 flex-col gap-3 overflow-y-auto p-3"
     >
-      <h2 className="text-xs font-medium uppercase tracking-wide text-muted">Judge's valve</h2>
+      <h2 className="text-xs font-medium uppercase tracking-wide text-muted">Judge&rsquo;s valve</h2>
       <Sliders design={judge.design} summary={judge.summary} error={judge.designError} onChange={judge.setNominal} />
       {judge.canReplan && (
         <Button size="sm" disabled={judge.busy} onClick={() => void judge.replan()}>
