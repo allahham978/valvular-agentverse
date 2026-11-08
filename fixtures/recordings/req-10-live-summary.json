@@ -1,0 +1,79 @@
+{
+  "at": "2026-11-08T00:44:58.286Z",
+  "finished": 4,
+  "total": 10,
+  "slowestMs": 180008,
+  "slowestFinishedMs": 162005,
+  "runs": [
+    {
+      "id": "f58874b6-4795-4111-aeec-978902cfa9d0",
+      "ok": false,
+      "ms": 180008,
+      "reason": "budget",
+      "detail": "The agent turn took longer than 180000 ms."
+    },
+    {
+      "id": "22c91ef1-5666-4471-bc94-36b51ddf6686",
+      "ok": false,
+      "ms": 49441,
+      "reason": "budget",
+      "detail": "More than 16 tool calls in one turn."
+    },
+    {
+      "id": "773d248c-5182-4fba-ba82-eab8218df93e",
+      "ok": true,
+      "ms": 59462,
+      "reason": "investigated",
+      "detail": "The Breaker reported its findings."
+    },
+    {
+      "id": "b11512a2-47d0-49ac-a596-3a830ccdcd0a",
+      "ok": true,
+      "ms": 140065,
+      "reason": "investigated",
+      "detail": "The Breaker reported its findings."
+    },
+    {
+      "id": "79698a6e-522d-4597-adce-1e8807c84ce8",
+      "ok": false,
+      "ms": 168438,
+      "reason": "budget",
+      "detail": "More than 16 tool calls in one turn."
+    },
+    {
+      "id": "90dd086a-cf57-4617-b0c2-bf2fff7d8340",
+      "ok": true,
+      "ms": 162005,
+      "reason": "investigated",
+      "detail": "The Breaker reported its findings."
+    },
+    {
+      "id": "8bbfda43-4690-4595-bcd9-82eaf0791832",
+      "ok": false,
+      "ms": 179826,
+      "reason": "budget",
+      "detail": "More than 16 tool calls in one turn."
+    },
+    {
+      "id": "fcc9af9c-fb2f-4cc5-92be-e62555d25439",
+      "ok": false,
+      "ms": 43246,
+      "reason": "budget",
+      "detail": "More than 16 tool calls in one turn."
+    },
+    {
+      "id": "df858328-231d-4e1b-98f8-2cdbf5ef03e8",
+      "ok": false,
+      "ms": 97991,
+      "reason": "budget",
+      "detail": "More than 16 tool calls in one turn."
+    },
+    {
+      "id": "c1ce3cbd-7efa-4f7e-bfb7-40c4127a52df",
+      "ok": true,
+      "ms": 104746,
+      "reason": "investigated",
+      "detail": "The Breaker reported its findings."
+    }
+  ]
+}
