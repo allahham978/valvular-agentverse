@@ -9,12 +9,16 @@ import { useWallData } from "@/components/wall/use-wall-data";
 import { setMainViewPaused } from "@/state/stage";
 import { cn } from "@/lib/utils";
 import { HeartView } from "./heart-view";
-import { ruleInfo } from "./sample-rules";
 
 const MEASURE_LABELS: Record<string, string> = {
   annulusMm: "Annulus",
   sinusMm: "Sinus",
   sinotubularJunctionMm: "Sinotubular junction",
+};
+
+const ruleName = (ruleId: string) => {
+  const text = ruleId.replaceAll("-", " ");
+  return text.charAt(0).toUpperCase() + text.slice(1);
 };
 
 const formatMm = (value: number) => `${value.toFixed(1)} mm`;
@@ -28,7 +32,7 @@ export function HeartPanel({
   onClose: () => void;
   onOpenInMain: (heartId: string) => void;
 }) {
-  const { label, hearts, results, indexById } = useWallData();
+  const { label, hearts, results, indexById, ruleTypes } = useWallData();
   const heart = hearts.get(heartId);
   const result = results[indexById.get(heartId) ?? -1];
 
@@ -84,7 +88,6 @@ export function HeartPanel({
               </p>
             )}
             {result.reasons.map((reason) => {
-              const rule = ruleInfo(reason.ruleId);
               return (
                 <div
                   key={reason.ruleId}
@@ -93,7 +96,7 @@ export function HeartPanel({
                   className="col-span-2 mt-2 grid grid-cols-subgrid gap-y-1 border-t border-panel-border pt-3"
                 >
                   <dt className="text-muted">Failed rule</dt>
-                  <dd className="font-medium">{rule.name}</dd>
+                  <dd className="font-medium">{ruleName(reason.ruleId)}</dd>
                   <dt className="text-muted">Measured</dt>
                   <dd className="mono">{formatMm(reason.measured)}</dd>
                   <dt className="text-muted">Limit</dt>
@@ -101,7 +104,7 @@ export function HeartPanel({
                   <dt className="text-muted">Margin</dt>
                   <dd className="mono">{formatMm(reason.margin)}</dd>
                   <dt className="text-muted">Rule type</dt>
-                  <dd>{rule.type}</dd>
+                  <dd>{ruleTypes[reason.ruleId] ?? "unknown"}</dd>
                 </div>
               );
             })}

@@ -39,3 +39,9 @@ On the workspace, **Break it** and **Fix it** play `fixtures/replays/demo.json` 
 - **Other specs that depend on the recording's content:** `req-8.spec.ts` expects a "29 mm" proposal and a risk total that rises. `fix-demo-consistency.spec.ts` expects the attack to survive ("71.5%") and the attack text to read as held. If the real recording proposes something else, those fail. The builder must stop and report it, not edit them.
 - **Ordering:** the spec fails until REQ-7 (caption, schematic valve, dev-heart root) and the new `demo.json` are merged.
 - **Live:** Breaker turns take 95-180 s and REQ-10/11 live checks failed before. The `@live` test allows 15 min and is flagged, not blocking.
+
+## Builder notes (early build, before REQ-7 and the new recording)
+
+- Built: real wall (`/api/hearts` + `/api/fit`, rule types from `rules[].status`), buttons replay `{replayId:"demo"}` (`?mode=live` posts Gemini demo), amber new-risk hearts from `POST /api/fit` for the improved design, `result-line` (new-risk count from that fit response), feed "Sample data" label removed. Deleted `sample-new-risk.ts`, `sample-rules.ts`, `controls/demo-script.ts`.
+- Retired tests: the list above was already applied in the plan commit; no further spec edits.
+- Known to fail until the new `demo.json` is merged: `req-8` scripted-run test and `fix-demo-consistency` (3 tests) now run the old hand-written transcript, which has no `stress_test`, no attack verdict and different mechanisms.
