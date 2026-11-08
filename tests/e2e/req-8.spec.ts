@@ -299,6 +299,10 @@ test.describe("REQ-8 agent feed and buttons", () => {
     expect(proposeSteps, "demo mode: at most 2 Fixer rounds").toBeLessThanOrEqual(2);
     expect(serverEvents.every((event) => event.mode === "replay"), "scripted events are replay").toBe(true);
 
+    await expect(feedEvents(page, "verdict"), "the feed shows the whole run").toHaveCount(
+      serverEvents.filter((event) => event.type === "verdict").length,
+      { timeout: RUN_TIMEOUT_MS },
+    );
     const mechanisms = runs.flatMap((run) => run.findings).filter((finding) => finding.kind === "mechanism");
     const attacks = runs.flatMap((run) => run.findings).filter((finding) => finding.kind === "attack");
     expect(mechanisms.length).toBeGreaterThan(0);
@@ -330,10 +334,10 @@ test.describe("REQ-8 agent feed and buttons", () => {
     }
 
     // Spacing fix from docs/ui-review/req-1/flagged.md item 3.
-    const eventTexts = await feedEvents(page).allTextContents();
+    const eventTexts = await feedEvents(page).allInnerTexts();
     expect(
-      eventTexts.some((text) => /29[  ]mm/.test(text)),
-      'the proposal shows "29 mm" with a non-breaking space',
+      eventTexts.some((text) => /28[  ]mm/.test(text)),
+      'the proposal shows "28 mm" (the recorded fix) with a non-breaking space',
     ).toBe(true);
     for (const text of eventTexts) {
       expect(text, "number and unit joined by a non-breaking space").not.toMatch(/\d(?:\.\d+)? +mm\b/);
