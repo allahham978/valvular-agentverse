@@ -2,7 +2,7 @@
 
 Agentverse 2026, Biotech track. Idea locked.
 
-Valvular tests a hypothetical heart valve on synthetic test hearts. One agent finds where the valve and its claims break, another proposes a size change, and an engineer approves or rejects the result.
+Valvular tests a heart valve design on synthetic test hearts. One agent finds where the valve and its claims break, another proposes a size change, and an engineer approves or rejects the result.
 
 ## 1. Build order
 
@@ -128,11 +128,11 @@ Revert and improve the prompt instead of debugging for a long time.
 
 | Topic | Decision |
 |---|---|
-| User | R&D engineer at a small transcatheter aortic valve team. Labelled hypothetical in the pitch. |
+| User | R&D engineer at a small transcatheter aortic valve team. |
 | Limits | Fit only. No safety claims. Results describe test hearts, not patients. |
 | Test hearts | 500 synthetic stenotic hearts from the [4TU set](https://data.4tu.nl/datasets/3f6a3788-96e6-4b81-b37b-f07eeec85965) (Verstraeten et al. 2023, CC BY 4.0). No `real_cohort` files in the repo. |
 | Split | 400 dev, 100 hidden, fixed seed, stratified by annulus size. An unstratified test split gave very different no-fit rates (13.2% dev, 6.0% hidden). |
-| Starting valve | Hypothetical. Sizes 23, 25 and 27 mm, covering annulus 21-27 mm. |
+| Starting valve | Example design. Sizes 23, 25 and 27 mm, covering annulus 21-27 mm. |
 | Fit rules | Run by code from `data/rules.json`. Each rule is `published` with a source, or labelled `demo-assumption` on screen. |
 | Depth | Not in P0 or P1. See REQ-21. |
 | Model | `gemini-4-argon`, behind one adapter. |
@@ -533,7 +533,7 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
   2. The README explains the agentic architecture: the Breaker, the Fixer, what code owns (maths, scoring, budget, verdicts), the tools, the claim and verdict rules, the engineer sign-off and why each piece is an agent or code. It uses one simple diagram and short sections, tables or bullets. No walls of text, no fluff, no unexplained jargon.
   3. The write-up fits one page and covers the problem, user, data, evaluation, limits and safeguards.
   4. `docs/risks.md` lists each named risk and its mitigation from section 3.
-  5. The pitch stays under 4 minutes, calls the user hypothetical, gives the 14% as regurgitation patients in one study, not our result, and doesn't say nobody else does this (Virtonomy and adsilico do).
+  5. The pitch stays under 4 minutes, gives the 14% as regurgitation patients in one study, not our result, and doesn't say nobody else does this (Virtonomy and adsilico do).
 
 ## 6. P2 requirements: nice to have
 
