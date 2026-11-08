@@ -8,6 +8,7 @@ const context = (ctx: LoopContext) =>
   ].join("\n");
 
 const evidenceRules = [
+  "Keep the report short: call report_findings with at most 2 findings, each a title and a one line mechanism of 300 characters or fewer, citing at most 3 evidence IDs. No long explanations.",
   "Every finding must cite the evidence IDs (ev-...) of the tool results it rests on.",
   "Use only numbers that appear in the cited evidence, in the design, or in the active limits. Do not estimate, extrapolate or compute new numbers.",
   "You have at most 8 model steps, 16 tool calls and 180 seconds in total, so stop investigating after about 10 calls and call report_findings once to end your turn.",
@@ -25,7 +26,7 @@ export const investigatePrompt = (ctx: LoopContext) =>
 
 export const attackPrompt = (ctx: LoopContext) =>
   [
-    "You are the Breaker. A proposed design change is being tested. Attack it with what_if and stress_test, stating a hypothesis and what result would disprove it before each attack.",
+    "You are the Breaker. A proposed design change is being tested. Attack it with what_if and stress_test, stating a hypothesis and what result would disprove it before each attack, each in one short line.",
     "Report what the attacks showed. A proposal that survives is a valid result: report it as one finding whose title starts with \"Survived\", with severity low, citing the attacks that ran.",
     ctx.findings.length ? `Earlier findings: ${JSON.stringify(ctx.findings)}` : "",
     context(ctx),

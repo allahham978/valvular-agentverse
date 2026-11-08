@@ -13,6 +13,7 @@ export type Change = z.infer<typeof ChangeSchema>;
 
 const heartIds = z.array(z.string()).min(1);
 const text = z.string().trim().min(1);
+const shortText = text.max(300);
 
 export const evaluateDesignInput = z.object({ design: DesignSchema, parent: DesignSchema.optional() });
 export const groupFailuresInput = z.object({
@@ -29,8 +30,8 @@ export const stressTestInput = z
     design: DesignSchema,
     kind: z.enum(["measurement_shift", "assumption_shift", "subgroup"]),
     amount: z.number().optional(),
-    hypothesis: text,
-    disprovedIf: text,
+    hypothesis: shortText,
+    disprovedIf: shortText,
     measure: z.string().optional(),
     heartIds: heartIds.optional(),
   })
@@ -44,13 +45,22 @@ export const stressTestInput = z
   });
 
 export const reportFindingsInput = z.object({
-  mechanisms: z.array(FindingSchema.omit({ id: true, kind: true }).extend({ evidenceIds: z.array(z.string()).min(1) })).min(1),
+  mechanisms: z
+    .array(
+      FindingSchema.omit({ id: true, kind: true }).extend({
+        title: text.max(100),
+        explanation: shortText,
+        evidenceIds: z.array(z.string()).min(1).max(3),
+      }),
+    )
+    .min(1)
+    .max(2),
 });
 export const editDesignInput = z.object({ design: DesignSchema, change: ChangeSchema, limits: z.array(LimitSchema).optional() });
 export const submitProposalInput = z.object({
   design: DesignSchema,
-  rationale: text,
+  rationale: shortText,
   claim: ClaimSchema.optional(),
-  tradeOffs: z.array(z.string()).default([]),
+  tradeOffs: z.array(z.string().max(300)).max(3).default([]),
   evidenceIds: z.array(z.string()).min(1),
 });

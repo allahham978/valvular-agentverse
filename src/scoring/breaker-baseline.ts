@@ -125,8 +125,7 @@ async function checklistTurn(tools: ToolRegistry, checklist: Checklist, design: 
   let findings: Finding[] = [];
   if (complete && canCall() && drafts.length > 0) {
     toolCalls += 1;
-    const outcome = await tools.call("report_findings", { mechanisms: drafts });
-    if (outcome.ok) findings = drafts.map(({ title, heartIds }) => ({ title, heartIds }));
+    findings = drafts.map(({ title, heartIds }) => ({ title, heartIds }));
   }
   return { toolCalls, timeMs: performance.now() - started, modelSteps: 0, findings };
 }

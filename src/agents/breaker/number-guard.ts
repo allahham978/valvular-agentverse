@@ -29,3 +29,15 @@ export function inventedNumbers(text: string, evidence: Evidence[], design: Desi
     .filter(({ value, halfUnit }) => !allowed.some((known) => Math.abs(known.value - value) <= halfUnit + EPSILON))
     .map(({ written }) => written);
 }
+
+export function allowedNumbersNote(evidence: Evidence[], design: Design, limits: Limit[]): string {
+  const distinct = (texts: string[]) => [...new Set(texts.flatMap((text) => numbersIn(text).map(({ written }) => written)))];
+  const perEvidence = evidence.map((item) => `${item.id}: ${distinct([JSON.stringify([item.input, item.result])]).slice(0, 40).join(", ")}`);
+  const fixed = distinct([JSON.stringify(designNumbers(design).map(({ value }) => value)), ...limitNumbers(limits).map(({ value }) => String(value))]);
+  return [
+    "Allowed numbers (the number check accepts only these; any other number is rejected and costs you a rewrite).",
+    ...perEvidence,
+    `Design and limits: ${fixed.join(", ")}`,
+    "Call the ending tool now and keep it short (one line per finding, at most 2 findings, at most 3 evidence IDs each). Write no number outside the lists of the evidence you cite.",
+  ].join("\n");
+}
