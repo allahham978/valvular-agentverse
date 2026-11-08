@@ -222,6 +222,8 @@ From RES-2:
 
 **Demo mode** is the default from the buttons: one Breaker turn, then at most 2 Fixer rounds with one attack each. A run should finish in about 1-2 minutes. The full loop is still available in code and tests.
 
+**Main path:** the buttons play one good recorded live Gemini run (`fixtures/replays/demo.json`) through the real tools, so code recomputes every number. It looks like the normal demo, with no replay label on screen; the presenter explains it out loud. Live Gemini runs from `?mode=live`. The REQ-17 fallback (a recording offered after a Gemini failure) keeps its "Replay, not live" label.
+
 **Recordings:** every live run is saved under `fixtures/recordings/` with its events, tool calls and evidence, so it can be replayed later (REQ-17) and used as a test fixture.
 
 ### Guardrails
