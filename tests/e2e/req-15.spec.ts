@@ -12,6 +12,9 @@ import type { ModelClient, ModelRequest, ModelTurn, ScriptedTurn } from "../../s
 const ROOT = process.cwd();
 const RUN_TIMEOUT_MS = 120_000;
 const UI_TIMEOUT_MS = 240_000;
+const ROUND_TRIP_MS = 30_000;
+// UI assertions that wait on a server round trip get a long timeout, so a loaded machine doesn't fail a working feature.
+const slow = expect.configure({ timeout: ROUND_TRIP_MS });
 const LAST = "$lastEvidenceId";
 
 const hiddenHearts = (
@@ -22,7 +25,23 @@ const devIds = new Set(
 );
 const HIDDEN_IDS = hiddenHearts.map((heart) => heart.id).filter((id) => !devIds.has(id));
 const HIDDEN = hiddenHearts.find((heart) => !devIds.has(heart.id))!;
-const HIDDEN_MEASURES = Object.values(HIDDEN.measures).map(String).filter((value) => value.length >= 6);
+const measureForms = (hearts: Heart[]) =>
+  new Set(
+    hearts.flatMap((heart) =>
+      Object.values(heart.measures)
+        .filter((value): value is number => typeof value === "number")
+        .flatMap((value) => [String(value), value.toFixed(2), value.toFixed(1)])
+        .filter((form) => form.includes(".") && form.length >= 4),
+    ),
+  );
+// Full-precision and rounded (1 and 2 decimal) forms of every hidden heart's measurements.
+const HIDDEN_MEASURES = [...measureForms(hiddenHearts.filter((heart) => !devIds.has(heart.id)))];
+// Forms that a dev heart shares can legitimately appear on the page, so page checks skip them.
+const DEV_MEASURES = measureForms(
+  (JSON.parse(readFileSync(path.join(ROOT, "data/hearts.dev.json"), "utf8")) as { hearts: Heart[] }).hearts,
+);
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const hasNumber = (text: string, form: string) => new RegExp(`(^|[^\\d.])${escapeRegExp(form)}(?!\\d)`).test(text);
 
 const START: Design = {
   id: "start",
@@ -218,9 +237,9 @@ async function fitSummary(request: APIRequestContext, design?: Design): Promise<
 const whole = (n: number) => new RegExp(`(^|\\D)${n}(\\D|$)`);
 
 async function expectTotals(panel: Locator, summary: Summary) {
-  await expect(panel.getByTestId("judge-total-fit")).toHaveText(whole(summary.fit));
-  await expect(panel.getByTestId("judge-total-risk")).toHaveText(whole(summary.risk));
-  await expect(panel.getByTestId("judge-total-nofit")).toHaveText(whole(summary.noFit));
+  await slow(panel.getByTestId("judge-total-fit")).toHaveText(whole(summary.fit));
+  await slow(panel.getByTestId("judge-total-risk")).toHaveText(whole(summary.risk));
+  await slow(panel.getByTestId("judge-total-nofit")).toHaveText(whole(summary.noFit));
 }
 
 async function finishedRun(request: APIRequestContext, id: string): Promise<Run> {
@@ -272,7 +291,7 @@ async function moveLargestSize(page: Page, panel: Locator) {
   await slider.focus();
   await page.keyboard.press("ArrowRight");
   await page.keyboard.press("ArrowRight");
-  await expect.poll(async () => sizesKey(await designOf(panel))).not.toBe(sizesKey(START));
+  await expect.poll(async () => sizesKey(await designOf(panel)), { timeout: ROUND_TRIP_MS }).not.toBe(sizesKey(START));
   const value = Number(
     await slider.evaluate((el) => el.getAttribute("aria-valuenow") ?? (el as HTMLInputElement).value),
   );
@@ -294,7 +313,21 @@ async function checkLimit(panel: Locator, text: string) {
 
 function expectNoHiddenData(text: string) {
   for (const id of HIDDEN_IDS) expect(text.includes(id), `hidden heart ${id} leaked`).toBe(false);
-  for (const value of HIDDEN_MEASURES) expect(text.includes(value), `hidden measurement ${value} leaked`).toBe(false);
+  for (const value of HIDDEN_MEASURES) expect(hasNumber(text, value), `hidden measurement ${value} leaked`).toBe(false);
+}
+
+async function pageText(page: Page) {
+  return `${await page.content()}\n${await page.locator("body").innerText()}`;
+}
+
+// The whole page, not just the panel. IDs are checked outright. Measurements are checked unless a dev heart shares the
+// form or it was already on the page before the request, so ordinary numbers on the workbench don't count as leaks.
+function expectNoHiddenDataOnPage(text: string, before: string) {
+  for (const id of HIDDEN_IDS) expect(text.includes(id), `hidden heart ${id} on the page`).toBe(false);
+  for (const value of HIDDEN_MEASURES) {
+    if (DEV_MEASURES.has(value) || hasNumber(before, value)) continue;
+    expect(hasNumber(text, value), `hidden measurement ${value} on the page`).toBe(false);
+  }
 }
 
 // ---------- Done when ----------
@@ -328,7 +361,7 @@ test.describe("REQ-15 judge input and replanning", () => {
     const seen = await scriptModel(page, { replan: valveTurns(moved) });
 
     await replanButton(panel).click();
-    await expect(panel.getByTestId("judge-replan-status")).toContainText(/restarted at the breaker/i);
+    await slow(panel.getByTestId("judge-replan-status")).toContainText(/restarted at the breaker/i);
     const run = await finishedRun(request, await runIdOf(panel));
     expect(seen.unexpected).toEqual([]);
     expect(seen.replan).toBe(1);
@@ -341,7 +374,7 @@ test.describe("REQ-15 judge input and replanning", () => {
     expect(run.findings.filter((f) => f.kind === "mechanism").length).toBeGreaterThan(0);
     const stop = stopOf(run);
     expect((stop.data as StopData).reason).not.toBe("model-error");
-    await expect(panel.getByTestId("judge-run-result")).toContainText(stop.text);
+    await slow(panel.getByTestId("judge-run-result")).toContainText(stop.text);
   });
 
   test("Done when 3: typing 'no more than 4 sizes' shows the parsed limit to confirm", async ({ page }) => {
@@ -350,8 +383,10 @@ test.describe("REQ-15 judge input and replanning", () => {
 
     await checkLimit(panel, "no more than 4 sizes");
     const parsed = panel.getByTestId("judge-parsed-limit");
-    await expect(parsed).toContainText(/sizes/i);
-    await expect(parsed).toHaveText(whole(4));
+    await slow(parsed).toContainText(/sizes/i);
+    await slow(parsed).toHaveText(whole(4));
+    await slow(parsed).toHaveText(/no more than|at most|max/i);
+    await expect(parsed).not.toHaveText(/at least|min|exactly/i);
     await expect(panel.getByRole("button", { name: /confirm limit/i })).toBeVisible();
     expect(seen.parse).toEqual(["no more than 4 sizes"]);
     expect(seen.replan).toBe(0);
@@ -365,9 +400,9 @@ test.describe("REQ-15 judge input and replanning", () => {
     const seen = await scriptModel(page, { parse: { [text]: set("max-sizes", 4) }, replan: limitTurns(limit) });
 
     await checkLimit(panel, text);
-    await expect(panel.getByTestId("judge-parsed-limit")).toHaveText(whole(4));
+    await slow(panel.getByTestId("judge-parsed-limit")).toHaveText(whole(4));
     await panel.getByRole("button", { name: /confirm limit/i }).click();
-    await expect(panel.getByTestId("judge-replan-status")).toContainText(/restarted at the fixer/i);
+    await slow(panel.getByTestId("judge-replan-status")).toContainText(/restarted at the fixer/i);
     const run = await finishedRun(request, await runIdOf(panel));
     expect(seen.unexpected).toEqual([]);
     expect(seen.replan).toBe(1);
@@ -393,8 +428,9 @@ test.describe("REQ-15 judge input and replanning", () => {
     expect((stopOf(run).data as StopData).reason).not.toBe("model-error");
 
     const result = panel.getByTestId("judge-run-result");
-    await expect(result).toBeVisible();
+    await slow(result).toBeVisible();
     for (const size of final.sizes) await expect(result).toContainText(String(size.nominalMm));
+    await expect(result, "the result says the final design has 4 sizes").toHaveText(/(^|\D)4 sizes/i);
   });
 
   test("Done when 5: 'make it safe for all patients' is refused as outside fit", async ({ page }) => {
@@ -405,7 +441,7 @@ test.describe("REQ-15 judge input and replanning", () => {
     const response = page.waitForResponse((r) => new URL(r.url()).pathname === "/api/limits");
     await checkLimit(panel, text);
     expect((await response).status()).toBe(422);
-    await expect(panel.getByTestId("judge-limit-refused")).toContainText(/outside fit/i);
+    await slow(panel.getByTestId("judge-limit-refused")).toContainText(/outside fit/i);
     await expect(panel.getByRole("button", { name: /confirm limit/i })).toHaveCount(0);
     await expect(panel.getByTestId("judge-parsed-limit")).toHaveCount(0);
     expect(seen.replan).toBe(0);
@@ -416,6 +452,7 @@ test.describe("REQ-15 judge input and replanning", () => {
     const panel = await openJudge(page);
     const seen = await scriptModel(page, { parse: { [text]: injected } });
 
+    const before = await pageText(page);
     const response = page.waitForResponse((r) => new URL(r.url()).pathname === "/api/limits");
     await checkLimit(panel, text);
     const body = await (await response).text();
@@ -423,9 +460,9 @@ test.describe("REQ-15 judge input and replanning", () => {
     expect((JSON.parse(body) as { ok: boolean }).ok).toBe(false);
     expectNoHiddenData(body);
 
-    await expect(panel.getByTestId("judge-limit-refused")).toBeVisible();
+    await slow(panel.getByTestId("judge-limit-refused")).toContainText(/refus|can't|cannot|not allowed|outside fit/i);
     await expect(panel.getByRole("button", { name: /confirm limit/i })).toHaveCount(0);
-    expectNoHiddenData(await panel.innerText());
+    expectNoHiddenDataOnPage(await pageText(page), before);
     expect(seen.replan).toBe(0);
   });
 
@@ -436,9 +473,9 @@ test.describe("REQ-15 judge input and replanning", () => {
     const seen = await scriptModel(page, { parse: { [text]: set("min-fit-pct", 100) }, replan: unmeetableTurns(limit) });
 
     await checkLimit(panel, text);
-    await expect(panel.getByTestId("judge-parsed-limit")).toHaveText(whole(100));
+    await slow(panel.getByTestId("judge-parsed-limit")).toHaveText(whole(100));
     await panel.getByRole("button", { name: /confirm limit/i }).click();
-    await expect(panel.getByTestId("judge-replan-status")).toContainText(/restarted at the fixer/i);
+    await slow(panel.getByTestId("judge-replan-status")).toContainText(/restarted at the fixer/i);
     const run = await finishedRun(request, await runIdOf(panel));
     expect(seen.unexpected).toEqual([]);
 
@@ -455,7 +492,7 @@ test.describe("REQ-15 judge input and replanning", () => {
     expect((stop.data as StopData).reason).toBe("no-valid-fix");
     expect(stop.text).toMatch(/no design fits/i);
     expect(run.proposals).toHaveLength(0);
-    await expect(panel.getByTestId("judge-run-result")).toContainText(/no design fits/i);
+    await slow(panel.getByTestId("judge-run-result")).toContainText(/no design fits/i);
   });
 });
 
