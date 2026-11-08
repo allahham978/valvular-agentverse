@@ -16,6 +16,7 @@ import type {
   ModelRequest,
   ToolReply,
 } from "../agents/model-client";
+import { allowedNumbersNote } from "../agents/breaker/number-guard";
 import { assignVerdict, type VerdictResult } from "../agents/attack/verdict";
 import { saveRecording } from "../agents/gemini/recording";
 import { defaultRoles, type AgentRole, type LastAttack, type LoopContext } from "./roles";
@@ -195,6 +196,7 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     const guard = turnGuard(budget.maxTurnMs);
     const turnBudget = createTurnBudget(budget, role.terminalTool);
     let warned = false;
+    let noted = false;
     let rejections = 0;
     const produced: Evidence[] = [];
     turnEvidence = produced;
@@ -217,6 +219,10 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
             text: `${actorName(role)} has ${left.toolCallsLeft} tool calls, ${left.stepsLeft} model steps and ${left.secondsLeft} s left, so its next step can only call ${role.terminalTool}.`,
             data: { step, ...left, allowedTools: [role.terminalTool] },
           });
+        }
+        if (wrapUp && !noted) {
+          noted = true;
+          messages.push({ role: "user", text: allowedNumbersNote(produced, ctx.design, ctx.limits) });
         }
         turnBudget.startStep();
         const request: ModelRequest = {

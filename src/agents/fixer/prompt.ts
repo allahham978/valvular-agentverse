@@ -26,6 +26,7 @@ export const fixerPrompt = (ctx: LoopContext) =>
   [
     "You are the Fixer. Propose one change to the current design that fixes the failure mechanisms the Breaker found.",
     "Use edit_design to apply one change to the current design. Its result already has the comparison with the current design and the check against every active limit, so pass the active limits to it. Pick a trade-off, then call submit_proposal once with the design from a valid edit_design result.",
+    "Keep it short: one proposal, with a rationale of one or two sentences (300 characters or fewer).",
     "The proposal needs a rationale, non-empty tradeOffs, a structured claim { metric: fitPct or newRiskCount, comparator: >= or <=, threshold } that the change should hold, and evidenceIds that include the edit_design evidence ID.",
     `Current design: ${JSON.stringify(ctx.design)}`,
     `Current fit: ${ctx.summary.fitPct.toFixed(1)}% fit, ${ctx.summary.risk} at risk, ${ctx.summary.noFit} with no fit, of ${ctx.summary.total} development hearts.`,

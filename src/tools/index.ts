@@ -29,10 +29,10 @@ const tools: Tool[] = [
   defineTool("profile_group", "How a group of hearts' measurements differ from the rest, sorted by effect size.", inputs.profileGroupInput, profileGroupTool),
   defineTool("inspect_heart", "One heart's measurements, assigned size and failure reasons under a design.", inputs.inspectHeartInput, inspectHeartTool),
   defineTool("what_if", "Whether a design change would fix the given hearts.", inputs.whatIfInput, whatIfTool),
-  defineTool("stress_test", "Attack a design with a measurement_shift, assumption_shift or subgroup. State a hypothesis and what result would disprove it.", inputs.stressTestInput, stressTestTool),
-  defineTool("report_findings", "Report failure mechanisms, each citing evidence IDs. Ends the turn.", inputs.reportFindingsInput, reportFindingsTool),
+  defineTool("stress_test", "Attack a design with a measurement_shift, assumption_shift or subgroup. State a short hypothesis and what result would disprove it (300 characters each or fewer).", inputs.stressTestInput, stressTestTool),
+  defineTool("report_findings", "Report at most 2 failure mechanisms, each a one-line explanation (300 characters or fewer) citing at most 3 evidence IDs. Ends the turn.", inputs.reportFindingsInput, reportFindingsTool),
   defineTool("edit_design", "Apply one change to a design. Returns the new design, its comparison with the parent and which limits pass or fail, or why it is invalid.", inputs.editDesignInput, editDesignTool),
-  defineTool("submit_proposal", "Submit one design with its rationale, a structured claim and evidence IDs. Ends the turn.", inputs.submitProposalInput, submitProposalTool),
+  defineTool("submit_proposal", "Submit one design with a short rationale (300 characters or fewer), a structured claim and evidence IDs. Ends the turn.", inputs.submitProposalInput, submitProposalTool),
 ];
 
 function heartIdsIn(value: unknown): string[] {
