@@ -16,11 +16,11 @@ const active = (globals.__valvularActiveRuns ??= new Map());
 
 export const isRunId = (id: string) => ID_PATTERN.test(id);
 
-function runsDir() {
+export function runsDir() {
   return process.env.VALVULAR_RUNS_DIR ?? path.join(tmpdir(), "valvular-runs");
 }
 
-function persist(run: Run) {
+export function saveRun(run: Run) {
   if (!isRunId(run.id)) throw new Error("Invalid run ID.");
   const dir = runsDir();
   mkdirSync(dir, { recursive: true });
@@ -60,7 +60,7 @@ export function startRun(options: Omit<ExecuteRunOptions, "id" | "onEvent">): st
     onEvent(run, event) {
       entry.run = run;
       try {
-        persist(run);
+        saveRun(run);
       } catch {
         // Notify listeners even when the disk write fails.
       }
@@ -88,7 +88,7 @@ export function watchRun(id: string, listener: Listener) {
 export function importRun(run: Run): "created" | "same" | "conflict" {
   const existing = getRunView(run.id);
   if (!existing) {
-    persist(run);
+    saveRun(run);
     return "created";
   }
   return isDeepStrictEqual(JSON.parse(JSON.stringify(existing.run)), JSON.parse(JSON.stringify(run)))
