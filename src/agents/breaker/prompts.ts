@@ -10,7 +10,8 @@ const context = (ctx: LoopContext) =>
 const evidenceRules = [
   "Every finding must cite the evidence IDs (ev-...) of the tool results it rests on.",
   "Use only numbers that appear in the cited evidence, in the design, or in the active limits. Do not estimate, extrapolate or compute new numbers.",
-  "You have at most 8 model steps and 16 tool calls in total, so stop investigating after about 10 calls and call report_findings once to end your turn.",
+  "You have at most 8 model steps, 16 tool calls and 180 seconds in total, so stop investigating after about 10 calls and call report_findings once to end your turn.",
+  "Every tool response includes budgetLeft: the tool calls, model steps and seconds you have left. Put independent calls in the same step, never repeat a call you already made, and call report_findings as soon as budgetLeft runs low.",
 ].join("\n");
 
 export const investigatePrompt = (ctx: LoopContext) =>
