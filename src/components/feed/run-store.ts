@@ -2,16 +2,24 @@ import { useSyncExternalStore } from "react";
 import { DesignSchema, FitResultSchema, RunEventSchema, SummarySchema, type FitResult, type RunEvent } from "@/contracts";
 
 export type Phase = "idle" | "breaking" | "broken" | "fixing" | "done";
-export type RunView = { phase: Phase; events: RunEvent[]; sample: boolean; runId: string | null; newRisk: number | null };
+export type RunView = {
+  phase: Phase;
+  events: RunEvent[];
+  sample: boolean;
+  labelled: boolean;
+  runId: string | null;
+  newRisk: number | null;
+};
 
 const REVEAL_MS = 250;
 const HIDDEN_TYPES = new Set(["run-start", "step-start", "run-stop"]);
-const IDLE: RunView = { phase: "idle", events: [], sample: false, runId: null, newRisk: null };
+const IDLE: RunView = { phase: "idle", events: [], sample: false, labelled: false, runId: null, newRisk: null };
 
 let view = IDLE;
 const received: RunEvent[] = [];
 let shown = 0;
 let started = false;
+let labelled = false;
 let released = false;
 let stopped = false;
 let source: EventSource | undefined;
@@ -31,7 +39,8 @@ function phase(): Phase {
 
 function publish() {
   const events = received.slice(0, shown).filter((event) => !HIDDEN_TYPES.has(event.type));
-  view = { phase: phase(), events, sample: started && received.every((event) => event.mode === "replay"), runId, newRisk };
+  const sample = started && received.every((event) => event.mode === "replay");
+  view = { phase: phase(), events, sample, labelled: sample && labelled, runId, newRisk };
   listeners.forEach((listener) => listener());
 }
 
@@ -133,6 +142,7 @@ export function startReplay(replayId: string) {
   stopped = false;
   runId = null;
   newRisk = null;
+  labelled = true;
   return begin({ replayId });
 }
 

@@ -379,9 +379,7 @@ async function mainPath(page: Page, request: APIRequestContext, live: boolean) {
     expect(withEvents.length).toBeGreaterThan(0);
     for (const event of run.events) expect(event.mode, `${event.seq} ${event.type}`).toBe(live ? "live" : "replay");
     for (const snapshot of withEvents) {
-      expect(snapshot.label, live ? "a live run is never labelled replay" : "Replay, not live stays up").toBe(
-        live ? null : "Replay, not live",
-      );
+      expect(snapshot.label, "the main path looks like the normal demo, with no replay label").toBeNull();
     }
     await expectNoSampleWording(page);
     expect(watch.offsite, "no network beyond localhost").toEqual([]);

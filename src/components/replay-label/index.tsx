@@ -6,11 +6,11 @@ import { startReplay, useRun } from "@/components/feed/run-store";
 type Offer = { replayId: string };
 
 export function ReplayLabel() {
-  const { events, sample, phase } = useRun();
+  const { events, labelled, phase } = useRun();
   const offer = events.find((event) => event.type === "replay-offer");
   return (
     <>
-      {sample && phase !== "idle" && (
+      {labelled && phase !== "idle" && (
         <DataLabel className="fixed left-1/2 top-5 z-40 -translate-x-1/2">
           <span data-testid="replay-label">Replay, not live</span>
         </DataLabel>

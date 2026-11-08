@@ -143,16 +143,16 @@ test.describe("the attack wording matches the code verdict", () => {
       .poll(async () => (await (await page.request.get(`/api/runs/${run.id}`)).json()).status, { timeout: RUN_TIMEOUT_MS })
       .toBe("finished");
     const body = (await (await page.request.get(`/api/runs/${run.id}`)).json()) as { run: { events: RunEvent[] } };
-    const verdict = body.run.events.find((event) => event.type === "verdict")?.data as VerdictData | undefined;
+    const verdict = body.run.events.filter((event) => event.type === "verdict").at(-1)?.data as VerdictData | undefined;
     expect(verdict?.attacks.length, "the code verdict lists the attack").toBeGreaterThan(0);
     const survived = verdict!.attacks.every((attack) => attack.outcome === "survived");
-    expect(survived, "the demo attack survives (71.5% after the shift)").toBe(true);
+    expect(survived, "the final proposal in the recorded run survives its attack").toBe(true);
 
-    const attackText = (await feedEvents(page, "attack").allTextContents()).join(" ");
+    const attackText = (await feedEvents(page, "attack").last().textContent()) ?? "";
     expect(attackText).toMatch(/held|survived|still/i);
     expect(attackText).not.toMatch(/now sit|\bbreaks?\b|\bbroke\b|\bfails?\b|\bedge\b/i);
 
-    const verdictRow = feedEvents(page, "verdict");
+    const verdictRow = feedEvents(page, "verdict").last();
     await expect(verdictRow).toContainText(/survived/i);
     await expect(verdictRow).toContainText(/supported under conditions/i);
     await expect(verdictRow).not.toContainText("supported_under_conditions");

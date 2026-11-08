@@ -197,7 +197,7 @@ test.describe("REQ-8 agent feed and buttons", () => {
     // Done when 3: Break finishes, named mechanisms and Fix it enabled.
     await expect(feedEvents(page, "finding").first()).toBeVisible({ timeout: RUN_TIMEOUT_MS });
     await expect(fixButton(page)).toBeEnabled({ timeout: RUN_TIMEOUT_MS });
-    const preClickFindingTexts = (await feedEvents(page, "finding").allTextContents()).map((text) => text.trim());
+    const preClickFindingTexts = (await feedEvents(page, "finding").allTextContents()).map((text) => text.replace(/\s+/g, " ").trim());
     expect(preClickFindingTexts.length, "findings show when Fix it is enabled").toBeGreaterThan(0);
     for (const text of preClickFindingTexts) {
       expect(text, "each finding shows its title").not.toBe("");
@@ -305,7 +305,7 @@ test.describe("REQ-8 agent feed and buttons", () => {
     expect(attacks.length).toBeGreaterThan(0);
     for (const finding of mechanisms) {
       expect(
-        preClickFindingTexts.some((text) => text.includes(finding.title)),
+        preClickFindingTexts.some((text) => text.includes(finding.title.replace(/\s+/g, " "))),
         `${finding.title} was named when the Break finished, before Fix it`,
       ).toBe(true);
       await expect(feedEvents(page, "finding").filter({ hasText: finding.title }), finding.title).not.toHaveCount(0);

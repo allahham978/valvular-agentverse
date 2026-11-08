@@ -13,9 +13,8 @@ import type { Material, Matrix4, Mesh, Object3D, Scene, Vector3 } from "three";
 const FULL = { width: 1440, height: 900 };
 const SCENE_TIMEOUT = 20_000;
 const SWITCH_TIMEOUT = 20_000;
-// Done when 3 drives the design change through REQ-8's scripted "Break it" then "Fix it" run, which submits
-// WIDER (src/components/controls/demo-script.ts). The app has no other way to change the design yet. If that
-// script's proposal changes, update WIDER here: a failure then is about REQ-8's script, not REQ-7.
+// Done when 3 drives the design change through the main path's "Break it" then "Fix it" replay, which ends
+// on WIDER. If the recording changes, update WIDER here.
 const RUN_TIMEOUT = 150_000;
 const MAX_ROOT_MESH_BYTES = 300 * 1024;
 const MASKED_TEST_IDS = ["wall-panel", "feed-panel", "controls-panel", "main-view-status"];
@@ -40,13 +39,17 @@ const START: Design = {
     { nominalMm: 27, minAnnulusMm: 25, maxAnnulusMm: 27 },
   ],
 };
-// The proposal the scripted "Fix it" run submits (src/components/controls/demo-script.ts).
+// The final proposal in the recorded main-path run (fixtures/replays/demo.json).
 const WIDER: Design = {
-  id: "demo-wider",
-  label: "Added 29 mm size",
+  id: "start-303d4cbf-b56aa4ff",
+  label: "Added 19 mm size",
   hypothetical: true,
-  parentId: "start",
-  sizes: [...START.sizes, { nominalMm: 29, minAnnulusMm: 27, maxAnnulusMm: 29 }],
+  parentId: "start-303d4cbf",
+  sizes: [
+    ...START.sizes,
+    { nominalMm: 28, minAnnulusMm: 27, maxAnnulusMm: 29.5 },
+    { nominalMm: 19, minAnnulusMm: 19.5, maxAnnulusMm: 22 },
+  ],
 };
 
 type ValveState = {
