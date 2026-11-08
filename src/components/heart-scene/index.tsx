@@ -10,7 +10,7 @@ import {
 import type { Group, Mesh, MeshBasicMaterial } from "three";
 import { useMainViewPaused } from "@/state/stage";
 import { StudioLighting } from "./studio-lighting";
-import { ROOT_LIFT, ROOT_SIZE, RootView } from "@/components/root-view";
+import { ROOT_LIFT, ROOT_SIZE, RootCaption, RootView } from "@/components/root-view";
 import { HeartModel } from "./heart-model";
 import { OpeningUi } from "./opening-ui";
 import { attachStageInput } from "./stage-input";
@@ -91,6 +91,7 @@ export function HeartScene() {
         </Suspense>
         <RootShadow visual={visual} />
       </Canvas>
+      <RootCaption />
       <OpeningUi />
     </div>
   );
