@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import type { LimitCheck } from "./use-judge";
 
+const SUGGESTIONS = ["No more than 4 sizes", "At least 75% must fit", "No more than 5 new at-risk hearts"];
+
 const KIND_LABELS: Record<string, string> = {
   "max-sizes": "Max sizes",
   "min-fit-pct": "Min fit %",
@@ -30,10 +32,27 @@ export function LimitBox({
           type="text"
           value={text}
           maxLength={200}
+          placeholder="e.g. No more than 4 sizes"
+          aria-describedby="limit-help"
           onChange={(event) => setText(event.target.value)}
           className="h-9 rounded-md border border-panel-border bg-panel px-3 text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         />
       </label>
+      <p id="limit-help" className="text-xs text-muted">
+        A business rule the design must meet: sizes, coverage or new risk.
+      </p>
+      <div className="flex flex-wrap gap-1.5">
+        {SUGGESTIONS.map((suggestion) => (
+          <button
+            key={suggestion}
+            type="button"
+            onClick={() => setText(suggestion)}
+            className="rounded-full border border-panel-border px-2.5 py-1 text-xs text-muted hover:bg-background hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent"
+          >
+            {suggestion}
+          </button>
+        ))}
+      </div>
       <Button variant="outline" size="sm" disabled={busy || text.trim() === ""} onClick={() => onCheck(text.trim())}>
         Check limit
       </Button>
