@@ -523,17 +523,17 @@ Run        { id, seed, startDesignId, limits, events, evidence, findings, propos
   6. The same path passes in replay on the laptop with no network.
 
 ### REQ-20: Deliverables
-- **Step:** 10. **Type:** Docs.
-- **Story:** As a judge, I can read, run and test the project.
-- **Needs:** REQ-19. RES-5 for the pitch figures.
+- **Step:** 10. **Type:** Docs. No spec, tests or teammate check for this step.
+- **Story:** As a judge, I can read the README and truly understand what problem Valvular solves and how its agents work.
+- **Needs:** REQ-12. RES-5 for the pitch figures.
 - **Screens:** None.
 - **Files:** `README.md`, `docs/write-up.md`, `docs/pitch.md`, `docs/risks.md`.
 - **Done when:**
-  1. A teammate follows the README on a clean machine → sees the app run.
-  2. The repo is public → the write-up fits one page and covers the problem, user, data, evaluation, limits and safeguards.
-  3. `docs/risks.md` → lists each named risk and its mitigation from section 3.
-  4. A timed run of the pitch → stays under 4 minutes, and calls the user hypothetical.
-  5. The pitch → gives the 14% as regurgitation patients in one study, not our result, and doesn't say nobody else does this (Virtonomy and adsilico do).
+  1. A judge reads the README → understands the problem, who it's for, and how the solution works, from the main path's real numbers. Local setup is a short section at the end, not the focus.
+  2. The README explains the agentic architecture: the Breaker, the Fixer, what code owns (maths, scoring, budget, verdicts), the tools, the claim and verdict rules, the engineer sign-off and why each piece is an agent or code. It uses one simple diagram and short sections, tables or bullets. No walls of text, no fluff, no unexplained jargon.
+  3. The write-up fits one page and covers the problem, user, data, evaluation, limits and safeguards.
+  4. `docs/risks.md` lists each named risk and its mitigation from section 3.
+  5. The pitch stays under 4 minutes, calls the user hypothetical, gives the 14% as regurgitation patients in one study, not our result, and doesn't say nobody else does this (Virtonomy and adsilico do).
 
 ## 6. P2 requirements: nice to have
 
