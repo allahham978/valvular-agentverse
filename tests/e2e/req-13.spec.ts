@@ -333,9 +333,11 @@ test.describe("H1 scoring a finished run", () => {
     expect(rowOf(report, "proposal").design).toEqual(WIDER);
     expect(rowOf(report, "no-change").design?.sizes).toEqual(START.sizes);
 
+    // Short values like 21.5 also appear as design sizes, so only full-precision measurements are searched for.
     for (const heart of hiddenHearts) {
       for (const value of Object.values(heart.measures)) {
-        if (Number.isInteger(value)) continue;
+        const decimals = String(value).split(".")[1] ?? "";
+        if (decimals.length < 3) continue;
         expect(text.includes(String(value)), `hidden measurement of ${heart.id} leaked`).toBe(false);
       }
     }
@@ -558,6 +560,13 @@ const strongScript = (design: Design): ScriptedTurn[] => [
   },
 ];
 
+// One turn of 5 calls: 4 evaluations, then the strong report. Under a budget of 3 the report never runs.
+const overBudgetScript = (design: Design): ScriptedTurn[] => {
+  const [, strongReport] = strongScript(design);
+  const evaluation = { name: "evaluate_design", args: { design, parent: START } };
+  return [{ toolCalls: [evaluation, evaluation, evaluation, evaluation, ...strongReport.toolCalls] }];
+};
+
 async function callTool(request: APIRequestContext, tool: string, input: unknown) {
   const response = await request.post("/api/tools", { data: { tool, input } });
   expect(response.status(), `checklist step ${tool}`).toBe(200);
@@ -711,8 +720,13 @@ test.describe("H5 scripted Breaker baseline", () => {
     expectVerdict(result);
   });
 
-  test("the checklist runs under the Breaker's budget", async ({ request }) => {
-    const result = await runBaseline(request, (design) => scripted(strongScript(design)), { maxToolCallsPerTurn: 3 });
+  test("the checklist and the Breaker run under the same budget", async ({ request }) => {
+    const [first] = planted.designs;
+    const result = await runBaseline(
+      request,
+      (design) => scripted(design.id === first.design.id ? overBudgetScript(design) : strongScript(design)),
+      { maxToolCallsPerTurn: 3 },
+    );
     expect(result.budget.maxToolCallsPerTurn).toBe(3);
     expectSide(result.sides.breaker, "breaker");
     expectSide(result.sides.checklist, "checklist");
@@ -720,10 +734,14 @@ test.describe("H5 scripted Breaker baseline", () => {
       expect(entry.toolCalls, "the checklist stops at the shared tool budget").toBeLessThanOrEqual(3);
     }
     expect(result.sides.checklist.flawsFound, "cut off before its report, the checklist finds nothing").toBe(0);
-    expect(result.sides.breaker.flawsFound).toBe(5);
+
+    const capped = result.sides.breaker.designs.find((entry) => entry.designId === first.design.id) as SideDesign;
+    expect(capped.toolCalls, "the Breaker turn ran").toBeGreaterThan(0);
+    expect(capped.toolCalls, "the Breaker stops at the shared tool budget").toBeLessThanOrEqual(3);
+    expect(capped.found, "cut off before its report, the Breaker misses this flaw").toBe(false);
+    expect(result.sides.breaker.flawsFound).toBe(4);
     expectVerdict(result);
 
-    const [first] = planted.designs;
     const partial = await request.post("/api/score/breaker-baseline", {
       data: { breakers: { [first.design.id]: scripted(weakScript(first.design)) } },
     });
