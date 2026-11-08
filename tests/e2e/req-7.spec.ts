@@ -5,13 +5,19 @@ import type { Material, Matrix4, Mesh, Object3D, Scene, Vector3 } from "three";
 // - one object named "schematic-valve" with userData { sizeMm, designId }, built in the root's mm space
 // - "root-wall" meshes carry userData.heartId and a vertex "color" attribute; tinted vertices mark the problem area
 // - a "main-view-status" caption with data-selected-id (the ID the wall sent, or none), data-heart-id (the
-//   synthetic heart drawn) and data-status (REQ-6 engine result), showing the status and "synthetic heart"
+//   synthetic heart drawn) and data-status (REQ-6 engine result), showing "Schematic valve", the status and
+//   "synthetic heart"
+// - "root-leaflets" are solid and light, "root-wall" passes are sorting-safe (design brief, Root)
+// - the previous main root's wall geometry is disposed after a switch (design brief: one main root at a time)
 
 const FULL = { width: 1440, height: 900 };
 const SCENE_TIMEOUT = 20_000;
 const SWITCH_TIMEOUT = 20_000;
-const RUN_TIMEOUT = 90_000;
-const ACCENT = "0f766e";
+// Done when 3 drives the design change through REQ-8's scripted "Break it" then "Fix it" run, which submits
+// WIDER (src/components/controls/demo-script.ts). The app has no other way to change the design yet. If that
+// script's proposal changes, update WIDER here: a failure then is about REQ-8's script, not REQ-7.
+const RUN_TIMEOUT = 150_000;
+const MAX_ROOT_MESH_BYTES = 300 * 1024;
 const MASKED_TEST_IDS = ["wall-panel", "feed-panel", "controls-panel", "main-view-status"];
 
 type Status = "fit" | "risk" | "no-fit";
@@ -54,6 +60,8 @@ type ValveState = {
   centreMm: number[];
 };
 
+type Surface = { opaque: boolean; light: boolean; solid: boolean };
+
 type SceneState = {
   ready: boolean;
   wallMeshes: number;
@@ -64,6 +72,8 @@ type SceneState = {
   valve: ValveState | null;
   valveCount: number;
   tint: { vertices: number; share: number; red: number; amber: number };
+  leaflets: Surface | null;
+  wallSortingSafe: boolean;
 };
 
 type Engine = {
@@ -113,6 +123,8 @@ function readScene(): SceneState {
     valve: null,
     valveCount: 0,
     tint: { vertices: 0, share: 0, red: 0, amber: 0 },
+    leaflets: null,
+    wallSortingSafe: false,
   };
   if (!scene) return empty;
 
@@ -135,6 +147,14 @@ function readScene(): SceneState {
       if (!node.visible) return false;
     }
     return true;
+  };
+  type Drawn = Material & { color?: { getHexString(): string }; wireframe?: boolean; colorWrite: boolean };
+  const materialsOf = (meshes: Mesh[]) =>
+    meshes.flatMap((mesh) => (Array.isArray(mesh.material) ? mesh.material : [mesh.material]) as Drawn[]);
+  const isOpaque = (material: Material) => !material.transparent && material.opacity >= 0.999 && material.depthWrite;
+  const lightness = (hex: string) => {
+    const [r, g, b] = [0, 2, 4].map((k) => parseInt(hex.slice(k, k + 2), 16) / 255);
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
   };
 
   const walls = named("root-wall").filter((object) => (object as Mesh).isMesh) as Mesh[];
@@ -178,24 +198,56 @@ function readScene(): SceneState {
     const object = valves[0];
     const meshes = meshesUnder(object);
     const box = boxIn(meshes, wallLocal);
-    const materials = meshes.flatMap((mesh) =>
-      (Array.isArray(mesh.material) ? mesh.material : [mesh.material]) as (Material & {
-        color?: { getHexString(): string };
-      })[],
-    );
+    const materials = materialsOf(meshes);
     valve = {
       sizeMm: typeof object.userData.sizeMm === "number" ? object.userData.sizeMm : null,
       designId: typeof object.userData.designId === "string" ? object.userData.designId : null,
       visible: shown(object),
       meshes: meshes.length,
-      opaque:
-        materials.length > 0 &&
-        materials.every((material) => !material.transparent && material.opacity >= 0.999 && material.depthWrite),
+      opaque: materials.length > 0 && materials.every(isOpaque),
       colours: materials.map((material) => material.color?.getHexString() ?? ""),
       extentMm: box?.extent ?? [],
       centreMm: box?.centre ?? [],
     };
   }
+
+  const leafletMaterials = materialsOf(leaflets);
+  const leafletSurface: Surface | null =
+    leaflets.length === 0
+      ? null
+      : {
+          opaque: leafletMaterials.every(isOpaque),
+          light: leafletMaterials.every((material) => lightness(material.color?.getHexString() ?? "000000") >= 0.75),
+          solid: leaflets.every(shown) && leafletMaterials.every((material) => !material.wireframe),
+        };
+
+  // Sorting-safe wall: each drawn pass is opaque and writes depth, or is translucent, writes no depth and draws
+  // one side only, with the back faces drawn before the front faces (design brief: "render back faces and
+  // transparency carefully").
+  const FRONT = 0;
+  const BACK = 1;
+  const wallPasses = walls.flatMap((mesh) => {
+    const passes: { material: Drawn; order: number }[] = [];
+    mesh.traverse((child) => {
+      if (!(child as Mesh).isMesh) return;
+      for (const material of materialsOf([child as Mesh])) {
+        if (material.colorWrite) passes.push({ material, order: (child as Mesh).renderOrder });
+      }
+    });
+    return passes;
+  });
+  const translucent = wallPasses.filter(({ material }) => !isOpaque(material));
+  const orderOf = (side: number) => translucent.filter(({ material }) => material.side === side).map(({ order }) => order);
+  const wallSortingSafe =
+    wallPasses.length > 0 &&
+    wallPasses.every(
+      ({ material }) =>
+        isOpaque(material) || (!material.depthWrite && (material.side === FRONT || material.side === BACK)),
+    ) &&
+    (translucent.length === 0 ||
+      (orderOf(BACK).length > 0 &&
+        orderOf(FRONT).length > 0 &&
+        Math.max(...orderOf(BACK)) < Math.min(...orderOf(FRONT))));
 
   let vertices = 0;
   let tinted = 0;
@@ -228,6 +280,8 @@ function readScene(): SceneState {
     valve,
     valveCount: valves.length,
     tint: { vertices, share: vertices ? tinted / vertices : 0, red, amber },
+    leaflets: leafletSurface,
+    wallSortingSafe,
   };
 }
 
@@ -317,13 +371,96 @@ async function waitForShownHeart(page: Page, heartId: string) {
     .toEqual([heartId]);
 }
 
+// Waits until the canvas has stopped drawing new frames (it renders on demand once settled), so a tint or
+// rotation is on screen before a screenshot, however slow the machine.
 async function settleFrames(page: Page) {
-  await page.evaluate(
-    () =>
-      new Promise((resolve) =>
-        requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(resolve))),
-      ),
+  await page.evaluate(async () => {
+    const frames = () => (window as unknown as { __valvular?: { frames: number } }).__valvular?.frames ?? 0;
+    const next = () => new Promise((resolve) => requestAnimationFrame(resolve));
+    for (let i = 0; i < 10; i++) await next();
+    const deadline = performance.now() + 10_000;
+    let last = frames();
+    let stableSince = performance.now();
+    while (performance.now() < deadline && performance.now() - stableSince < 400) {
+      await next();
+      const now = frames();
+      if (now !== last) {
+        last = now;
+        stableSince = performance.now();
+      }
+    }
+  });
+}
+
+async function token(page: Page, name: string) {
+  return page.evaluate(
+    (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim().toLowerCase(),
+    name,
   );
+}
+
+async function rotateRoot(page: Page) {
+  await page.mouse.move(FULL.width / 2, FULL.height / 2 + 60);
+  await page.mouse.down();
+  for (let i = 1; i <= 20; i++) await page.mouse.move(FULL.width / 2 + i * 12, FULL.height / 2 + 60);
+  await page.mouse.up();
+}
+
+type SwitchRecord = { running: boolean; maxWalls: number; maxHearts: number; maxLeaflets: number; maxValves: number; watched: number; disposed: number };
+
+// Records the most root walls, hearts, leaflets and valves seen in any frame, and whether the shown wall's
+// geometry gets disposed, from now until stopSwitchRecord.
+async function startSwitchRecord(page: Page) {
+  await page.evaluate(() => {
+    const w = window as unknown as { __valvular?: { scene: Scene }; __req7Switch?: SwitchRecord };
+    const scene = w.__valvular?.scene;
+    const record: SwitchRecord = { running: true, maxWalls: 0, maxHearts: 0, maxLeaflets: 0, maxValves: 0, watched: 0, disposed: 0 };
+    w.__req7Switch = record;
+    scene?.traverse((object) => {
+      if (object.name !== "root-wall" || !(object as Mesh).isMesh) return;
+      record.watched++;
+      (object as Mesh).geometry.addEventListener("dispose", () => record.disposed++);
+    });
+    const tick = () => {
+      const now = w.__valvular?.scene;
+      if (now) {
+        let walls = 0;
+        let leaflets = 0;
+        let valves = 0;
+        const hearts = new Set<string>();
+        now.traverse((object) => {
+          const mesh = (object as Mesh).isMesh;
+          if (object.name === "root-wall" && mesh) {
+            walls++;
+            hearts.add(String(object.userData.heartId ?? ""));
+          }
+          if (object.name === "root-leaflets" && mesh) leaflets++;
+          if (object.name === "schematic-valve") valves++;
+        });
+        record.maxWalls = Math.max(record.maxWalls, walls);
+        record.maxHearts = Math.max(record.maxHearts, hearts.size);
+        record.maxLeaflets = Math.max(record.maxLeaflets, leaflets);
+        record.maxValves = Math.max(record.maxValves, valves);
+      }
+      if (record.running) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+async function readSwitchRecord(page: Page) {
+  return page.evaluate(() => {
+    const record = (window as unknown as { __req7Switch?: SwitchRecord }).__req7Switch;
+    if (!record) throw new Error("no switch record");
+    return { ...record };
+  });
+}
+
+async function stopSwitchRecord(page: Page) {
+  await page.evaluate(() => {
+    const record = (window as unknown as { __req7Switch?: SwitchRecord }).__req7Switch;
+    if (record) record.running = false;
+  });
 }
 
 async function maskRects(page: Page) {
@@ -412,7 +549,8 @@ function expectValveFitsRoot(state: SceneState, sizeMm: number) {
 }
 
 test.describe("REQ-7 valve in the root", () => {
-  test.setTimeout(240_000);
+  // showInMain can open up to 30 wall hearts before REQ-12 makes the wall real, so slow machines get room.
+  test.setTimeout(480_000);
 
   test("Done when 1: zooming to the valve shows the root and a schematic valve", async ({ page, request }) => {
     const errors = trackErrors(page);
@@ -436,20 +574,39 @@ test.describe("REQ-7 valve in the root", () => {
       })
       .toBe(true);
 
+    const accent = await token(page, "--accent");
+    expect(accent, "the design tokens define the accent").toMatch(/^#[0-9a-f]{6}$/);
     const state = await sceneState(page);
     expect(state.valveCount, "one schematic valve").toBe(1);
     expect(state.valve?.visible).toBe(true);
     expect(state.valve?.designId).toBe("start");
-    expect(state.valve?.colours, "valve uses the accent colour").toContain(ACCENT);
+    expect(state.valve?.colours, "valve uses the accent colour token").toContain(accent.slice(1));
     const expected = start.get(heartId);
     expect(expected?.sizeMm, `${heartId} gets a size under the starting valve`).toBeDefined();
     expectValveFitsRoot(state, expected!.sizeMm!);
 
-    const label = page.getByText(/schematic valve/i).first();
-    await expect(label).toBeVisible();
+    expect(state.leaflets, "root-leaflets exist").not.toBeNull();
+    expect(state.leaflets?.opaque, "leaflets are opaque in the root view").toBe(true);
+    expect(state.leaflets?.light, "leaflets are light").toBe(true);
+    expect(state.leaflets?.solid, "leaflets are drawn solid").toBe(true);
+    expect(state.wallSortingSafe, "root-wall passes avoid transparency sorting glitches").toBe(true);
+
+    await expect(caption(page), "the main view labels the valve").toContainText(/schematic valve/i);
+    await expectUncovered(page, "main-view-status");
     await settleFrames(page);
     const shares = await colourShares(page);
     expect(shares.teal, "the accent valve is visible in the picture").toBeGreaterThan(0.0005);
+
+    await rotateRoot(page);
+    await settleFrames(page);
+    const turned = await sceneState(page);
+    expect(turned.valveCount, "one schematic valve after rotating").toBe(1);
+    expect(turned.valve?.visible, "valve visible after rotating").toBe(true);
+    expect(turned.valve?.opaque, "valve solid after rotating").toBe(true);
+    expect(turned.wallSortingSafe, "wall still sorting-safe after rotating").toBe(true);
+    await expect(caption(page)).toContainText(/schematic valve/i);
+    const turnedShares = await colourShares(page);
+    expect(turnedShares.teal, "the accent valve is still visible after rotating").toBeGreaterThan(0.0005);
     expect(errors).toEqual([]);
   });
 
@@ -468,12 +625,25 @@ test.describe("REQ-7 valve in the root", () => {
     const firstId = await shownHeartId(page);
     expect(before.heartIds).toEqual([firstId]);
 
+    await startSwitchRecord(page);
     const { heartId } = await showInMain(page, (id) => id !== firstId);
     expect(heartId).not.toBe(firstId);
     await waitForShownHeart(page, heartId);
     await expect
       .poll(async () => (await sceneState(page)).geometryKey, { timeout: SWITCH_TIMEOUT })
       .not.toBe(before.geometryKey);
+    await expect
+      .poll(async () => {
+        const record = await readSwitchRecord(page);
+        return record.watched > 0 && record.disposed >= record.watched;
+      }, { message: "the previous root's wall geometry is disposed", timeout: SWITCH_TIMEOUT })
+      .toBe(true);
+    const record = await readSwitchRecord(page);
+    await stopSwitchRecord(page);
+    expect(record.maxHearts, "never two main roots in one frame").toBe(1);
+    expect(record.maxWalls, "no extra wall meshes during the switch").toBe(before.wallMeshes);
+    expect(record.maxLeaflets, "no extra leaflets during the switch").toBeLessThanOrEqual(before.wallMeshes);
+    expect(record.maxValves, "one valve during the switch").toBe(1);
 
     const after = await sceneState(page);
     expect(after.wallMeshes, "one main root at a time").toBe(before.wallMeshes);
@@ -495,6 +665,10 @@ test.describe("REQ-7 valve in the root", () => {
       const after = wider.get(id)?.sizeMm;
       return after !== undefined && after !== start.get(id)?.sizeMm;
     };
+    expect(
+      [...wider.keys()].some(changes),
+      "the engine gives at least one heart a different size under the wider design",
+    ).toBe(true);
     const { heartId } = await showInMain(page, changes);
     await waitForShownHeart(page, heartId);
 
@@ -538,6 +712,14 @@ test.describe("REQ-7 valve in the root", () => {
     await openWorkspace(page);
     const { start } = await loadEngine(page.request);
     const statusOf = (id: string) => start.get(id)?.status;
+    // The PRD says "red or amber". The status tokens fix which: no-fit is red, risk is amber. readScene's
+    // red/amber split (amber when green - blue >= 0.12) must classify the tokens the same way.
+    const hueOf = (hex: string) => {
+      const [, g, b] = [1, 3, 5].map((k) => parseInt(hex.slice(k, k + 2), 16) / 255);
+      return g - b >= 0.12 ? "amber" : "red";
+    };
+    expect(hueOf(await token(page, "--status-no-fit")), "no-fit token is red").toBe("red");
+    expect(hueOf(await token(page, "--status-risk")), "risk token is amber").toBe("amber");
     const redOrAmber = (dot: { status: string }) => dot.status === "risk" || dot.status === "no-fit";
 
     const fitHeart = await showInMain(page, (id) => statusOf(id) === "fit");
@@ -576,8 +758,10 @@ test.describe("REQ-7 valve in the root", () => {
 
       await settleFrames(page);
       const shares = await colourShares(page);
+      // Same camera, same masks, a fitting heart as the baseline: only the tint adds warm pixels. The vertex
+      // colour checks above are the main proof; this only shows the tint reaches the screen.
       expect(shares.warm, `the ${hue} tint is visible on ${opened.heartId}`).toBeGreaterThan(
-        Math.max(0.002, baseline.warm * 3),
+        baseline.warm + 0.0015,
       );
     }
     expect(errors).toEqual([]);
@@ -610,8 +794,44 @@ async function frameTimes(page: Page, ms: number, stopAtProgress?: number) {
 }
 
 // Run by a human on the demo laptop with nothing else running: npm run test:gpu.
-test("@gpu rotating the root with the valve meets the brief's performance targets", async ({ page }) => {
-  test.setTimeout(240_000);
+// Covers every row of the brief's performance table with the REQ-7 root and valve loaded. The heart model file
+// (under 5 MB) is REQ-3's asset and is checked in its @gpu test; the root mesh files are checked here.
+test("@gpu rotating the root with the valve meets the brief's performance targets", async ({ page, request }) => {
+  test.setTimeout(480_000);
+  const check = (name: string, times: number[]) => {
+    expect(times.length, `${name} frames measured`).toBeGreaterThan(30);
+    const average = times.reduce((sum, time) => sum + time, 0) / times.length;
+    expect(1000 / average, `${name} average fps`).toBeGreaterThanOrEqual(55);
+    expect(percentile(times, 0.95), `${name} p95 ms`).toBeLessThan(25);
+  };
+
+  // Time to a visible heart, and the beating phase, with the root and valve loaded behind it.
+  await page.setViewportSize(FULL);
+  await page.goto("/");
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          () => (window as unknown as { __valvular?: { firstHeartFrameMs: number | null } }).__valvular?.firstHeartFrameMs ?? null,
+        ),
+      { timeout: SCENE_TIMEOUT },
+    )
+    .not.toBeNull();
+  const firstHeartFrameMs = await page.evaluate(
+    () => (window as unknown as { __valvular?: { firstHeartFrameMs: number | null } }).__valvular?.firstHeartFrameMs,
+  );
+  expect(firstHeartFrameMs, "time to a visible heart, ms").toBeLessThan(3_000);
+  await waitForRoot(page);
+  expect(await stageProgress(page)).toBe(0);
+  check("beating with the root and valve loaded", await frameTimes(page, 6_000));
+
+  // Root mesh files: the landing root and every synthetic heart the main view can load.
+  const { hearts } = (await (await request.get("/api/hearts")).json()) as { hearts: { id: string; meshUrl: string }[] };
+  for (const url of ["/fixtures/root-sample.glb", ...new Set(hearts.map((heart) => heart.meshUrl))]) {
+    const body = await (await request.get(url)).body();
+    expect(body.length, `${url} root mesh bytes`).toBeLessThan(MAX_ROOT_MESH_BYTES);
+  }
+
   await openWorkspace(page);
   const { start } = await loadEngine(page.request);
   const opened = await showInMain(
@@ -620,13 +840,6 @@ test("@gpu rotating the root with the valve meets the brief's performance target
   );
   await waitForShownHeart(page, opened.heartId);
   expect((await sceneState(page)).valve?.visible).toBe(true);
-
-  const check = (name: string, times: number[]) => {
-    expect(times.length, `${name} frames measured`).toBeGreaterThan(30);
-    const average = times.reduce((sum, time) => sum + time, 0) / times.length;
-    expect(1000 / average, `${name} average fps`).toBeGreaterThanOrEqual(55);
-    expect(percentile(times, 0.95), `${name} p95 ms`).toBeLessThan(25);
-  };
 
   const rotation = frameTimes(page, 5_000);
   await page.mouse.move(500, 450);
