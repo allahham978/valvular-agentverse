@@ -1,23 +1,30 @@
 import { useSyncExternalStore } from "react";
-import { RunEventSchema, SummarySchema, type FitResult, type RunEvent } from "@/contracts";
-import { demoRequest } from "@/components/controls/demo-script";
-import { sampleNewRisk } from "./sample-new-risk";
+import { DesignSchema, FitResultSchema, RunEventSchema, SummarySchema, type FitResult, type RunEvent } from "@/contracts";
 
 export type Phase = "idle" | "breaking" | "broken" | "fixing" | "done";
-export type RunView = { phase: Phase; events: RunEvent[]; sample: boolean; runId: string | null };
+export type RunView = {
+  phase: Phase;
+  events: RunEvent[];
+  sample: boolean;
+  labelled: boolean;
+  runId: string | null;
+  newRisk: number | null;
+};
 
 const REVEAL_MS = 250;
 const HIDDEN_TYPES = new Set(["run-start", "step-start", "run-stop"]);
-const IDLE: RunView = { phase: "idle", events: [], sample: false, runId: null };
+const IDLE: RunView = { phase: "idle", events: [], sample: false, labelled: false, runId: null, newRisk: null };
 
 let view = IDLE;
 const received: RunEvent[] = [];
 let shown = 0;
 let started = false;
+let labelled = false;
 let released = false;
 let stopped = false;
 let source: EventSource | undefined;
 let runId: string | null = null;
+let newRisk: number | null = null;
 let timer: ReturnType<typeof setTimeout> | undefined;
 const listeners = new Set<() => void>();
 
@@ -32,7 +39,8 @@ function phase(): Phase {
 
 function publish() {
   const events = received.slice(0, shown).filter((event) => !HIDDEN_TYPES.has(event.type));
-  view = { phase: phase(), events, sample: started && received.every((event) => event.mode === "replay"), runId };
+  const sample = started && received.every((event) => event.mode === "replay");
+  view = { phase: phase(), events, sample, labelled: sample && labelled, runId, newRisk };
   listeners.forEach((listener) => listener());
 }
 
@@ -40,17 +48,31 @@ function dispatchRisk(results: FitResult[]) {
   window.dispatchEvent(new CustomEvent("valvular:fit-results", { detail: { results } }));
 }
 
-function onRevealed(event: RunEvent) {
-  const data = event.data as { improved?: boolean; designId?: string; summary?: unknown } | null;
-  if (event.type !== "evaluation" || !data?.improved || !data.designId) return;
-  const summary = SummarySchema.safeParse(data.summary);
-  const ids = summary.success ? summary.data.newRiskHeartIds : [];
-  const fallback = sampleNewRisk(data.designId);
-  dispatchRisk(
-    ids.length === 0
-      ? fallback
-      : ids.map((heartId) => ({ heartId, designId: data.designId!, status: "risk", reasons: [] })),
+async function showImprovedDesign(designId: string) {
+  const proposal = received.find(
+    (event) => event.type === "proposal" && (event.data as { design?: { id?: string } } | null)?.design?.id === designId,
   );
+  const design = DesignSchema.safeParse((proposal?.data as { design?: unknown } | null)?.design);
+  if (!design.success) return;
+  try {
+    const response = await fetch("/api/fit", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ design: design.data }),
+    });
+    if (!response.ok) return;
+    const body = (await response.json()) as { results: unknown; summary: unknown };
+    newRisk = SummarySchema.parse(body.summary).newRiskHeartIds.length;
+    dispatchRisk(FitResultSchema.array().parse(body.results));
+    publish();
+  } catch {
+    // The feed already shows the code's verdict; the wall just keeps its last state.
+  }
+}
+
+function onRevealed(event: RunEvent) {
+  const data = event.data as { improved?: boolean; designId?: string } | null;
+  if (event.type === "evaluation" && data?.improved && data.designId) void showImprovedDesign(data.designId);
 }
 
 function revealNext() {
@@ -102,8 +124,12 @@ async function begin(request: unknown) {
   }
 }
 
+const LIVE_REQUEST = { model: { kind: "gemini" }, demo: true } as const;
+
 export function startRun() {
-  if (!started) return begin(demoRequest);
+  if (started) return;
+  const live = new URLSearchParams(window.location.search).get("mode") === "live";
+  return begin(live ? LIVE_REQUEST : { replayId: "demo" });
 }
 
 export function startReplay(replayId: string) {
@@ -115,6 +141,8 @@ export function startReplay(replayId: string) {
   released = false;
   stopped = false;
   runId = null;
+  newRisk = null;
+  labelled = true;
   return begin({ replayId });
 }
 

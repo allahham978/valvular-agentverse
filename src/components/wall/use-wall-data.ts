@@ -8,6 +8,7 @@ export type WallState = {
   hearts: Map<string, Heart>;
   results: FitResult[];
   indexById: Map<string, number>;
+  ruleTypes: Record<string, string>;
 };
 
 const EMPTY: WallState = {
@@ -16,6 +17,7 @@ const EMPTY: WallState = {
   hearts: new Map(),
   results: [],
   indexById: new Map(),
+  ruleTypes: {},
 };
 
 let state = EMPTY;
@@ -51,12 +53,13 @@ function start() {
   if (started) return;
   started = true;
   window.addEventListener("valvular:fit-results", onFitResults);
-  void loadWallData().then(({ label, hearts, results }) =>
+  void loadWallData().then(({ label, hearts, results, ruleTypes }) =>
     setState({
       ready: true,
       label,
       hearts: new Map(hearts.map((heart) => [heart.id, heart])),
       results,
+      ruleTypes,
       indexById: new Map(results.map((result, index) => [result.heartId, index])),
     }),
   );

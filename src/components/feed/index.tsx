@@ -3,8 +3,8 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { DataLabel } from "@/components/data-label";
 import type { RunEvent } from "@/contracts";
+import { ResultLine } from "./result-line";
 import { useRun } from "./run-store";
 
 const FOLLOW_SLACK_PX = 24;
@@ -102,7 +102,7 @@ function EventBody({ event }: { event: RunEvent }) {
 }
 
 export function Feed() {
-  const { events, sample, runId } = useRun();
+  const { events, phase, runId, newRisk } = useRun();
   const list = useRef<HTMLOListElement>(null);
   const stuck = useRef(true);
   const lastTop = useRef(0);
@@ -131,7 +131,6 @@ export function Feed() {
     >
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-sm font-semibold">Agent feed</h2>
-        {sample && <DataLabel>Sample data</DataLabel>}
       </div>
       {events.length === 0 ? (
         <p className="text-sm text-muted">Press Break it to start a run.</p>
@@ -145,6 +144,7 @@ export function Feed() {
           ))}
         </ol>
       )}
+      {phase === "done" && newRisk !== null && <ResultLine events={events} newRisk={newRisk} />}
       {reviewable && (
         <div className="mt-3 shrink-0 border-t border-panel-border pt-3">
           <Link
