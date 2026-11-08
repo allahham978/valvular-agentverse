@@ -11,6 +11,7 @@ const BodySchema = z.object({
   model: ModelSpecSchema,
   budget: z
     .object({
+      maxStepsPerTurn: z.number().int().positive(),
       maxToolCallsPerTurn: z.number().int().positive(),
       maxTurnMs: z.number().positive(),
       maxRounds: z.number().int().positive(),
@@ -24,8 +25,10 @@ export async function POST(request: Request) {
   const body = BodySchema.safeParse(await request.json().catch(() => null));
   if (!body.success) return NextResponse.json({ error: z.prettifyError(body.error) }, { status: 400 });
 
+  const model = createModelClient(body.data.model);
   const id = startRun({
-    model: createModelClient(body.data.model),
+    model,
+    record: model.mode === "live",
     tools: createAgentTools(),
     budget: body.data.budget,
     seed: body.data.seed,

@@ -1,7 +1,7 @@
-import type { Heart } from "@/contracts";
-import { defaultRules } from "@/engine";
-import { strParam } from "@/engine/rules";
-import { devHearts } from "@/lib/dev-hearts";
+import type { Heart } from "../contracts";
+import { defaultRules } from "../engine";
+import { strParam } from "../engine/rules";
+import { devHearts } from "../lib/dev-hearts";
 import type { z } from "zod";
 import { ToolError } from "./evidence";
 import { changedHearts, evaluateOrThrow } from "./fit";

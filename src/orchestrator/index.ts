@@ -15,13 +15,14 @@ import type {
   ModelRequest,
   ToolReply,
 } from "../agents/model-client";
+import { saveRecording } from "../agents/gemini/recording";
 import { defaultRoles, type AgentRole, type LoopContext } from "./roles";
 import { parseReport, parseSubmission } from "./terminal";
 import type { ToolOutcome, ToolRegistry } from "./tools";
 
-export type Budget = { maxToolCallsPerTurn: number; maxTurnMs: number; maxRounds: number };
+export type Budget = { maxStepsPerTurn: number; maxToolCallsPerTurn: number; maxTurnMs: number; maxRounds: number };
 
-export const defaultBudget: Budget = { maxToolCallsPerTurn: 12, maxTurnMs: 60_000, maxRounds: 3 };
+export const defaultBudget: Budget = { maxStepsPerTurn: 8, maxToolCallsPerTurn: 16, maxTurnMs: 180_000, maxRounds: 3 };
 
 export const defaultStartDesign: Design = {
   id: "start",
@@ -35,7 +36,7 @@ export const defaultStartDesign: Design = {
 };
 
 type EmitInput = { actor: RunEvent["actor"]; type: string; text: string; data?: unknown };
-export type StopReason = "no-improvement" | "budget" | "no-valid-fix" | "model-error";
+export type StopReason = "no-improvement" | "budget" | "no-valid-fix" | "model-error" | "investigated";
 
 export type PostLoopContext = {
   stopReason: StopReason;
@@ -55,6 +56,8 @@ export type ExecuteRunOptions = {
   startDesign?: Design;
   limits?: Limit[];
   startAt?: "investigate" | "propose";
+  stopAfter?: "investigate";
+  record?: boolean;
   postLoopSteps?: PostLoopStep[];
   onEvent?: (run: Run, event: RunEvent) => void;
 };
@@ -68,6 +71,8 @@ class Stop extends Error {
     super(detail);
   }
 }
+
+type Called = ToolOutcome | { ok: false; error: string; rejected: true };
 
 type Current = { design: Design; summary: Summary };
 
@@ -158,6 +163,7 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
       findings: run.findings,
       proposals: run.proposals,
       limits: run.limits,
+      evidence: run.evidence,
     };
   }
 
@@ -169,9 +175,15 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     const messages: ModelMessage[] = [{ role: "user", text: role.prompt(ctx) }];
     const toolSpecs = tools.specs().filter((spec) => role.toolNames.includes(spec.name));
     const guard = turnGuard(budget.maxTurnMs);
+    let stepCount = 0;
     let callCount = 0;
+    let rejections = 0;
     try {
       for (;;) {
+        if (stepCount >= budget.maxStepsPerTurn) {
+          throw new Stop("budget", `More than ${budget.maxStepsPerTurn} model steps in one turn.`, "maxStepsPerTurn");
+        }
+        stepCount += 1;
         const request: ModelRequest = {
           actor: role.actor,
           step,
@@ -210,6 +222,9 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
                 : { error: outcome.error }),
             },
           });
+          if (!outcome.ok && "rejected" in outcome && (rejections += 1) > 1) {
+            throw new Stop("model-error", `${call.name} failed validation again after one retry: ${outcome.error}`);
+          }
           if (outcome.ok && call.name === role.terminalTool) return outcome.evidence;
           replies.push(
             outcome.ok
@@ -224,13 +239,15 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     }
   }
 
-  async function callAs(role: AgentRole, name: string, input: unknown, ctx: LoopContext): Promise<ToolOutcome> {
+  async function callAs(role: AgentRole, name: string, input: unknown, ctx: LoopContext): Promise<Called> {
     if (!role.toolNames.includes(name)) return { ok: false, error: `Tool ${name} is not available to you.` };
     const outcome = await callTool(name, input);
     if (!outcome.ok) return outcome;
     if (name === role.terminalTool) {
-      const error = checkTerminal(outcome.evidence) ?? role.validate?.(outcome.evidence, ctx) ?? null;
-      if (error) return { ok: false, error };
+      const unparsed = checkTerminal(outcome.evidence);
+      if (unparsed) return { ok: false, error: unparsed };
+      const rejected = role.validate?.(outcome.evidence, ctx);
+      if (rejected) return { ok: false, error: rejected, rejected: true };
     }
     record(outcome.evidence);
     return outcome;
@@ -296,7 +313,10 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
       data: { designId: startDesign.id, summary: first.summary, evidenceId: first.evidenceId, ...(first.label ? { label: first.label } : {}) },
     });
 
-    if (options.startAt !== "propose") recordFindings("investigate", await runStep("investigate", 0));
+    if (options.startAt !== "propose") {
+      recordFindings("investigate", await runStep("investigate", 0));
+      if (options.stopAfter === "investigate") throw new Stop("investigated", "The Breaker reported its findings.");
+    }
     for (let round = 1; ; round++) {
       current = await propose(round, current);
       recordFindings("attack", await runStep("attack", round));
@@ -331,5 +351,6 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     text: stop.detail,
     data: { reason: stop.reason, detail: stop.detail, ...(stop.limit && { limit: stop.limit }) },
   });
+  if (options.record) saveRecording(run);
   return run;
 }

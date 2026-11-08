@@ -1,0 +1,4605 @@
+{
+  "id": "df858328-231d-4e1b-98f8-2cdbf5ef03e8",
+  "seed": 0,
+  "startDesignId": "start",
+  "limits": [],
+  "events": [
+    {
+      "seq": 1,
+      "at": "2026-11-08T00:41:35.532Z",
+      "actor": "code",
+      "type": "run-start",
+      "text": "Run started on the starting valve.",
+      "data": {
+        "design": {
+          "id": "start",
+          "label": "Starting valve",
+          "hypothetical": true,
+          "sizes": [
+            {
+              "nominalMm": 23,
+              "minAnnulusMm": 21,
+              "maxAnnulusMm": 23
+            },
+            {
+              "nominalMm": 25,
+              "minAnnulusMm": 23,
+              "maxAnnulusMm": 25
+            },
+            {
+              "nominalMm": 27,
+              "minAnnulusMm": 25,
+              "maxAnnulusMm": 27
+            }
+          ]
+        },
+        "budget": {
+          "maxStepsPerTurn": 8,
+          "maxToolCallsPerTurn": 16,
+          "maxTurnMs": 180000,
+          "maxRounds": 3
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 2,
+      "at": "2026-11-08T00:41:35.532Z",
+      "actor": "code",
+      "type": "evaluation",
+      "text": "Starting valve fits 59.8%.",
+      "data": {
+        "designId": "start",
+        "summary": {
+          "designId": "start",
+          "split": "dev",
+          "total": 400,
+          "fit": 239,
+          "risk": 68,
+          "noFit": 93,
+          "fitPct": 59.75,
+          "newRiskHeartIds": []
+        },
+        "evidenceId": "ev-95d7f1707ae35212"
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 3,
+      "at": "2026-11-08T00:41:35.532Z",
+      "actor": "breaker",
+      "type": "step-start",
+      "text": "breaker started investigate.",
+      "data": {
+        "step": "investigate",
+        "round": 0
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 4,
+      "at": "2026-11-08T00:41:50.406Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called evaluate_design.",
+      "data": {
+        "tool": "evaluate_design",
+        "input": {
+          "design": {
+            "hypothetical": true,
+            "id": "start",
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "maxAnnulusMm": 23,
+                "minAnnulusMm": 21
+              },
+              {
+                "maxAnnulusMm": 25,
+                "minAnnulusMm": 23,
+                "nominalMm": 25
+              },
+              {
+                "maxAnnulusMm": 27,
+                "nominalMm": 27,
+                "minAnnulusMm": 25
+              }
+            ],
+            "label": "Starting valve"
+          }
+        },
+        "evidenceId": "ev-95d7f1707ae35212",
+        "result": {
+          "designId": "start",
+          "split": "dev",
+          "total": 400,
+          "fit": 239,
+          "risk": 68,
+          "noFit": 93,
+          "fitPct": 59.75,
+          "newRiskHeartIds": [],
+          "changed": []
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 5,
+      "at": "2026-11-08T00:41:50.407Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called group_failures.",
+      "data": {
+        "tool": "group_failures",
+        "input": {
+          "by": "rule",
+          "design": {
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "maxAnnulusMm": 23,
+                "minAnnulusMm": 21
+              },
+              {
+                "minAnnulusMm": 23,
+                "nominalMm": 25,
+                "maxAnnulusMm": 25
+              },
+              {
+                "maxAnnulusMm": 27,
+                "minAnnulusMm": 25,
+                "nominalMm": 27
+              }
+            ],
+            "label": "Starting valve",
+            "id": "start"
+          }
+        },
+        "evidenceId": "ev-ddb7bf7de5a26591",
+        "result": {
+          "by": "rule",
+          "groups": [
+            {
+              "key": "annulus-coverage",
+              "count": 93,
+              "risk": 0,
+              "noFit": 93,
+              "heartIds": [
+                "heart-013",
+                "heart-019",
+                "heart-031",
+                "heart-035",
+                "heart-045",
+                "heart-054",
+                "heart-055",
+                "heart-056",
+                "heart-060",
+                "heart-062",
+                "heart-066",
+                "heart-068",
+                "heart-070",
+                "heart-075",
+                "heart-089",
+                "heart-090",
+                "heart-092",
+                "heart-096",
+                "heart-103",
+                "heart-118",
+                "heart-123",
+                "heart-124",
+                "heart-154",
+                "heart-161",
+                "heart-163",
+                "heart-166",
+                "heart-169",
+                "heart-172",
+                "heart-173",
+                "heart-175",
+                "heart-179",
+                "heart-180",
+                "heart-191",
+                "heart-198",
+                "heart-200",
+                "heart-202",
+                "heart-204",
+                "heart-212",
+                "heart-215",
+                "heart-217",
+                "heart-218",
+                "heart-223",
+                "heart-225",
+                "heart-235",
+                "heart-237",
+                "heart-240",
+                "heart-242",
+                "heart-257",
+                "heart-266",
+                "heart-267",
+                "heart-268",
+                "heart-271",
+                "heart-272",
+                "heart-276",
+                "heart-278",
+                "heart-283",
+                "heart-284",
+                "heart-290",
+                "heart-297",
+                "heart-298",
+                "heart-300",
+                "heart-301",
+                "heart-307",
+                "heart-308",
+                "heart-317",
+                "heart-336",
+                "heart-340",
+                "heart-341",
+                "heart-343",
+                "heart-349",
+                "heart-357",
+                "heart-362",
+                "heart-373",
+                "heart-375",
+                "heart-395",
+                "heart-402",
+                "heart-405",
+                "heart-431",
+                "heart-438",
+                "heart-443",
+                "heart-446",
+                "heart-452",
+                "heart-460",
+                "heart-464",
+                "heart-469",
+                "heart-470",
+                "heart-477",
+                "heart-479",
+                "heart-480",
+                "heart-481",
+                "heart-489",
+                "heart-493",
+                "heart-498"
+              ]
+            },
+            {
+              "key": "stj-excess",
+              "count": 52,
+              "risk": 52,
+              "noFit": 0,
+              "heartIds": [
+                "heart-001",
+                "heart-003",
+                "heart-011",
+                "heart-014",
+                "heart-018",
+                "heart-025",
+                "heart-026",
+                "heart-029",
+                "heart-037",
+                "heart-043",
+                "heart-044",
+                "heart-053",
+                "heart-077",
+                "heart-086",
+                "heart-087",
+                "heart-110",
+                "heart-126",
+                "heart-133",
+                "heart-135",
+                "heart-151",
+                "heart-160",
+                "heart-174",
+                "heart-176",
+                "heart-178",
+                "heart-183",
+                "heart-221",
+                "heart-231",
+                "heart-253",
+                "heart-261",
+                "heart-279",
+                "heart-291",
+                "heart-293",
+                "heart-299",
+                "heart-304",
+                "heart-314",
+                "heart-321",
+                "heart-324",
+                "heart-333",
+                "heart-351",
+                "heart-359",
+                "heart-370",
+                "heart-381",
+                "heart-384",
+                "heart-440",
+                "heart-447",
+                "heart-450",
+                "heart-466",
+                "heart-472",
+                "heart-473",
+                "heart-482",
+                "heart-485",
+                "heart-499"
+              ]
+            },
+            {
+              "key": "sinus-clearance",
+              "count": 38,
+              "risk": 38,
+              "noFit": 0,
+              "heartIds": [
+                "heart-014",
+                "heart-018",
+                "heart-029",
+                "heart-032",
+                "heart-043",
+                "heart-053",
+                "heart-058",
+                "heart-077",
+                "heart-081",
+                "heart-086",
+                "heart-098",
+                "heart-110",
+                "heart-133",
+                "heart-135",
+                "heart-168",
+                "heart-183",
+                "heart-250",
+                "heart-253",
+                "heart-261",
+                "heart-288",
+                "heart-291",
+                "heart-299",
+                "heart-304",
+                "heart-344",
+                "heart-346",
+                "heart-350",
+                "heart-381",
+                "heart-384",
+                "heart-391",
+                "heart-392",
+                "heart-406",
+                "heart-440",
+                "heart-447",
+                "heart-456",
+                "heart-466",
+                "heart-473",
+                "heart-487",
+                "heart-492"
+              ]
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 6,
+      "at": "2026-11-08T00:41:50.408Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called group_failures.",
+      "data": {
+        "tool": "group_failures",
+        "input": {
+          "design": {
+            "hypothetical": true,
+            "id": "start",
+            "label": "Starting valve",
+            "sizes": [
+              {
+                "maxAnnulusMm": 23,
+                "minAnnulusMm": 21,
+                "nominalMm": 23
+              },
+              {
+                "maxAnnulusMm": 25,
+                "minAnnulusMm": 23,
+                "nominalMm": 25
+              },
+              {
+                "maxAnnulusMm": 27,
+                "minAnnulusMm": 25,
+                "nominalMm": 27
+              }
+            ]
+          },
+          "by": "size"
+        },
+        "evidenceId": "ev-c4a0b7e08735e627",
+        "result": {
+          "by": "size",
+          "groups": [
+            {
+              "key": "none",
+              "count": 93,
+              "risk": 0,
+              "noFit": 93,
+              "heartIds": [
+                "heart-013",
+                "heart-019",
+                "heart-031",
+                "heart-035",
+                "heart-045",
+                "heart-054",
+                "heart-055",
+                "heart-056",
+                "heart-060",
+                "heart-062",
+                "heart-066",
+                "heart-068",
+                "heart-070",
+                "heart-075",
+                "heart-089",
+                "heart-090",
+                "heart-092",
+                "heart-096",
+                "heart-103",
+                "heart-118",
+                "heart-123",
+                "heart-124",
+                "heart-154",
+                "heart-161",
+                "heart-163",
+                "heart-166",
+                "heart-169",
+                "heart-172",
+                "heart-173",
+                "heart-175",
+                "heart-179",
+                "heart-180",
+                "heart-191",
+                "heart-198",
+                "heart-200",
+                "heart-202",
+                "heart-204",
+                "heart-212",
+                "heart-215",
+                "heart-217",
+                "heart-218",
+                "heart-223",
+                "heart-225",
+                "heart-235",
+                "heart-237",
+                "heart-240",
+                "heart-242",
+                "heart-257",
+                "heart-266",
+                "heart-267",
+                "heart-268",
+                "heart-271",
+                "heart-272",
+                "heart-276",
+                "heart-278",
+                "heart-283",
+                "heart-284",
+                "heart-290",
+                "heart-297",
+                "heart-298",
+                "heart-300",
+                "heart-301",
+                "heart-307",
+                "heart-308",
+                "heart-317",
+                "heart-336",
+                "heart-340",
+                "heart-341",
+                "heart-343",
+                "heart-349",
+                "heart-357",
+                "heart-362",
+                "heart-373",
+                "heart-375",
+                "heart-395",
+                "heart-402",
+                "heart-405",
+                "heart-431",
+                "heart-438",
+                "heart-443",
+                "heart-446",
+                "heart-452",
+                "heart-460",
+                "heart-464",
+                "heart-469",
+                "heart-470",
+                "heart-477",
+                "heart-479",
+                "heart-480",
+                "heart-481",
+                "heart-489",
+                "heart-493",
+                "heart-498"
+              ]
+            },
+            {
+              "key": "27",
+              "count": 26,
+              "risk": 26,
+              "noFit": 0,
+              "heartIds": [
+                "heart-001",
+                "heart-003",
+                "heart-011",
+                "heart-014",
+                "heart-026",
+                "heart-029",
+                "heart-037",
+                "heart-053",
+                "heart-077",
+                "heart-087",
+                "heart-110",
+                "heart-221",
+                "heart-231",
+                "heart-261",
+                "heart-291",
+                "heart-293",
+                "heart-324",
+                "heart-333",
+                "heart-344",
+                "heart-351",
+                "heart-359",
+                "heart-391",
+                "heart-406",
+                "heart-440",
+                "heart-466",
+                "heart-487"
+              ]
+            },
+            {
+              "key": "25",
+              "count": 24,
+              "risk": 24,
+              "noFit": 0,
+              "heartIds": [
+                "heart-025",
+                "heart-044",
+                "heart-086",
+                "heart-098",
+                "heart-133",
+                "heart-135",
+                "heart-160",
+                "heart-168",
+                "heart-176",
+                "heart-178",
+                "heart-250",
+                "heart-253",
+                "heart-279",
+                "heart-304",
+                "heart-321",
+                "heart-370",
+                "heart-392",
+                "heart-447",
+                "heart-450",
+                "heart-473",
+                "heart-482",
+                "heart-485",
+                "heart-492",
+                "heart-499"
+              ]
+            },
+            {
+              "key": "23",
+              "count": 18,
+              "risk": 18,
+              "noFit": 0,
+              "heartIds": [
+                "heart-018",
+                "heart-032",
+                "heart-043",
+                "heart-058",
+                "heart-081",
+                "heart-126",
+                "heart-151",
+                "heart-174",
+                "heart-183",
+                "heart-288",
+                "heart-299",
+                "heart-314",
+                "heart-346",
+                "heart-350",
+                "heart-381",
+                "heart-384",
+                "heart-456",
+                "heart-472"
+              ]
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 7,
+      "at": "2026-11-08T00:41:50.409Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called group_failures.",
+      "data": {
+        "tool": "group_failures",
+        "input": {
+          "design": {
+            "id": "start",
+            "label": "Starting valve",
+            "sizes": [
+              {
+                "minAnnulusMm": 21,
+                "nominalMm": 23,
+                "maxAnnulusMm": 23
+              },
+              {
+                "maxAnnulusMm": 25,
+                "nominalMm": 25,
+                "minAnnulusMm": 23
+              },
+              {
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27,
+                "nominalMm": 27
+              }
+            ],
+            "hypothetical": true
+          },
+          "measure": "annulusMm",
+          "by": "band"
+        },
+        "evidenceId": "ev-a875f695c1a02e6e",
+        "result": {
+          "by": "band",
+          "groups": [
+            {
+              "key": "26-28",
+              "count": 37,
+              "risk": 7,
+              "noFit": 30,
+              "heartIds": [
+                "heart-003",
+                "heart-019",
+                "heart-026",
+                "heart-029",
+                "heart-054",
+                "heart-056",
+                "heart-060",
+                "heart-062",
+                "heart-068",
+                "heart-075",
+                "heart-169",
+                "heart-198",
+                "heart-202",
+                "heart-218",
+                "heart-225",
+                "heart-231",
+                "heart-242",
+                "heart-257",
+                "heart-267",
+                "heart-272",
+                "heart-283",
+                "heart-290",
+                "heart-298",
+                "heart-300",
+                "heart-307",
+                "heart-324",
+                "heart-333",
+                "heart-336",
+                "heart-341",
+                "heart-357",
+                "heart-362",
+                "heart-402",
+                "heart-405",
+                "heart-431",
+                "heart-452",
+                "heart-464",
+                "heart-466"
+              ]
+            },
+            {
+              "key": "20-22",
+              "count": 34,
+              "risk": 14,
+              "noFit": 20,
+              "heartIds": [
+                "heart-013",
+                "heart-018",
+                "heart-031",
+                "heart-032",
+                "heart-043",
+                "heart-045",
+                "heart-058",
+                "heart-066",
+                "heart-081",
+                "heart-096",
+                "heart-118",
+                "heart-123",
+                "heart-124",
+                "heart-126",
+                "heart-151",
+                "heart-172",
+                "heart-174",
+                "heart-180",
+                "heart-183",
+                "heart-212",
+                "heart-215",
+                "heart-235",
+                "heart-271",
+                "heart-288",
+                "heart-308",
+                "heart-350",
+                "heart-381",
+                "heart-384",
+                "heart-395",
+                "heart-443",
+                "heart-456",
+                "heart-477",
+                "heart-479",
+                "heart-480"
+              ]
+            },
+            {
+              "key": "28-30",
+              "count": 31,
+              "risk": 0,
+              "noFit": 31,
+              "heartIds": [
+                "heart-089",
+                "heart-090",
+                "heart-161",
+                "heart-163",
+                "heart-166",
+                "heart-173",
+                "heart-175",
+                "heart-179",
+                "heart-191",
+                "heart-200",
+                "heart-217",
+                "heart-223",
+                "heart-237",
+                "heart-240",
+                "heart-266",
+                "heart-268",
+                "heart-284",
+                "heart-297",
+                "heart-301",
+                "heart-317",
+                "heart-340",
+                "heart-373",
+                "heart-375",
+                "heart-438",
+                "heart-446",
+                "heart-460",
+                "heart-469",
+                "heart-481",
+                "heart-489",
+                "heart-493",
+                "heart-498"
+              ]
+            },
+            {
+              "key": "24-26",
+              "count": 25,
+              "risk": 25,
+              "noFit": 0,
+              "heartIds": [
+                "heart-001",
+                "heart-011",
+                "heart-014",
+                "heart-037",
+                "heart-053",
+                "heart-077",
+                "heart-087",
+                "heart-110",
+                "heart-133",
+                "heart-176",
+                "heart-178",
+                "heart-221",
+                "heart-253",
+                "heart-261",
+                "heart-279",
+                "heart-291",
+                "heart-293",
+                "heart-344",
+                "heart-351",
+                "heart-359",
+                "heart-391",
+                "heart-406",
+                "heart-440",
+                "heart-482",
+                "heart-487"
+              ]
+            },
+            {
+              "key": "22-24",
+              "count": 22,
+              "risk": 22,
+              "noFit": 0,
+              "heartIds": [
+                "heart-025",
+                "heart-044",
+                "heart-086",
+                "heart-098",
+                "heart-135",
+                "heart-160",
+                "heart-168",
+                "heart-250",
+                "heart-299",
+                "heart-304",
+                "heart-314",
+                "heart-321",
+                "heart-346",
+                "heart-370",
+                "heart-392",
+                "heart-447",
+                "heart-450",
+                "heart-472",
+                "heart-473",
+                "heart-485",
+                "heart-492",
+                "heart-499"
+              ]
+            },
+            {
+              "key": "18-20",
+              "count": 6,
+              "risk": 0,
+              "noFit": 6,
+              "heartIds": [
+                "heart-055",
+                "heart-070",
+                "heart-278",
+                "heart-343",
+                "heart-349",
+                "heart-470"
+              ]
+            },
+            {
+              "key": "30-32",
+              "count": 6,
+              "risk": 0,
+              "noFit": 6,
+              "heartIds": [
+                "heart-035",
+                "heart-092",
+                "heart-103",
+                "heart-154",
+                "heart-204",
+                "heart-276"
+              ]
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 8,
+      "at": "2026-11-08T00:42:05.862Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called profile_group.",
+      "data": {
+        "tool": "profile_group",
+        "input": {
+          "heartIds": [
+            "heart-013",
+            "heart-019",
+            "heart-031",
+            "heart-035",
+            "heart-045",
+            "heart-054",
+            "heart-055",
+            "heart-056",
+            "heart-060",
+            "heart-062",
+            "heart-066",
+            "heart-068",
+            "heart-070",
+            "heart-075",
+            "heart-089",
+            "heart-090",
+            "heart-092",
+            "heart-096",
+            "heart-103",
+            "heart-118",
+            "heart-123",
+            "heart-124",
+            "heart-154",
+            "heart-161",
+            "heart-163",
+            "heart-166",
+            "heart-169",
+            "heart-172",
+            "heart-173",
+            "heart-175",
+            "heart-179",
+            "heart-180",
+            "heart-191",
+            "heart-198",
+            "heart-200",
+            "heart-202",
+            "heart-204",
+            "heart-212",
+            "heart-215",
+            "heart-217",
+            "heart-218",
+            "heart-223",
+            "heart-225",
+            "heart-235",
+            "heart-237",
+            "heart-240",
+            "heart-242",
+            "heart-257",
+            "heart-266",
+            "heart-267",
+            "heart-268",
+            "heart-271",
+            "heart-272",
+            "heart-276",
+            "heart-278",
+            "heart-283",
+            "heart-284",
+            "heart-290",
+            "heart-297",
+            "heart-298",
+            "heart-300",
+            "heart-301",
+            "heart-307",
+            "heart-308",
+            "heart-317",
+            "heart-336",
+            "heart-340",
+            "heart-341",
+            "heart-343",
+            "heart-349",
+            "heart-357",
+            "heart-362",
+            "heart-373",
+            "heart-375",
+            "heart-395",
+            "heart-402",
+            "heart-405",
+            "heart-431",
+            "heart-438",
+            "heart-443",
+            "heart-446",
+            "heart-452",
+            "heart-460",
+            "heart-464",
+            "heart-469",
+            "heart-470",
+            "heart-477",
+            "heart-479",
+            "heart-480",
+            "heart-481",
+            "heart-489",
+            "heart-493",
+            "heart-498"
+          ]
+        },
+        "evidenceId": "ev-c5fa6b737e7d6ac2",
+        "result": {
+          "groupSize": 93,
+          "restSize": 307,
+          "measures": [
+            {
+              "measure": "lvotMm",
+              "groupMean": 26.23977434384725,
+              "restMean": 23.589300676539565,
+              "difference": 2.6504736673076863,
+              "effectSize": 0.7884220825449201
+            },
+            {
+              "measure": "annulusMm",
+              "groupMean": 26.119650482939925,
+              "restMean": 24.18142694709216,
+              "difference": 1.938223535847765,
+              "effectSize": 0.7836825988132693
+            },
+            {
+              "measure": "sinusMm",
+              "groupMean": 34.51856073375245,
+              "restMean": 32.3156775956045,
+              "difference": 2.2028831381479534,
+              "effectSize": 0.6615456097810255
+            },
+            {
+              "measure": "sinotubularJunctionMm",
+              "groupMean": 30.91204043073114,
+              "restMean": 29.159574713615555,
+              "difference": 1.7524657171155837,
+              "effectSize": 0.6051814345094874
+            },
+            {
+              "measure": "lvotOverAnnulusAreaRatio",
+              "groupMean": 0.9996242194038989,
+              "restMean": 0.9517088959595246,
+              "difference": 0.047915323444374325,
+              "effectSize": 0.44703361467478303
+            },
+            {
+              "measure": "sinusHeightMm",
+              "groupMean": 26.032258064516128,
+              "restMean": 24.912052117263844,
+              "difference": 1.120205947252284,
+              "effectSize": 0.3360559977612908
+            },
+            {
+              "measure": "aorticValveArea",
+              "groupMean": 69.4452718073869,
+              "restMean": 62.526124271030504,
+              "difference": 6.919147536356398,
+              "effectSize": 0.3176255315536079
+            },
+            {
+              "measure": "angleDeg",
+              "groupMean": 28.752226657959937,
+              "restMean": 26.49956296563233,
+              "difference": 2.2526636923276087,
+              "effectSize": 0.2360327033940974
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 9,
+      "at": "2026-11-08T00:42:05.863Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called profile_group.",
+      "data": {
+        "tool": "profile_group",
+        "input": {
+          "heartIds": [
+            "heart-001",
+            "heart-003",
+            "heart-011",
+            "heart-014",
+            "heart-018",
+            "heart-025",
+            "heart-026",
+            "heart-029",
+            "heart-037",
+            "heart-043",
+            "heart-044",
+            "heart-053",
+            "heart-077",
+            "heart-086",
+            "heart-087",
+            "heart-110",
+            "heart-126",
+            "heart-133",
+            "heart-135",
+            "heart-151",
+            "heart-160",
+            "heart-174",
+            "heart-176",
+            "heart-178",
+            "heart-183",
+            "heart-221",
+            "heart-231",
+            "heart-253",
+            "heart-261",
+            "heart-279",
+            "heart-291",
+            "heart-293",
+            "heart-299",
+            "heart-304",
+            "heart-314",
+            "heart-321",
+            "heart-324",
+            "heart-333",
+            "heart-351",
+            "heart-359",
+            "heart-370",
+            "heart-381",
+            "heart-384",
+            "heart-440",
+            "heart-447",
+            "heart-450",
+            "heart-466",
+            "heart-472",
+            "heart-473",
+            "heart-482",
+            "heart-485",
+            "heart-499"
+          ]
+        },
+        "evidenceId": "ev-e4b3fb96f825b4ef",
+        "result": {
+          "groupSize": 52,
+          "restSize": 348,
+          "measures": [
+            {
+              "measure": "sinotubularJunctionMm",
+              "groupMean": 26.504509737046604,
+              "restMean": 30.024639916125135,
+              "difference": -3.5201301790785315,
+              "effectSize": -1.2156114728116987
+            },
+            {
+              "measure": "sinusMm",
+              "groupMean": 30.58924826922217,
+              "restMean": 33.16235132209775,
+              "difference": -2.5731030528755774,
+              "effectSize": -0.7727259783626637
+            },
+            {
+              "measure": "lvotOverAnnulusAreaRatio",
+              "groupMean": 1.0264544066518189,
+              "restMean": 0.9533449836731089,
+              "difference": 0.07310942297870993,
+              "effectSize": 0.6820859648146137
+            },
+            {
+              "measure": "angleDeg",
+              "groupMean": 29.05023477328692,
+              "restMean": 26.720433050081862,
+              "difference": 2.3298017232050583,
+              "effectSize": 0.2441151783878187
+            },
+            {
+              "measure": "annulusMm",
+              "groupMean": 24.216281793346134,
+              "restMean": 24.69419228280664,
+              "difference": -0.4779104894605055,
+              "effectSize": -0.19323371502488423
+            },
+            {
+              "measure": "sinusHeightMm",
+              "groupMean": 24.653846153846153,
+              "restMean": 25.25,
+              "difference": -0.5961538461538467,
+              "effectSize": -0.1788430744184781
+            },
+            {
+              "measure": "lvotMm",
+              "groupMean": 24.549939418965906,
+              "restMean": 24.15407319508395,
+              "difference": 0.39586622388195636,
+              "effectSize": 0.11775618693817932
+            },
+            {
+              "measure": "aorticValveArea",
+              "groupMean": 62.89080862152505,
+              "restMean": 64.32071373843115,
+              "difference": -1.4299051169060988,
+              "effectSize": -0.06564022091479932
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 10,
+      "at": "2026-11-08T00:42:05.865Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called profile_group.",
+      "data": {
+        "tool": "profile_group",
+        "input": {
+          "heartIds": [
+            "heart-014",
+            "heart-018",
+            "heart-029",
+            "heart-032",
+            "heart-043",
+            "heart-053",
+            "heart-058",
+            "heart-077",
+            "heart-081",
+            "heart-086",
+            "heart-098",
+            "heart-110",
+            "heart-133",
+            "heart-135",
+            "heart-168",
+            "heart-183",
+            "heart-250",
+            "heart-253",
+            "heart-261",
+            "heart-288",
+            "heart-291",
+            "heart-299",
+            "heart-304",
+            "heart-344",
+            "heart-346",
+            "heart-350",
+            "heart-381",
+            "heart-384",
+            "heart-391",
+            "heart-392",
+            "heart-406",
+            "heart-440",
+            "heart-447",
+            "heart-456",
+            "heart-466",
+            "heart-473",
+            "heart-487",
+            "heart-492"
+          ]
+        },
+        "evidenceId": "ev-8308352ef0b11f4a",
+        "result": {
+          "groupSize": 38,
+          "restSize": 362,
+          "measures": [
+            {
+              "measure": "sinusMm",
+              "groupMean": 29.048135536802295,
+              "restMean": 33.22461331406376,
+              "difference": -4.176477777261464,
+              "effectSize": -1.254233822052965
+            },
+            {
+              "measure": "sinotubularJunctionMm",
+              "groupMean": 26.783098650632482,
+              "restMean": 29.859258144789866,
+              "difference": -3.076159494157384,
+              "effectSize": -1.0622944559042469
+            },
+            {
+              "measure": "sinusHeightMm",
+              "groupMean": 22.092105263157894,
+              "restMean": 25.49585635359116,
+              "difference": -3.4037510904332677,
+              "effectSize": -1.021107745082364
+            },
+            {
+              "measure": "lvotOverAnnulusAreaRatio",
+              "groupMean": 1.026201770629876,
+              "restMean": 0.9561989397243121,
+              "difference": 0.07000283090556392,
+              "effectSize": 0.6531025210235953
+            },
+            {
+              "measure": "annulusMm",
+              "groupMean": 23.652673133852062,
+              "restMean": 24.734872896641804,
+              "difference": -1.0821997627897417,
+              "effectSize": -0.43756620784568845
+            },
+            {
+              "measure": "aorticValveArea",
+              "groupMean": 58.816365414079165,
+              "restMean": 64.69311752364177,
+              "difference": -5.876752109562609,
+              "effectSize": -0.2697740585528199
+            },
+            {
+              "measure": "angleDeg",
+              "groupMean": 25.718742167634502,
+              "restMean": 27.160250572567126,
+              "difference": -1.4415084049326232,
+              "effectSize": -0.15104035588641174
+            },
+            {
+              "measure": "lvotMm",
+              "groupMean": 23.985006008050334,
+              "restMean": 24.228685340799785,
+              "difference": -0.2436793327494513,
+              "effectSize": -0.07248597462755929
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 11,
+      "at": "2026-11-08T00:42:05.865Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called inspect_heart.",
+      "data": {
+        "tool": "inspect_heart",
+        "input": {
+          "heartId": "heart-014",
+          "design": {
+            "label": "Starting valve",
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "minAnnulusMm": 23,
+                "nominalMm": 25,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              }
+            ],
+            "hypothetical": true,
+            "id": "start"
+          }
+        },
+        "evidenceId": "ev-d839ce86991e7b0c",
+        "result": {
+          "heartId": "heart-014",
+          "measures": {
+            "annulusMm": 25.863354351686183,
+            "sinusMm": 30.777857546128647,
+            "sinotubularJunctionMm": 26.83114637406371,
+            "lvotMm": 26.67227641151979,
+            "sinusHeightMm": 26,
+            "aorticValveArea": 65.64365747249167,
+            "angleDeg": 38.529001121223224,
+            "lvotOverAnnulusAreaRatio": 1.0635317663210777
+          },
+          "status": "risk",
+          "sizeMm": 27,
+          "reasons": [
+            {
+              "ruleId": "sinus-clearance",
+              "measured": 30.777857546128647,
+              "limit": 32,
+              "margin": -1.2221424538713528
+            },
+            {
+              "ruleId": "stj-excess",
+              "measured": 26.83114637406371,
+              "limit": 29,
+              "margin": -2.16885362593629
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 12,
+      "at": "2026-11-08T00:42:13.309Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called inspect_heart.",
+      "data": {
+        "tool": "inspect_heart",
+        "input": {
+          "heartId": "heart-018",
+          "design": {
+            "id": "start",
+            "hypothetical": true,
+            "label": "Starting valve",
+            "sizes": [
+              {
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23,
+                "nominalMm": 23
+              },
+              {
+                "maxAnnulusMm": 25,
+                "nominalMm": 25,
+                "minAnnulusMm": 23
+              },
+              {
+                "minAnnulusMm": 25,
+                "nominalMm": 27,
+                "maxAnnulusMm": 27
+              }
+            ]
+          }
+        },
+        "evidenceId": "ev-9f761323d17e7e2a",
+        "result": {
+          "heartId": "heart-018",
+          "measures": {
+            "annulusMm": 21.3162948513543,
+            "sinusMm": 26.300674954118218,
+            "sinotubularJunctionMm": 23.907568898229865,
+            "lvotMm": 21.010309624459342,
+            "sinusHeightMm": 22,
+            "aorticValveArea": 42.26970948206933,
+            "angleDeg": 13.168393271660303,
+            "lvotOverAnnulusAreaRatio": 0.9714970079788495
+          },
+          "status": "risk",
+          "sizeMm": 23,
+          "reasons": [
+            {
+              "ruleId": "sinus-clearance",
+              "measured": 26.300674954118218,
+              "limit": 28,
+              "margin": -1.699325045881782
+            },
+            {
+              "ruleId": "stj-excess",
+              "measured": 23.907568898229865,
+              "limit": 25,
+              "margin": -1.092431101770135
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 13,
+      "at": "2026-11-08T00:42:13.309Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called inspect_heart.",
+      "data": {
+        "tool": "inspect_heart",
+        "input": {
+          "heartId": "heart-086",
+          "design": {
+            "label": "Starting valve",
+            "sizes": [
+              {
+                "maxAnnulusMm": 23,
+                "minAnnulusMm": 21,
+                "nominalMm": 23
+              },
+              {
+                "maxAnnulusMm": 25,
+                "nominalMm": 25,
+                "minAnnulusMm": 23
+              },
+              {
+                "maxAnnulusMm": 27,
+                "minAnnulusMm": 25,
+                "nominalMm": 27
+              }
+            ],
+            "id": "start",
+            "hypothetical": true
+          }
+        },
+        "evidenceId": "ev-5f099e74b6ae918b",
+        "result": {
+          "heartId": "heart-086",
+          "measures": {
+            "annulusMm": 23.50756686076746,
+            "sinusMm": 28.610092723480133,
+            "sinotubularJunctionMm": 26.482610563909972,
+            "lvotMm": 24.214883865221648,
+            "sinusHeightMm": 20.5,
+            "aorticValveArea": 48.618862785807316,
+            "angleDeg": 25.805455329630504,
+            "lvotOverAnnulusAreaRatio": 1.0610831573221602
+          },
+          "status": "risk",
+          "sizeMm": 25,
+          "reasons": [
+            {
+              "ruleId": "sinus-clearance",
+              "measured": 28.610092723480133,
+              "limit": 30,
+              "margin": -1.3899072765198675
+            },
+            {
+              "ruleId": "stj-excess",
+              "measured": 26.482610563909972,
+              "limit": 27,
+              "margin": -0.5173894360900277
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 14,
+      "at": "2026-11-08T00:42:13.309Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called inspect_heart.",
+      "data": {
+        "tool": "inspect_heart",
+        "input": {
+          "design": {
+            "id": "start",
+            "hypothetical": true,
+            "label": "Starting valve",
+            "sizes": [
+              {
+                "maxAnnulusMm": 23,
+                "nominalMm": 23,
+                "minAnnulusMm": 21
+              },
+              {
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25,
+                "nominalMm": 25
+              },
+              {
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27,
+                "nominalMm": 27
+              }
+            ]
+          },
+          "heartId": "heart-013"
+        },
+        "evidenceId": "ev-80c17e59f3eab42b",
+        "result": {
+          "heartId": "heart-013",
+          "measures": {
+            "annulusMm": 20.360210928381452,
+            "sinusMm": 28.511119009903343,
+            "sinotubularJunctionMm": 25.88486007772743,
+            "lvotMm": 18.66853791899054,
+            "sinusHeightMm": 21.5,
+            "aorticValveArea": 29.844073335650673,
+            "angleDeg": 23.069802264838092,
+            "lvotOverAnnulusAreaRatio": 0.8407290745226816
+          },
+          "status": "no-fit",
+          "reasons": [
+            {
+              "ruleId": "annulus-coverage",
+              "measured": 20.360210928381452,
+              "limit": 21,
+              "margin": -0.6397890716185479
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 15,
+      "at": "2026-11-08T00:42:13.309Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called inspect_heart.",
+      "data": {
+        "tool": "inspect_heart",
+        "input": {
+          "design": {
+            "label": "Starting valve",
+            "sizes": [
+              {
+                "minAnnulusMm": 21,
+                "nominalMm": 23,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "maxAnnulusMm": 25,
+                "minAnnulusMm": 23
+              },
+              {
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27,
+                "nominalMm": 27
+              }
+            ],
+            "hypothetical": true,
+            "id": "start"
+          },
+          "heartId": "heart-019"
+        },
+        "evidenceId": "ev-8130bb4e6ef7cd67",
+        "result": {
+          "heartId": "heart-019",
+          "measures": {
+            "annulusMm": 27.358842120785503,
+            "sinusMm": 32.71552274949459,
+            "sinotubularJunctionMm": 29.98928140194136,
+            "lvotMm": 28.069669760502016,
+            "sinusHeightMm": 23.5,
+            "aorticValveArea": 46.950772831279025,
+            "angleDeg": 33.7027588673538,
+            "lvotOverAnnulusAreaRatio": 1.0526383295859936
+          },
+          "status": "no-fit",
+          "reasons": [
+            {
+              "ruleId": "annulus-coverage",
+              "measured": 27.358842120785503,
+              "limit": 27,
+              "margin": -0.3588421207855035
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 16,
+      "at": "2026-11-08T00:42:40.407Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called profile_group.",
+      "data": {
+        "tool": "profile_group",
+        "input": {
+          "heartIds": [
+            "heart-055",
+            "heart-070",
+            "heart-278",
+            "heart-343",
+            "heart-349",
+            "heart-470",
+            "heart-013",
+            "heart-031",
+            "heart-045",
+            "heart-066",
+            "heart-096",
+            "heart-118",
+            "heart-123",
+            "heart-124",
+            "heart-172",
+            "heart-180",
+            "heart-212",
+            "heart-215",
+            "heart-235",
+            "heart-271",
+            "heart-308",
+            "heart-395",
+            "heart-443",
+            "heart-477",
+            "heart-479",
+            "heart-480"
+          ]
+        },
+        "evidenceId": "ev-b3c34e17571dc1f4",
+        "result": {
+          "groupSize": 26,
+          "restSize": 374,
+          "measures": [
+            {
+              "measure": "annulusMm",
+              "groupMean": 20.311191388367057,
+              "restMean": 24.932445432013804,
+              "difference": -4.621254043646747,
+              "effectSize": -1.8685132605808297
+            },
+            {
+              "measure": "lvotMm",
+              "groupMean": 18.654190741773753,
+              "restMean": 24.59145818820673,
+              "difference": -5.937267446432976,
+              "effectSize": -1.7661268710123859
+            },
+            {
+              "measure": "sinusMm",
+              "groupMean": 28.32912653529608,
+              "restMean": 33.140593262491635,
+              "difference": -4.811466727195555,
+              "effectSize": -1.444926712117725
+            },
+            {
+              "measure": "aorticValveArea",
+              "groupMean": 38.25731177675378,
+              "restMean": 65.93379765534156,
+              "difference": -27.676485878587783,
+              "effectSize": -1.2704973398141404
+            },
+            {
+              "measure": "lvotOverAnnulusAreaRatio",
+              "groupMean": 0.8459355375535933,
+              "restMean": 0.970976897026051,
+              "difference": -0.12504135947245765,
+              "effectSize": -1.1665932084067887
+            },
+            {
+              "measure": "sinotubularJunctionMm",
+              "groupMean": 26.46915218778211,
+              "restMean": 29.782382995335908,
+              "difference": -3.313230807553797,
+              "effectSize": -1.1441626237782703
+            },
+            {
+              "measure": "sinusHeightMm",
+              "groupMean": 22.153846153846153,
+              "restMean": 25.38235294117647,
+              "difference": -3.2285067873303177,
+              "effectSize": -0.968535359374452
+            },
+            {
+              "measure": "angleDeg",
+              "groupMean": 24.622024931731907,
+              "restMean": 27.190241340680164,
+              "difference": -2.568216408948256,
+              "effectSize": -0.2690961211696839
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 17,
+      "at": "2026-11-08T00:42:40.408Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called profile_group.",
+      "data": {
+        "tool": "profile_group",
+        "input": {
+          "heartIds": [
+            "heart-019",
+            "heart-054",
+            "heart-056",
+            "heart-060",
+            "heart-062",
+            "heart-068",
+            "heart-075",
+            "heart-169",
+            "heart-198",
+            "heart-202",
+            "heart-218",
+            "heart-225",
+            "heart-242",
+            "heart-257",
+            "heart-267",
+            "heart-272",
+            "heart-283",
+            "heart-290",
+            "heart-298",
+            "heart-300",
+            "heart-307",
+            "heart-336",
+            "heart-341",
+            "heart-357",
+            "heart-362",
+            "heart-402",
+            "heart-405",
+            "heart-431",
+            "heart-452",
+            "heart-464",
+            "heart-089",
+            "heart-090",
+            "heart-161",
+            "heart-163",
+            "heart-166",
+            "heart-173",
+            "heart-175",
+            "heart-179",
+            "heart-191",
+            "heart-200",
+            "heart-217",
+            "heart-223",
+            "heart-237",
+            "heart-240",
+            "heart-266",
+            "heart-268",
+            "heart-284",
+            "heart-297",
+            "heart-301",
+            "heart-317",
+            "heart-340",
+            "heart-373",
+            "heart-375",
+            "heart-438",
+            "heart-446",
+            "heart-460",
+            "heart-469",
+            "heart-481",
+            "heart-489",
+            "heart-493",
+            "heart-498",
+            "heart-035",
+            "heart-092",
+            "heart-103",
+            "heart-154",
+            "heart-204",
+            "heart-276"
+          ]
+        },
+        "evidenceId": "ev-b36a4c6f07caf0e4",
+        "result": {
+          "groupSize": 67,
+          "restSize": 333,
+          "measures": [
+            {
+              "measure": "annulusMm",
+              "groupMean": 28.373679385311508,
+              "restMean": 23.879246392957466,
+              "difference": 4.494432992354042,
+              "effectSize": 1.8172356606429947
+            },
+            {
+              "measure": "lvotMm",
+              "groupMean": 29.183433652114573,
+              "restMean": 23.203976777729032,
+              "difference": 5.979456874385541,
+              "effectSize": 1.7786767322156958
+            },
+            {
+              "measure": "sinusMm",
+              "groupMean": 36.92043072121315,
+              "restMean": 32.00441535065551,
+              "difference": 4.916015370557638,
+              "effectSize": 1.4763236095867829
+            },
+            {
+              "measure": "sinotubularJunctionMm",
+              "groupMean": 32.63614631605464,
+              "restMean": 28.949511693580508,
+              "difference": 3.686634622474134,
+              "effectSize": 1.273110684877431
+            },
+            {
+              "measure": "lvotOverAnnulusAreaRatio",
+              "groupMean": 1.0592646034055095,
+              "restMean": 0.9434503154233255,
+              "difference": 0.11581428798218407,
+              "effectSize": 1.0805077805175625
+            },
+            {
+              "measure": "aorticValveArea",
+              "groupMean": 81.54806226703555,
+              "restMean": 60.631262034240116,
+              "difference": 20.91680023279543,
+              "effectSize": 0.9601919539124086
+            },
+            {
+              "measure": "sinusHeightMm",
+              "groupMean": 27.53731343283582,
+              "restMean": 24.696696696696698,
+              "difference": 2.840616736139122,
+              "effectSize": 0.8521703476598887
+            },
+            {
+              "measure": "angleDeg",
+              "groupMean": 30.35499150694394,
+              "restMean": 26.352968404426907,
+              "difference": 4.0020231025170325,
+              "effectSize": 0.4193294965200479
+            }
+          ]
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 18,
+      "at": "2026-11-08T00:42:40.409Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called what_if.",
+      "data": {
+        "tool": "what_if",
+        "input": {
+          "heartIds": [
+            "heart-019",
+            "heart-054",
+            "heart-056",
+            "heart-060",
+            "heart-062",
+            "heart-068",
+            "heart-075",
+            "heart-169",
+            "heart-198",
+            "heart-202",
+            "heart-218",
+            "heart-225",
+            "heart-242",
+            "heart-257",
+            "heart-267",
+            "heart-272",
+            "heart-283",
+            "heart-290",
+            "heart-298",
+            "heart-300",
+            "heart-307",
+            "heart-336",
+            "heart-341",
+            "heart-357",
+            "heart-362",
+            "heart-402",
+            "heart-405",
+            "heart-431",
+            "heart-452",
+            "heart-464"
+          ],
+          "design": {
+            "id": "start",
+            "hypothetical": true,
+            "label": "Starting valve",
+            "sizes": [
+              {
+                "maxAnnulusMm": 23,
+                "nominalMm": 23,
+                "minAnnulusMm": 21
+              },
+              {
+                "maxAnnulusMm": 25,
+                "nominalMm": 25,
+                "minAnnulusMm": 23
+              },
+              {
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27,
+                "nominalMm": 27
+              }
+            ]
+          },
+          "change": {
+            "size": {
+              "nominalMm": 29,
+              "maxAnnulusMm": 29,
+              "minAnnulusMm": 27
+            },
+            "kind": "add_size"
+          }
+        },
+        "evidenceId": "ev-4acaa28faa8b1536",
+        "result": {
+          "valid": true,
+          "hearts": [
+            {
+              "heartId": "heart-019",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-054",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-056",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-060",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-062",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-068",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-075",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-169",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-198",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-202",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-218",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-225",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-242",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-257",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-267",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-272",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-283",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-290",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-298",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-300",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-307",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-336",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-341",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-357",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-362",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-402",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-405",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-431",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-452",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-464",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            }
+          ],
+          "fixedCount": 16
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 19,
+      "at": "2026-11-08T00:42:40.409Z",
+      "actor": "breaker",
+      "type": "tool-call",
+      "text": "Called what_if.",
+      "data": {
+        "tool": "what_if",
+        "input": {
+          "heartIds": [
+            "heart-055",
+            "heart-070",
+            "heart-278",
+            "heart-343",
+            "heart-349",
+            "heart-470",
+            "heart-013",
+            "heart-031",
+            "heart-045",
+            "heart-066",
+            "heart-096",
+            "heart-118",
+            "heart-123",
+            "heart-124",
+            "heart-172",
+            "heart-180",
+            "heart-212",
+            "heart-215",
+            "heart-235",
+            "heart-271",
+            "heart-308",
+            "heart-395",
+            "heart-443",
+            "heart-477",
+            "heart-479",
+            "heart-480"
+          ],
+          "change": {
+            "size": {
+              "maxAnnulusMm": 21,
+              "nominalMm": 21,
+              "minAnnulusMm": 19
+            },
+            "kind": "add_size"
+          },
+          "design": {
+            "label": "Starting valve",
+            "id": "start",
+            "sizes": [
+              {
+                "minAnnulusMm": 21,
+                "nominalMm": 23,
+                "maxAnnulusMm": 23
+              },
+              {
+                "maxAnnulusMm": 25,
+                "minAnnulusMm": 23,
+                "nominalMm": 25
+              },
+              {
+                "maxAnnulusMm": 27,
+                "nominalMm": 27,
+                "minAnnulusMm": 25
+              }
+            ],
+            "hypothetical": true
+          }
+        },
+        "evidenceId": "ev-dcd4ee3262628bda",
+        "result": {
+          "valid": true,
+          "hearts": [
+            {
+              "heartId": "heart-013",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-031",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-045",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-055",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-066",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-070",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-096",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-118",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-123",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-124",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-172",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-180",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-212",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-215",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-235",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-271",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-278",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-308",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-343",
+              "before": "no-fit",
+              "after": "risk",
+              "fixed": false
+            },
+            {
+              "heartId": "heart-349",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-395",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-443",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-470",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-477",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-479",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            },
+            {
+              "heartId": "heart-480",
+              "before": "no-fit",
+              "after": "fit",
+              "fixed": true
+            }
+          ],
+          "fixedCount": 23
+        }
+      },
+      "mode": "live"
+    },
+    {
+      "seq": 20,
+      "at": "2026-11-08T00:43:13.521Z",
+      "actor": "code",
+      "type": "run-stop",
+      "text": "More than 16 tool calls in one turn.",
+      "data": {
+        "reason": "budget",
+        "detail": "More than 16 tool calls in one turn.",
+        "limit": "maxToolCallsPerTurn"
+      },
+      "mode": "live"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-95d7f1707ae35212",
+      "tool": "evaluate_design",
+      "input": {
+        "design": {
+          "id": "start",
+          "label": "Starting valve",
+          "hypothetical": true,
+          "sizes": [
+            {
+              "nominalMm": 23,
+              "minAnnulusMm": 21,
+              "maxAnnulusMm": 23
+            },
+            {
+              "nominalMm": 25,
+              "minAnnulusMm": 23,
+              "maxAnnulusMm": 25
+            },
+            {
+              "nominalMm": 27,
+              "minAnnulusMm": 25,
+              "maxAnnulusMm": 27
+            }
+          ]
+        }
+      },
+      "result": {
+        "designId": "start",
+        "split": "dev",
+        "total": 400,
+        "fit": 239,
+        "risk": 68,
+        "noFit": 93,
+        "fitPct": 59.75,
+        "newRiskHeartIds": [],
+        "changed": []
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-ddb7bf7de5a26591",
+      "tool": "group_failures",
+      "input": {
+        "by": "rule",
+        "design": {
+          "hypothetical": true,
+          "sizes": [
+            {
+              "nominalMm": 23,
+              "maxAnnulusMm": 23,
+              "minAnnulusMm": 21
+            },
+            {
+              "minAnnulusMm": 23,
+              "nominalMm": 25,
+              "maxAnnulusMm": 25
+            },
+            {
+              "maxAnnulusMm": 27,
+              "minAnnulusMm": 25,
+              "nominalMm": 27
+            }
+          ],
+          "label": "Starting valve",
+          "id": "start"
+        }
+      },
+      "result": {
+        "by": "rule",
+        "groups": [
+          {
+            "key": "annulus-coverage",
+            "count": 93,
+            "risk": 0,
+            "noFit": 93,
+            "heartIds": [
+              "heart-013",
+              "heart-019",
+              "heart-031",
+              "heart-035",
+              "heart-045",
+              "heart-054",
+              "heart-055",
+              "heart-056",
+              "heart-060",
+              "heart-062",
+              "heart-066",
+              "heart-068",
+              "heart-070",
+              "heart-075",
+              "heart-089",
+              "heart-090",
+              "heart-092",
+              "heart-096",
+              "heart-103",
+              "heart-118",
+              "heart-123",
+              "heart-124",
+              "heart-154",
+              "heart-161",
+              "heart-163",
+              "heart-166",
+              "heart-169",
+              "heart-172",
+              "heart-173",
+              "heart-175",
+              "heart-179",
+              "heart-180",
+              "heart-191",
+              "heart-198",
+              "heart-200",
+              "heart-202",
+              "heart-204",
+              "heart-212",
+              "heart-215",
+              "heart-217",
+              "heart-218",
+              "heart-223",
+              "heart-225",
+              "heart-235",
+              "heart-237",
+              "heart-240",
+              "heart-242",
+              "heart-257",
+              "heart-266",
+              "heart-267",
+              "heart-268",
+              "heart-271",
+              "heart-272",
+              "heart-276",
+              "heart-278",
+              "heart-283",
+              "heart-284",
+              "heart-290",
+              "heart-297",
+              "heart-298",
+              "heart-300",
+              "heart-301",
+              "heart-307",
+              "heart-308",
+              "heart-317",
+              "heart-336",
+              "heart-340",
+              "heart-341",
+              "heart-343",
+              "heart-349",
+              "heart-357",
+              "heart-362",
+              "heart-373",
+              "heart-375",
+              "heart-395",
+              "heart-402",
+              "heart-405",
+              "heart-431",
+              "heart-438",
+              "heart-443",
+              "heart-446",
+              "heart-452",
+              "heart-460",
+              "heart-464",
+              "heart-469",
+              "heart-470",
+              "heart-477",
+              "heart-479",
+              "heart-480",
+              "heart-481",
+              "heart-489",
+              "heart-493",
+              "heart-498"
+            ]
+          },
+          {
+            "key": "stj-excess",
+            "count": 52,
+            "risk": 52,
+            "noFit": 0,
+            "heartIds": [
+              "heart-001",
+              "heart-003",
+              "heart-011",
+              "heart-014",
+              "heart-018",
+              "heart-025",
+              "heart-026",
+              "heart-029",
+              "heart-037",
+              "heart-043",
+              "heart-044",
+              "heart-053",
+              "heart-077",
+              "heart-086",
+              "heart-087",
+              "heart-110",
+              "heart-126",
+              "heart-133",
+              "heart-135",
+              "heart-151",
+              "heart-160",
+              "heart-174",
+              "heart-176",
+              "heart-178",
+              "heart-183",
+              "heart-221",
+              "heart-231",
+              "heart-253",
+              "heart-261",
+              "heart-279",
+              "heart-291",
+              "heart-293",
+              "heart-299",
+              "heart-304",
+              "heart-314",
+              "heart-321",
+              "heart-324",
+              "heart-333",
+              "heart-351",
+              "heart-359",
+              "heart-370",
+              "heart-381",
+              "heart-384",
+              "heart-440",
+              "heart-447",
+              "heart-450",
+              "heart-466",
+              "heart-472",
+              "heart-473",
+              "heart-482",
+              "heart-485",
+              "heart-499"
+            ]
+          },
+          {
+            "key": "sinus-clearance",
+            "count": 38,
+            "risk": 38,
+            "noFit": 0,
+            "heartIds": [
+              "heart-014",
+              "heart-018",
+              "heart-029",
+              "heart-032",
+              "heart-043",
+              "heart-053",
+              "heart-058",
+              "heart-077",
+              "heart-081",
+              "heart-086",
+              "heart-098",
+              "heart-110",
+              "heart-133",
+              "heart-135",
+              "heart-168",
+              "heart-183",
+              "heart-250",
+              "heart-253",
+              "heart-261",
+              "heart-288",
+              "heart-291",
+              "heart-299",
+              "heart-304",
+              "heart-344",
+              "heart-346",
+              "heart-350",
+              "heart-381",
+              "heart-384",
+              "heart-391",
+              "heart-392",
+              "heart-406",
+              "heart-440",
+              "heart-447",
+              "heart-456",
+              "heart-466",
+              "heart-473",
+              "heart-487",
+              "heart-492"
+            ]
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-c4a0b7e08735e627",
+      "tool": "group_failures",
+      "input": {
+        "design": {
+          "hypothetical": true,
+          "id": "start",
+          "label": "Starting valve",
+          "sizes": [
+            {
+              "maxAnnulusMm": 23,
+              "minAnnulusMm": 21,
+              "nominalMm": 23
+            },
+            {
+              "maxAnnulusMm": 25,
+              "minAnnulusMm": 23,
+              "nominalMm": 25
+            },
+            {
+              "maxAnnulusMm": 27,
+              "minAnnulusMm": 25,
+              "nominalMm": 27
+            }
+          ]
+        },
+        "by": "size"
+      },
+      "result": {
+        "by": "size",
+        "groups": [
+          {
+            "key": "none",
+            "count": 93,
+            "risk": 0,
+            "noFit": 93,
+            "heartIds": [
+              "heart-013",
+              "heart-019",
+              "heart-031",
+              "heart-035",
+              "heart-045",
+              "heart-054",
+              "heart-055",
+              "heart-056",
+              "heart-060",
+              "heart-062",
+              "heart-066",
+              "heart-068",
+              "heart-070",
+              "heart-075",
+              "heart-089",
+              "heart-090",
+              "heart-092",
+              "heart-096",
+              "heart-103",
+              "heart-118",
+              "heart-123",
+              "heart-124",
+              "heart-154",
+              "heart-161",
+              "heart-163",
+              "heart-166",
+              "heart-169",
+              "heart-172",
+              "heart-173",
+              "heart-175",
+              "heart-179",
+              "heart-180",
+              "heart-191",
+              "heart-198",
+              "heart-200",
+              "heart-202",
+              "heart-204",
+              "heart-212",
+              "heart-215",
+              "heart-217",
+              "heart-218",
+              "heart-223",
+              "heart-225",
+              "heart-235",
+              "heart-237",
+              "heart-240",
+              "heart-242",
+              "heart-257",
+              "heart-266",
+              "heart-267",
+              "heart-268",
+              "heart-271",
+              "heart-272",
+              "heart-276",
+              "heart-278",
+              "heart-283",
+              "heart-284",
+              "heart-290",
+              "heart-297",
+              "heart-298",
+              "heart-300",
+              "heart-301",
+              "heart-307",
+              "heart-308",
+              "heart-317",
+              "heart-336",
+              "heart-340",
+              "heart-341",
+              "heart-343",
+              "heart-349",
+              "heart-357",
+              "heart-362",
+              "heart-373",
+              "heart-375",
+              "heart-395",
+              "heart-402",
+              "heart-405",
+              "heart-431",
+              "heart-438",
+              "heart-443",
+              "heart-446",
+              "heart-452",
+              "heart-460",
+              "heart-464",
+              "heart-469",
+              "heart-470",
+              "heart-477",
+              "heart-479",
+              "heart-480",
+              "heart-481",
+              "heart-489",
+              "heart-493",
+              "heart-498"
+            ]
+          },
+          {
+            "key": "27",
+            "count": 26,
+            "risk": 26,
+            "noFit": 0,
+            "heartIds": [
+              "heart-001",
+              "heart-003",
+              "heart-011",
+              "heart-014",
+              "heart-026",
+              "heart-029",
+              "heart-037",
+              "heart-053",
+              "heart-077",
+              "heart-087",
+              "heart-110",
+              "heart-221",
+              "heart-231",
+              "heart-261",
+              "heart-291",
+              "heart-293",
+              "heart-324",
+              "heart-333",
+              "heart-344",
+              "heart-351",
+              "heart-359",
+              "heart-391",
+              "heart-406",
+              "heart-440",
+              "heart-466",
+              "heart-487"
+            ]
+          },
+          {
+            "key": "25",
+            "count": 24,
+            "risk": 24,
+            "noFit": 0,
+            "heartIds": [
+              "heart-025",
+              "heart-044",
+              "heart-086",
+              "heart-098",
+              "heart-133",
+              "heart-135",
+              "heart-160",
+              "heart-168",
+              "heart-176",
+              "heart-178",
+              "heart-250",
+              "heart-253",
+              "heart-279",
+              "heart-304",
+              "heart-321",
+              "heart-370",
+              "heart-392",
+              "heart-447",
+              "heart-450",
+              "heart-473",
+              "heart-482",
+              "heart-485",
+              "heart-492",
+              "heart-499"
+            ]
+          },
+          {
+            "key": "23",
+            "count": 18,
+            "risk": 18,
+            "noFit": 0,
+            "heartIds": [
+              "heart-018",
+              "heart-032",
+              "heart-043",
+              "heart-058",
+              "heart-081",
+              "heart-126",
+              "heart-151",
+              "heart-174",
+              "heart-183",
+              "heart-288",
+              "heart-299",
+              "heart-314",
+              "heart-346",
+              "heart-350",
+              "heart-381",
+              "heart-384",
+              "heart-456",
+              "heart-472"
+            ]
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-a875f695c1a02e6e",
+      "tool": "group_failures",
+      "input": {
+        "design": {
+          "id": "start",
+          "label": "Starting valve",
+          "sizes": [
+            {
+              "minAnnulusMm": 21,
+              "nominalMm": 23,
+              "maxAnnulusMm": 23
+            },
+            {
+              "maxAnnulusMm": 25,
+              "nominalMm": 25,
+              "minAnnulusMm": 23
+            },
+            {
+              "minAnnulusMm": 25,
+              "maxAnnulusMm": 27,
+              "nominalMm": 27
+            }
+          ],
+          "hypothetical": true
+        },
+        "measure": "annulusMm",
+        "by": "band"
+      },
+      "result": {
+        "by": "band",
+        "groups": [
+          {
+            "key": "26-28",
+            "count": 37,
+            "risk": 7,
+            "noFit": 30,
+            "heartIds": [
+              "heart-003",
+              "heart-019",
+              "heart-026",
+              "heart-029",
+              "heart-054",
+              "heart-056",
+              "heart-060",
+              "heart-062",
+              "heart-068",
+              "heart-075",
+              "heart-169",
+              "heart-198",
+              "heart-202",
+              "heart-218",
+              "heart-225",
+              "heart-231",
+              "heart-242",
+              "heart-257",
+              "heart-267",
+              "heart-272",
+              "heart-283",
+              "heart-290",
+              "heart-298",
+              "heart-300",
+              "heart-307",
+              "heart-324",
+              "heart-333",
+              "heart-336",
+              "heart-341",
+              "heart-357",
+              "heart-362",
+              "heart-402",
+              "heart-405",
+              "heart-431",
+              "heart-452",
+              "heart-464",
+              "heart-466"
+            ]
+          },
+          {
+            "key": "20-22",
+            "count": 34,
+            "risk": 14,
+            "noFit": 20,
+            "heartIds": [
+              "heart-013",
+              "heart-018",
+              "heart-031",
+              "heart-032",
+              "heart-043",
+              "heart-045",
+              "heart-058",
+              "heart-066",
+              "heart-081",
+              "heart-096",
+              "heart-118",
+              "heart-123",
+              "heart-124",
+              "heart-126",
+              "heart-151",
+              "heart-172",
+              "heart-174",
+              "heart-180",
+              "heart-183",
+              "heart-212",
+              "heart-215",
+              "heart-235",
+              "heart-271",
+              "heart-288",
+              "heart-308",
+              "heart-350",
+              "heart-381",
+              "heart-384",
+              "heart-395",
+              "heart-443",
+              "heart-456",
+              "heart-477",
+              "heart-479",
+              "heart-480"
+            ]
+          },
+          {
+            "key": "28-30",
+            "count": 31,
+            "risk": 0,
+            "noFit": 31,
+            "heartIds": [
+              "heart-089",
+              "heart-090",
+              "heart-161",
+              "heart-163",
+              "heart-166",
+              "heart-173",
+              "heart-175",
+              "heart-179",
+              "heart-191",
+              "heart-200",
+              "heart-217",
+              "heart-223",
+              "heart-237",
+              "heart-240",
+              "heart-266",
+              "heart-268",
+              "heart-284",
+              "heart-297",
+              "heart-301",
+              "heart-317",
+              "heart-340",
+              "heart-373",
+              "heart-375",
+              "heart-438",
+              "heart-446",
+              "heart-460",
+              "heart-469",
+              "heart-481",
+              "heart-489",
+              "heart-493",
+              "heart-498"
+            ]
+          },
+          {
+            "key": "24-26",
+            "count": 25,
+            "risk": 25,
+            "noFit": 0,
+            "heartIds": [
+              "heart-001",
+              "heart-011",
+              "heart-014",
+              "heart-037",
+              "heart-053",
+              "heart-077",
+              "heart-087",
+              "heart-110",
+              "heart-133",
+              "heart-176",
+              "heart-178",
+              "heart-221",
+              "heart-253",
+              "heart-261",
+              "heart-279",
+              "heart-291",
+              "heart-293",
+              "heart-344",
+              "heart-351",
+              "heart-359",
+              "heart-391",
+              "heart-406",
+              "heart-440",
+              "heart-482",
+              "heart-487"
+            ]
+          },
+          {
+            "key": "22-24",
+            "count": 22,
+            "risk": 22,
+            "noFit": 0,
+            "heartIds": [
+              "heart-025",
+              "heart-044",
+              "heart-086",
+              "heart-098",
+              "heart-135",
+              "heart-160",
+              "heart-168",
+              "heart-250",
+              "heart-299",
+              "heart-304",
+              "heart-314",
+              "heart-321",
+              "heart-346",
+              "heart-370",
+              "heart-392",
+              "heart-447",
+              "heart-450",
+              "heart-472",
+              "heart-473",
+              "heart-485",
+              "heart-492",
+              "heart-499"
+            ]
+          },
+          {
+            "key": "18-20",
+            "count": 6,
+            "risk": 0,
+            "noFit": 6,
+            "heartIds": [
+              "heart-055",
+              "heart-070",
+              "heart-278",
+              "heart-343",
+              "heart-349",
+              "heart-470"
+            ]
+          },
+          {
+            "key": "30-32",
+            "count": 6,
+            "risk": 0,
+            "noFit": 6,
+            "heartIds": [
+              "heart-035",
+              "heart-092",
+              "heart-103",
+              "heart-154",
+              "heart-204",
+              "heart-276"
+            ]
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-c5fa6b737e7d6ac2",
+      "tool": "profile_group",
+      "input": {
+        "heartIds": [
+          "heart-013",
+          "heart-019",
+          "heart-031",
+          "heart-035",
+          "heart-045",
+          "heart-054",
+          "heart-055",
+          "heart-056",
+          "heart-060",
+          "heart-062",
+          "heart-066",
+          "heart-068",
+          "heart-070",
+          "heart-075",
+          "heart-089",
+          "heart-090",
+          "heart-092",
+          "heart-096",
+          "heart-103",
+          "heart-118",
+          "heart-123",
+          "heart-124",
+          "heart-154",
+          "heart-161",
+          "heart-163",
+          "heart-166",
+          "heart-169",
+          "heart-172",
+          "heart-173",
+          "heart-175",
+          "heart-179",
+          "heart-180",
+          "heart-191",
+          "heart-198",
+          "heart-200",
+          "heart-202",
+          "heart-204",
+          "heart-212",
+          "heart-215",
+          "heart-217",
+          "heart-218",
+          "heart-223",
+          "heart-225",
+          "heart-235",
+          "heart-237",
+          "heart-240",
+          "heart-242",
+          "heart-257",
+          "heart-266",
+          "heart-267",
+          "heart-268",
+          "heart-271",
+          "heart-272",
+          "heart-276",
+          "heart-278",
+          "heart-283",
+          "heart-284",
+          "heart-290",
+          "heart-297",
+          "heart-298",
+          "heart-300",
+          "heart-301",
+          "heart-307",
+          "heart-308",
+          "heart-317",
+          "heart-336",
+          "heart-340",
+          "heart-341",
+          "heart-343",
+          "heart-349",
+          "heart-357",
+          "heart-362",
+          "heart-373",
+          "heart-375",
+          "heart-395",
+          "heart-402",
+          "heart-405",
+          "heart-431",
+          "heart-438",
+          "heart-443",
+          "heart-446",
+          "heart-452",
+          "heart-460",
+          "heart-464",
+          "heart-469",
+          "heart-470",
+          "heart-477",
+          "heart-479",
+          "heart-480",
+          "heart-481",
+          "heart-489",
+          "heart-493",
+          "heart-498"
+        ]
+      },
+      "result": {
+        "groupSize": 93,
+        "restSize": 307,
+        "measures": [
+          {
+            "measure": "lvotMm",
+            "groupMean": 26.23977434384725,
+            "restMean": 23.589300676539565,
+            "difference": 2.6504736673076863,
+            "effectSize": 0.7884220825449201
+          },
+          {
+            "measure": "annulusMm",
+            "groupMean": 26.119650482939925,
+            "restMean": 24.18142694709216,
+            "difference": 1.938223535847765,
+            "effectSize": 0.7836825988132693
+          },
+          {
+            "measure": "sinusMm",
+            "groupMean": 34.51856073375245,
+            "restMean": 32.3156775956045,
+            "difference": 2.2028831381479534,
+            "effectSize": 0.6615456097810255
+          },
+          {
+            "measure": "sinotubularJunctionMm",
+            "groupMean": 30.91204043073114,
+            "restMean": 29.159574713615555,
+            "difference": 1.7524657171155837,
+            "effectSize": 0.6051814345094874
+          },
+          {
+            "measure": "lvotOverAnnulusAreaRatio",
+            "groupMean": 0.9996242194038989,
+            "restMean": 0.9517088959595246,
+            "difference": 0.047915323444374325,
+            "effectSize": 0.44703361467478303
+          },
+          {
+            "measure": "sinusHeightMm",
+            "groupMean": 26.032258064516128,
+            "restMean": 24.912052117263844,
+            "difference": 1.120205947252284,
+            "effectSize": 0.3360559977612908
+          },
+          {
+            "measure": "aorticValveArea",
+            "groupMean": 69.4452718073869,
+            "restMean": 62.526124271030504,
+            "difference": 6.919147536356398,
+            "effectSize": 0.3176255315536079
+          },
+          {
+            "measure": "angleDeg",
+            "groupMean": 28.752226657959937,
+            "restMean": 26.49956296563233,
+            "difference": 2.2526636923276087,
+            "effectSize": 0.2360327033940974
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-e4b3fb96f825b4ef",
+      "tool": "profile_group",
+      "input": {
+        "heartIds": [
+          "heart-001",
+          "heart-003",
+          "heart-011",
+          "heart-014",
+          "heart-018",
+          "heart-025",
+          "heart-026",
+          "heart-029",
+          "heart-037",
+          "heart-043",
+          "heart-044",
+          "heart-053",
+          "heart-077",
+          "heart-086",
+          "heart-087",
+          "heart-110",
+          "heart-126",
+          "heart-133",
+          "heart-135",
+          "heart-151",
+          "heart-160",
+          "heart-174",
+          "heart-176",
+          "heart-178",
+          "heart-183",
+          "heart-221",
+          "heart-231",
+          "heart-253",
+          "heart-261",
+          "heart-279",
+          "heart-291",
+          "heart-293",
+          "heart-299",
+          "heart-304",
+          "heart-314",
+          "heart-321",
+          "heart-324",
+          "heart-333",
+          "heart-351",
+          "heart-359",
+          "heart-370",
+          "heart-381",
+          "heart-384",
+          "heart-440",
+          "heart-447",
+          "heart-450",
+          "heart-466",
+          "heart-472",
+          "heart-473",
+          "heart-482",
+          "heart-485",
+          "heart-499"
+        ]
+      },
+      "result": {
+        "groupSize": 52,
+        "restSize": 348,
+        "measures": [
+          {
+            "measure": "sinotubularJunctionMm",
+            "groupMean": 26.504509737046604,
+            "restMean": 30.024639916125135,
+            "difference": -3.5201301790785315,
+            "effectSize": -1.2156114728116987
+          },
+          {
+            "measure": "sinusMm",
+            "groupMean": 30.58924826922217,
+            "restMean": 33.16235132209775,
+            "difference": -2.5731030528755774,
+            "effectSize": -0.7727259783626637
+          },
+          {
+            "measure": "lvotOverAnnulusAreaRatio",
+            "groupMean": 1.0264544066518189,
+            "restMean": 0.9533449836731089,
+            "difference": 0.07310942297870993,
+            "effectSize": 0.6820859648146137
+          },
+          {
+            "measure": "angleDeg",
+            "groupMean": 29.05023477328692,
+            "restMean": 26.720433050081862,
+            "difference": 2.3298017232050583,
+            "effectSize": 0.2441151783878187
+          },
+          {
+            "measure": "annulusMm",
+            "groupMean": 24.216281793346134,
+            "restMean": 24.69419228280664,
+            "difference": -0.4779104894605055,
+            "effectSize": -0.19323371502488423
+          },
+          {
+            "measure": "sinusHeightMm",
+            "groupMean": 24.653846153846153,
+            "restMean": 25.25,
+            "difference": -0.5961538461538467,
+            "effectSize": -0.1788430744184781
+          },
+          {
+            "measure": "lvotMm",
+            "groupMean": 24.549939418965906,
+            "restMean": 24.15407319508395,
+            "difference": 0.39586622388195636,
+            "effectSize": 0.11775618693817932
+          },
+          {
+            "measure": "aorticValveArea",
+            "groupMean": 62.89080862152505,
+            "restMean": 64.32071373843115,
+            "difference": -1.4299051169060988,
+            "effectSize": -0.06564022091479932
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-8308352ef0b11f4a",
+      "tool": "profile_group",
+      "input": {
+        "heartIds": [
+          "heart-014",
+          "heart-018",
+          "heart-029",
+          "heart-032",
+          "heart-043",
+          "heart-053",
+          "heart-058",
+          "heart-077",
+          "heart-081",
+          "heart-086",
+          "heart-098",
+          "heart-110",
+          "heart-133",
+          "heart-135",
+          "heart-168",
+          "heart-183",
+          "heart-250",
+          "heart-253",
+          "heart-261",
+          "heart-288",
+          "heart-291",
+          "heart-299",
+          "heart-304",
+          "heart-344",
+          "heart-346",
+          "heart-350",
+          "heart-381",
+          "heart-384",
+          "heart-391",
+          "heart-392",
+          "heart-406",
+          "heart-440",
+          "heart-447",
+          "heart-456",
+          "heart-466",
+          "heart-473",
+          "heart-487",
+          "heart-492"
+        ]
+      },
+      "result": {
+        "groupSize": 38,
+        "restSize": 362,
+        "measures": [
+          {
+            "measure": "sinusMm",
+            "groupMean": 29.048135536802295,
+            "restMean": 33.22461331406376,
+            "difference": -4.176477777261464,
+            "effectSize": -1.254233822052965
+          },
+          {
+            "measure": "sinotubularJunctionMm",
+            "groupMean": 26.783098650632482,
+            "restMean": 29.859258144789866,
+            "difference": -3.076159494157384,
+            "effectSize": -1.0622944559042469
+          },
+          {
+            "measure": "sinusHeightMm",
+            "groupMean": 22.092105263157894,
+            "restMean": 25.49585635359116,
+            "difference": -3.4037510904332677,
+            "effectSize": -1.021107745082364
+          },
+          {
+            "measure": "lvotOverAnnulusAreaRatio",
+            "groupMean": 1.026201770629876,
+            "restMean": 0.9561989397243121,
+            "difference": 0.07000283090556392,
+            "effectSize": 0.6531025210235953
+          },
+          {
+            "measure": "annulusMm",
+            "groupMean": 23.652673133852062,
+            "restMean": 24.734872896641804,
+            "difference": -1.0821997627897417,
+            "effectSize": -0.43756620784568845
+          },
+          {
+            "measure": "aorticValveArea",
+            "groupMean": 58.816365414079165,
+            "restMean": 64.69311752364177,
+            "difference": -5.876752109562609,
+            "effectSize": -0.2697740585528199
+          },
+          {
+            "measure": "angleDeg",
+            "groupMean": 25.718742167634502,
+            "restMean": 27.160250572567126,
+            "difference": -1.4415084049326232,
+            "effectSize": -0.15104035588641174
+          },
+          {
+            "measure": "lvotMm",
+            "groupMean": 23.985006008050334,
+            "restMean": 24.228685340799785,
+            "difference": -0.2436793327494513,
+            "effectSize": -0.07248597462755929
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-d839ce86991e7b0c",
+      "tool": "inspect_heart",
+      "input": {
+        "heartId": "heart-014",
+        "design": {
+          "label": "Starting valve",
+          "sizes": [
+            {
+              "nominalMm": 23,
+              "minAnnulusMm": 21,
+              "maxAnnulusMm": 23
+            },
+            {
+              "minAnnulusMm": 23,
+              "nominalMm": 25,
+              "maxAnnulusMm": 25
+            },
+            {
+              "nominalMm": 27,
+              "minAnnulusMm": 25,
+              "maxAnnulusMm": 27
+            }
+          ],
+          "hypothetical": true,
+          "id": "start"
+        }
+      },
+      "result": {
+        "heartId": "heart-014",
+        "measures": {
+          "annulusMm": 25.863354351686183,
+          "sinusMm": 30.777857546128647,
+          "sinotubularJunctionMm": 26.83114637406371,
+          "lvotMm": 26.67227641151979,
+          "sinusHeightMm": 26,
+          "aorticValveArea": 65.64365747249167,
+          "angleDeg": 38.529001121223224,
+          "lvotOverAnnulusAreaRatio": 1.0635317663210777
+        },
+        "status": "risk",
+        "sizeMm": 27,
+        "reasons": [
+          {
+            "ruleId": "sinus-clearance",
+            "measured": 30.777857546128647,
+            "limit": 32,
+            "margin": -1.2221424538713528
+          },
+          {
+            "ruleId": "stj-excess",
+            "measured": 26.83114637406371,
+            "limit": 29,
+            "margin": -2.16885362593629
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-9f761323d17e7e2a",
+      "tool": "inspect_heart",
+      "input": {
+        "heartId": "heart-018",
+        "design": {
+          "id": "start",
+          "hypothetical": true,
+          "label": "Starting valve",
+          "sizes": [
+            {
+              "minAnnulusMm": 21,
+              "maxAnnulusMm": 23,
+              "nominalMm": 23
+            },
+            {
+              "maxAnnulusMm": 25,
+              "nominalMm": 25,
+              "minAnnulusMm": 23
+            },
+            {
+              "minAnnulusMm": 25,
+              "nominalMm": 27,
+              "maxAnnulusMm": 27
+            }
+          ]
+        }
+      },
+      "result": {
+        "heartId": "heart-018",
+        "measures": {
+          "annulusMm": 21.3162948513543,
+          "sinusMm": 26.300674954118218,
+          "sinotubularJunctionMm": 23.907568898229865,
+          "lvotMm": 21.010309624459342,
+          "sinusHeightMm": 22,
+          "aorticValveArea": 42.26970948206933,
+          "angleDeg": 13.168393271660303,
+          "lvotOverAnnulusAreaRatio": 0.9714970079788495
+        },
+        "status": "risk",
+        "sizeMm": 23,
+        "reasons": [
+          {
+            "ruleId": "sinus-clearance",
+            "measured": 26.300674954118218,
+            "limit": 28,
+            "margin": -1.699325045881782
+          },
+          {
+            "ruleId": "stj-excess",
+            "measured": 23.907568898229865,
+            "limit": 25,
+            "margin": -1.092431101770135
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-5f099e74b6ae918b",
+      "tool": "inspect_heart",
+      "input": {
+        "heartId": "heart-086",
+        "design": {
+          "label": "Starting valve",
+          "sizes": [
+            {
+              "maxAnnulusMm": 23,
+              "minAnnulusMm": 21,
+              "nominalMm": 23
+            },
+            {
+              "maxAnnulusMm": 25,
+              "nominalMm": 25,
+              "minAnnulusMm": 23
+            },
+            {
+              "maxAnnulusMm": 27,
+              "minAnnulusMm": 25,
+              "nominalMm": 27
+            }
+          ],
+          "id": "start",
+          "hypothetical": true
+        }
+      },
+      "result": {
+        "heartId": "heart-086",
+        "measures": {
+          "annulusMm": 23.50756686076746,
+          "sinusMm": 28.610092723480133,
+          "sinotubularJunctionMm": 26.482610563909972,
+          "lvotMm": 24.214883865221648,
+          "sinusHeightMm": 20.5,
+          "aorticValveArea": 48.618862785807316,
+          "angleDeg": 25.805455329630504,
+          "lvotOverAnnulusAreaRatio": 1.0610831573221602
+        },
+        "status": "risk",
+        "sizeMm": 25,
+        "reasons": [
+          {
+            "ruleId": "sinus-clearance",
+            "measured": 28.610092723480133,
+            "limit": 30,
+            "margin": -1.3899072765198675
+          },
+          {
+            "ruleId": "stj-excess",
+            "measured": 26.482610563909972,
+            "limit": 27,
+            "margin": -0.5173894360900277
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-80c17e59f3eab42b",
+      "tool": "inspect_heart",
+      "input": {
+        "design": {
+          "id": "start",
+          "hypothetical": true,
+          "label": "Starting valve",
+          "sizes": [
+            {
+              "maxAnnulusMm": 23,
+              "nominalMm": 23,
+              "minAnnulusMm": 21
+            },
+            {
+              "minAnnulusMm": 23,
+              "maxAnnulusMm": 25,
+              "nominalMm": 25
+            },
+            {
+              "minAnnulusMm": 25,
+              "maxAnnulusMm": 27,
+              "nominalMm": 27
+            }
+          ]
+        },
+        "heartId": "heart-013"
+      },
+      "result": {
+        "heartId": "heart-013",
+        "measures": {
+          "annulusMm": 20.360210928381452,
+          "sinusMm": 28.511119009903343,
+          "sinotubularJunctionMm": 25.88486007772743,
+          "lvotMm": 18.66853791899054,
+          "sinusHeightMm": 21.5,
+          "aorticValveArea": 29.844073335650673,
+          "angleDeg": 23.069802264838092,
+          "lvotOverAnnulusAreaRatio": 0.8407290745226816
+        },
+        "status": "no-fit",
+        "reasons": [
+          {
+            "ruleId": "annulus-coverage",
+            "measured": 20.360210928381452,
+            "limit": 21,
+            "margin": -0.6397890716185479
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-8130bb4e6ef7cd67",
+      "tool": "inspect_heart",
+      "input": {
+        "design": {
+          "label": "Starting valve",
+          "sizes": [
+            {
+              "minAnnulusMm": 21,
+              "nominalMm": 23,
+              "maxAnnulusMm": 23
+            },
+            {
+              "nominalMm": 25,
+              "maxAnnulusMm": 25,
+              "minAnnulusMm": 23
+            },
+            {
+              "minAnnulusMm": 25,
+              "maxAnnulusMm": 27,
+              "nominalMm": 27
+            }
+          ],
+          "hypothetical": true,
+          "id": "start"
+        },
+        "heartId": "heart-019"
+      },
+      "result": {
+        "heartId": "heart-019",
+        "measures": {
+          "annulusMm": 27.358842120785503,
+          "sinusMm": 32.71552274949459,
+          "sinotubularJunctionMm": 29.98928140194136,
+          "lvotMm": 28.069669760502016,
+          "sinusHeightMm": 23.5,
+          "aorticValveArea": 46.950772831279025,
+          "angleDeg": 33.7027588673538,
+          "lvotOverAnnulusAreaRatio": 1.0526383295859936
+        },
+        "status": "no-fit",
+        "reasons": [
+          {
+            "ruleId": "annulus-coverage",
+            "measured": 27.358842120785503,
+            "limit": 27,
+            "margin": -0.3588421207855035
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-b3c34e17571dc1f4",
+      "tool": "profile_group",
+      "input": {
+        "heartIds": [
+          "heart-055",
+          "heart-070",
+          "heart-278",
+          "heart-343",
+          "heart-349",
+          "heart-470",
+          "heart-013",
+          "heart-031",
+          "heart-045",
+          "heart-066",
+          "heart-096",
+          "heart-118",
+          "heart-123",
+          "heart-124",
+          "heart-172",
+          "heart-180",
+          "heart-212",
+          "heart-215",
+          "heart-235",
+          "heart-271",
+          "heart-308",
+          "heart-395",
+          "heart-443",
+          "heart-477",
+          "heart-479",
+          "heart-480"
+        ]
+      },
+      "result": {
+        "groupSize": 26,
+        "restSize": 374,
+        "measures": [
+          {
+            "measure": "annulusMm",
+            "groupMean": 20.311191388367057,
+            "restMean": 24.932445432013804,
+            "difference": -4.621254043646747,
+            "effectSize": -1.8685132605808297
+          },
+          {
+            "measure": "lvotMm",
+            "groupMean": 18.654190741773753,
+            "restMean": 24.59145818820673,
+            "difference": -5.937267446432976,
+            "effectSize": -1.7661268710123859
+          },
+          {
+            "measure": "sinusMm",
+            "groupMean": 28.32912653529608,
+            "restMean": 33.140593262491635,
+            "difference": -4.811466727195555,
+            "effectSize": -1.444926712117725
+          },
+          {
+            "measure": "aorticValveArea",
+            "groupMean": 38.25731177675378,
+            "restMean": 65.93379765534156,
+            "difference": -27.676485878587783,
+            "effectSize": -1.2704973398141404
+          },
+          {
+            "measure": "lvotOverAnnulusAreaRatio",
+            "groupMean": 0.8459355375535933,
+            "restMean": 0.970976897026051,
+            "difference": -0.12504135947245765,
+            "effectSize": -1.1665932084067887
+          },
+          {
+            "measure": "sinotubularJunctionMm",
+            "groupMean": 26.46915218778211,
+            "restMean": 29.782382995335908,
+            "difference": -3.313230807553797,
+            "effectSize": -1.1441626237782703
+          },
+          {
+            "measure": "sinusHeightMm",
+            "groupMean": 22.153846153846153,
+            "restMean": 25.38235294117647,
+            "difference": -3.2285067873303177,
+            "effectSize": -0.968535359374452
+          },
+          {
+            "measure": "angleDeg",
+            "groupMean": 24.622024931731907,
+            "restMean": 27.190241340680164,
+            "difference": -2.568216408948256,
+            "effectSize": -0.2690961211696839
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-b36a4c6f07caf0e4",
+      "tool": "profile_group",
+      "input": {
+        "heartIds": [
+          "heart-019",
+          "heart-054",
+          "heart-056",
+          "heart-060",
+          "heart-062",
+          "heart-068",
+          "heart-075",
+          "heart-169",
+          "heart-198",
+          "heart-202",
+          "heart-218",
+          "heart-225",
+          "heart-242",
+          "heart-257",
+          "heart-267",
+          "heart-272",
+          "heart-283",
+          "heart-290",
+          "heart-298",
+          "heart-300",
+          "heart-307",
+          "heart-336",
+          "heart-341",
+          "heart-357",
+          "heart-362",
+          "heart-402",
+          "heart-405",
+          "heart-431",
+          "heart-452",
+          "heart-464",
+          "heart-089",
+          "heart-090",
+          "heart-161",
+          "heart-163",
+          "heart-166",
+          "heart-173",
+          "heart-175",
+          "heart-179",
+          "heart-191",
+          "heart-200",
+          "heart-217",
+          "heart-223",
+          "heart-237",
+          "heart-240",
+          "heart-266",
+          "heart-268",
+          "heart-284",
+          "heart-297",
+          "heart-301",
+          "heart-317",
+          "heart-340",
+          "heart-373",
+          "heart-375",
+          "heart-438",
+          "heart-446",
+          "heart-460",
+          "heart-469",
+          "heart-481",
+          "heart-489",
+          "heart-493",
+          "heart-498",
+          "heart-035",
+          "heart-092",
+          "heart-103",
+          "heart-154",
+          "heart-204",
+          "heart-276"
+        ]
+      },
+      "result": {
+        "groupSize": 67,
+        "restSize": 333,
+        "measures": [
+          {
+            "measure": "annulusMm",
+            "groupMean": 28.373679385311508,
+            "restMean": 23.879246392957466,
+            "difference": 4.494432992354042,
+            "effectSize": 1.8172356606429947
+          },
+          {
+            "measure": "lvotMm",
+            "groupMean": 29.183433652114573,
+            "restMean": 23.203976777729032,
+            "difference": 5.979456874385541,
+            "effectSize": 1.7786767322156958
+          },
+          {
+            "measure": "sinusMm",
+            "groupMean": 36.92043072121315,
+            "restMean": 32.00441535065551,
+            "difference": 4.916015370557638,
+            "effectSize": 1.4763236095867829
+          },
+          {
+            "measure": "sinotubularJunctionMm",
+            "groupMean": 32.63614631605464,
+            "restMean": 28.949511693580508,
+            "difference": 3.686634622474134,
+            "effectSize": 1.273110684877431
+          },
+          {
+            "measure": "lvotOverAnnulusAreaRatio",
+            "groupMean": 1.0592646034055095,
+            "restMean": 0.9434503154233255,
+            "difference": 0.11581428798218407,
+            "effectSize": 1.0805077805175625
+          },
+          {
+            "measure": "aorticValveArea",
+            "groupMean": 81.54806226703555,
+            "restMean": 60.631262034240116,
+            "difference": 20.91680023279543,
+            "effectSize": 0.9601919539124086
+          },
+          {
+            "measure": "sinusHeightMm",
+            "groupMean": 27.53731343283582,
+            "restMean": 24.696696696696698,
+            "difference": 2.840616736139122,
+            "effectSize": 0.8521703476598887
+          },
+          {
+            "measure": "angleDeg",
+            "groupMean": 30.35499150694394,
+            "restMean": 26.352968404426907,
+            "difference": 4.0020231025170325,
+            "effectSize": 0.4193294965200479
+          }
+        ]
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-4acaa28faa8b1536",
+      "tool": "what_if",
+      "input": {
+        "heartIds": [
+          "heart-019",
+          "heart-054",
+          "heart-056",
+          "heart-060",
+          "heart-062",
+          "heart-068",
+          "heart-075",
+          "heart-169",
+          "heart-198",
+          "heart-202",
+          "heart-218",
+          "heart-225",
+          "heart-242",
+          "heart-257",
+          "heart-267",
+          "heart-272",
+          "heart-283",
+          "heart-290",
+          "heart-298",
+          "heart-300",
+          "heart-307",
+          "heart-336",
+          "heart-341",
+          "heart-357",
+          "heart-362",
+          "heart-402",
+          "heart-405",
+          "heart-431",
+          "heart-452",
+          "heart-464"
+        ],
+        "design": {
+          "id": "start",
+          "hypothetical": true,
+          "label": "Starting valve",
+          "sizes": [
+            {
+              "maxAnnulusMm": 23,
+              "nominalMm": 23,
+              "minAnnulusMm": 21
+            },
+            {
+              "maxAnnulusMm": 25,
+              "nominalMm": 25,
+              "minAnnulusMm": 23
+            },
+            {
+              "minAnnulusMm": 25,
+              "maxAnnulusMm": 27,
+              "nominalMm": 27
+            }
+          ]
+        },
+        "change": {
+          "size": {
+            "nominalMm": 29,
+            "maxAnnulusMm": 29,
+            "minAnnulusMm": 27
+          },
+          "kind": "add_size"
+        }
+      },
+      "result": {
+        "valid": true,
+        "hearts": [
+          {
+            "heartId": "heart-019",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-054",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-056",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-060",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-062",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-068",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-075",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-169",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-198",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-202",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-218",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-225",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-242",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-257",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-267",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-272",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-283",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-290",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-298",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-300",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-307",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-336",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-341",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-357",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-362",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-402",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-405",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-431",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-452",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-464",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          }
+        ],
+        "fixedCount": 16
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    },
+    {
+      "id": "ev-dcd4ee3262628bda",
+      "tool": "what_if",
+      "input": {
+        "heartIds": [
+          "heart-055",
+          "heart-070",
+          "heart-278",
+          "heart-343",
+          "heart-349",
+          "heart-470",
+          "heart-013",
+          "heart-031",
+          "heart-045",
+          "heart-066",
+          "heart-096",
+          "heart-118",
+          "heart-123",
+          "heart-124",
+          "heart-172",
+          "heart-180",
+          "heart-212",
+          "heart-215",
+          "heart-235",
+          "heart-271",
+          "heart-308",
+          "heart-395",
+          "heart-443",
+          "heart-477",
+          "heart-479",
+          "heart-480"
+        ],
+        "change": {
+          "size": {
+            "maxAnnulusMm": 21,
+            "nominalMm": 21,
+            "minAnnulusMm": 19
+          },
+          "kind": "add_size"
+        },
+        "design": {
+          "label": "Starting valve",
+          "id": "start",
+          "sizes": [
+            {
+              "minAnnulusMm": 21,
+              "nominalMm": 23,
+              "maxAnnulusMm": 23
+            },
+            {
+              "maxAnnulusMm": 25,
+              "minAnnulusMm": 23,
+              "nominalMm": 25
+            },
+            {
+              "maxAnnulusMm": 27,
+              "nominalMm": 27,
+              "minAnnulusMm": 25
+            }
+          ],
+          "hypothetical": true
+        }
+      },
+      "result": {
+        "valid": true,
+        "hearts": [
+          {
+            "heartId": "heart-013",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-031",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-045",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-055",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-066",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-070",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-096",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-118",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-123",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-124",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-172",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-180",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-212",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-215",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-235",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-271",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-278",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-308",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-343",
+            "before": "no-fit",
+            "after": "risk",
+            "fixed": false
+          },
+          {
+            "heartId": "heart-349",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-395",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-443",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-470",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-477",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-479",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          },
+          {
+            "heartId": "heart-480",
+            "before": "no-fit",
+            "after": "fit",
+            "fixed": true
+          }
+        ],
+        "fixedCount": 23
+      },
+      "source": "computed",
+      "provenance": {
+        "rulesVersion": "placeholder-1",
+        "dataHash": "d9abe9c9d41c603ae8b93cec92ff823c3966fc8e575836dc02aa442f318255da",
+        "seed": 20230901
+      }
+    }
+  ],
+  "findings": [],
+  "proposals": [],
+  "baselines": [],
+  "hiddenScoreCount": 0
+}

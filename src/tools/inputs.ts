@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ClaimSchema, DesignSchema, FindingSchema, LimitSchema } from "@/contracts";
+import { ClaimSchema, DesignSchema, FindingSchema, LimitSchema } from "../contracts";
 
 export const ChangeSchema = z.discriminatedUnion("kind", [
   z.object({

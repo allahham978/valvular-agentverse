@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { devHearts } from "@/lib/dev-hearts";
-import type { ToolSpec } from "@/agents/model-client";
-import type { ToolOutcome, ToolRegistry } from "@/orchestrator/tools";
+import { devHearts } from "../lib/dev-hearts";
+import type { ToolSpec } from "../agents/model-client";
+import type { ToolOutcome, ToolRegistry } from "../orchestrator/tools";
 import { editDesignTool, reportFindingsTool, submitProposalTool } from "./design";
 import { makeEvidence, ToolError } from "./evidence";
 import * as inputs from "./inputs";

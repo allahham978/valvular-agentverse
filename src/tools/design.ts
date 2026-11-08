@@ -1,4 +1,4 @@
-import type { Limit } from "@/contracts";
+import type { Limit } from "../contracts";
 import type { z } from "zod";
 import { ToolError } from "./evidence";
 import { applyChange, changedHearts, evaluate, evaluateOrThrow } from "./fit";
