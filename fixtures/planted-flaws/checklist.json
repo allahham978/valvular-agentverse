@@ -1,0 +1,39 @@
+{
+  "label": "demo-assumption",
+  "version": "checklist-1",
+  "note": "Fixed attack checklist run by code against each planted design, with the Breaker's tools and budget. Frozen before any comparison run.",
+  "match": {
+    "rule": "A flaw counts as found when one reported finding's heartIds cover at least minRecall of the flaw's affected hearts, and at least minPrecision of that finding's heartIds are affected hearts.",
+    "minRecall": 0.5,
+    "minPrecision": 0.5
+  },
+  "steps": [
+    { "tool": "evaluate_design", "args": { "design": "$design" } },
+    { "tool": "group_failures", "args": { "design": "$design", "by": "rule" } },
+    { "tool": "group_failures", "args": { "design": "$design", "by": "size" } },
+    {
+      "tool": "stress_test",
+      "args": {
+        "design": "$design",
+        "kind": "measurement_shift",
+        "amount": 1,
+        "hypothesis": "A larger measurement reading moves hearts near a size edge into another status.",
+        "disprovedIf": "No heart changes status after the shift."
+      }
+    },
+    {
+      "tool": "stress_test",
+      "args": {
+        "design": "$design",
+        "kind": "assumption_shift",
+        "amount": 1,
+        "hypothesis": "A larger frame outflow puts more hearts at risk.",
+        "disprovedIf": "No heart changes status after the shift."
+      }
+    }
+  ],
+  "report": {
+    "tool": "report_findings",
+    "rule": "After the steps, code reports one finding per non-empty group from each group_failures result and one per stress_test with a non-empty changed list. Each finding's heartIds are that group's heartIds or that test's changed heart IDs, and it cites that step's evidence ID. The report call counts toward the tool-call budget."
+  }
+}

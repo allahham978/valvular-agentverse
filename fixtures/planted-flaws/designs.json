@@ -1,0 +1,78 @@
+{
+  "label": "demo-assumption",
+  "version": "planted-1",
+  "note": "Stand-in planted-flaw set until a teammate's official set replaces it. Frozen before any comparison run. Each design is the starting valve with one flaw planted, and passes the 2.5 mm size-width rule.",
+  "affected": "Dev hearts whose status is worse under the planted design than under the starting valve (fit, then risk, then no-fit).",
+  "designs": [
+    {
+      "flawId": "gap-low",
+      "description": "The 23 mm size stops at 22.5 mm, leaving a coverage gap from 22.5 to 23 mm.",
+      "design": {
+        "id": "planted-gap-low",
+        "label": "Planted flaw: coverage gap",
+        "hypothetical": true,
+        "sizes": [
+          { "nominalMm": 23, "minAnnulusMm": 21, "maxAnnulusMm": 22.5 },
+          { "nominalMm": 25, "minAnnulusMm": 23, "maxAnnulusMm": 25 },
+          { "nominalMm": 27, "minAnnulusMm": 25, "maxAnnulusMm": 27 }
+        ]
+      }
+    },
+    {
+      "flawId": "narrow-top",
+      "description": "The 27 mm size covers only 25 to 26 mm, leaving out hearts from 26 to 27 mm.",
+      "design": {
+        "id": "planted-narrow-top",
+        "label": "Planted flaw: narrow top size",
+        "hypothetical": true,
+        "sizes": [
+          { "nominalMm": 23, "minAnnulusMm": 21, "maxAnnulusMm": 23 },
+          { "nominalMm": 25, "minAnnulusMm": 23, "maxAnnulusMm": 25 },
+          { "nominalMm": 27, "minAnnulusMm": 25, "maxAnnulusMm": 26 }
+        ]
+      }
+    },
+    {
+      "flawId": "oversize-top",
+      "description": "The top size has a 29 mm frame on a 25 to 27 mm annulus range, so its outflow crowds the sinus and junction.",
+      "design": {
+        "id": "planted-oversize-top",
+        "label": "Planted flaw: oversized top frame",
+        "hypothetical": true,
+        "sizes": [
+          { "nominalMm": 23, "minAnnulusMm": 21, "maxAnnulusMm": 23 },
+          { "nominalMm": 25, "minAnnulusMm": 23, "maxAnnulusMm": 25 },
+          { "nominalMm": 29, "minAnnulusMm": 25, "maxAnnulusMm": 27 }
+        ]
+      }
+    },
+    {
+      "flawId": "oversize-middle",
+      "description": "The middle size has a 26 mm frame on a 23 to 25 mm annulus range.",
+      "design": {
+        "id": "planted-oversize-middle",
+        "label": "Planted flaw: oversized middle frame",
+        "hypothetical": true,
+        "sizes": [
+          { "nominalMm": 23, "minAnnulusMm": 21, "maxAnnulusMm": 23 },
+          { "nominalMm": 26, "minAnnulusMm": 23, "maxAnnulusMm": 25 },
+          { "nominalMm": 27, "minAnnulusMm": 25, "maxAnnulusMm": 27 }
+        ]
+      }
+    },
+    {
+      "flawId": "oversize-bottom",
+      "description": "The bottom size has a 24.5 mm frame on a 21 to 23 mm annulus range.",
+      "design": {
+        "id": "planted-oversize-bottom",
+        "label": "Planted flaw: oversized bottom frame",
+        "hypothetical": true,
+        "sizes": [
+          { "nominalMm": 24.5, "minAnnulusMm": 21, "maxAnnulusMm": 23 },
+          { "nominalMm": 25, "minAnnulusMm": 23, "maxAnnulusMm": 25 },
+          { "nominalMm": 27, "minAnnulusMm": 25, "maxAnnulusMm": 27 }
+        ]
+      }
+    }
+  ]
+}
