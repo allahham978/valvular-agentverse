@@ -60,7 +60,10 @@ function toContents(messages: ModelMessage[]): Content[] {
           functionResponse: {
             ...(calls[index]?.functionCall?.id ? { id: calls[index].functionCall?.id } : {}),
             name: calls[index]?.functionCall?.name ?? reply.name,
-            response: reply.error === undefined ? { evidenceId: reply.evidenceId, result: reply.result } : { error: reply.error },
+            response: {
+              ...(reply.error === undefined ? { evidenceId: reply.evidenceId, result: reply.result } : { error: reply.error }),
+              ...(reply.budget ? { budgetLeft: reply.budget } : {}),
+            },
           },
         })),
       });
@@ -78,7 +81,12 @@ function buildBody(request: ModelRequest) {
   return {
     contents: toContents(request.messages),
     tools: [{ functionDeclarations: request.tools.map(declaration) }],
-    toolConfig: { functionCallingConfig: { mode: geminiSettings.toolMode } },
+    toolConfig: {
+      functionCallingConfig: {
+        mode: geminiSettings.toolMode,
+        ...(request.allowedTools ? { allowedFunctionNames: request.allowedTools } : {}),
+      },
+    },
     generationConfig: {
       thinkingConfig: { thinkingLevel: geminiSettings.thinkingLevel },
       maxOutputTokens: geminiSettings.maxOutputTokens,
