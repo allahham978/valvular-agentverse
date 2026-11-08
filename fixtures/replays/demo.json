@@ -1,7 +1,7 @@
 {
   "id": "demo",
-  "title": "Demo: starting valve, one fix, one attack",
-  "source": "transcript",
+  "title": "Demo: starting valve, two fixes, two attack rounds",
+  "source": "recording",
   "startDesign": {
     "id": "start",
     "label": "Starting valve",
@@ -26,7 +26,10 @@
   },
   "limits": [],
   "budget": {
-    "maxRounds": 1
+    "maxStepsPerTurn": 16,
+    "maxToolCallsPerTurn": 16,
+    "maxTurnMs": 180000,
+    "maxRounds": 2
   },
   "turns": [
     {
@@ -35,24 +38,24 @@
           "name": "evaluate_design",
           "args": {
             "design": {
-              "id": "start",
               "label": "Starting valve",
               "hypothetical": true,
+              "id": "start",
               "sizes": [
                 {
                   "nominalMm": 23,
-                  "minAnnulusMm": 21,
-                  "maxAnnulusMm": 23
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
                 },
                 {
-                  "nominalMm": 25,
+                  "maxAnnulusMm": 25,
                   "minAnnulusMm": 23,
-                  "maxAnnulusMm": 25
+                  "nominalMm": 25
                 },
                 {
-                  "nominalMm": 27,
                   "minAnnulusMm": 25,
-                  "maxAnnulusMm": 27
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
                 }
               ]
             }
@@ -66,56 +69,93 @@
           "name": "group_failures",
           "args": {
             "design": {
-              "id": "start",
-              "label": "Starting valve",
-              "hypothetical": true,
               "sizes": [
                 {
+                  "maxAnnulusMm": 23,
                   "nominalMm": 23,
-                  "minAnnulusMm": 21,
-                  "maxAnnulusMm": 23
+                  "minAnnulusMm": 21
                 },
                 {
-                  "nominalMm": 25,
+                  "maxAnnulusMm": 25,
                   "minAnnulusMm": 23,
-                  "maxAnnulusMm": 25
+                  "nominalMm": 25
                 },
                 {
-                  "nominalMm": 27,
                   "minAnnulusMm": 25,
-                  "maxAnnulusMm": 27
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
                 }
-              ]
+              ],
+              "hypothetical": true,
+              "label": "Starting valve",
+              "id": "start"
             },
             "by": "rule"
           }
-        },
+        }
+      ]
+    },
+    {
+      "toolCalls": [
         {
           "name": "group_failures",
           "args": {
             "design": {
-              "id": "start",
-              "label": "Starting valve",
-              "hypothetical": true,
               "sizes": [
                 {
-                  "nominalMm": 23,
                   "minAnnulusMm": 21,
-                  "maxAnnulusMm": 23
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27
+                }
+              ],
+              "hypothetical": true,
+              "label": "Starting valve",
+              "id": "start"
+            },
+            "by": "size"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "group_failures",
+          "args": {
+            "by": "band",
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
                 },
                 {
                   "nominalMm": 25,
-                  "minAnnulusMm": 23,
-                  "maxAnnulusMm": 25
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23
                 },
                 {
                   "nominalMm": 27,
                   "minAnnulusMm": 25,
                   "maxAnnulusMm": 27
                 }
-              ]
+              ],
+              "label": "Starting valve",
+              "id": "start",
+              "hypothetical": true
             },
-            "by": "band"
+            "measure": "annulusMm"
           }
         }
       ]
@@ -128,7 +168,209 @@
             "heartIds": [
               "heart-013",
               "heart-019",
-              "heart-031"
+              "heart-031",
+              "heart-035",
+              "heart-045",
+              "heart-054",
+              "heart-055",
+              "heart-056",
+              "heart-060",
+              "heart-062",
+              "heart-066",
+              "heart-068",
+              "heart-070",
+              "heart-075",
+              "heart-089",
+              "heart-090",
+              "heart-092",
+              "heart-096",
+              "heart-103",
+              "heart-118",
+              "heart-123",
+              "heart-124",
+              "heart-154",
+              "heart-161",
+              "heart-163",
+              "heart-166",
+              "heart-169",
+              "heart-172",
+              "heart-173",
+              "heart-175",
+              "heart-179",
+              "heart-180",
+              "heart-191",
+              "heart-198",
+              "heart-200",
+              "heart-202",
+              "heart-204",
+              "heart-212",
+              "heart-215",
+              "heart-217",
+              "heart-218",
+              "heart-223",
+              "heart-225",
+              "heart-235",
+              "heart-237",
+              "heart-240",
+              "heart-242",
+              "heart-257",
+              "heart-266",
+              "heart-267",
+              "heart-268",
+              "heart-271",
+              "heart-272",
+              "heart-276",
+              "heart-278",
+              "heart-283",
+              "heart-284",
+              "heart-290",
+              "heart-297",
+              "heart-298",
+              "heart-300",
+              "heart-301",
+              "heart-307",
+              "heart-308",
+              "heart-317",
+              "heart-336",
+              "heart-340",
+              "heart-341",
+              "heart-343",
+              "heart-349",
+              "heart-357",
+              "heart-362",
+              "heart-373",
+              "heart-375",
+              "heart-395",
+              "heart-402",
+              "heart-405",
+              "heart-431",
+              "heart-438",
+              "heart-443",
+              "heart-446",
+              "heart-452",
+              "heart-460",
+              "heart-464",
+              "heart-469",
+              "heart-470",
+              "heart-477",
+              "heart-479",
+              "heart-480",
+              "heart-481",
+              "heart-489",
+              "heart-493",
+              "heart-498"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "profile_group",
+          "args": {
+            "heartIds": [
+              "heart-001",
+              "heart-003",
+              "heart-011",
+              "heart-014",
+              "heart-018",
+              "heart-025",
+              "heart-026",
+              "heart-029",
+              "heart-037",
+              "heart-043",
+              "heart-044",
+              "heart-053",
+              "heart-077",
+              "heart-086",
+              "heart-087",
+              "heart-110",
+              "heart-126",
+              "heart-133",
+              "heart-135",
+              "heart-151",
+              "heart-160",
+              "heart-174",
+              "heart-176",
+              "heart-178",
+              "heart-183",
+              "heart-221",
+              "heart-231",
+              "heart-253",
+              "heart-261",
+              "heart-279",
+              "heart-291",
+              "heart-293",
+              "heart-299",
+              "heart-304",
+              "heart-314",
+              "heart-321",
+              "heart-324",
+              "heart-333",
+              "heart-351",
+              "heart-359",
+              "heart-370",
+              "heart-381",
+              "heart-384",
+              "heart-440",
+              "heart-447",
+              "heart-450",
+              "heart-466",
+              "heart-472",
+              "heart-473",
+              "heart-482",
+              "heart-485",
+              "heart-499"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "profile_group",
+          "args": {
+            "heartIds": [
+              "heart-014",
+              "heart-018",
+              "heart-029",
+              "heart-032",
+              "heart-043",
+              "heart-053",
+              "heart-058",
+              "heart-077",
+              "heart-081",
+              "heart-086",
+              "heart-098",
+              "heart-110",
+              "heart-133",
+              "heart-135",
+              "heart-168",
+              "heart-183",
+              "heart-250",
+              "heart-253",
+              "heart-261",
+              "heart-288",
+              "heart-291",
+              "heart-299",
+              "heart-304",
+              "heart-344",
+              "heart-346",
+              "heart-350",
+              "heart-381",
+              "heart-384",
+              "heart-391",
+              "heart-392",
+              "heart-406",
+              "heart-440",
+              "heart-447",
+              "heart-456",
+              "heart-466",
+              "heart-473",
+              "heart-487",
+              "heart-492"
             ]
           }
         }
@@ -139,10 +381,40 @@
         {
           "name": "inspect_heart",
           "args": {
-            "heartId": "heart-013",
+            "design": {
+              "hypothetical": true,
+              "id": "start",
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25
+                }
+              ],
+              "label": "Starting valve"
+            },
+            "heartId": "heart-014"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "inspect_heart",
+          "args": {
             "design": {
               "id": "start",
-              "label": "Starting valve",
               "hypothetical": true,
               "sizes": [
                 {
@@ -151,16 +423,218 @@
                   "maxAnnulusMm": 23
                 },
                 {
-                  "nominalMm": 25,
                   "minAnnulusMm": 23,
+                  "nominalMm": 25,
                   "maxAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                }
+              ],
+              "label": "Starting valve"
+            },
+            "heartId": "heart-013"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "inspect_heart",
+          "args": {
+            "heartId": "heart-019",
+            "design": {
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                }
+              ],
+              "hypothetical": true,
+              "id": "start",
+              "label": "Starting valve"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "profile_group",
+          "args": {
+            "heartIds": [
+              "heart-001",
+              "heart-003",
+              "heart-011",
+              "heart-014",
+              "heart-018",
+              "heart-025",
+              "heart-026",
+              "heart-029",
+              "heart-032",
+              "heart-037",
+              "heart-043",
+              "heart-044",
+              "heart-053",
+              "heart-058",
+              "heart-077",
+              "heart-081",
+              "heart-086",
+              "heart-087",
+              "heart-098",
+              "heart-110",
+              "heart-126",
+              "heart-133",
+              "heart-135",
+              "heart-151",
+              "heart-160",
+              "heart-168",
+              "heart-174",
+              "heart-176",
+              "heart-178",
+              "heart-183",
+              "heart-221",
+              "heart-231",
+              "heart-250",
+              "heart-253",
+              "heart-261",
+              "heart-279",
+              "heart-288",
+              "heart-291",
+              "heart-293",
+              "heart-299",
+              "heart-304",
+              "heart-314",
+              "heart-321",
+              "heart-324",
+              "heart-333",
+              "heart-344",
+              "heart-346",
+              "heart-350",
+              "heart-351",
+              "heart-359",
+              "heart-370",
+              "heart-381",
+              "heart-384",
+              "heart-391",
+              "heart-392",
+              "heart-406",
+              "heart-440",
+              "heart-447",
+              "heart-450",
+              "heart-456",
+              "heart-466",
+              "heart-472",
+              "heart-473",
+              "heart-482",
+              "heart-485",
+              "heart-487",
+              "heart-492",
+              "heart-499"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "what_if",
+          "args": {
+            "heartIds": [
+              "heart-019",
+              "heart-035",
+              "heart-054",
+              "heart-089"
+            ],
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 32,
+                "nominalMm": 29
+              }
+            },
+            "design": {
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
                 },
                 {
                   "nominalMm": 27,
                   "minAnnulusMm": 25,
                   "maxAnnulusMm": 27
                 }
-              ]
+              ],
+              "label": "Starting valve",
+              "id": "start",
+              "hypothetical": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "what_if",
+          "args": {
+            "heartIds": [
+              "heart-013",
+              "heart-031",
+              "heart-055"
+            ],
+            "design": {
+              "hypothetical": true,
+              "id": "start",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
+                }
+              ],
+              "label": "Starting valve"
+            },
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 21,
+                "minAnnulusMm": 18,
+                "maxAnnulusMm": 21
+              }
             }
           }
         }
@@ -173,19 +647,189 @@
           "args": {
             "mechanisms": [
               {
-                "title": "Annulus sizes outside the 21-27 mm coverage",
-                "explanation": "Of 400 development hearts, 93 have no size under the Starting valve, and the grouping by rule puts all of them under annulus-coverage. Failures also appear in the 20-22 and 26-28 bands.",
                 "heartIds": [
                   "heart-013",
                   "heart-019",
-                  "heart-031"
+                  "heart-031",
+                  "heart-035",
+                  "heart-045",
+                  "heart-054",
+                  "heart-055",
+                  "heart-056",
+                  "heart-060",
+                  "heart-062",
+                  "heart-066",
+                  "heart-068",
+                  "heart-070",
+                  "heart-075",
+                  "heart-089",
+                  "heart-090",
+                  "heart-092",
+                  "heart-096",
+                  "heart-103",
+                  "heart-118",
+                  "heart-123",
+                  "heart-124",
+                  "heart-154",
+                  "heart-161",
+                  "heart-163",
+                  "heart-166",
+                  "heart-169",
+                  "heart-172",
+                  "heart-173",
+                  "heart-175",
+                  "heart-179",
+                  "heart-180",
+                  "heart-191",
+                  "heart-198",
+                  "heart-200",
+                  "heart-202",
+                  "heart-204",
+                  "heart-212",
+                  "heart-215",
+                  "heart-217",
+                  "heart-218",
+                  "heart-223",
+                  "heart-225",
+                  "heart-235",
+                  "heart-237",
+                  "heart-240",
+                  "heart-242",
+                  "heart-257",
+                  "heart-266",
+                  "heart-267",
+                  "heart-268",
+                  "heart-271",
+                  "heart-272",
+                  "heart-276",
+                  "heart-278",
+                  "heart-283",
+                  "heart-284",
+                  "heart-290",
+                  "heart-297",
+                  "heart-298",
+                  "heart-300",
+                  "heart-301",
+                  "heart-307",
+                  "heart-308",
+                  "heart-317",
+                  "heart-336",
+                  "heart-340",
+                  "heart-341",
+                  "heart-343",
+                  "heart-349",
+                  "heart-357",
+                  "heart-362",
+                  "heart-373",
+                  "heart-375",
+                  "heart-395",
+                  "heart-402",
+                  "heart-405",
+                  "heart-431",
+                  "heart-438",
+                  "heart-443",
+                  "heart-446",
+                  "heart-452",
+                  "heart-460",
+                  "heart-464",
+                  "heart-469",
+                  "heart-470",
+                  "heart-477",
+                  "heart-479",
+                  "heart-480",
+                  "heart-481",
+                  "heart-489",
+                  "heart-493",
+                  "heart-498"
                 ],
                 "severity": "high",
                 "evidenceIds": [
-                  "ev-95d7f1707ae35212",
                   "ev-ddb7bf7de5a26591",
-                  "ev-c84097b2a0d584bb"
-                ]
+                  "ev-a875f695c1a02e6e",
+                  "ev-c5fa6b737e7d6ac2"
+                ],
+                "title": "Annulus coverage gap below 21 mm and above 27 mm",
+                "explanation": "All 93 no-fit hearts fail annulus-coverage because the design only covers 21 to 27 mm, missing hearts in the 18-20 and 20-22 mm bands (6 and 20 no-fit) and the 26-28, 28-30, and 30-32 mm bands (30, 31, and 6 no-fit)."
+              },
+              {
+                "evidenceIds": [
+                  "ev-ddb7bf7de5a26591",
+                  "ev-4237111d416f4a74",
+                  "ev-d839ce86991e7b0c"
+                ],
+                "title": "Narrow STJ and sinus dimensions relative to assigned valve size",
+                "explanation": "The 68 at-risk hearts fail stj-excess (52 hearts) and sinus-clearance (38 hearts) due to narrow STJ (mean 26.765969201737622 vs 30.140732805481356 mm) and sinus (mean 30.245777377766178 vs 33.35670574819719 mm) relative to assigned 23, 25, or 27 mm valves.",
+                "heartIds": [
+                  "heart-001",
+                  "heart-003",
+                  "heart-011",
+                  "heart-014",
+                  "heart-018",
+                  "heart-025",
+                  "heart-026",
+                  "heart-029",
+                  "heart-032",
+                  "heart-037",
+                  "heart-043",
+                  "heart-044",
+                  "heart-053",
+                  "heart-058",
+                  "heart-077",
+                  "heart-081",
+                  "heart-086",
+                  "heart-087",
+                  "heart-098",
+                  "heart-110",
+                  "heart-126",
+                  "heart-133",
+                  "heart-135",
+                  "heart-151",
+                  "heart-160",
+                  "heart-168",
+                  "heart-174",
+                  "heart-176",
+                  "heart-178",
+                  "heart-183",
+                  "heart-221",
+                  "heart-231",
+                  "heart-250",
+                  "heart-253",
+                  "heart-261",
+                  "heart-279",
+                  "heart-288",
+                  "heart-291",
+                  "heart-293",
+                  "heart-299",
+                  "heart-304",
+                  "heart-314",
+                  "heart-321",
+                  "heart-324",
+                  "heart-333",
+                  "heart-344",
+                  "heart-346",
+                  "heart-350",
+                  "heart-351",
+                  "heart-359",
+                  "heart-370",
+                  "heart-381",
+                  "heart-384",
+                  "heart-391",
+                  "heart-392",
+                  "heart-406",
+                  "heart-440",
+                  "heart-447",
+                  "heart-450",
+                  "heart-456",
+                  "heart-466",
+                  "heart-472",
+                  "heart-473",
+                  "heart-482",
+                  "heart-485",
+                  "heart-487",
+                  "heart-492",
+                  "heart-499"
+                ],
+                "severity": "medium"
               }
             ]
           }
@@ -193,21 +837,100 @@
       ]
     },
     {
-      "text": "Checking a wider range.",
       "toolCalls": [
         {
-          "name": "evaluate_design",
+          "name": "edit_design",
           "args": {
+            "change": {
+              "size": {
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29,
+                "nominalMm": 29
+              },
+              "kind": "add_size"
+            },
+            "limits": [],
             "design": {
-              "id": "demo-wider",
-              "label": "Added 29 mm size",
               "hypothetical": true,
-              "parentId": "start",
+              "label": "Starting valve",
+              "id": "start",
               "sizes": [
                 {
                   "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 29,
+                "maxAnnulusMm": 30,
+                "minAnnulusMm": 27
+              }
+            },
+            "design": {
+              "label": "Starting valve",
+              "hypothetical": true,
+              "id": "start",
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
+                }
+              ]
+            },
+            "limits": []
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "limits": [],
+            "design": {
+              "label": "Starting valve",
+              "hypothetical": true,
+              "id": "start",
+              "sizes": [
+                {
                   "minAnnulusMm": 21,
-                  "maxAnnulusMm": 23
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
                 },
                 {
                   "nominalMm": 25,
@@ -216,16 +939,379 @@
                 },
                 {
                   "nominalMm": 27,
-                  "minAnnulusMm": 25,
-                  "maxAnnulusMm": 27
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25
+                }
+              ]
+            },
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 21,
+                "maxAnnulusMm": 21,
+                "minAnnulusMm": 19
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 30,
+                "nominalMm": 30
+              }
+            },
+            "limits": [],
+            "design": {
+              "id": "start",
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21
                 },
                 {
-                  "nominalMm": 29,
-                  "minAnnulusMm": 27,
-                  "maxAnnulusMm": 29
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                }
+              ],
+              "label": "Starting valve",
+              "hypothetical": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "limits": [],
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 29,
+                "maxAnnulusMm": 29.5,
+                "minAnnulusMm": 27
+              }
+            },
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25
+                }
+              ],
+              "hypothetical": true,
+              "id": "start",
+              "label": "Starting valve"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "limits": [],
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 28,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29.5
+              }
+            },
+            "design": {
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                }
+              ],
+              "label": "Starting valve",
+              "id": "start"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 20,
+                "maxAnnulusMm": 21,
+                "minAnnulusMm": 18.5
+              }
+            },
+            "limits": [],
+            "design": {
+              "id": "start",
+              "label": "Starting valve",
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                }
+              ],
+              "hypothetical": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "design": {
+              "label": "Starting valve",
+              "id": "start",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                }
+              ]
+            },
+            "limits": [],
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 21,
+                "maxAnnulusMm": 21,
+                "minAnnulusMm": 18.5
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "design": {
+              "id": "start",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
+                }
+              ],
+              "label": "Starting valve"
+            },
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 27.5,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29.5
+              }
+            },
+            "limits": []
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 28,
+                "maxAnnulusMm": 29,
+                "minAnnulusMm": 26.5
+              }
+            },
+            "limits": [],
+            "design": {
+              "id": "start",
+              "hypothetical": true,
+              "label": "Starting valve",
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
                 }
               ]
             }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "limits": [],
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "maxAnnulusMm": 29.5,
+                "minAnnulusMm": 27,
+                "nominalMm": 28.5
+              }
+            },
+            "design": {
+              "hypothetical": true,
+              "id": "start",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25
+                }
+              ],
+              "label": "Starting valve"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "design": {
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27
+                }
+              ],
+              "label": "Starting valve",
+              "id": "start"
+            },
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 28,
+                "minAnnulusMm": 27.5,
+                "maxAnnulusMm": 30
+              }
+            },
+            "limits": []
           }
         }
       ]
@@ -235,16 +1321,19 @@
         {
           "name": "submit_proposal",
           "args": {
+            "claim": {
+              "threshold": 72,
+              "comparator": ">=",
+              "metric": "fitPct"
+            },
             "design": {
-              "id": "demo-wider",
-              "label": "Added 29 mm size",
-              "hypothetical": true,
-              "parentId": "start",
+              "id": "start-303d4cbf",
+              "label": "Added 28 mm size",
               "sizes": [
                 {
-                  "nominalMm": 23,
                   "minAnnulusMm": 21,
-                  "maxAnnulusMm": 23
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
                 },
                 {
                   "nominalMm": 25,
@@ -253,39 +1342,189 @@
                 },
                 {
                   "nominalMm": 27,
-                  "minAnnulusMm": 25,
-                  "maxAnnulusMm": 27
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25
                 },
                 {
-                  "nominalMm": 29,
                   "minAnnulusMm": 27,
-                  "maxAnnulusMm": 29
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5
                 }
-              ]
+              ],
+              "parentId": "start",
+              "hypothetical": true
             },
-            "rationale": "Add a 29 mm size covering the 27-29 mm annulus range the current sizes miss.",
-            "tradeOffs": [
-              "One more size to stock",
-              "Hearts near 27 mm may sit closer to the limit"
-            ],
+            "rationale": "Adding a 28 mm size covering 27 to 29.5 mm closes the upper annulus gap while keeping nominal size modest to limit STJ and sinus clearance risks, increasing fit from 59.75% to 72% and cutting no-fit from 93 to 36.",
             "evidenceIds": [
-              "ev-a66333cf43e4d4c4"
+              "ev-7739dd564ee60eab",
+              "ev-ddb7bf7de5a26591",
+              "ev-a875f695c1a02e6e",
+              "ev-c5fa6b737e7d6ac2"
+            ],
+            "tradeOffs": [
+              "Moves 8 previously no-fit hearts into the at-risk category (increasing total at-risk hearts from 68 to 76) and leaves 36 hearts with no fit below 21 mm and above 29.5 mm."
             ]
           }
         }
       ]
     },
     {
-      "text": "Looking for hearts the new size puts at risk.",
+      "toolCalls": [
+        {
+          "name": "submit_proposal",
+          "args": {
+            "rationale": "Adding a 28 mm size covering 27 to 29.5 mm closes the upper annulus gap while keeping nominal size modest to limit STJ and sinus clearance risks, increasing fit from 59.75% to 72% and cutting no-fit from 93 to 36.",
+            "tradeOffs": [
+              "Increases at-risk hearts from 68 to 76 and leaves 36 hearts with no fit below 21 mm and above 29.5 mm."
+            ],
+            "claim": {
+              "threshold": 72,
+              "comparator": ">=",
+              "metric": "fitPct"
+            },
+            "design": {
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "parentId": "start",
+              "id": "start-303d4cbf",
+              "label": "Added 28 mm size",
+              "hypothetical": true
+            },
+            "evidenceIds": [
+              "ev-7739dd564ee60eab",
+              "ev-ddb7bf7de5a26591"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "toolCalls": [
         {
           "name": "evaluate_design",
           "args": {
             "design": {
-              "id": "demo-wider",
-              "label": "Added 29 mm size",
-              "hypothetical": true,
+              "label": "Added 28 mm size",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
+                }
+              ],
               "parentId": "start",
+              "hypothetical": true,
+              "id": "start-303d4cbf"
+            },
+            "parent": {
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                }
+              ],
+              "label": "start",
+              "hypothetical": false,
+              "id": "start"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "group_failures",
+          "args": {
+            "design": {
+              "parentId": "start",
+              "label": "Added 28 mm size",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
+                }
+              ],
+              "id": "start-303d4cbf",
+              "hypothetical": true
+            },
+            "by": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "group_failures",
+          "args": {
+            "by": "size",
+            "design": {
+              "hypothetical": true,
+              "id": "start-303d4cbf",
+              "label": "Added 28 mm size",
               "sizes": [
                 {
                   "nominalMm": 23,
@@ -303,11 +1542,442 @@
                   "maxAnnulusMm": 27
                 },
                 {
-                  "nominalMm": 29,
                   "minAnnulusMm": 27,
-                  "maxAnnulusMm": 29
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
                 }
-              ]
+              ],
+              "parentId": "start"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "kind": "measurement_shift",
+            "measure": "stjMm",
+            "amount": -0.5,
+            "disprovedIf": "fitPct stays >= 72% under a -0.5 mm STJ measurement shift.",
+            "hypothesis": "A -0.5 mm shift in stjMm will push fitPct below 72% by increasing stj-excess failures.",
+            "design": {
+              "hypothetical": true,
+              "parentId": "start",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
+                }
+              ],
+              "label": "Added 28 mm size",
+              "id": "start-303d4cbf"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "design": {
+              "parentId": "start",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5
+                }
+              ],
+              "label": "Added 28 mm size",
+              "id": "start-303d4cbf"
+            },
+            "amount": 0.5,
+            "hypothesis": "Tightening clearance rules via assumption_shift of 0.5 will drop fitPct below 72%.",
+            "disprovedIf": "fitPct stays >= 72% under an assumption shift of 0.5.",
+            "kind": "assumption_shift"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "hypothesis": "A -0.5 mm shift in sinotubularJunctionMm will push fitPct below 72% due to stj-excess failures.",
+            "kind": "measurement_shift",
+            "amount": -0.5,
+            "disprovedIf": "fitPct stays >= 72% under a -0.5 mm sinotubularJunctionMm shift.",
+            "measure": "sinotubularJunctionMm",
+            "design": {
+              "id": "start-303d4cbf",
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "hypothetical": true,
+              "parentId": "start",
+              "label": "Added 28 mm size"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "disprovedIf": "fitPct stays >= 72% under a -0.5 mm annulusMm shift.",
+            "kind": "measurement_shift",
+            "measure": "annulusMm",
+            "design": {
+              "label": "Added 28 mm size",
+              "id": "start-303d4cbf",
+              "parentId": "start",
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5
+                }
+              ],
+              "hypothetical": true
+            },
+            "amount": -0.5,
+            "hypothesis": "A -0.5 mm shift in annulusMm will push fitPct below 72% by pushing lower-annulus hearts below 21 mm."
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "disprovedIf": "fitPct stays >= 72% under a +0.5 mm annulusMm shift.",
+            "measure": "annulusMm",
+            "amount": 0.5,
+            "kind": "measurement_shift",
+            "design": {
+              "id": "start-303d4cbf",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28
+                }
+              ],
+              "label": "Added 28 mm size",
+              "parentId": "start",
+              "hypothetical": true
+            },
+            "hypothesis": "A +0.5 mm shift in annulusMm will push fitPct below 72% by upsizing hearts and increasing risk or exceeding 29.5 mm."
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "what_if",
+          "args": {
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28
+                }
+              ],
+              "id": "start-303d4cbf",
+              "label": "Added 28 mm size",
+              "parentId": "start",
+              "hypothetical": true
+            },
+            "heartIds": [
+              "heart-013",
+              "heart-031",
+              "heart-035",
+              "heart-045",
+              "heart-055",
+              "heart-066",
+              "heart-070",
+              "heart-092",
+              "heart-096",
+              "heart-103",
+              "heart-118",
+              "heart-123",
+              "heart-124",
+              "heart-154",
+              "heart-163",
+              "heart-166",
+              "heart-172",
+              "heart-180",
+              "heart-204",
+              "heart-212",
+              "heart-215",
+              "heart-235",
+              "heart-240",
+              "heart-271",
+              "heart-276",
+              "heart-278",
+              "heart-308",
+              "heart-343",
+              "heart-349",
+              "heart-395",
+              "heart-443",
+              "heart-469",
+              "heart-470",
+              "heart-477",
+              "heart-479",
+              "heart-480"
+            ],
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "minAnnulusMm": 19,
+                "nominalMm": 21,
+                "maxAnnulusMm": 21
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "group_failures",
+          "args": {
+            "by": "band",
+            "measure": "annulusMm",
+            "design": {
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "id": "start-303d4cbf",
+              "hypothetical": true,
+              "label": "Added 28 mm size",
+              "parentId": "start"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "disprovedIf": "fitPct stays >= 72% under a -0.5 mm sinusMm shift.",
+            "kind": "measurement_shift",
+            "design": {
+              "id": "start-303d4cbf",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "parentId": "start",
+              "label": "Added 28 mm size"
+            },
+            "measure": "sinusMm",
+            "hypothesis": "A -0.5 mm shift in sinusMm will push fitPct below 72% due to sinus-clearance failures.",
+            "amount": -0.5
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "what_if",
+          "args": {
+            "change": {
+              "size": {
+                "nominalMm": 30,
+                "maxAnnulusMm": 32,
+                "minAnnulusMm": 29.5
+              },
+              "kind": "add_size"
+            },
+            "heartIds": [
+              "heart-035",
+              "heart-092",
+              "heart-103",
+              "heart-154",
+              "heart-163",
+              "heart-166",
+              "heart-204",
+              "heart-240",
+              "heart-276",
+              "heart-469"
+            ],
+            "design": {
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "label": "Added 28 mm size",
+              "hypothetical": true,
+              "id": "start-303d4cbf",
+              "parentId": "start"
             }
           }
         }
@@ -320,13 +1990,1624 @@
           "args": {
             "mechanisms": [
               {
-                "title": "Hearts near 27 mm now sit at the size edge",
-                "explanation": "Several hearts that fit before now rest at the edge of two sizes.",
-                "heartIds": [],
-                "severity": "high",
                 "evidenceIds": [
-                  "ev-a66333cf43e4d4c4"
+                  "ev-82d06feffe213643",
+                  "ev-c36b65f8ef0bcbca",
+                  "ev-f081bff7223e729d"
+                ],
+                "heartIds": [
+                  "heart-028",
+                  "heart-036",
+                  "heart-046",
+                  "heart-050",
+                  "heart-061",
+                  "heart-062",
+                  "heart-067",
+                  "heart-084",
+                  "heart-088",
+                  "heart-099",
+                  "heart-109",
+                  "heart-112",
+                  "heart-113",
+                  "heart-127",
+                  "heart-134",
+                  "heart-141",
+                  "heart-186",
+                  "heart-194",
+                  "heart-206",
+                  "heart-210",
+                  "heart-217",
+                  "heart-218",
+                  "heart-252",
+                  "heart-272",
+                  "heart-294",
+                  "heart-307",
+                  "heart-326",
+                  "heart-355",
+                  "heart-356",
+                  "heart-377",
+                  "heart-448",
+                  "heart-464"
+                ],
+                "severity": "high",
+                "explanation": "Claim fitPct >= 72% fails under 0.5 assumption_shift (fitPct drops to 64%, risk rises from 76 to 108 across 32 hearts), -0.5 mm sinotubularJunctionMm shift (fitPct 67%, risk 96), and -0.5 mm sinusMm shift (fitPct 68.25%, risk 91).",
+                "title": "Fragile STJ and sinus clearance margins under assumption and measurement shifts"
+              },
+              {
+                "severity": "high",
+                "title": "Unresolved annulus gaps (<21 mm and >29.5 mm) and upsizing vulnerability",
+                "evidenceIds": [
+                  "ev-bf5a1b7ef041684c",
+                  "ev-12ad020c7a47e130",
+                  "ev-2c27835bb6d8810c"
+                ],
+                "heartIds": [
+                  "heart-013",
+                  "heart-031",
+                  "heart-035",
+                  "heart-045",
+                  "heart-055",
+                  "heart-066",
+                  "heart-070",
+                  "heart-092",
+                  "heart-096",
+                  "heart-103",
+                  "heart-118",
+                  "heart-123",
+                  "heart-124",
+                  "heart-154",
+                  "heart-163",
+                  "heart-166",
+                  "heart-172",
+                  "heart-180",
+                  "heart-204",
+                  "heart-212",
+                  "heart-215",
+                  "heart-235",
+                  "heart-240",
+                  "heart-271",
+                  "heart-276",
+                  "heart-278",
+                  "heart-308",
+                  "heart-343",
+                  "heart-349",
+                  "heart-395",
+                  "heart-443",
+                  "heart-469",
+                  "heart-470",
+                  "heart-477",
+                  "heart-479",
+                  "heart-480"
+                ],
+                "explanation": "36 hearts remain no-fit due to uncovered annuli in 18-20 mm (6), 20-22 mm (20), 28-30 mm (4), and 30-32 mm (6) bands (adding a 21 mm size covering 19-21 mm fixes 23), while a +0.5 mm annulusMm shift drops fitPct to 66.75% (risk 96, no-fit 37)."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "size": {
+                "nominalMm": 21,
+                "minAnnulusMm": 19,
+                "maxAnnulusMm": 21
+              },
+              "kind": "add_size"
+            },
+            "limits": [],
+            "design": {
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
+                }
+              ],
+              "id": "start-303d4cbf",
+              "label": "Added 28 mm size",
+              "parentId": "start",
+              "hypothetical": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "size": {
+                "nominalMm": 20,
+                "minAnnulusMm": 18.5,
+                "maxAnnulusMm": 21
+              },
+              "kind": "add_size"
+            },
+            "limits": [],
+            "design": {
+              "hypothetical": true,
+              "label": "Added 28 mm size",
+              "id": "start-303d4cbf",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "parentId": "start"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "design": {
+              "parentId": "start",
+              "label": "Added 28 mm size",
+              "id": "start-303d4cbf",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5
+                }
+              ]
+            },
+            "change": {
+              "size": {
+                "nominalMm": 21,
+                "minAnnulusMm": 18.5,
+                "maxAnnulusMm": 21
+              },
+              "kind": "add_size"
+            },
+            "limits": []
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "maxAnnulusMm": 22,
+                "minAnnulusMm": 18.5,
+                "nominalMm": 19
+              }
+            },
+            "design": {
+              "parentId": "start",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "id": "start-303d4cbf",
+              "hypothetical": true,
+              "label": "Added 28 mm size"
+            },
+            "limits": []
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "design": {
+              "hypothetical": true,
+              "label": "Added 28 mm size",
+              "parentId": "start",
+              "id": "start-303d4cbf",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                }
+              ]
+            },
+            "limits": [],
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "minAnnulusMm": 18.5,
+                "maxAnnulusMm": 23,
+                "nominalMm": 20
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "size": {
+                "minAnnulusMm": 18,
+                "nominalMm": 19,
+                "maxAnnulusMm": 21
+              },
+              "kind": "add_size"
+            },
+            "limits": [],
+            "design": {
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
+                }
+              ],
+              "label": "Added 28 mm size",
+              "id": "start-303d4cbf",
+              "parentId": "start",
+              "hypothetical": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "design": {
+              "id": "start-303d4cbf",
+              "label": "Added 28 mm size",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5
+                }
+              ],
+              "parentId": "start"
+            },
+            "change": {
+              "size": {
+                "maxAnnulusMm": 21,
+                "nominalMm": 19,
+                "minAnnulusMm": 18.5
+              },
+              "kind": "add_size"
+            },
+            "limits": []
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "size": {
+                "maxAnnulusMm": 22,
+                "minAnnulusMm": 19.5,
+                "nominalMm": 20
+              },
+              "kind": "add_size"
+            },
+            "design": {
+              "id": "start-303d4cbf",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "parentId": "start",
+              "label": "Added 28 mm size"
+            },
+            "limits": []
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "limits": [],
+            "change": {
+              "size": {
+                "minAnnulusMm": 19,
+                "nominalMm": 20,
+                "maxAnnulusMm": 21.5
+              },
+              "kind": "add_size"
+            },
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "hypothetical": true,
+              "id": "start-303d4cbf",
+              "parentId": "start",
+              "label": "Added 28 mm size"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "maxAnnulusMm": 22,
+                "minAnnulusMm": 19.5,
+                "nominalMm": 19
+              }
+            },
+            "design": {
+              "hypothetical": true,
+              "label": "Added 28 mm size",
+              "id": "start-303d4cbf",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28
+                }
+              ],
+              "parentId": "start"
+            },
+            "limits": []
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "limits": [],
+            "change": {
+              "size": {
+                "nominalMm": 20,
+                "minAnnulusMm": 20,
+                "maxAnnulusMm": 22.5
+              },
+              "kind": "add_size"
+            },
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
+                },
+                {
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "id": "start-303d4cbf",
+              "hypothetical": true,
+              "label": "Added 28 mm size",
+              "parentId": "start"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "edit_design",
+          "args": {
+            "change": {
+              "kind": "add_size",
+              "size": {
+                "nominalMm": 19,
+                "minAnnulusMm": 19,
+                "maxAnnulusMm": 21.5
+              }
+            },
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                }
+              ],
+              "id": "start-303d4cbf",
+              "label": "Added 28 mm size",
+              "parentId": "start",
+              "hypothetical": true
+            },
+            "limits": []
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "submit_proposal",
+          "args": {
+            "tradeOffs": [
+              "Adding a fifth valve size (19 mm) increases manufacturing complexity, while 13 hearts in the lowest (<19.5 mm) and highest (>29.5 mm) annulus bands remain without a fit and 62 hearts remain at risk."
+            ],
+            "claim": {
+              "metric": "newRiskCount",
+              "threshold": 0,
+              "comparator": "<="
+            },
+            "evidenceIds": [
+              "ev-e68630e4c8f28e41",
+              "ev-ddb7bf7de5a26591",
+              "ev-a875f695c1a02e6e",
+              "ev-4237111d416f4a74",
+              "ev-82d06feffe213643",
+              "ev-c36b65f8ef0bcbca",
+              "ev-f081bff7223e729d",
+              "ev-bf5a1b7ef041684c",
+              "ev-12ad020c7a47e130",
+              "ev-2c27835bb6d8810c"
+            ],
+            "rationale": "Adding a 19 mm size (19.5-22 mm) addresses unresolved annulus gaps (ev-bf5a1b7ef041684c) and fragile STJ/sinus margins (ev-82d06feffe213643, ev-c36b65f8ef0bcbca), raising fitPct from 72% to 81.25%, cutting risk from 76 to 62 and no-fit from 36 to 13 with 0 new risks (ev-e68630e4c8f28e41).",
+            "design": {
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
+                },
+                {
+                  "nominalMm": 19,
+                  "minAnnulusMm": 19.5,
+                  "maxAnnulusMm": 22
+                }
+              ],
+              "id": "start-303d4cbf-b56aa4ff",
+              "parentId": "start-303d4cbf",
+              "hypothetical": true,
+              "label": "Added 19 mm size"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "disprovedIf": "risk count remains 62 or fewer and fitPct stays at 81.25%",
+            "hypothesis": "A 0.5 assumption_shift exposes narrow STJ and sinus clearance margins, increasing risk count and breaking the zero new risks claim.",
+            "amount": 0.5,
+            "kind": "assumption_shift",
+            "design": {
+              "parentId": "start-303d4cbf",
+              "id": "start-303d4cbf-b56aa4ff",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5
+                },
+                {
+                  "nominalMm": 19,
+                  "maxAnnulusMm": 22,
+                  "minAnnulusMm": 19.5
+                }
+              ],
+              "hypothetical": true,
+              "label": "Added 19 mm size"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "hypothesis": "A -0.5 mm sinotubularJunctionMm shift pushes marginal hearts into stj-excess risk, increasing risk count above 62.",
+            "kind": "measurement_shift",
+            "amount": -0.5,
+            "measure": "sinotubularJunctionMm",
+            "disprovedIf": "risk count remains 62 or fewer under -0.5 mm STJ shift",
+            "design": {
+              "label": "Added 19 mm size",
+              "parentId": "start-303d4cbf",
+              "id": "start-303d4cbf-b56aa4ff",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28
+                },
+                {
+                  "maxAnnulusMm": 22,
+                  "minAnnulusMm": 19.5,
+                  "nominalMm": 19
+                }
+              ],
+              "hypothetical": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "measure": "annulusMm",
+            "disprovedIf": "risk count remains 62 or fewer under +0.5 mm annulusMm shift",
+            "hypothesis": "A +0.5 mm annulusMm shift forces hearts into larger valve sizes, triggering new STJ and sinus clearance risks.",
+            "amount": 0.5,
+            "design": {
+              "parentId": "start-303d4cbf",
+              "label": "Added 19 mm size",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25,
+                  "minAnnulusMm": 23
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
+                },
+                {
+                  "maxAnnulusMm": 22,
+                  "nominalMm": 19,
+                  "minAnnulusMm": 19.5
+                }
+              ],
+              "id": "start-303d4cbf-b56aa4ff"
+            },
+            "kind": "measurement_shift"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
+                },
+                {
+                  "maxAnnulusMm": 25,
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27
+                },
+                {
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27
+                },
+                {
+                  "minAnnulusMm": 19.5,
+                  "maxAnnulusMm": 22,
+                  "nominalMm": 19
+                }
+              ],
+              "parentId": "start-303d4cbf",
+              "label": "Added 19 mm size",
+              "id": "start-303d4cbf-b56aa4ff",
+              "hypothetical": true
+            },
+            "measure": "sinusMm",
+            "kind": "measurement_shift",
+            "disprovedIf": "risk count remains 62 or fewer under -0.5 mm sinusMm shift",
+            "amount": -0.5,
+            "hypothesis": "A -0.5 mm sinusMm shift pushes marginal hearts into sinus-clearance risk, increasing risk count above 62."
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "group_failures",
+          "args": {
+            "measure": "annulusMm",
+            "design": {
+              "hypothetical": true,
+              "parentId": "start-303d4cbf",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27
+                },
+                {
+                  "minAnnulusMm": 19.5,
+                  "maxAnnulusMm": 22,
+                  "nominalMm": 19
+                }
+              ],
+              "label": "Added 19 mm size",
+              "id": "start-303d4cbf-b56aa4ff"
+            },
+            "by": "band"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "what_if",
+          "args": {
+            "heartIds": [
+              "heart-163",
+              "heart-166",
+              "heart-240",
+              "heart-469",
+              "heart-035",
+              "heart-092",
+              "heart-103",
+              "heart-154",
+              "heart-204",
+              "heart-276"
+            ],
+            "change": {
+              "size": {
+                "minAnnulusMm": 29.5,
+                "nominalMm": 30,
+                "maxAnnulusMm": 32
+              },
+              "kind": "add_size"
+            },
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27,
+                  "nominalMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28
+                },
+                {
+                  "minAnnulusMm": 19.5,
+                  "nominalMm": 19,
+                  "maxAnnulusMm": 22
+                }
+              ],
+              "label": "Added 19 mm size",
+              "parentId": "start-303d4cbf",
+              "id": "start-303d4cbf-b56aa4ff",
+              "hypothetical": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "what_if",
+          "args": {
+            "design": {
+              "sizes": [
+                {
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28
+                },
+                {
+                  "maxAnnulusMm": 22,
+                  "nominalMm": 19,
+                  "minAnnulusMm": 19.5
+                }
+              ],
+              "label": "Added 19 mm size",
+              "parentId": "start-303d4cbf",
+              "hypothetical": true,
+              "id": "start-303d4cbf-b56aa4ff"
+            },
+            "change": {
+              "maxAnnulusMm": 22,
+              "nominalMm": 19,
+              "minAnnulusMm": 18.5,
+              "kind": "edit_size"
+            },
+            "heartIds": [
+              "heart-070",
+              "heart-278",
+              "heart-349"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "design": {
+              "label": "Added 19 mm size",
+              "sizes": [
+                {
+                  "nominalMm": 23,
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "maxAnnulusMm": 25,
+                  "nominalMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "minAnnulusMm": 25,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28,
+                  "maxAnnulusMm": 29.5
+                },
+                {
+                  "maxAnnulusMm": 22,
+                  "nominalMm": 19,
+                  "minAnnulusMm": 19.5
+                }
+              ],
+              "hypothetical": true,
+              "parentId": "start-303d4cbf",
+              "id": "start-303d4cbf-b56aa4ff"
+            },
+            "disprovedIf": "noFit remains 13 or fewer under -0.5 mm annulusMm shift",
+            "kind": "measurement_shift",
+            "hypothesis": "A -0.5 mm annulusMm shift pushes hearts near the 19.5 mm lower bound into no-fit.",
+            "amount": -0.5,
+            "measure": "annulusMm"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "group_failures",
+          "args": {
+            "by": "rule",
+            "design": {
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "nominalMm": 28,
+                  "minAnnulusMm": 27
+                },
+                {
+                  "minAnnulusMm": 19.5,
+                  "maxAnnulusMm": 22,
+                  "nominalMm": 19
+                }
+              ],
+              "label": "Added 19 mm size",
+              "id": "start-303d4cbf-b56aa4ff",
+              "parentId": "start-303d4cbf",
+              "hypothetical": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "what_if",
+          "args": {
+            "change": {
+              "minAnnulusMm": 18.5,
+              "nominalMm": 19,
+              "kind": "set_range",
+              "maxAnnulusMm": 22
+            },
+            "heartIds": [
+              "heart-070",
+              "heart-278",
+              "heart-349"
+            ],
+            "design": {
+              "label": "Added 19 mm size",
+              "id": "start-303d4cbf-b56aa4ff",
+              "parentId": "start-303d4cbf",
+              "hypothetical": true,
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "maxAnnulusMm": 23,
+                  "nominalMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "nominalMm": 27,
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28
+                },
+                {
+                  "maxAnnulusMm": 22,
+                  "minAnnulusMm": 19.5,
+                  "nominalMm": 19
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "stress_test",
+          "args": {
+            "hypothesis": "Hearts in the 22-26 mm annulus bands remain heavily at risk (47 hearts) because adding the 19 mm size only covers up to 22 mm.",
+            "design": {
+              "parentId": "start-303d4cbf",
+              "label": "Added 19 mm size",
+              "hypothetical": true,
+              "id": "start-303d4cbf-b56aa4ff",
+              "sizes": [
+                {
+                  "minAnnulusMm": 21,
+                  "nominalMm": 23,
+                  "maxAnnulusMm": 23
+                },
+                {
+                  "minAnnulusMm": 23,
+                  "nominalMm": 25,
+                  "maxAnnulusMm": 25
+                },
+                {
+                  "maxAnnulusMm": 27,
+                  "minAnnulusMm": 25,
+                  "nominalMm": 27
+                },
+                {
+                  "maxAnnulusMm": 29.5,
+                  "minAnnulusMm": 27,
+                  "nominalMm": 28
+                },
+                {
+                  "maxAnnulusMm": 22,
+                  "nominalMm": 19,
+                  "minAnnulusMm": 19.5
+                }
+              ]
+            },
+            "kind": "subgroup",
+            "heartIds": [
+              "heart-001",
+              "heart-011",
+              "heart-014",
+              "heart-037",
+              "heart-053",
+              "heart-077",
+              "heart-087",
+              "heart-110",
+              "heart-133",
+              "heart-176",
+              "heart-178",
+              "heart-221",
+              "heart-253",
+              "heart-261",
+              "heart-279",
+              "heart-291",
+              "heart-293",
+              "heart-344",
+              "heart-351",
+              "heart-359",
+              "heart-391",
+              "heart-406",
+              "heart-440",
+              "heart-482",
+              "heart-487",
+              "heart-025",
+              "heart-044",
+              "heart-086",
+              "heart-098",
+              "heart-135",
+              "heart-160",
+              "heart-168",
+              "heart-250",
+              "heart-299",
+              "heart-304",
+              "heart-314",
+              "heart-321",
+              "heart-346",
+              "heart-370",
+              "heart-392",
+              "heart-447",
+              "heart-450",
+              "heart-472",
+              "heart-473",
+              "heart-485",
+              "heart-492",
+              "heart-499"
+            ],
+            "disprovedIf": "fitPct in the 22-28 mm annulus subgroup is >= 81.25%"
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "report_findings",
+          "args": {
+            "mechanisms": [
+              {
+                "severity": "high",
+                "title": "Fragile STJ and sinus clearance margins persist under assumption and measurement shifts",
+                "explanation": "Despite adding the 19 mm size (19.5-22 mm), STJ and sinus margins remain fragile above 22 mm: a 0.5 assumption_shift increases risk from 62 to 89 (fitPct 74.5%, 27 fit-to-risk changes), -0.5 mm sinotubularJunctionMm shift raises risk to 80 (fitPct 76.75%), and -0.5 mm sinusMm shift raises risk to 74.",
+                "evidenceIds": [
+                  "ev-2ef85a119a038c8d",
+                  "ev-218bff614803d673",
+                  "ev-b51d43e00d6e54cb"
+                ],
+                "heartIds": [
+                  "heart-028",
+                  "heart-046",
+                  "heart-050",
+                  "heart-061",
+                  "heart-062",
+                  "heart-067",
+                  "heart-084",
+                  "heart-099",
+                  "heart-109",
+                  "heart-112",
+                  "heart-113",
+                  "heart-134",
+                  "heart-141",
+                  "heart-186",
+                  "heart-194",
+                  "heart-206",
+                  "heart-210",
+                  "heart-217",
+                  "heart-218",
+                  "heart-252",
+                  "heart-272",
+                  "heart-294",
+                  "heart-307",
+                  "heart-326",
+                  "heart-356",
+                  "heart-377",
+                  "heart-464"
                 ]
+              },
+              {
+                "evidenceIds": [
+                  "ev-86b77cdc5f9265c1",
+                  "ev-de193e4f270fdab7",
+                  "ev-592e6f46053c5da4"
+                ],
+                "explanation": "A +0.5 mm annulusMm shift drops fitPct from 81.25% to 73.5%, raising risk from 62 to 85 and no-fit from 13 to 21 across 38 changed hearts, while 13 hearts remain no-fit in 18-20 mm (3), 28-30 mm (4), and 30-32 mm (6) bands (adding a 30 mm size covering 29.5-32 mm fixes 9 of 10 upper-band hearts).",
+                "heartIds": [
+                  "heart-024",
+                  "heart-032",
+                  "heart-035",
+                  "heart-046",
+                  "heart-070",
+                  "heart-092",
+                  "heart-103",
+                  "heart-112",
+                  "heart-129",
+                  "heart-141",
+                  "heart-154",
+                  "heart-157",
+                  "heart-161",
+                  "heart-163",
+                  "heart-166",
+                  "heart-173",
+                  "heart-174",
+                  "heart-179",
+                  "heart-182",
+                  "heart-183",
+                  "heart-195",
+                  "heart-199",
+                  "heart-204",
+                  "heart-209",
+                  "heart-223",
+                  "heart-240",
+                  "heart-254",
+                  "heart-268",
+                  "heart-273",
+                  "heart-276",
+                  "heart-278",
+                  "heart-349",
+                  "heart-356",
+                  "heart-373",
+                  "heart-375",
+                  "heart-377",
+                  "heart-384",
+                  "heart-401",
+                  "heart-413",
+                  "heart-417",
+                  "heart-426",
+                  "heart-444",
+                  "heart-446",
+                  "heart-456",
+                  "heart-469",
+                  "heart-481",
+                  "heart-489",
+                  "heart-498"
+                ],
+                "severity": "high",
+                "title": "Annulus upsizing vulnerability and unresolved coverage gaps (<19.5 mm and >29.5 mm)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "report_findings",
+          "args": {
+            "mechanisms": [
+              {
+                "evidenceIds": [
+                  "ev-2ef85a119a038c8d",
+                  "ev-218bff614803d673",
+                  "ev-b51d43e00d6e54cb"
+                ],
+                "title": "Fragile STJ and sinus clearance margins persist under assumption and measurement shifts",
+                "severity": "high",
+                "explanation": "STJ/sinus margins remain fragile above 22 mm: a 0.5 assumption_shift raises risk from 62 to 89 (fitPct 74.5%, 27 fit-to-risk changes), -0.5 mm sinotubularJunctionMm shift raises risk to 80 (fitPct 76.75%), and -0.5 mm sinusMm shift raises risk to 74 (fitPct 78.25%).",
+                "heartIds": [
+                  "heart-028",
+                  "heart-046",
+                  "heart-050",
+                  "heart-061",
+                  "heart-062",
+                  "heart-067",
+                  "heart-084",
+                  "heart-099",
+                  "heart-109",
+                  "heart-112",
+                  "heart-113",
+                  "heart-134",
+                  "heart-141",
+                  "heart-186",
+                  "heart-194",
+                  "heart-206",
+                  "heart-210",
+                  "heart-217",
+                  "heart-218",
+                  "heart-252",
+                  "heart-272",
+                  "heart-294",
+                  "heart-307",
+                  "heart-326",
+                  "heart-356",
+                  "heart-377",
+                  "heart-464"
+                ]
+              },
+              {
+                "explanation": "A +0.5 mm annulusMm shift drops fitPct from 81.25% to 73.5% (risk rises from 62 to 85, no-fit from 13 to 21), while 13 hearts remain no-fit in 18-20 mm (3), 28-30 mm (4), and 30-32 mm (6) bands (adding a 30 mm size covering 29.5-32 mm fixes 9 of 10 upper-band hearts).",
+                "heartIds": [
+                  "heart-024",
+                  "heart-032",
+                  "heart-035",
+                  "heart-046",
+                  "heart-070",
+                  "heart-092",
+                  "heart-103",
+                  "heart-112",
+                  "heart-129",
+                  "heart-141",
+                  "heart-154",
+                  "heart-157",
+                  "heart-161",
+                  "heart-163",
+                  "heart-166",
+                  "heart-173",
+                  "heart-174",
+                  "heart-179",
+                  "heart-182",
+                  "heart-183",
+                  "heart-195",
+                  "heart-199",
+                  "heart-204",
+                  "heart-209",
+                  "heart-223",
+                  "heart-240",
+                  "heart-254",
+                  "heart-268",
+                  "heart-273",
+                  "heart-276",
+                  "heart-278",
+                  "heart-349",
+                  "heart-356",
+                  "heart-373",
+                  "heart-375",
+                  "heart-377",
+                  "heart-384",
+                  "heart-401",
+                  "heart-413",
+                  "heart-417",
+                  "heart-426",
+                  "heart-444",
+                  "heart-446",
+                  "heart-456",
+                  "heart-469",
+                  "heart-481",
+                  "heart-489",
+                  "heart-498"
+                ],
+                "evidenceIds": [
+                  "ev-86b77cdc5f9265c1",
+                  "ev-de193e4f270fdab7",
+                  "ev-592e6f46053c5da4"
+                ],
+                "severity": "high",
+                "title": "Annulus upsizing vulnerability and unresolved coverage gaps (<19.5 mm and >29.5 mm)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "toolCalls": [
+        {
+          "name": "report_findings",
+          "args": {
+            "mechanisms": [
+              {
+                "title": "Fragile STJ and sinus clearance margins persist under assumption and measurement shifts",
+                "evidenceIds": [
+                  "ev-2ef85a119a038c8d",
+                  "ev-218bff614803d673",
+                  "ev-b51d43e00d6e54cb"
+                ],
+                "explanation": "STJ/sinus margins remain fragile above 22 mm: a 0.5 assumption_shift raises risk from 62 to 89 (fitPct 74.5%, 27 fit-to-risk changes), -0.5 mm sinotubularJunctionMm shift raises risk to 80 (fitPct 76.75%), and -0.5 mm sinusMm shift raises risk to 74 (fitPct 78.25%).",
+                "heartIds": [
+                  "heart-028",
+                  "heart-046",
+                  "heart-050",
+                  "heart-061",
+                  "heart-062",
+                  "heart-067",
+                  "heart-084",
+                  "heart-099",
+                  "heart-109",
+                  "heart-112",
+                  "heart-113",
+                  "heart-134",
+                  "heart-141",
+                  "heart-186",
+                  "heart-194",
+                  "heart-206",
+                  "heart-210",
+                  "heart-217",
+                  "heart-218",
+                  "heart-252",
+                  "heart-272",
+                  "heart-294",
+                  "heart-307",
+                  "heart-326",
+                  "heart-356",
+                  "heart-377",
+                  "heart-464"
+                ],
+                "severity": "high"
+              },
+              {
+                "evidenceIds": [
+                  "ev-86b77cdc5f9265c1",
+                  "ev-de193e4f270fdab7",
+                  "ev-592e6f46053c5da4"
+                ],
+                "explanation": "A +0.5 mm annulusMm shift drops fitPct from 81.25% to 73.5% (risk rises from 62 to 85, no-fit from 13 to 21 across 38 changed hearts), while 13 hearts remain no-fit in 18-20 mm (3), 28-30 mm (4), and 30-32 mm (6) bands (adding a 30 mm size covering 29.5-32 mm fixes 9 upper-band hearts).",
+                "severity": "high",
+                "heartIds": [
+                  "heart-024",
+                  "heart-032",
+                  "heart-035",
+                  "heart-046",
+                  "heart-070",
+                  "heart-092",
+                  "heart-103",
+                  "heart-112",
+                  "heart-129",
+                  "heart-141",
+                  "heart-154",
+                  "heart-157",
+                  "heart-161",
+                  "heart-163",
+                  "heart-166",
+                  "heart-173",
+                  "heart-174",
+                  "heart-179",
+                  "heart-182",
+                  "heart-183",
+                  "heart-195",
+                  "heart-199",
+                  "heart-204",
+                  "heart-209",
+                  "heart-223",
+                  "heart-240",
+                  "heart-254",
+                  "heart-268",
+                  "heart-273",
+                  "heart-276",
+                  "heart-278",
+                  "heart-349",
+                  "heart-356",
+                  "heart-373",
+                  "heart-375",
+                  "heart-377",
+                  "heart-384",
+                  "heart-401",
+                  "heart-413",
+                  "heart-417",
+                  "heart-426",
+                  "heart-444",
+                  "heart-446",
+                  "heart-456",
+                  "heart-469",
+                  "heart-481",
+                  "heart-489",
+                  "heart-498"
+                ],
+                "title": "Annulus upsizing vulnerability and unresolved coverage gaps (<19.5 mm and >29.5 mm)"
               }
             ]
           }
