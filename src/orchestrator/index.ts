@@ -4,6 +4,7 @@ import {
   type Design,
   type Evidence,
   type Limit,
+  type Proposal,
   type Run,
   type RunEvent,
   type Summary,
@@ -15,8 +16,9 @@ import type {
   ModelRequest,
   ToolReply,
 } from "../agents/model-client";
+import { assignVerdict, type VerdictResult } from "../agents/attack/verdict";
 import { saveRecording } from "../agents/gemini/recording";
-import { defaultRoles, type AgentRole, type LoopContext } from "./roles";
+import { defaultRoles, type AgentRole, type LastAttack, type LoopContext } from "./roles";
 import { parseReport, parseSubmission } from "./terminal";
 import type { ToolOutcome, ToolRegistry } from "./tools";
 
@@ -76,6 +78,14 @@ class Stop extends Error {
 type Called = ToolOutcome | { ok: false; error: string; rejected: true };
 
 type Current = { design: Design; summary: Summary };
+type Proposed = { design: Design; parent: Design; after: Summary };
+
+const NO_VALID_FIX = "No design fits:";
+
+const isInLimitEdit = (evidence: Evidence) => {
+  const result = evidence.result as { valid?: boolean; limits?: { pass: boolean }[] } | null;
+  return evidence.tool === "edit_design" && result?.valid === true && (result.limits ?? []).every((limit) => limit.pass);
+};
 
 function turnGuard(ms: number) {
   const controller = new AbortController();
@@ -116,6 +126,9 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     hiddenScoreCount: 0,
   };
   let current: Current | undefined;
+  let lastAttack: LastAttack | undefined;
+  let turnEvidence: Evidence[] = [];
+  const proposed = new Map<string, Proposed>();
 
   function emit({ actor, type, text, data = null }: EmitInput) {
     const event: RunEvent = {
@@ -135,8 +148,8 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     if (!run.evidence.some((known) => known.id === evidence.id)) run.evidence.push(evidence);
   };
 
-  async function evaluateAsCode(design: Design) {
-    const outcome = await callTool("evaluate_design", { design });
+  async function evaluateAsCode(design: Design, parent?: Design) {
+    const outcome = await callTool("evaluate_design", parent ? { design, parent } : { design });
     if (!outcome.ok) throw new Stop("model-error", `Could not evaluate ${design.label}: ${outcome.error}`);
     const summary = SummarySchema.safeParse(outcome.evidence.result);
     if (!summary.success) throw new Stop("model-error", "evaluate_design returned no summary.");
@@ -165,6 +178,7 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
       proposals: run.proposals,
       limits: run.limits,
       evidence: run.evidence,
+      lastAttack,
     };
   }
 
@@ -179,10 +193,16 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     let stepCount = 0;
     let callCount = 0;
     let rejections = 0;
+    const produced: Evidence[] = [];
+    turnEvidence = produced;
+    const budgetStop = (detail: string, limit: keyof Budget) =>
+      role.actor === "fixer" && !produced.some(isInLimitEdit)
+        ? new Stop("no-valid-fix", `${NO_VALID_FIX} ${detail.replace(/\.$/, "")} without a valid edit.`)
+        : new Stop("budget", detail, limit);
     try {
       for (;;) {
         if (stepCount >= budget.maxStepsPerTurn) {
-          throw new Stop("budget", `More than ${budget.maxStepsPerTurn} model steps in one turn.`, "maxStepsPerTurn");
+          throw budgetStop(`More than ${budget.maxStepsPerTurn} model steps in one turn.`, "maxStepsPerTurn");
         }
         stepCount += 1;
         const request: ModelRequest = {
@@ -200,17 +220,18 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
         messages.push({ role: "model", turn });
 
         if (turn.toolCalls.length === 0) {
-          if (role.actor === "fixer") throw new Stop("no-valid-fix", "The Fixer ended its turn without a proposal.");
+          if (role.actor === "fixer") throw new Stop("no-valid-fix", `${NO_VALID_FIX} the Fixer ended its turn without a proposal.`);
           throw new Stop("model-error", "The Breaker ended its turn without reporting findings.");
         }
 
         const replies: ToolReply[] = [];
         for (const call of turn.toolCalls) {
           if (callCount >= budget.maxToolCallsPerTurn) {
-            throw new Stop("budget", `More than ${budget.maxToolCallsPerTurn} tool calls in one turn.`, "maxToolCallsPerTurn");
+            throw budgetStop(`More than ${budget.maxToolCallsPerTurn} tool calls in one turn.`, "maxToolCallsPerTurn");
           }
           callCount += 1;
           const outcome = await guard.within(callAs(role, call.name, call.args, ctx));
+          if (outcome.ok) produced.push(outcome.evidence);
           emit({
             actor: role.actor,
             type: "tool-call",
@@ -280,7 +301,8 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     const submission = parseSubmission(evidence, new Set(run.evidence.map((item) => item.id)));
     if (!submission.ok) throw new Stop("model-error", submission.error);
     const { design, rationale, tradeOffs, claim, evidenceIds } = submission.value;
-    const proposal = {
+    const comparison = await evaluateAsCode(design, from.design);
+    const proposal: Proposal = {
       id: `proposal-${run.proposals.length + 1}`,
       fromDesignId: from.design.id,
       toDesignId: design.id,
@@ -290,7 +312,22 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
       evidenceIds,
     };
     run.proposals.push(proposal);
-    emit({ actor: "fixer", type: "proposal", text: rationale, data: { proposal, design } });
+    proposed.set(proposal.id, { design, parent: from.design, after: comparison.summary });
+    emit({
+      actor: "fixer",
+      type: "proposal",
+      text: rationale,
+      data: {
+        proposal: { ...proposal },
+        design,
+        comparison: {
+          before: from.summary,
+          after: comparison.summary,
+          newRiskHeartIds: comparison.summary.newRiskHeartIds,
+          evidenceId: comparison.evidenceId,
+        },
+      },
+    });
 
     const { summary, evidenceId, label } = await evaluateAsCode(design);
     const improved = summary.fitPct > from.summary.fitPct;
@@ -302,6 +339,41 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     });
     if (!improved) throw new Stop("no-improvement", `${design.label} does not beat the current design.`);
     return { design, summary };
+  }
+
+  function settle(proposal: Proposal, attacks: Evidence[]): VerdictResult | undefined {
+    const info = proposed.get(proposal.id);
+    if (!info) return undefined;
+    const result = assignVerdict({ proposal, design: info.design, parent: info.parent, dev: info.after, evidence: run.evidence, attacks });
+    proposal.verdict = result.verdict;
+    proposal.notShown = result.notShown;
+    emit({
+      actor: "code",
+      type: "verdict",
+      text: `${proposal.id} is ${result.verdict}.`,
+      data: { proposalId: proposal.id, verdict: result.verdict, notShown: result.notShown, dev: result.dev, attacks: result.attacks },
+    });
+    return result;
+  }
+
+  async function attackRound(round: number, proposal: Proposal) {
+    const findingsBefore = run.findings.length;
+    let stop: unknown;
+    try {
+      recordFindings("attack", await runStep("attack", round));
+    } catch (error) {
+      stop = error;
+    }
+    const result = settle(proposal, turnEvidence);
+    if (result) {
+      lastAttack = {
+        verdict: result.verdict,
+        notShown: result.notShown,
+        outcomes: result.attacks,
+        findings: run.findings.slice(findingsBefore),
+      };
+    }
+    if (stop) throw stop;
   }
 
   async function loop(): Promise<never> {
@@ -320,7 +392,7 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     }
     for (let round = 1; ; round++) {
       current = await propose(round, current);
-      recordFindings("attack", await runStep("attack", round));
+      await attackRound(round, run.proposals[run.proposals.length - 1]);
       if (round >= budget.maxRounds) {
         throw new Stop("budget", `Completed ${budget.maxRounds} attack rounds.`, "maxRounds");
       }
@@ -338,6 +410,8 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
         ? error
         : new Stop("model-error", error instanceof Error ? error.message : String(error));
   }
+
+  for (const proposal of run.proposals) if (!proposal.verdict) settle(proposal, []);
 
   for (const step of options.postLoopSteps ?? []) {
     try {

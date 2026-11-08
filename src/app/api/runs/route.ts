@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { demoBudget } from "@/agents/attack";
 import { createModelClient, ModelSpecSchema } from "@/agents/model-client";
 import { offerRecording, startReplayRun } from "@/replay";
 import { isRunId, startRun } from "@/run/store";
@@ -22,6 +23,7 @@ const BodySchema = z.object({
     .partial()
     .optional(),
   seed: z.number().optional(),
+  demo: z.boolean().optional(),
 });
 
 export async function POST(request: Request) {
@@ -42,7 +44,7 @@ export async function POST(request: Request) {
     model,
     record: model.mode === "live",
     tools: createAgentTools(),
-    budget: body.data.budget,
+    budget: body.data.demo ? demoBudget(body.data.budget) : body.data.budget,
     seed: body.data.seed,
     postLoopSteps: model.mode === "live" ? [offerRecording] : [],
   });
