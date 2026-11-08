@@ -66,6 +66,7 @@ export const demoTurns: ScriptedTurn[] = [
         args: {
           design: widerDesign,
           rationale: "Add a 29 mm size covering the 27-29 mm annulus range the current sizes miss.",
+          claim: { metric: "fitPct", comparator: ">=", threshold: 66.75 },
           tradeOffs: ["One more size to stock", "Hearts near 27 mm may sit closer to the limit"],
           evidenceIds: [LAST_EVIDENCE],
         },
@@ -73,8 +74,19 @@ export const demoTurns: ScriptedTurn[] = [
     ],
   },
   {
-    text: "Looking for hearts the new size puts at risk.",
-    toolCalls: [{ name: "evaluate_design", args: { design: widerDesign } }],
+    text: "Shifting every measurement to see if the claim still holds.",
+    toolCalls: [
+      {
+        name: "stress_test",
+        args: {
+          design: widerDesign,
+          kind: "measurement_shift",
+          amount: 1,
+          hypothesis: "The claim still holds after this shift.",
+          disprovedIf: "The claimed metric crosses its threshold after the shift.",
+        },
+      },
+    ],
   },
   {
     toolCalls: [
@@ -96,4 +108,5 @@ export const demoTurns: ScriptedTurn[] = [
 export const demoRequest = {
   model: { kind: "scripted", turns: demoTurns },
   budget: { maxRounds: 1 },
+  demo: true,
 } as const;
