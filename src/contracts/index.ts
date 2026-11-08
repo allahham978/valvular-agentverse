@@ -56,6 +56,8 @@ export const EvidenceSchema = z.object({
   tool: z.string(),
   input: z.unknown(),
   result: z.unknown(),
+  source: z.enum(["computed", "cached", "failed", "unsupported"]).optional(),
+  provenance: z.object({ rulesVersion: z.string(), dataHash: z.string(), seed: z.number() }).optional(),
 });
 
 export const FindingSchema = z.object({
@@ -68,13 +70,30 @@ export const FindingSchema = z.object({
   evidenceIds: z.array(z.string()),
 });
 
+export const ClaimSchema = z.object({
+  metric: z.enum(["fitPct", "newRiskCount"]),
+  comparator: z.enum([">=", "<="]),
+  threshold: z.number(),
+});
+
+export const VerdictSchema = z.enum([
+  "supported_under_conditions",
+  "context_dependent",
+  "contradicted",
+  "inconclusive",
+  "invalid_experiment",
+]);
+
 export const ProposalSchema = z.object({
   id: z.string(),
   fromDesignId: z.string(),
   toDesignId: z.string(),
   rationale: z.string(),
   tradeOffs: z.array(z.string()),
+  claim: ClaimSchema.optional(),
   evidenceIds: z.array(z.string()),
+  verdict: VerdictSchema.optional(),
+  notShown: z.array(z.string()).optional(),
 });
 
 export const LimitSchema = z.object({
@@ -129,6 +148,7 @@ export type FitStatus = z.infer<typeof FitStatusSchema>;
 export type FitResult = z.infer<typeof FitResultSchema>;
 export type Summary = z.infer<typeof SummarySchema>;
 export type Evidence = z.infer<typeof EvidenceSchema>;
+export type Claim = z.infer<typeof ClaimSchema>;
 export type Finding = z.infer<typeof FindingSchema>;
 export type Proposal = z.infer<typeof ProposalSchema>;
 export type Limit = z.infer<typeof LimitSchema>;

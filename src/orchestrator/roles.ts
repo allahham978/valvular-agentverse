@@ -27,21 +27,21 @@ export const defaultRoles: Record<LoopStep, AgentRole> = {
     actor: "breaker",
     prompt: (ctx) =>
       `Find why hearts fail to fit this design. Evaluate it, then report findings with evidence IDs.\n${describe(ctx)}`,
-    toolNames: ["evaluate_design", "report_findings"],
+    toolNames: ["evaluate_design", "group_failures", "profile_group", "inspect_heart", "what_if", "stress_test", "report_findings"],
     terminalTool: "report_findings",
   },
   propose: {
     actor: "fixer",
     prompt: (ctx) =>
       `Propose one design change that fixes the findings. Evaluate it, then submit it with evidence IDs.\n${describe(ctx)}\nFindings: ${JSON.stringify(ctx.findings)}`,
-    toolNames: ["evaluate_design", "submit_proposal"],
+    toolNames: ["evaluate_design", "edit_design", "submit_proposal"],
     terminalTool: "submit_proposal",
   },
   attack: {
     actor: "breaker",
     prompt: (ctx) =>
       `Try to break the current design. Evaluate it, then report what still fails with evidence IDs.\n${describe(ctx)}`,
-    toolNames: ["evaluate_design", "report_findings"],
+    toolNames: ["evaluate_design", "group_failures", "profile_group", "inspect_heart", "what_if", "stress_test", "report_findings"],
     terminalTool: "report_findings",
   },
 };
