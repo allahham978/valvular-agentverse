@@ -3,7 +3,8 @@ export type LoopStep = "investigate" | "propose" | "attack";
 export type ToolCall = { name: string; args: unknown };
 export type ToolSpec = { name: string; description: string; parameters: Record<string, unknown> };
 export type ModelTurn = { text: string; toolCalls: ToolCall[]; providerState?: unknown };
-export type ToolReply = { name: string; evidenceId?: string; result?: unknown; error?: string };
+export type BudgetLeft = { toolCallsLeft: number; stepsLeft: number; secondsLeft: number; note?: string };
+export type ToolReply = { name: string; evidenceId?: string; result?: unknown; error?: string; budget?: BudgetLeft };
 
 export type ModelMessage =
   | { role: "user"; text: string }
@@ -15,6 +16,7 @@ export type ModelRequest = {
   step: LoopStep;
   messages: ModelMessage[];
   tools: ToolSpec[];
+  allowedTools?: string[];
   signal: AbortSignal;
 };
 

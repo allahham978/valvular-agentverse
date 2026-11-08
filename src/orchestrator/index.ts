@@ -21,6 +21,7 @@ import { saveRecording } from "../agents/gemini/recording";
 import { defaultRoles, type AgentRole, type LastAttack, type LoopContext } from "./roles";
 import { parseReport, parseSubmission } from "./terminal";
 import type { ToolOutcome, ToolRegistry } from "./tools";
+import { createTurnBudget } from "./turn-budget";
 
 export type Budget = { maxStepsPerTurn: number; maxToolCallsPerTurn: number; maxTurnMs: number; maxRounds: number };
 
@@ -86,6 +87,8 @@ const isInLimitEdit = (evidence: Evidence) => {
   const result = evidence.result as { valid?: boolean; limits?: { pass: boolean }[] } | null;
   return evidence.tool === "edit_design" && result?.valid === true && (result.limits ?? []).every((limit) => limit.pass);
 };
+
+const actorName = (role: AgentRole) => (role.actor === "fixer" ? "The Fixer" : "The Breaker");
 
 function turnGuard(ms: number) {
   const controller = new AbortController();
@@ -190,8 +193,8 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
     const messages: ModelMessage[] = [{ role: "user", text: role.prompt(ctx) }];
     const toolSpecs = tools.specs().filter((spec) => role.toolNames.includes(spec.name));
     const guard = turnGuard(budget.maxTurnMs);
-    let stepCount = 0;
-    let callCount = 0;
+    const turnBudget = createTurnBudget(budget, role.terminalTool);
+    let warned = false;
     let rejections = 0;
     const produced: Evidence[] = [];
     turnEvidence = produced;
@@ -201,15 +204,27 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
         : new Stop("budget", detail, limit);
     try {
       for (;;) {
-        if (stepCount >= budget.maxStepsPerTurn) {
+        if (turnBudget.steps >= budget.maxStepsPerTurn) {
           throw budgetStop(`More than ${budget.maxStepsPerTurn} model steps in one turn.`, "maxStepsPerTurn");
         }
-        stepCount += 1;
+        const wrapUp = turnBudget.low();
+        if (wrapUp && !warned) {
+          warned = true;
+          const left = turnBudget.left();
+          emit({
+            actor: "code",
+            type: "budget-wrap-up",
+            text: `${actorName(role)} has ${left.toolCallsLeft} tool calls, ${left.stepsLeft} model steps and ${left.secondsLeft} s left, so its next step can only call ${role.terminalTool}.`,
+            data: { step, ...left, allowedTools: [role.terminalTool] },
+          });
+        }
+        turnBudget.startStep();
         const request: ModelRequest = {
           actor: role.actor,
           step,
           messages,
           tools: toolSpecs,
+          ...(wrapUp ? { allowedTools: [role.terminalTool] } : {}),
           signal: guard.signal,
         };
         const turn = await guard.within(model.nextTurn(request)).catch((error: unknown) => {
@@ -225,11 +240,26 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
         }
 
         const replies: ToolReply[] = [];
+        const skipped: string[] = [];
+        const logSkipped = () => {
+          if (skipped.length === 0) return;
+          emit({
+            actor: "code",
+            type: "tool-skipped",
+            text: `Skipped ${skipped.length} ${role.actor} tool call${skipped.length === 1 ? "" : "s"} to keep budget for ${role.terminalTool}.`,
+            data: { step, tools: skipped },
+          });
+        };
         for (const call of turn.toolCalls) {
-          if (callCount >= budget.maxToolCallsPerTurn) {
+          if (turnBudget.calls >= budget.maxToolCallsPerTurn) {
             throw budgetStop(`More than ${budget.maxToolCallsPerTurn} tool calls in one turn.`, "maxToolCallsPerTurn");
           }
-          callCount += 1;
+          if (turnBudget.keepsReserve(call.name)) {
+            skipped.push(call.name);
+            replies.push({ name: call.name, error: `skipped: budget. Not run, to keep tool calls for ${role.terminalTool}.` });
+            continue;
+          }
+          turnBudget.useCall();
           const outcome = await guard.within(callAs(role, call.name, call.args, ctx));
           if (outcome.ok) produced.push(outcome.evidence);
           emit({
@@ -247,14 +277,19 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
           if (!outcome.ok && "rejected" in outcome && (rejections += 1) > 1) {
             throw new Stop("model-error", `${call.name} failed validation again after one retry: ${outcome.error}`);
           }
-          if (outcome.ok && call.name === role.terminalTool) return outcome.evidence;
+          if (outcome.ok && call.name === role.terminalTool) {
+            logSkipped();
+            return outcome.evidence;
+          }
           replies.push(
             outcome.ok
               ? { name: call.name, evidenceId: outcome.evidence.id, result: outcome.evidence.result }
               : { name: call.name, error: outcome.error },
           );
         }
-        messages.push({ role: "tool", replies });
+        logSkipped();
+        const left = turnBudget.left();
+        messages.push({ role: "tool", replies: replies.map((reply) => ({ ...reply, budget: left })) });
       }
     } finally {
       guard.dispose();

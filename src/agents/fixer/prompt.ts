@@ -33,6 +33,7 @@ export const fixerPrompt = (ctx: LoopContext) =>
     `Failure mechanisms:\n${mechanisms(ctx)}`,
     lastAttack(ctx),
     "Use only numbers that appear in the cited evidence, the designs or the active limits. Do not estimate or compute new numbers. A design that breaks an active limit or has a size wider than the rules allow is rejected.",
+    "You have at most 8 model steps, 16 tool calls and 180 seconds. Every tool response includes budgetLeft: the tool calls, model steps and seconds you have left. Call submit_proposal as soon as you have a valid edit, and before budgetLeft runs low.",
   ]
     .filter(Boolean)
     .join("\n\n");

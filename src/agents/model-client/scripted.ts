@@ -40,11 +40,20 @@ function wait(ms: number, signal: AbortSignal): Promise<void> {
   });
 }
 
+// Like Gemini's ANY mode with allowedFunctionNames: a restricted step plays the next turn that uses only allowed tools.
+function nextAllowed(turns: ScriptedTurn[], from: number, allowed: string[] | undefined): number {
+  if (!allowed) return from;
+  const fits = (turn: ScriptedTurn) => turn.toolCalls.length > 0 && turn.toolCalls.every((call) => allowed.includes(call.name));
+  const found = turns.findIndex((turn, index) => index >= from && fits(turn));
+  return found === -1 ? from : found;
+}
+
 export function createScriptedClient(turns: ScriptedTurn[]): ModelClient {
   let next = 0;
   return {
     mode: "replay",
     async nextTurn(request: ModelRequest): Promise<ModelTurn> {
+      next = nextAllowed(turns, next, request.allowedTools);
       const turn = turns[next++];
       if (!turn) throw new Error("The script has no more turns.");
       if (turn.delayMs) await wait(turn.delayMs, request.signal);
