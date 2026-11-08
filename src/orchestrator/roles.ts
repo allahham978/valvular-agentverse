@@ -1,6 +1,14 @@
 import type { Design, Evidence, Finding, Limit, Proposal, Summary } from "../contracts";
+import { attackRole } from "../agents/attack/role";
+import type { VerdictResult } from "../agents/attack/verdict";
 import { breakerRoles } from "../agents/breaker/roles";
+import { fixerRole } from "../agents/fixer/role";
 import type { LoopStep } from "../agents/model-client";
+
+export type LastAttack = Pick<VerdictResult, "verdict" | "notShown"> & {
+  findings: Finding[];
+  outcomes: VerdictResult["attacks"];
+};
 
 export type LoopContext = {
   step: LoopStep;
@@ -11,6 +19,7 @@ export type LoopContext = {
   proposals: Proposal[];
   limits: Limit[];
   evidence: Evidence[];
+  lastAttack?: LastAttack;
 };
 
 export type AgentRole = {
@@ -21,17 +30,8 @@ export type AgentRole = {
   validate?(evidence: Evidence, ctx: LoopContext): string | null;
 };
 
-const describe = (ctx: LoopContext) =>
-  `Current design: ${JSON.stringify(ctx.design)}\nCurrent fit: ${ctx.summary.fitPct.toFixed(1)}%`;
-
 export const defaultRoles: Record<LoopStep, AgentRole> = {
   investigate: breakerRoles.investigate,
-  propose: {
-    actor: "fixer",
-    prompt: (ctx) =>
-      `Propose one design change that fixes the findings. Evaluate it, then submit it with evidence IDs.\n${describe(ctx)}\nFindings: ${JSON.stringify(ctx.findings)}`,
-    toolNames: ["evaluate_design", "edit_design", "submit_proposal"],
-    terminalTool: "submit_proposal",
-  },
-  attack: breakerRoles.attack,
+  propose: fixerRole,
+  attack: attackRole,
 };

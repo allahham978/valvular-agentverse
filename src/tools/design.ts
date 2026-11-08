@@ -1,10 +1,10 @@
-import type { Limit } from "../contracts";
+import type { Design, Limit, Summary } from "../contracts";
 import type { z } from "zod";
 import { ToolError } from "./evidence";
 import { applyChange, changedHearts, evaluate, evaluateOrThrow } from "./fit";
 import type { editDesignInput, reportFindingsInput, submitProposalInput } from "./inputs";
 
-type Check = (limit: { value: number }, child: { sizes: number; fitPct: number; newRisk: number }) => { pass: boolean; detail: string };
+type Check = (limit: { value: number }, child: Measured) => { pass: boolean; detail: string };
 
 const limitChecks: Record<string, Check> = {
   "max-sizes": ({ value }, { sizes }) => ({ pass: sizes <= value, detail: `${sizes} sizes, limit ${value}.` }),
@@ -26,8 +26,24 @@ function checkedLimits(limits: Limit[]): (Limit & { value: number })[] {
   });
 }
 
+export type Measured = { sizes: number; fitPct: number; newRisk: number };
+
+export const measuredOf = (design: Design, summary: Summary): Measured => ({
+  sizes: design.sizes.length,
+  fitPct: summary.fitPct,
+  newRisk: summary.newRiskHeartIds.length,
+});
+
+export const checkLimits = (limits: Limit[], measured: Measured) =>
+  checkedLimits(limits).map((limit) => ({
+    id: limit.id,
+    kind: limit.kind,
+    value: limit.value,
+    ...limitChecks[limit.kind](limit, measured),
+  }));
+
 export function editDesignTool({ design, change, limits = [] }: z.infer<typeof editDesignInput>) {
-  const active = checkedLimits(limits);
+  checkedLimits(limits);
   const parent = evaluateOrThrow(design);
   const edited = applyChange(design, change);
   if ("reasons" in edited) return { valid: false, reasons: edited.reasons };
@@ -35,7 +51,6 @@ export function editDesignTool({ design, change, limits = [] }: z.infer<typeof e
   if (!child.ok) return { valid: false, reasons: child.reasons };
 
   const { summary } = child;
-  const measured = { sizes: edited.design.sizes.length, fitPct: summary.fitPct, newRisk: summary.newRiskHeartIds.length };
   return {
     valid: true,
     design: edited.design,
@@ -46,12 +61,7 @@ export function editDesignTool({ design, change, limits = [] }: z.infer<typeof e
       newRiskHeartIds: summary.newRiskHeartIds,
       changed: changedHearts(parent.results, child.results),
     },
-    limits: active.map((limit) => ({
-      id: limit.id,
-      kind: limit.kind,
-      value: limit.value,
-      ...limitChecks[limit.kind](limit, measured),
-    })),
+    limits: checkLimits(limits, measuredOf(edited.design, summary)),
   };
 }
 

@@ -1,0 +1,478 @@
+[
+  {
+    "toolCalls": [
+      {
+        "name": "evaluate_design",
+        "args": {
+          "design": {
+            "id": "start",
+            "label": "Starting valve",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "group_failures",
+        "args": {
+          "design": {
+            "id": "start",
+            "label": "Starting valve",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              }
+            ]
+          },
+          "by": "rule"
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "report_findings",
+        "args": {
+          "mechanisms": [
+            {
+              "title": "Failures cluster by rule",
+              "explanation": "Failing hearts share a rule, as the grouping shows.",
+              "heartIds": [],
+              "severity": "low",
+              "evidenceIds": [
+                "ev-95d7f1707ae35212",
+                "ev-ddb7bf7de5a26591"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "edit_design",
+        "args": {
+          "design": {
+            "id": "start",
+            "label": "Starting valve",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              }
+            ]
+          },
+          "change": {
+            "kind": "add_size",
+            "size": {
+              "nominalMm": 29,
+              "minAnnulusMm": 27,
+              "maxAnnulusMm": 29
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "submit_proposal",
+        "args": {
+          "design": {
+            "id": "start-4ee0570c",
+            "label": "Added 29 mm size",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              },
+              {
+                "nominalMm": 29,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29
+              }
+            ],
+            "parentId": "start"
+          },
+          "rationale": "Add a larger size, since the failures sit above the current largest range.",
+          "claim": {
+            "metric": "fitPct",
+            "comparator": ">=",
+            "threshold": 66.75
+          },
+          "tradeOffs": [
+            "One more size to stock."
+          ],
+          "evidenceIds": [
+            "ev-92438beb9fee2512"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "stress_test",
+        "args": {
+          "design": {
+            "id": "start-4ee0570c",
+            "label": "Added 29 mm size",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              },
+              {
+                "nominalMm": 29,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29
+              }
+            ],
+            "parentId": "start"
+          },
+          "kind": "measurement_shift",
+          "amount": 1,
+          "hypothesis": "The claim still holds after this shift.",
+          "disprovedIf": "The claimed metric crosses its threshold after the shift."
+        }
+      },
+      {
+        "name": "stress_test",
+        "args": {
+          "design": {
+            "id": "start-4ee0570c",
+            "label": "Added 29 mm size",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              },
+              {
+                "nominalMm": 29,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29
+              }
+            ],
+            "parentId": "start"
+          },
+          "kind": "assumption_shift",
+          "amount": 1,
+          "hypothesis": "The claim still holds after this shift.",
+          "disprovedIf": "The claimed metric crosses its threshold after the shift."
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "report_findings",
+        "args": {
+          "mechanisms": [
+            {
+              "title": "Shift attacks on the added size",
+              "explanation": "A measurement shift and an assumption shift were run on the proposal and their results are cited.",
+              "heartIds": [],
+              "severity": "low",
+              "evidenceIds": [
+                "ev-d1f199246c127586",
+                "ev-f839dd2a743050e6"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "edit_design",
+        "args": {
+          "design": {
+            "id": "start-4ee0570c",
+            "label": "Added 29 mm size",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              },
+              {
+                "nominalMm": 29,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29
+              }
+            ],
+            "parentId": "start"
+          },
+          "change": {
+            "kind": "add_size",
+            "size": {
+              "nominalMm": 21,
+              "minAnnulusMm": 19,
+              "maxAnnulusMm": 21
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "submit_proposal",
+        "args": {
+          "design": {
+            "id": "start-4ee0570c-e7acdf8f",
+            "label": "Added 21 mm size",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              },
+              {
+                "nominalMm": 29,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29
+              },
+              {
+                "nominalMm": 21,
+                "minAnnulusMm": 19,
+                "maxAnnulusMm": 21
+              }
+            ],
+            "parentId": "start-4ee0570c"
+          },
+          "rationale": "The shift attacks on the added size showed where it is thin, so add a smaller size as well.",
+          "claim": {
+            "metric": "fitPct",
+            "comparator": ">=",
+            "threshold": 72.5
+          },
+          "tradeOffs": [
+            "Another size to stock."
+          ],
+          "evidenceIds": [
+            "ev-b0c9bd4253db932b",
+            "ev-d1f199246c127586"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "stress_test",
+        "args": {
+          "design": {
+            "id": "start-4ee0570c-e7acdf8f",
+            "label": "Added 21 mm size",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              },
+              {
+                "nominalMm": 29,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29
+              },
+              {
+                "nominalMm": 21,
+                "minAnnulusMm": 19,
+                "maxAnnulusMm": 21
+              }
+            ],
+            "parentId": "start-4ee0570c"
+          },
+          "kind": "measurement_shift",
+          "amount": 1,
+          "hypothesis": "The claim still holds after this shift.",
+          "disprovedIf": "The claimed metric crosses its threshold after the shift."
+        }
+      },
+      {
+        "name": "stress_test",
+        "args": {
+          "design": {
+            "id": "start-4ee0570c-e7acdf8f",
+            "label": "Added 21 mm size",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              },
+              {
+                "nominalMm": 29,
+                "minAnnulusMm": 27,
+                "maxAnnulusMm": 29
+              },
+              {
+                "nominalMm": 21,
+                "minAnnulusMm": 19,
+                "maxAnnulusMm": 21
+              }
+            ],
+            "parentId": "start-4ee0570c"
+          },
+          "kind": "assumption_shift",
+          "amount": -1,
+          "hypothesis": "The claim still holds after this shift.",
+          "disprovedIf": "The claimed metric crosses its threshold after the shift."
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "report_findings",
+        "args": {
+          "mechanisms": [
+            {
+              "title": "Shift attacks on the second change",
+              "explanation": "A measurement shift and an assumption shift were run on the second proposal and their results are cited.",
+              "heartIds": [],
+              "severity": "low",
+              "evidenceIds": [
+                "ev-fc936f719fc2858d",
+                "ev-3e2f5ed35f5ac391"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
