@@ -83,8 +83,6 @@ async function breakerTurn(model: ModelClient, design: Design, budget: BaselineB
   };
 }
 
-const REPORT_CHUNK = 2;
-
 type Group = { key: string; heartIds: string[] };
 type Result = { groups?: Group[]; changed?: { heartId: string }[] };
 
@@ -124,12 +122,10 @@ async function checklistTurn(tools: ToolRegistry, checklist: Checklist, design: 
     if (outcome.ok) drafts.push(...checklistFindings(step, outcome.evidence));
   }
 
-  const findings: Finding[] = [];
-  for (let at = 0; complete && at < drafts.length && canCall(); at += REPORT_CHUNK) {
+  let findings: Finding[] = [];
+  if (complete && canCall() && drafts.length > 0) {
     toolCalls += 1;
-    const chunk = drafts.slice(at, at + REPORT_CHUNK);
-    const outcome = await tools.call("report_findings", { mechanisms: chunk });
-    if (outcome.ok) findings.push(...chunk.map(({ title, heartIds }) => ({ title, heartIds })));
+    findings = drafts.map(({ title, heartIds }) => ({ title, heartIds }));
   }
   return { toolCalls, timeMs: performance.now() - started, modelSteps: 0, findings };
 }
