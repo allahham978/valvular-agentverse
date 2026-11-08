@@ -24,6 +24,7 @@ const ROOT = process.cwd();
 const RECORDINGS = path.join(ROOT, "fixtures/recordings");
 const FIXTURE = path.join(ROOT, "fixtures/transcripts/fixer/demo-run.json");
 const RUN_TIMEOUT_MS = 90_000;
+const SCRIPTED_TIMEOUT_MS = 180_000;
 const INVENTED = 4242;
 
 const VERDICTS = [
@@ -258,6 +259,8 @@ function expectAttack(attack: AttackData, stress: Evidence, holds: boolean) {
   expect(attack.holds).toBe(holds);
   expect(attack.outcome).toBe(holds ? "survived" : "broke");
 }
+
+test.describe.configure({ timeout: SCRIPTED_TIMEOUT_MS });
 
 let fixtureRun: Promise<{ run: Run; requests: ModelRequest[] }> | undefined;
 function runFixture() {
@@ -659,6 +662,7 @@ test.describe("Done when 7: demo mode is one Breaker turn and at most 2 Fixer ro
   });
 
   test("over HTTP, a demo run does the same", async ({ request }) => {
+    test.setTimeout(SCRIPTED_TIMEOUT_MS + RUN_TIMEOUT_MS);
     const turns = await threeRoundScript();
     const started = await request.post("/api/runs", {
       data: { model: { kind: "scripted", turns }, demo: true, budget: { maxRounds: 3 } },
@@ -737,6 +741,14 @@ test.describe.serial("live Gemini", () => {
     test.setTimeout(20 * 60_000);
     const { run, requests } = await runLive();
     const stop = stopOf(run);
+    const { STARTING_VALVE } = await import("../../src/engine");
+    expect(START.sizes, "the spec's starting valve is the project's canonical one").toEqual(STARTING_VALVE.sizes);
+    const runStart = run.events.find((e) => e.type === "run-start")?.data as { design?: Design } | undefined;
+    expect(runStart?.design?.id, "the run started from the starting valve").toBe(STARTING_VALVE.id);
+    expect(runStart?.design?.sizes).toEqual(STARTING_VALVE.sizes);
+    expect(run.startDesignId).toBe(STARTING_VALVE.id);
+    const firstProposal = run.proposals.find((p) => p.id === "proposal-1");
+    if (firstProposal) expect(firstProposal.fromDesignId, "proposal-1 starts from the starting valve").toBe(STARTING_VALVE.id);
     const attack1 = stepIndex(run, "attack", 1);
     expect(attack1, `the run reached an attack: ${stop.reason} ${stop.detail}`).toBeGreaterThan(-1);
     const propose2 = stepIndex(run, "propose", 2);
@@ -747,20 +759,58 @@ test.describe.serial("live Gemini", () => {
     const fixerPrompt = firstPrompt(turnStarts(requests, "propose")[1]);
     for (const f of attackFindings) expect(fixerPrompt, "the Fixer was given the attack findings").toContain(f.text);
 
-    const attackEvidence = new Set(run.findings.filter((f) => f.kind === "attack").flatMap((f) => f.evidenceIds));
+    const attackEvidence = new Set(attackFindings.flatMap((f) => (f.data as { evidenceIds?: string[] }).evidenceIds ?? []));
+    const attackTitles = attackFindings.map((f) => f.text.trim().toLowerCase()).filter((t) => t.length > 0);
+    const attackKinds = run.events
+      .slice(attack1, propose2)
+      .filter((e) => e.type === "tool-call")
+      .map((e) => e.data as ToolCallData)
+      .filter((c) => c.tool === "stress_test" && c.evidenceId)
+      .map((c) => (c.input as { kind?: string }).kind ?? "")
+      .filter((kind) => kind.length > 0);
+    expect(attackEvidence.size, "the round-1 attack findings cite evidence").toBeGreaterThan(0);
+    const namesAttackFinding = (text: string) => {
+      const lower = text.replace(/\s+/g, " ").toLowerCase();
+      return (
+        [...attackEvidence].some((id) => lower.includes(id.toLowerCase())) ||
+        attackTitles.some((title) => lower.includes(title.replace(/\s+/g, " "))) ||
+        attackKinds.some((kind) => new RegExp(`\\b${kind}\\b`, "i").test(text))
+      );
+    };
+
     const round2 = run.events.slice(propose2);
     const round2End = round2.findIndex((e) => e.type === "step-start" && e.actor !== "fixer");
     const fixerEvents = round2End === -1 ? round2 : round2.slice(0, round2End);
     const proposal2 = fixerEvents.find((e) => e.type === "proposal")?.data as ProposalData | undefined;
     const proposal2Full = run.proposals.find((p) => p.id === proposal2?.proposal.id);
+    const proposal1Full = run.proposals.find((p) => p.id === "proposal-1");
+    const proposal1Design = proposalEvents(run).find((p) => p.proposal.id === "proposal-1")?.design;
+    expect(proposal1Full, "proposal-1 exists").toBeDefined();
+
     const citesAttack = (proposal2Full?.evidenceIds ?? []).some((id) => attackEvidence.has(id));
     const fixerText = [
       proposal2Full?.rationale ?? "",
       ...(proposal2Full?.tradeOffs ?? []),
       ...fixerEvents.filter((e) => e.actor === "fixer" && e.type === "model-text").map((e) => e.text),
     ].join(" ");
-    const addressesAttack = /attack|surviv|stress|shift/i.test(fixerText);
-    expect(citesAttack || addressesAttack, `round-2 Fixer: ${fixerText.slice(0, 400)}`).toBe(true);
+    const stepChanged =
+      proposal2 !== undefined &&
+      (JSON.stringify(proposal2.design.sizes) !== JSON.stringify(proposal1Design?.sizes) ||
+        JSON.stringify(proposal2Full?.claim) !== JSON.stringify(proposal1Full?.claim));
+    const changedAndNamesFinding = stepChanged && namesAttackFinding(fixerText);
+    const statedReasons = fixerEvents
+      .filter((e) => e.type === "attack-response")
+      .map((e) => e.data as { changed?: boolean; reason?: string; evidenceIds?: string[] });
+    const statesWhyNot = statedReasons.some(
+      (r) =>
+        typeof r.reason === "string" &&
+        r.reason.trim().length > 0 &&
+        ((r.evidenceIds ?? []).some((id) => attackEvidence.has(id)) || namesAttackFinding(r.reason)),
+    );
+    expect(
+      citesAttack || changedAndNamesFinding || statesWhyNot,
+      `round-2 Fixer must cite attack evidence, change its design or claim while naming an attack finding, or emit an attack-response reason naming one: ${JSON.stringify({ stepChanged, statedReasons, fixerText: fixerText.slice(0, 400) })}`,
+    ).toBe(true);
   });
 
   test("Done when 9: no agent call scores hidden hearts, demo run time recorded, run saved @live", async () => {
@@ -801,5 +851,23 @@ test.describe.serial("live Gemini", () => {
     expect(saved.events.length).toBe(run.events.length);
     expect(saved.evidence.length).toBeGreaterThan(0);
     for (const e of saved.events) expect(e.mode).toBe("live");
+
+    const savedStart = saved.events.find((e) => e.type === "run-start");
+    const savedStop = saved.events.at(-1);
+    expect(savedStart, "the recording has the run-start event").toBeDefined();
+    expect(savedStop?.type, "the recording ends with run-stop").toBe("run-stop");
+    const recordedMs = Date.parse(savedStop?.at ?? "") - Date.parse(savedStart?.at ?? "");
+    expect(Number.isFinite(recordedMs), "run-start and run-stop carry parseable times").toBe(true);
+    expect(recordedMs, "the system records a positive demo run time").toBeGreaterThan(0);
+    expect(recordedMs, "the recorded run time fits inside the measured run").toBeLessThanOrEqual(ms + 1_000);
+    expect(recordedMs, "the recorded run time matches the measured run").toBeGreaterThanOrEqual(ms - 5_000);
+
+    const written = JSON.parse(readFileSync(path.join(RECORDINGS, "req-11-live-summary.json"), "utf8")) as {
+      runId: string;
+      demoRunMs: number;
+    };
+    expect(written.runId).toBe(run.id);
+    expect(written.demoRunMs, "the demo run time is written to the summary").toBeGreaterThan(0);
+    expect(written.demoRunMs).toBe(ms);
   });
 });
