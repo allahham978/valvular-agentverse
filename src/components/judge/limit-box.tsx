@@ -31,7 +31,7 @@ export function LimitBox({
           value={text}
           maxLength={200}
           onChange={(event) => setText(event.target.value)}
-          className="h-9 rounded-md border border-panel-border bg-panel px-3 text-foreground"
+          className="h-9 rounded-md border border-panel-border bg-panel px-3 text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         />
       </label>
       <Button variant="outline" size="sm" disabled={busy || text.trim() === ""} onClick={() => onCheck(text.trim())}>

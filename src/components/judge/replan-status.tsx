@@ -16,7 +16,7 @@ export function ReplanStatus({
   if (!startAt) return null;
   const steps = events.filter((event) => event.type === "step-start");
   return (
-    <div className="flex flex-col gap-1.5 text-sm">
+    <div aria-live="polite" className="flex flex-col gap-1.5 border-t border-panel-border pt-3 text-sm">
       <p data-testid="judge-replan-status" className="text-muted">
         Restarted at the {START_LABELS[startAt]}
         {steps.map((event) => (
@@ -26,7 +26,7 @@ export function ReplanStatus({
         ))}
       </p>
       {result && (
-        <div data-testid="judge-run-result" className="flex flex-col gap-0.5">
+        <div data-testid="judge-run-result" className="flex flex-col gap-0.5 text-foreground">
           <span>{result.stopText}</span>
           <span className="mono">
             {result.design.sizes.length} sizes: {result.design.sizes.map((size) => `${size.nominalMm} mm`).join(", ")}

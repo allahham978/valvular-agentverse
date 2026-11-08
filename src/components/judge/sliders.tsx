@@ -37,7 +37,7 @@ export function Sliders({
           <span className="mono w-12 text-right text-xs">{size.nominalMm} mm</span>
         </label>
       ))}
-      <dl className="mono flex gap-4 text-sm">
+      <dl className="mono flex gap-4 text-sm tabular-nums">
         {TOTALS.map(({ key, label, testId }) => (
           <div key={key} className="flex gap-1.5">
             <dt className="text-muted">{label}</dt>
