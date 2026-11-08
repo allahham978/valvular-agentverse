@@ -40,6 +40,7 @@ export type StopReason = "no-improvement" | "budget" | "no-valid-fix" | "model-e
 
 export type PostLoopContext = {
   stopReason: StopReason;
+  stopDetail: string;
   run: Run;
   design: Design;
   emit(event: EmitInput): void;
@@ -340,7 +341,7 @@ export async function executeRun(options: ExecuteRunOptions): Promise<Run> {
 
   for (const step of options.postLoopSteps ?? []) {
     try {
-      await step({ stopReason: stop.reason, run, design: current?.design ?? startDesign, emit });
+      await step({ stopReason: stop.reason, stopDetail: stop.detail, run, design: current?.design ?? startDesign, emit });
     } catch (error) {
       emit({ actor: "code", type: "post-loop-error", text: error instanceof Error ? error.message : String(error) });
     }
