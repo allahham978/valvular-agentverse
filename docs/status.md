@@ -1,5 +1,38 @@
 # Valvular status
 
+## Batch 3b (fixes)
+
+Updated 8 Nov 2026 by the batch integrator on main at `b85c003`. Nothing has been pushed.
+
+### What was fixed
+
+| Branch | Result | Notes |
+|---|---|---|
+| `fix-agent-budget` | Merged (`b85c003`), tag `fix-agent-budget-pass` on `9454454` | Each tool reply now carries the budget left (`budgetLeft`: calls, steps, seconds). A reserve (3 of 16 calls, 1 of 8 steps, 45 of 180 s) limits the turn to its ending tool (`report_findings` or `submit_proposal`). From step 2, extra parallel calls past the reserve are skipped and the turn carries on, instead of a hard stop. The hard stop is kept as a backstop. Prompts mention `budgetLeft`. PRD section 3 limits unchanged. Spec `tests/e2e/fix-agent-budget.spec.ts` 6/6. |
+| `fix-demo-consistency` | **Not merged** (commits `581f7bc..5bbbd11` stay on the branch) | Done and green on the branch: the feed follows new events (stops when scrolled up), an "Open review" link to `/review?run=<id>` after a proposal, and the scripted attack text now reads as survived with the verdict in plain words. Not done: making the wall show real data (see below). Verify on the branch: 233 passed, 2 skipped. |
+
+### Tests actually seen
+
+`npm run verify` on main after the `fix-agent-budget` merge (port 3000, one worker, through the gate) exited 0. Typecheck, `data:check` and build passed; lint 0 errors, the same 2 old warnings. Playwright: **234 passed, 2 skipped, 0 failed** in 4.4 minutes. Main hasn't changed since, so verify wasn't rerun.
+
+### Live checks (`docs/live/fix-agent-budget.md`, on `665ca0f`)
+
+36.7 min in total; 1 passed, 3 failed, 1 not run.
+- **REQ-10** Done when 7 passed (2.3 min). Done when 8 failed (4.6 min): the starting valve finished in 95 s, valve B hit the 180 s limit after its report at 157 s was rejected for an uncited number (115) and the retry ran out of time. Done when 9 failed (27.0 min): 5 of 10 finished (needs 9); 3 hit 180 s (2 of them after an uncited-number rejection: 68, 67) and 2 hit the 60 s model-step timeout. Slowest run 180,011 ms, slowest finished 174,092 ms.
+- **REQ-11** Done when 8 failed: model timeout in the first investigate step at 173 s. It reached the reserve at 53 s, then the report step timed out twice, so no proposal or attack. Done when 9 didn't run (serial suite).
+- The budget fix worked for its target: no run hit "More than 16 tool calls in one turn" (5 of 10 REQ-10 runs and the REQ-11 attack turn did in batch 3). 11 of 14 runs reached the reserve step. The failures are now the 180 s turn limit and the 60 s model-step timeout.
+- 14 new recordings in `fixtures/recordings/`, `req-10-live-summary.json` rewritten, no `req-11-live-summary.json`. No key in any recording.
+
+### Still flagged for a human
+
+1. **Live turn time.** Breaker turns take 95 to 180 s on live Gemini. A report rejected late in a turn leaves too little time for its one retry, and REQ-11 can't reach an attack while the investigate turn alone takes about 3 min. The PRD section 3 limits (8 steps, 16 calls, 180 s) were not changed; a human decides between raising them, a faster model or lower thinking, or replay (RES-2 fallbacks).
+2. **The wall still shows sample data.** Making it real clashes with specs agents may not edit: `tests/e2e/req-4.spec.ts` lines 259-291 (idle wall must be `fixtures/sample-hearts.json`, totals 219/90/91, "Sample data" label), `req-1.spec.ts:238`, `req-8.spec.ts:230` and `req-8.spec.ts:182`; real `heart-NNN` ids can't land on a wall keyed by `sample-NNN`. The PRD gives this to REQ-12, whose spec doesn't exist yet. Decide whether to authorise the req-4 spec update or leave it for REQ-12. Once decided, the changes are in `src/components/wall/data-source.ts` (load `/api/fit` and `/api/hearts`) and `run-store.ts` (send real FitResults after the improved evaluation).
+3. **`fix-demo-consistency` merge.** Its three finished fixes (feed scroll, review link, attack text) could be merged on their own; that needs a decision since the branch reported not passed.
+4. Budget fix choices to check: the reserve scales with the budget (small test budgets get no call reserve); no skipping in step 1 (keeps the req-10 "16 calls within one step" spec); a Fixer forced to submit before a valid edit can end in no-valid-fix or a model error.
+5. Still open from Batch 3: REQ-15 lint fix and re-merge, teammate branches REQ-7/14/18, REQ-12.
+
+---
+
 ## Batch 3 (P0 steps 4-6, P1 step 8 backend)
 
 Updated 8 Nov 2026 by the batch integrator on branch `batch-3-integration`, from main at `9b2ec24`. Nothing has been pushed.
