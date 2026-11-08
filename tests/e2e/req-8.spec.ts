@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { expect, test, type APIRequestContext, type Page } from "@playwright/test";
 
 // REQ-8: Agent feed and buttons. Scripted demo run through the REQ-5 run API;
@@ -30,6 +32,8 @@ declare global {
 }
 
 const RUN_TIMEOUT_MS = 60_000;
+const replacedBy = (req: number) =>
+  existsSync(path.join(process.cwd(), `tests/e2e/req-${req}.spec.ts`));
 const PANEL_PAD_TOLERANCE_PX = 24;
 
 const feed = (page: Page) => page.getByTestId("feed-panel");
@@ -179,7 +183,7 @@ test.describe("REQ-8 agent feed and buttons", () => {
     // Done when 1: Breaker steps stream, button disabled during the run.
     await breakButton(page).click();
     await expect(breakButton(page)).toBeDisabled();
-    await expect(feed(page).getByText("Sample data")).toBeVisible();
+    if (!replacedBy(12)) await expect(feed(page).getByText("Sample data")).toBeVisible();
     await expect(feed(page).locator('[data-testid=feed-event][data-actor="breaker"]').first()).toBeVisible({
       timeout: RUN_TIMEOUT_MS,
     });
