@@ -9,7 +9,7 @@ type Saved = { decision: Decision; replanRunId?: string };
 
 function Outcome({ decision, replanRunId }: Saved) {
   return (
-    <section data-testid="review-decision" className="rounded-lg border border-panel-border bg-panel p-5 text-sm shadow-sm">
+    <section data-testid="review-decision" className="rounded-lg border border-accent bg-panel p-5 text-sm">
       {decision.status === "approved" ? (
         <p className="font-medium">Approved by {decision.by}</p>
       ) : (
@@ -57,11 +57,11 @@ export function DecisionForm({ runId, decision }: { runId: string; decision?: De
     }
   }
 
-  const field = "mt-1 block w-full rounded-md border border-panel-border bg-panel px-3 py-2 text-sm";
+  const field = "mt-1 block w-full rounded-md border border-panel-border bg-panel px-3 py-2 text-sm font-normal focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent";
   return (
     <form
       onSubmit={(event) => event.preventDefault()}
-      className="space-y-4 rounded-lg border border-panel-border bg-panel p-5 shadow-sm"
+      className="space-y-4 rounded-lg border border-panel-border bg-panel p-5"
     >
       <label className="block text-sm font-medium">
         Name
@@ -72,15 +72,15 @@ export function DecisionForm({ runId, decision }: { runId: string; decision?: De
         <textarea className={field} rows={3} value={note} onChange={(event) => setNote(event.target.value)} />
       </label>
       {error && (
-        <p role="alert" className="text-sm font-medium">
+        <p role="alert" className="border-l-2 border-foreground pl-3 text-sm font-medium">
           {error}
         </p>
       )}
-      <div className="flex gap-2">
-        <Button type="button" disabled={busy} onClick={() => submit("approved")}>
+      <div className="flex gap-3 pt-1">
+        <Button type="button" className="h-10 px-5" disabled={busy} onClick={() => submit("approved")}>
           Approve
         </Button>
-        <Button type="button" variant="outline" disabled={busy} onClick={() => submit("rejected")}>
+        <Button type="button" variant="outline" className="h-10 px-5" disabled={busy} onClick={() => submit("rejected")}>
           Reject
         </Button>
       </div>
