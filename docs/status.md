@@ -1,5 +1,96 @@
 # Valvular status
 
+## Batch 3 (P0 steps 4-6, P1 step 8 backend)
+
+Updated 8 Nov 2026 by the batch integrator on branch `batch-3-integration`, from main at `9b2ec24`. Nothing has been pushed.
+
+### Requirements
+
+| Req | Result | Why |
+|---|---|---|
+| REQ-6 Fit engine | Passed (re-merged) | Re-merged as `6c59582` (reverts the revert `3a835b6`) after the reduced-motion crossfade fix `ab98d54`. Tag `req-6-pass`. |
+| REQ-9 Agent tools | Passed | Merge `cdd2b38`, tag `req-9-pass` on `879e1b5`. Merger saw its spec 34/34 and verify on main green. |
+| REQ-10 Breaker agent | Passed, **live check failed** | Merge `4e9b602`, tag `req-10-pass` on `32bd2a0`. Spec 14/14. Live: see below. |
+| REQ-11 Fixer and attack loop | Passed, **live check failed** | Merge `fb65558`, tag `req-11-pass` on `f5991be`. Spec 17/17. Live: see below. |
+| REQ-13 Hidden scoring and baselines | Passed | Merge `c58ef3f`, tag `req-13-pass` on `e901581`. Spec 12/12. |
+| REQ-15 Judge input and replanning | **Failed to merge** | Its spec passed 11/11 in its worktree, but verify on main failed at lint: `src/components/judge/index.tsx:19:83` `react/no-unescaped-entities` on "Judge's valve", added by `1f37c02`. Merge `a38aeac` was reverted as `9b2ec24`. Fix: escape the apostrophe on branch `req-15`, then re-merge. No `req-15-pass` tag. |
+| REQ-16 Engineer review | Passed | Merge `4b5b312`, tag `req-16-pass` on `78b833b`. Spec 9/9 on main. |
+| REQ-17 Replay | Passed | Merge `f711008`, tag `req-17-pass` on `77fbaab`. Spec 11/11. |
+| REQ-7, 14, 18 | Not run | Teammate branches, not merged. |
+| REQ-12 | Not run | Still to do. Note: PRD section 1 says P1 starts only after REQ-12 passes. REQ-13, 15, 16 and 17 were run before it. |
+
+Step 3 is still missing REQ-7, and REQ-12 hasn't run, so no new `step-N-pass` tags were added.
+
+### Merged app check
+
+On a build of this branch (port 3030, scripted model, real tools):
+- "Break it" posts a demo-mode run to `POST /api/runs` and the feed streams from `/api/runs/<id>/events`. Numbers now come from the real REQ-9 tools: "Starting valve fits 59.8%" (it was a sample 42.8% in batch 2).
+- "Fix it" shows the proposal ("Added 29 mm size fits 66.8% (better than 59.8%)"), one `stress_test` attack and a code verdict.
+- `/review?run=<id>` shows the change, trade-offs, attack, verdict, what it doesn't show, what wasn't tested, the evidence log, and the Approve and Reject form.
+- A replay of `fixtures/replays/demo.json` runs in the workspace with "Replay, not live" and finishes through Fix it.
+- No console errors at 1440x900 or 1920x1080.
+
+**One fix in this batch** (`src/components/controls/demo-script.ts`, REQ-8's file). The button script came from before REQ-9 and REQ-11. Its proposal had no claim, and its "attack" was an `evaluate_design` call, so every button run ended with verdict `invalid_experiment` ("the proposal has no claim to test"). The script now submits a structured claim (`fitPct >= 66.75`), attacks with `stress_test` (1 mm `measurement_shift`, with a hypothesis and `disprovedIf`) and sends `demo: true`. The run now ends `supported_under_conditions` (the attack survived: 71.5% after the shift). `scripts/screenshot-batch-3.mjs` reproduces the screenshots.
+
+### Tests actually seen
+
+`npm run verify` in the batch-3 worktree (port 3030, one worker, through the memory gate) exited 0. Typecheck, lint (0 errors, 2 warnings: unused `thoughtSignature` in `research_notes/Valvular build/res-2/run.mjs` and unused `feed` in `scripts/screenshot-batch-2.mjs`), `data:check` and build passed. Playwright: **218 passed, 2 skipped, 0 failed** in 4.2 minutes.
+
+| Spec | Passed | Skipped |
+|---|---|---|
+| req-1 | 28 | 2 (`replacedBy`: the wall to REQ-4, the feed to REQ-8) |
+| req-2 | 17 | 0 |
+| req-3 | 18 | 0 |
+| req-4 | 28 | 0 |
+| req-5 | 20 | 0 |
+| req-6 | 9 | 0 |
+| req-8 | 1 | 0 |
+| req-9 | 34 | 0 |
+| req-10 | 14 | 0 |
+| req-11 | 17 | 0 |
+| req-13 | 12 | 0 |
+| req-16 | 9 | 0 |
+| req-17 | 11 | 0 |
+
+`test:gpu` and `test:live` weren't run by the integrator.
+
+### Live checks (from `docs/live/`)
+
+- **REQ-10** (`docs/live/req-10.md`): Done when 7 passed (2.7 min). Done when 8 failed: the first valve's turn hit the 180 s limit. Done when 9 failed: 4 of 10 runs finished (needs 9); 5 hit "More than 16 tool calls in one turn" and 1 hit 180 s. Slowest run 180 s, slowest finished 162 s. 12 recordings saved.
+- **REQ-11** (`docs/live/req-11.md`): Done when 8 failed after 7.3 min: the round-1 attack turn hit the 16 tool-call limit, so no second Fixer step ran. Done when 9 didn't run (serial suite). Run time 437 s, against the 1-2 minute target. 1 recording saved.
+- REQ-15's spec includes one `@live` test, and it passed in the req-15 worktree (one real Gemini call). That branch isn't merged.
+- Common cause for a human to decide: on live Gemini the Breaker routinely needs more than 16 tool calls per turn and turns take about 2.5 min. The budget is set in PRD section 3. The options are to raise the budget, tighten the Breaker prompt, or use RES-2's fallbacks (lower thinking, a faster model, replay).
+
+### Visuals flagged
+
+Screenshots are in `docs/ui-review/batch-3/`: during and after Break, during and after Fix, `/review` (full page), and a replay during and after, each at 1440x900 and 1920x1080. They were taken with software WebGL.
+
+1. **The feed still doesn't scroll.** After Fix it, the proposal, attack and verdict are below the fold at both sizes; only the wall totals change visibly. Open since REQ-8 (`src/components/feed/index.tsx`).
+2. **The wall disagrees with the feed.** The wall still shows the REQ-1 sample fixture (Fit 219 / Risk 90 / No fit 91, going to 211 / 98 / 91), while the feed shows real tool numbers (59.8% to 66.8%, 18 new at-risk hearts). Both are labelled, but side by side they contradict each other. Wiring the wall to `/api/fit` is REQ-12's job.
+3. **Scripted button runs show "Replay, not live"** and "Sample data" on the feed, because scripted events are `mode: "replay"`. That's correct labelling, but the presenter should know the buttons aren't live until REQ-12 wires Gemini.
+4. **Nothing in the workspace links to `/review`.** The review only opens with `?run=<id>` typed by hand; the header link opens an empty review. REQ-19 connects the flow.
+5. The attack finding text ("Hearts near 27 mm now sit at the size edge") is scripted and reads like a break, while the code verdict says the attack survived.
+6. Still open: the 3D root doesn't react to the run (REQ-7), "(show)" text toggles, repeated actor labels, and the batch-1 and batch-2 audit items.
+
+### Still sample data
+
+- Wall statuses, totals, hover card and popup measurements: REQ-1 fixture on real thumbnails and meshes (until REQ-12).
+- Button runs use the scripted model (real tools, recorded calls), labelled "Replay, not live". No live Gemini from the buttons yet.
+- New amber hearts on the wall: the wall goes from Risk 90 to 98, so 8 dots turn amber. That matches the 8 fixed IDs in `sample-new-risk.ts`, not the 18 real new-risk hearts (`heart-NNN`). The wall is keyed by `sample-NNN` IDs, so real IDs can't land on it until REQ-12.
+- The main root view is still `public/fixtures/root-sample.glb`, with no schematic valve (REQ-7).
+- `/results` and `/about` are still REQ-1 placeholders (REQ-14, REQ-18).
+
+### What's left
+
+1. Fix REQ-15's lint error on its branch and re-merge.
+2. Merge the teammate branches REQ-7, REQ-14 and REQ-18 when they're pushed (rebase, verify, `merge --no-ff`).
+3. Decide on the live budget problem (REQ-10 and REQ-11 live failures) before REQ-12's `@live` check.
+4. REQ-12 core demo end to end, run alone. It's the stop point for a human check. It also needs to fix flagged items 1, 2 and 4.
+5. Then REQ-19 (run alone), then REQ-20.
+6. Still open from earlier batches: the `@gpu` lag test, the `heart.glb` licence before any push, and the Gemini tier limits.
+
+---
+
 ## Batch 2 (P0 step 3)
 
 Updated 7 Nov 2026 by the batch integrator on branch `batch-2-integration`, from main at `054e4df`. Nothing has been pushed.
