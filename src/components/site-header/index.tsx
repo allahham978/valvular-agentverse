@@ -8,6 +8,11 @@ export function SiteHeader() {
         Valvular
       </Link>
       <DataLabel>Synthetic test hearts</DataLabel>
+      <nav className="ml-auto flex gap-4 text-sm text-muted">
+        <Link href="/?stage=workspace" className="hover:text-foreground">Workspace</Link>
+        <Link href="/results" className="hover:text-foreground">Results</Link>
+        <Link href="/about" className="hover:text-foreground">About</Link>
+      </nav>
     </header>
   );
 }

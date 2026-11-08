@@ -1,18 +1,18 @@
+import { createHash } from "node:crypto";
 import type { Run } from "@/contracts";
 import { loadReplay, DEFAULT_REPLAY_ID, replayRun } from "@/replay";
 import { getRunView, saveRun } from "@/run/store";
 import { loadReport, saveReport, scoreAndRecord, type ScoreReport } from "@/scoring";
 
-const MAIN_PATH_RUN_ID = "results-main-path";
-
 export type ResultsData = { run: Run; report: ScoreReport } | { missing: string };
 
 async function mainPathRun(): Promise<Run | null> {
-  const saved = getRunView(MAIN_PATH_RUN_ID);
-  if (saved?.status === "finished") return saved.run;
   const file = loadReplay(DEFAULT_REPLAY_ID);
   if (!file) return null;
-  const run = await replayRun({ ...file, turns: file.turns.map((turn) => ({ ...turn, delayMs: 0 })) }, { id: MAIN_PATH_RUN_ID });
+  const id = `results-${file.id}-${createHash("sha256").update(JSON.stringify(file.turns)).digest("hex").slice(0, 12)}`;
+  const saved = getRunView(id);
+  if (saved?.status === "finished") return saved.run;
+  const run = await replayRun({ ...file, turns: file.turns.map((turn) => ({ ...turn, delayMs: 0 })) }, { id });
   saveRun(run);
   return run;
 }

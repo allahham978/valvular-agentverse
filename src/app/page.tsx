@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Controls } from "@/components/controls";
 import { DataLabel } from "@/components/data-label";
 import { Feed } from "@/components/feed";
@@ -24,6 +25,10 @@ export default async function Home({
             <DataLabel className="stage-opening">Illustrative</DataLabel>
             <DataLabel className="stage-panel">Synthetic test hearts</DataLabel>
           </span>
+          <nav className="stage-panel pointer-events-auto ml-3 flex gap-4 text-sm text-muted">
+            <Link href="/results" className="hover:text-foreground">Results</Link>
+            <Link href="/about" className="hover:text-foreground">About</Link>
+          </nav>
         </header>
         <div className="stage-panel pointer-events-none absolute bottom-6 right-6 top-16 flex w-(--panel-col) flex-col gap-4 [&>*]:pointer-events-auto">
           <Wall />
