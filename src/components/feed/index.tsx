@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { DataLabel } from "@/components/data-label";
 import type { RunEvent } from "@/contracts";
 import { useRun } from "./run-store";
+
+const FOLLOW_SLACK_PX = 24;
 
 const MEASUREMENT = /(\d+(?:\.\d+)?)\s?mm\b/g;
 const THIN_NBSP = " ";
@@ -63,8 +67,30 @@ function ToolCall({ event }: { event: RunEvent }) {
   );
 }
 
+type VerdictData = { verdict?: string; attacks?: { kind: string; outcome: "survived" | "broke" }[] };
+
+const words = (value: string) => value.replaceAll("_", " ");
+
+function Verdict({ event }: { event: RunEvent }) {
+  const data = (event.data ?? {}) as VerdictData;
+  if (!data.verdict) return <span>{event.text}</span>;
+  return (
+    <>
+      <span className="font-medium">Verdict: {words(data.verdict)}</span>
+      {data.attacks?.map((attack, index) => (
+        <span key={index} className="mt-0.5 block text-muted">
+          {attack.outcome === "survived"
+            ? `The claim survived the ${words(attack.kind)} attack.`
+            : `The claim broke under the ${words(attack.kind)} attack.`}
+        </span>
+      ))}
+    </>
+  );
+}
+
 function EventBody({ event }: { event: RunEvent }) {
   if (event.type === "tool-call") return <ToolCall event={event} />;
+  if (event.type === "verdict") return <Verdict event={event} />;
   const detail = (event.data as { explanation?: string } | null)?.explanation;
   const emphasised = event.type === "finding" || event.type === "attack";
   return (
@@ -76,7 +102,27 @@ function EventBody({ event }: { event: RunEvent }) {
 }
 
 export function Feed() {
-  const { events, sample } = useRun();
+  const { events, sample, runId } = useRun();
+  const list = useRef<HTMLOListElement>(null);
+  const stuck = useRef(true);
+  const lastTop = useRef(0);
+  const reviewable = runId !== null && events.some((event) => event.type === "proposal");
+
+  // Follow new events unless the user has scrolled back up; reaching the bottom again resumes it.
+  const onScroll = () => {
+    const element = list.current;
+    if (!element) return;
+    if (element.scrollHeight - element.scrollTop - element.clientHeight <= FOLLOW_SLACK_PX) stuck.current = true;
+    else if (element.scrollTop < lastTop.current) stuck.current = false;
+    lastTop.current = element.scrollTop;
+  };
+
+  useLayoutEffect(() => {
+    const element = list.current;
+    if (!element || !stuck.current) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    element.scrollTo({ top: element.scrollHeight, behavior: reduced ? "auto" : "smooth" });
+  }, [events.length]);
   return (
     <section
       data-testid="feed-panel"
@@ -90,7 +136,7 @@ export function Feed() {
       {events.length === 0 ? (
         <p className="text-sm text-muted">Press Break it to start a run.</p>
       ) : (
-        <ol className="min-h-0 divide-y divide-panel-border overflow-y-auto">
+        <ol ref={list} onScroll={onScroll} className="min-h-0 divide-y divide-panel-border overflow-y-auto">
           {events.map((event) => (
             <li key={event.seq} data-testid="feed-event" data-type={event.type} data-actor={event.actor} className="py-2.5 text-sm first:pt-0 last:pb-0">
               <span className="mb-1 block text-xs font-medium capitalize tracking-wide text-muted">{event.actor}</span>
@@ -98,6 +144,17 @@ export function Feed() {
             </li>
           ))}
         </ol>
+      )}
+      {reviewable && (
+        <div className="mt-3 shrink-0 border-t border-panel-border pt-3">
+          <Link
+            href={`/review?run=${runId}`}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline focus-visible:outline-2 focus-visible:outline-accent"
+          >
+            Open review
+            <ArrowRight className="size-3.5" aria-hidden />
+          </Link>
+        </div>
       )}
     </section>
   );

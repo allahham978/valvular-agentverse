@@ -95,8 +95,8 @@ export const demoTurns: ScriptedTurn[] = [
         args: {
           mechanisms: [
             finding(
-              "Hearts near 27 mm now sit at the size edge",
-              "Several hearts that fit before now rest at the edge of two sizes.",
+              "The claim held after shifting every measurement",
+              "Fit stayed above the claimed threshold after the shift, so the proposal survived this attack.",
             ),
           ],
         },

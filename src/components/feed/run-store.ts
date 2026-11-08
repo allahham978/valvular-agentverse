@@ -4,11 +4,11 @@ import { demoRequest } from "@/components/controls/demo-script";
 import { sampleNewRisk } from "./sample-new-risk";
 
 export type Phase = "idle" | "breaking" | "broken" | "fixing" | "done";
-export type RunView = { phase: Phase; events: RunEvent[]; sample: boolean };
+export type RunView = { phase: Phase; events: RunEvent[]; sample: boolean; runId: string | null };
 
 const REVEAL_MS = 250;
 const HIDDEN_TYPES = new Set(["run-start", "step-start", "run-stop"]);
-const IDLE: RunView = { phase: "idle", events: [], sample: false };
+const IDLE: RunView = { phase: "idle", events: [], sample: false, runId: null };
 
 let view = IDLE;
 const received: RunEvent[] = [];
@@ -17,6 +17,7 @@ let started = false;
 let released = false;
 let stopped = false;
 let source: EventSource | undefined;
+let runId: string | null = null;
 let timer: ReturnType<typeof setTimeout> | undefined;
 const listeners = new Set<() => void>();
 
@@ -31,7 +32,7 @@ function phase(): Phase {
 
 function publish() {
   const events = received.slice(0, shown).filter((event) => !HIDDEN_TYPES.has(event.type));
-  view = { phase: phase(), events, sample: started && received.every((event) => event.mode === "replay") };
+  view = { phase: phase(), events, sample: started && received.every((event) => event.mode === "replay"), runId };
   listeners.forEach((listener) => listener());
 }
 
@@ -92,6 +93,7 @@ async function begin(request: unknown) {
     });
     if (!response.ok) throw new Error(`POST /api/runs ${response.status}`);
     const { id } = (await response.json()) as { id: string };
+    runId = id;
     source = new EventSource(`/api/runs/${id}/events`);
     source.onmessage = (message) => receive(RunEventSchema.parse(JSON.parse(message.data)));
   } catch {
@@ -112,6 +114,7 @@ export function startReplay(replayId: string) {
   shown = 0;
   released = false;
   stopped = false;
+  runId = null;
   return begin({ replayId });
 }
 
