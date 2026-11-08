@@ -1,4 +1,5 @@
 import type { Design, Evidence, Finding, Limit, Proposal, Summary } from "../contracts";
+import { breakerRoles } from "../agents/breaker/roles";
 import type { LoopStep } from "../agents/model-client";
 
 export type LoopContext = {
@@ -9,6 +10,7 @@ export type LoopContext = {
   findings: Finding[];
   proposals: Proposal[];
   limits: Limit[];
+  evidence: Evidence[];
 };
 
 export type AgentRole = {
@@ -23,13 +25,7 @@ const describe = (ctx: LoopContext) =>
   `Current design: ${JSON.stringify(ctx.design)}\nCurrent fit: ${ctx.summary.fitPct.toFixed(1)}%`;
 
 export const defaultRoles: Record<LoopStep, AgentRole> = {
-  investigate: {
-    actor: "breaker",
-    prompt: (ctx) =>
-      `Find why hearts fail to fit this design. Evaluate it, then report findings with evidence IDs.\n${describe(ctx)}`,
-    toolNames: ["evaluate_design", "group_failures", "profile_group", "inspect_heart", "what_if", "stress_test", "report_findings"],
-    terminalTool: "report_findings",
-  },
+  investigate: breakerRoles.investigate,
   propose: {
     actor: "fixer",
     prompt: (ctx) =>
@@ -37,11 +33,5 @@ export const defaultRoles: Record<LoopStep, AgentRole> = {
     toolNames: ["evaluate_design", "edit_design", "submit_proposal"],
     terminalTool: "submit_proposal",
   },
-  attack: {
-    actor: "breaker",
-    prompt: (ctx) =>
-      `Try to break the current design. Evaluate it, then report what still fails with evidence IDs.\n${describe(ctx)}`,
-    toolNames: ["evaluate_design", "group_failures", "profile_group", "inspect_heart", "what_if", "stress_test", "report_findings"],
-    terminalTool: "report_findings",
-  },
+  attack: breakerRoles.attack,
 };

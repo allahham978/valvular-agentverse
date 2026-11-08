@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import type { Heart } from "@/contracts";
+import type { Heart } from "../contracts";
 
 let cached: Heart[] | undefined;
 

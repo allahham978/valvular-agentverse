@@ -1,5 +1,5 @@
-import type { FitResult } from "@/contracts";
-import { devHearts } from "@/lib/dev-hearts";
+import type { FitResult } from "../contracts";
+import { devHearts } from "../lib/dev-hearts";
 import { ToolError } from "./evidence";
 import { applyChange, changedHearts, evaluate, evaluateOrThrow } from "./fit";
 import type { z } from "zod";

@@ -1,0 +1,165 @@
+[
+  {
+    "toolCalls": [
+      {
+        "name": "evaluate_design",
+        "args": {
+          "design": {
+            "id": "start",
+            "label": "Starting valve",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "group_failures",
+        "args": {
+          "design": {
+            "id": "start",
+            "label": "Starting valve",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              }
+            ]
+          },
+          "by": "rule"
+        }
+      },
+      {
+        "name": "group_failures",
+        "args": {
+          "design": {
+            "id": "start",
+            "label": "Starting valve",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              }
+            ]
+          },
+          "by": "band"
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "profile_group",
+        "args": {
+          "heartIds": [
+            "heart-013",
+            "heart-019",
+            "heart-031"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "inspect_heart",
+        "args": {
+          "heartId": "heart-013",
+          "design": {
+            "id": "start",
+            "label": "Starting valve",
+            "hypothetical": true,
+            "sizes": [
+              {
+                "nominalMm": 23,
+                "minAnnulusMm": 21,
+                "maxAnnulusMm": 23
+              },
+              {
+                "nominalMm": 25,
+                "minAnnulusMm": 23,
+                "maxAnnulusMm": 25
+              },
+              {
+                "nominalMm": 27,
+                "minAnnulusMm": 25,
+                "maxAnnulusMm": 27
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "toolCalls": [
+      {
+        "name": "report_findings",
+        "args": {
+          "mechanisms": [
+            {
+              "title": "Annulus sizes outside the 21-27 mm coverage",
+              "explanation": "Of 400 development hearts, 93 have no size under the Starting valve, and the grouping by rule puts all of them under annulus-coverage. Failures also appear in the 20-22 and 26-28 bands.",
+              "heartIds": [
+                "heart-013",
+                "heart-019",
+                "heart-031"
+              ],
+              "severity": "high",
+              "evidenceIds": [
+                "ev-95d7f1707ae35212",
+                "ev-ddb7bf7de5a26591",
+                "ev-c84097b2a0d584bb"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

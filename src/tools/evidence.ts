@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import type { Evidence } from "@/contracts";
-import { defaultRules } from "@/engine";
+import type { Evidence } from "../contracts";
+import { defaultRules } from "../engine";
 import sources from "../../data/sources.json";
 
 export class ToolError extends Error {

@@ -1,6 +1,6 @@
-import type { Design, FitResult, FitStatus, Heart } from "@/contracts";
-import { evaluateDesign, type DesignRejection, type RuleSet } from "@/engine";
-import { devHearts } from "@/lib/dev-hearts";
+import type { Design, FitResult, FitStatus, Heart } from "../contracts";
+import { evaluateDesign, type DesignRejection, type RuleSet } from "../engine";
+import { devHearts } from "../lib/dev-hearts";
 import { shortHash, ToolError } from "./evidence";
 import type { Change } from "./inputs";
 
